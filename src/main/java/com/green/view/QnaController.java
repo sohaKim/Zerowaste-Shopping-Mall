@@ -17,31 +17,57 @@ public class QnaController {
 	@Autowired
 	QnaService qnaService;
 	
+//	/**
+//	 * 회원id를 조건으로 모든 Q&A 조회
+//	 */
+//	@GetMapping(value="/qna_list")
+//	public String qnaList(HttpSession session, Model model) {
+//		
+//		// 회원 로그인 확인
+//		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+//		
+//		if(loginUser == null) {
+//			return "member/login"; // jsp
+//		} else { 
+//			List<QnaVO> qnaList = qnaService.listQna(loginUser.getId());
+//			
+//			model.addAttribute("qnaList", qnaList); // qnaList.jsp의 ${qnaList}
+//			
+//			return "qna/qnaList"; // jsp			
+//		}
+//	}	
+	
 	/*
 	 * 회원id를 조건으로 모든 Q&A 조회
 	 */
 	@GetMapping(value="/qna_list")
-	public String qnaList(HttpSession session, Model model) {
+	public String qnaList(HttpSession session, Model model, QnaVO vo) {
+		
+		String[] qkindList = {"상품", "배송", "환불", "기타"}; // 카테고리 배열
+		int index = Integer.parseInt(vo.getQkind());
+		model.addAttribute("qkind", qkindList[index]); 
 		
 		// 회원 로그인 확인
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		
 		if(loginUser == null) {
 			return "member/login"; // jsp
-		} else { 
-			List<QnaVO> qnaList = qnaService.listQna(loginUser.getId());
-			
+		} else { 						
+			List<QnaVO> qnaList = qnaService.listQna(loginUser.getId()); // id로 qna목록 가져오기
 			model.addAttribute("qnaList", qnaList); // qnaList.jsp의 ${qnaList}
+			
+
+			/*
+			String[] qkindList = {"", "상품", "배송", "환불", "기타"}; // 카테고리 배열
+			int index = Integer.parseInt(vo.getQkind());
+			model.addAttribute("qkind", qkindList[index]); 
+			*/
 			
 			return "qna/qnaList"; // jsp			
 		}
 	}
-	
-//	// Q&A 리스트 불러오기
-//	@GetMapping(value="/qna_list")
-//	public String qnaList() {
-//		return "qna/qnaList"; // jsp
-//	}
+
+
 	
 	
 	/*
@@ -120,5 +146,6 @@ public class QnaController {
 //		return "qna/qnaView"; // jsp
 //	}	
 }
+
 
 
