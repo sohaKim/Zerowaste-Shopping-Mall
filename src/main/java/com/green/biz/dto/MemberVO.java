@@ -1,0 +1,25 @@
+package com.green.biz.dto;
+
+import java.sql.Timestamp;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+public class MemberVO {
+	
+	private String id;
+	private String pwd;
+	private String name;
+	private String email;
+	private String zonecode;
+	private String roadaddr;
+	private String detailaddr;
+	private String phone;
+	private String useyn;
+	private Timestamp regdate;
+	
+}

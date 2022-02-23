@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappings.notice-mapping">
+
+	<!-- Notice전체보기 (조건X) -->
+	<select id="listNotice" resultType="notice">
+		SELECT * FROM notice
+		ORDER BY nseq
+	</select>
+
+	<!-- 특정 Notice 상세조회 (조건:게시글 번호) -->
+	<select id="getNotice" resultType="notice">
+		SELECT * FROM notice
+		WHERE nseq=#{nseq}
+	</select>
+
+	<!-- ▶▶Admin 관리자 기능에 추가해야되나? 혹시몰라 mapping만 작성 -->
+	<insert id="insertNotice">
+		INSERT INTO notice(nseq, nkind, subject, content, notimg)
+		VALUES(notice_seq.NEXTBAL, #{nkind} #{subject}, #{content}, #{notimg})
+	</insert>
+
+</mapper>
+
