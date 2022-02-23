@@ -25,7 +25,7 @@ public class MemberController {
 	private MemberService memberService;
 	
 	/*
-	 * ·Î±×ÀÎ È­¸é Ç¥½Ã
+	 * ë¡œê·¸ì¸ í™”ë©´ í‘œì‹œ
 	 */
 	@GetMapping(value="/login_form")
 	public String loginView() {
@@ -33,9 +33,9 @@ public class MemberController {
 	}
 	
 	/*
-	 * »ç¿ëÀÚ ·Î±×ÀÎ Ã³¸®
+	 * ì‚¬ìš©ì ë¡œê·¸ì¸ ì²˜ë¦¬
 	 * 
-	 * vo°´Ã¼¿¡¼­ id,pwd Á¤º¸¸¦ ÀĞ¾î¿Í »ç¿ëÀÚ ÀÎÁõ
+	 * voê°ì²´ì—ì„œ id,pwd ì •ë³´ë¥¼ ì½ì–´ì™€ ì‚¬ìš©ì ì¸ì¦
 	 */
 	@PostMapping(value="/login")
 	public String loginAction(MemberVO vo,Model model) {
@@ -44,15 +44,15 @@ public class MemberController {
 		System.out.println("login: vo" + vo);
 		int result = memberService.loginID(vo);
 		
-		if(result ==1) {//»ç¿ëÀÚ ÀÎÁõ ¼º°ø
-			//»ç¿ëÀÚ Á¤º¸¸¦ Á¶È¸ÇÏ¿© Session °´Ã¼¿¡ Àü´Ş
+		if(result ==1) {//ì‚¬ìš©ì ì¸ì¦ ì„±ê³µ
+			//ì‚¬ìš©ì ì •ë³´ë¥¼ ì¡°íšŒí•˜ì—¬ Session ê°ì²´ì— ì „ë‹¬
 			loginUser = memberService.getMember(vo.getId());
-			//@SessionAttribute·Î ÁöÁ¤ÇÏ¿© ¼¼¼Ç¿¡¼­ ÀúÀåµÊ
+			//@SessionAttributeë¡œ ì§€ì •í•˜ì—¬ ì„¸ì…˜ì—ì„œ ì €ì¥ë¨
 			model.addAttribute("loginUser", loginUser);
 			
 			return "redirect:/index";
 			
-		}else {//»ç¿ëÀÚ ÀÎÁõ ½ÇÆĞ
+		}else {//ì‚¬ìš©ì ì¸ì¦ ì‹¤íŒ¨
 			return "member/login_fail";
 		}
 	}
@@ -60,8 +60,8 @@ public class MemberController {
 	@GetMapping(value="/logout")
 	public String logout(SessionStatus status) {
 		
-		//session.invalidate(); ¿ÏÀüÇÏ°Ô ·Î±×¾Æ¿ôÀÌ ¾ÈµÊ
-		status.setComplete();//ÇöÀç ¼¼¼Ç¿ï Á¾·á
+		//session.invalidate(); ì™„ì „í•˜ê²Œ ë¡œê·¸ì•„ì›ƒì´ ì•ˆë¨
+		status.setComplete();//í˜„ì¬ ì„¸ì…˜ìš¸ ì¢…ë£Œ
 		
 		return "member/login";
 	}
@@ -84,7 +84,7 @@ public class MemberController {
 		return "member/join";
 	}
 	/*
-	 * IDÁßº¹Ã¼Å© ÇÏ¸é Ãâ·Â
+	 * IDì¤‘ë³µì²´í¬ í•˜ë©´ ì¶œë ¥
 	 */
 
 	@GetMapping(value="/id_check_form")
@@ -97,7 +97,7 @@ public class MemberController {
 	}
 	
 	/*
-	 * IDÁßº¹ Ã¼Å© ¼öÇà
+	 * IDì¤‘ë³µ ì²´í¬ ìˆ˜í–‰
 	 */
 	@PostMapping(value="/id_check_form")
 	public String idCheckAction(MemberVO vo,Model model) {
@@ -110,18 +110,18 @@ public class MemberController {
 		return "member/idcheck";
 	}
 	/*
-	 * »ç¿ëÇÒ id¸¦ join(È¸¿ø°¡ÀÔ)È­¸é¿¡ Àü¼Û
+	 * ì‚¬ìš©í•  idë¥¼ join(íšŒì›ê°€ì…)í™”ë©´ì— ì „ì†¡
 	 */
 	@GetMapping(value="/id_check_confirmed")
 	public String idCheckConfirmed(MemberVO vo, Model model) {
 		
 		model.addAttribute("id", vo.getId());
-		model.addAttribute("reid", vo.getId()); //id Áßº¹È®ÀÎ ÇÊµå
+		model.addAttribute("reid", vo.getId()); //id ì¤‘ë³µí™•ì¸ í•„ë“œ
 		
 		return "member/join";
 	}
 	/*
-	 * È¸¿ø°¡ÀÔ Ã³¸®
+	 * íšŒì›ê°€ì… ì²˜ë¦¬
 	 */
 	@PostMapping(value="/join")
 	public String joinAction(@RequestParam(value="zonecode")String zonecode,
@@ -139,7 +139,7 @@ public class MemberController {
 	
 	
 	/*
-	 * ¿ìÆí¹øÈ£, ÁÖ¼Ò Ã£±â È­¸é Ãâ·Â
+	 * ìš°í¸ë²ˆí˜¸, ì£¼ì†Œ ì°¾ê¸° í™”ë©´ ì¶œë ¥
 	 */
 //	@GetMapping(value="/find_zip_num")
 //	public String findZipNumView() {
@@ -148,7 +148,7 @@ public class MemberController {
 //	}
 	
 //	/*
-//	 * µ¿ÀÌ¸§À¸·Î ÁÖ¼Ò Ã£±â
+//	 * ë™ì´ë¦„ìœ¼ë¡œ ì£¼ì†Œ ì°¾ê¸°
 //	 */
 //	@PostMapping(value="find_zip_num")
 //	public String findZipNumAction(AddressVO vo,Model model) {

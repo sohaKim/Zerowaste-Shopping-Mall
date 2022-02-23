@@ -15,7 +15,7 @@
     <!-- Main css -->
     <link rel="stylesheet" href="member/css/style.css">
 
-</head>
+
 <body>
 <div class="main">
   <!-- Sing in  Form -->
@@ -43,7 +43,7 @@
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>  -->
                             <div class="form-group form-button">
-                                <input type="submit"  class="submit" value="로그인">
+                                <input type="submit"  class="btn btn-outline-success" value="로그인">
                             </div>
                         </form>
                         <div class="social-login">
@@ -63,5 +63,5 @@
     <script src="member/vendor/jquery/jquery.min.js"></script>
     <script src="member/js/main.js"></script>
 <%@ include file="../footer.jsp" %>
-</body>
+
 </html>
