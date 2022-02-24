@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %> 
-<%-- controller 수정하고 열기
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
---%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,17 +24,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    
-<!-- 검색기능 자바스크립트 구현 -->
-<!-- NoticeController.java의   noticeList -->    
-<script type="text/javascript">
-	function go_search() {
-		var theForm = document.frm;
-		theForm.action = "notice_list";  
-		theForm.submit();
-	  }
 
-</script>    
 </head>
 <body>
 <!-- Hero Section Begin -->
@@ -106,8 +93,7 @@
     </section>
     <!-- Breadcrumb Section End -->
     
-	<!-- Blog Section Begin -->	
-	<form name="frm" method="post"> <!-- form추가 김소연 02.22, 자바스크립트 -->
+	<!-- Blog Section Begin -->		
     <section class="blog spad">
         <div class="container">
             <div class="row">
@@ -179,124 +165,34 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- 공지사사항용 이미지 삽입(크기 조정필요) width: 370px, height: 265px -->
+                <!-- 성공시 상세보기 화면 noticeDetails.jsp 이동가능  -->
+                 <!-- form추가 김소연 02.22, 자바스크립트 -->               
                 <div class="col-lg-8 col-md-7">
-                    <div class="row">
-                    
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-2.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>              
-                                    <a href="notice_view" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                                                
-                        
-                        <!-- ▶ C코드로 수정해보기 -->
-                        <!-- 공지사사항용 이미지 삽입(크기 조정필요) width: 370px, height: 265px -->
-                        <!-- 성공시 상세보기 화면 noticeDetails.jsp 이동가능  -->
-                        <!--  
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">                           
-                            <c:forEach items="${noticeList}" var="noticeVO"> 
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/${noticeVO.image}"/>
-                                </div>
-                                
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i><fmt:formatDate value="${noticeVO.indate}" type="date"/></li>
-                                        <li><i class="fa fa-comment-o"></i>{noticeVO.count}</li>
-                                    </ul>
-                                    <h5><a href="notice_view?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h5>
-                                    <p>${noticeVO.content}</p>
-                                    <a href="notice_view?nseq=${noticeVO.nseq}" class="blog__btn">상세보기 <span class="arrow_right"></span></a>
-                                </div>
-                              </c:forEach>  
-                            </div>
-                        </div>
-                        -->
-                        
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-1.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-4.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-4.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">The Moment You Need To Remove Garlic From The Menu</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="img/blog/blog-6.jpg" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
+                   	<div class="row">                   	
+                   	    <div class="col-lg-6 col-md-6 col-sm-6">
+                   	    <form name="frm" method="post">
+                   	    	<c:forEach items="${noticeList}" var="noticeVO"> 
+                            	<div class="blog__item">	
+	                                <div class="blog__item__pic">
+	                                    <img style="width:370px; height:266px;" src="img/blog/${noticeVO.notimg}"/>
+	                                </div>                
+	                                <div class="blog__item__text">
+	                                    <ul>
+	                                        <li><i class="fa fa-calendar-o"></i>작성일: <fmt:formatDate value= "${noticeVO.indate}" type="date"/></li>
+	                                        <li><i class="fa fa-comment-o"></i>조회수: ${noticeVO.count}</li>
+	                                    </ul>
+	                                    <h5><img src="img/blog/tools_icon.png"><a href="notice_view?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h5>
+	                                    <p style="white-space:pre;">${noticeVO.content}</p>
+	                                    <a href="notice_view?nseq=${noticeVO.nseq}" class="blog__btn">Details|상세보기 <span class="arrow_right"></span></a>
+	                               </div>            
+                             	</div> 
+                            </c:forEach>
+                            </form>              
+						</div>
+						
+										 
                         <div class="col-lg-12">
                             <div class="product__pagination blog__pagination">
                                 <a href="#">1</a>
@@ -305,12 +201,13 @@
                                 <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                      </div>    
+                  </div>
+                  
+             </div>   
         </div>
     </section>
-    </form>
+    
 
     <!-- Blog Section End -->
     
@@ -323,6 +220,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    
  <%@ include file="../footer.jsp" %> 
     
 </body>

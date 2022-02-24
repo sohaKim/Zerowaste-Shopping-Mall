@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %> 
-<%-- controller 수정하고 열기
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
---%>
 
 <!DOCTYPE html>
 <html>
@@ -99,7 +95,6 @@
     <!-- Blog Details Hero End -->
 
     <!-- Blog Details Section Begin -->
-    <form name="frm" method="post">   <!-- form추가 김소연 02.22, 자바스크립트 -->
     <section class="blog-details spad">
         <div class="container">
             <div class="row">
@@ -171,62 +166,33 @@
                         </div>
                     </div>
                 </div>
-               
-                
-                <!-- 세부화면 메인 이미지 / text 시작  02.21 수정-->
-                <div class="col-lg-8 col-md-7 order-md-1 order-1">
-                    <div class="blog__details__text">
-                        <img src="img/blog/details/details-pic.jpg" alt="">
-                        <p>Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                            dui. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Mauris blandit
-                            aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur
-                            sed, convallis at tellus. Sed porttitor lectus nibh. Donec sollicitudin molestie malesuada.
-                            Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus.
-                            Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis
-                            quis ac lectus. Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada
-                            feugiat. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
-                        <h3>The corner window forms a place within a place that is a resting point within the large
-                            space.</h3>
-                        <p>The study area is located at the back with a view of the vast nature. Together with the other
-                            buildings, a congruent story has been managed in which the whole has a reinforcing effect on
-                            the components. The use of materials seeks connection to the main house, the adjacent
-                            stables</p>
-                    </div>
-                 
-                 
-                <!-- ▶ C코드로 수정해보기 -->            
-                <!-- 세부화면 메인 이미지 370px, 270px/ text 시작 C코드로 수정필요-->
-                <!-- 
-                <div class="col-lg-8 col-md-7 order-md-1 order-1">
-                    <div class="blog__details__text">
-                    <c:forEach items="${noticeList}" var="noticeVO">
-                    
-	                    <div class="blog__details__widget">	                       
-	                       <ul>		                   	 		                     
-		                     <li><span>Categories:</span>${nkind}</li>                               
-		                     <li><h3><a href="notice_view?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h3><li>			                                          		                             	 
-	                    	 <li><span>Notice작성일자:</span> <fmt:formatDate value="${noticeVO.indate}" type="date"/>	 조회수: ${noticeVO.count}</li> 
-	                       </ul>
-                    	</div> 		                	
-                        <img src="img/blog/${noticeVO.image}"/>   
-                        <p>${noticeVO.content}</p> 
-                    </c:forEach>        
-                    </div> 
-                     -->
-       
-                    <!-- 버튼 -->
-			        <div class="row">                   
+             <!-- 세부화면 메인 이미지 370px, 270px/ text 시작--> 
+             <div class="col-lg-8 col-md-7 order-md-1 order-1" id="noticediv">
+                 <form name="frm" method="post">
+                    <div class="blog__details__text">                   	                    
+	                   <h3><img src="img/blog/tools_icon.png"> Notice | 공지사항</h3>	
+	                   <hr>                                             
+						<span>Categories: </span> ${nkind}                             
+		                <h5><b>Title: ${noticeVO.subject}</b></h5>			                                          		                             	 
+	                    <span>Notice작성일자: </span><fmt:formatDate value="${noticeVO.indate}" type="date"/> |  조회수: ${noticeVO.count}<br>    
+                    	<hr>	                	
+                        <img src="img/blog/${noticeVO.notimg}"/>   
+                        <p style="white-space:pre;">${noticeVO.content}</p> 
+                     </div> 
+				     <!-- 버튼 -->
+			         <div class="row">                   
 			            <div class="col-lg-12 text-center">
 			                <button type="button" class="site-btn" onclick="location.href='notice_list'">목록으로 돌아가기</button> <!--notice목록-->			                        
 			             </div>
-			        </div>	
-                </div>
-            </div>
-        </div>  
-    </section>
-    </form>
-    <!-- Blog Details Section End -->
+			            </div> 
+			          </form>   
+			     </div>	
+             </div>
+           </div>
+        </section>  
+        <!-- 세부화면 끝 -->   
 
+      <!-- Blog Details Section End -->
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

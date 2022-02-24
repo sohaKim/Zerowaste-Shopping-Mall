@@ -9,7 +9,7 @@ public interface NoticeService{
 	List<NoticeVO> listNotice();
 
 	// 공지사항 글 번호로 내용 조회
-	NoticeVO getNotice(int nseq);
+	NoticeVO getNotice(NoticeVO vo);
 
 	// ▶▶ Admin관리자 페이지 작성시 추가 부분  미리작성
 	// Notice내용 삽입

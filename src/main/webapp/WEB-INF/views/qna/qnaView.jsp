@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<%-- -- 나중에 Controller수정시 열기 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
---%>
-  
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,38 +25,9 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
-    <!-- 드롭다운 / 테이블 부트스트랩 -->
+	<!-- 드롭다운 / 테이블 부트스트랩 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
- 
-<style>
-
-
-.bordertable th{
-  background-color: #f7f8fa; 
-  text-align: center;
-}
-
-.bordertable td{
-  padding-left:20px !important;
-}  
-
-.bordertable th, .bordertable td{
-  font-family: '맑은고딕', '나눔고딕', NanumGothic,;
-  font-size: 12px;    
-  border:1px solid #ededed !important;
-  font-weight: normal;      
-  line-height: 19px;
-  color:#20232;
-  padding-top: 9px !important;
-  padding-bottom: 7px !important;
-}
-
-
-
-
-
-</style>
 </head>
 <body>
  <!-- Hero Section Begin -->
@@ -199,59 +165,42 @@
             </div>
             <br><br>
             
-            <form name="formm" method="post" action="post"> <!-- action없어도되나 ?-->
-                <!-- 부트스트랩 테이블 -->
-                <table class="table table-bordered" id="content_table">
-				    <tr>
-				      <th><img src="img/qna/qnaview_icon.png"><b>제목</b></th>				   
-				      <td>환불문의</td>
-				    </tr> 
-				      
-				    <tr>
-					   <th><img src="img/qna/qnaview_icon.png"><b>등록일</b></th>
-					   <td>2021-12-01</td>
-				    </tr> 
-				    
-				    <tr>
-				       <th><img src="img/qna/qnaview_icon.png"><b>질문내용</b></th>
-				       <td>환불문의 드립니다. 주문했는데 상품을 잘못 주문했습니다.<br>
-				        	환불 또는 취소 가능한지 여부 확인 부탁드립니다.</td>
-				    </tr>
-				    <tr>
-				       <th><img src="img/qna/qnaview_icon.png"><b>답변 내용</b></th>
-				       <td></td> <!--미답변 --> 
-				    </tr>
-				</table>
-				<br><br><br>
-                
-                <!-- #중요# 막아둠, 지우지말것 -->
-                <!-- 부트스트랩 테이블 -->
-                <!--   나중에 Controller수정시 위에꺼 tr묶음 삭제하고 열기,
-                <table class="table table-bordered" id="content_table">
-				    <tr>
-				      <th><img src="img/qna/qnaview_icon.png"><b>제목</b></th>
-				      <td>${qnaVO.subject}</td>
-				    </tr> 
-				      
-				    <tr>
-				      <th><img src="img/qna/qnaview_icon.png"><b>등록일</b></th>
-				      <td><fmt:formatDate value="${qnaVO.indate}" type="date"/></td>  
-				    </tr> 
-				    
-				    <tr>
-				    	<th><img src="img/qna/qnaview_icon.png"><b>질문내용</b></th>
-				        <td>${qnaVO.content}</td>
-				    </tr>
-				    <tr>
-				        <th><img src="img/qna/qnaview_icon.png"><b>답변 내용</b></th>
-				        <td>${qnaVO.reply}</td>  
-				    </tr>
-				</table>
-				<br><br><br>				
-				-->
-        
-                <!-- 버튼 -->
-                <div class="row">                   
+			<!-- 본문 form시작 --><!--  action="qna_write"????? -->
+			<form method="post" name="formm" class="form-horizontal" id="qna_form">  
+            	<div class="col-lg-6">
+                    <div class="card" style= "width:900px; margin:auto;">
+                        <div class="card-header">
+                            <strong><img src="img/qna/note_icon.png">1:1 문의 </strong> 게시글 조회
+                        </div>  
+                                    
+                            <div class="card-body card-block">       
+                            <!-- 카테고리 선택 -->
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Category | <br>카테고리: </label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="${qkind}" class="form-control">
+                           </div>
+                                                             
+                           <div class="row form-group">
+                               <div class="col col-md-3"><label for="text-input" class=" form-control-label">Title |<br>제목: </label></div>
+                               <div class="col-12 col-md-9"><input type="text" id="text-input" value="${qnaVO.subject}" class="form-control"></div>
+                           </div>
+                           
+                           <div class="row form-group">
+                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>문의내용: </label></div>
+                                 <div class="col-10 col-md-9"><textarea placeholder="${qnaVO.content}" id="textarea-input" rows="10" class="form-control"></textarea></div>
+                           </div>
+                           
+                           <div class="row form-group">
+                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>답변내용: </label></div>
+                                 <div class="col-5 col-md-9"><textarea placeholder="${qnaVO.reply}" id="textarea-input" rows="10" class="form-control"></textarea></div>
+                           </div>  
+                  	    </div>
+                  	 </div>   		
+                  </div>                    
+              </div>
+              <br><br>      
+              <!-- 버튼 -->
+              <div class="row">                   
                     <div class="col-lg-12 text-center">
                         <button type="button" class="site-btn" onclick="location.href='qna_list'">목록 이동</button> <!-- type="submit"에서 수정함 -->
                         <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
@@ -260,7 +209,6 @@
             </form>
         </div>
     </div>
-   
     <!-- Contact Form End -->
     
 	<!-- Ogani Js Plugins -->
@@ -272,10 +220,11 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-
+    
 	<!-- 드롭다운 / 테이블 부트스트랩 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	
 
 <%@ include file="../footer.jsp" %>
 </body>
