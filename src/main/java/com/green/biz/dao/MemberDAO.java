@@ -15,17 +15,17 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	//È¸¿ø »ó¼¼Á¤º¸ Á¶È¸
+	//íšŒì› ìƒì„¸ì •ë³´ ì¡°íšŒ
 	public MemberVO getMember(String id) {
 		
 		return mybatis.selectOne("mappings.member-mapping.getMember",id);
 	}
 	
-	//È¸¿ø Á¸Àç¿©ºÎ È®ÀÎ
+	//íšŒì› ì¡´ì¬ì—¬ë¶€ í™•ì¸
 	/*
-	 * ¸®ÅÏ°ª:
-	 * 		È¸¿øÀÌ Á¸ÀçÇÏ¸é: 1
-	 * 		È¸¿øÀÌ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é: -1
+	 * ë¦¬í„´ê°’:
+	 * 		íšŒì›ì´ ì¡´ì¬í•˜ë©´: 1
+	 * 		íšŒì›ì´ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´: -1
 	 */
 	public int confirmID(String id) {
 		
@@ -38,19 +38,19 @@ public class MemberDAO {
 	}
 	
 	/*
-	 * È¸¿ø ÀÎÁõ
+	 * íšŒì› ì¸ì¦
 	 * 
-	 * id°¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì : -1¹İÈ¯
-	 * pwd°¡ Æ²¸± °æ¿ì: 0¹İÈ¯
-	 * id,pwd°¡ ÀÏÄ¡ÇÒ °æ¿ì: 1¹İÈ¯
+	 * idê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš° : -1ë°˜í™˜
+	 * pwdê°€ í‹€ë¦´ ê²½ìš°: 0ë°˜í™˜
+	 * id,pwdê°€ ì¼ì¹˜í•  ê²½ìš°: 1ë°˜í™˜
 	 */
 	public int loginID(MemberVO vo) {
-		int result = -1;//Á¶È¸ °á°ú
+		int result = -1;//ì¡°íšŒ ê²°ê³¼
 		String pwd_in_db = mybatis.selectOne("mappings.member-mapping.confirmID",vo.getId());
 		
 		if(pwd_in_db == null) {
 			result = -1;
-		}else if(vo.getPwd().equals(pwd_in_db)) {//ÀÔ·Â pwd¿Í Å×ÀÌºí»óÀÇ pwd°¡ ÀÏÄ¡
+		}else if(vo.getPwd().equals(pwd_in_db)) {//ì…ë ¥ pwdì™€ í…Œì´ë¸”ìƒì˜ pwdê°€ ì¼ì¹˜
 			result = 1;
 		}else {
 			result = 0;
@@ -58,18 +58,18 @@ public class MemberDAO {
 		return result;
 	}
 	
-	//È¸¿ø µî·Ï
+	//íšŒì› ë“±ë¡
 	public void insertMember(MemberVO vo) {
 		
 		mybatis.insert("mappings.member-mapping.insertMember",vo);
 	}
 	
-//	//¶ËÀÌ¸§À¸·Î  ÁÖ¼Ò Ã£±â
+//	//ë˜¥ì´ë¦„ìœ¼ë¡œ  ì£¼ì†Œ ì°¾ê¸°
 //	public List<AddressVO> selectRoadaddrByDong(String dong){
 //		return mybatis.selectList("mappings.member-mapping.selectAddressByDong",dong);
 //	}
 	
-	//È¸¿ø ¸ñ·Ï Á¶È¸
+	//íšŒì› ëª©ë¡ ì¡°íšŒ
 	public List<MemberVO> listMember(String name){
 		
 		return mybatis.selectList("mappings.member-mapping.listMember",name);
