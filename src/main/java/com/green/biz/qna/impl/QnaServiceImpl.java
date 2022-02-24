@@ -19,9 +19,9 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public QnaVO getQna(int qseq) {
+	public QnaVO getQna(QnaVO vo) {
 		
-		return qnaDao.getQna(qseq);
+		return qnaDao.getQna(vo);
 	}
 
 	@Override

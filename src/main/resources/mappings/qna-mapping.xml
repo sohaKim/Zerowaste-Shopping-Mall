@@ -14,7 +14,7 @@
 
 	<insert id="insertQna"> <!-- 21쇼핑몰에서 qkind추가  -->
 		INSERT INTO qna(qseq, qkind, subject, content, id)
-		VALUES(qna_seq.NEXTBAL, #{subject}, #{content}, #{id})
+		VALUES(qna_seq.NEXTVAL, #{qkind}, #{subject}, #{content}, #{id})
 	</insert>
 
 	<!--▶▶ Admin관리자 페이지 작성시 추가 부분 -->

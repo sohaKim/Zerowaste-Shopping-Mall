@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-
+<html>
+<head>
 <title> Q&A 목록 불러오기 페이지 </title>
+
 	<meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
@@ -25,8 +27,11 @@
     <!-- 드롭다운 / 테이블 부트스트랩 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
- 	<!-- Hero Section Begin -->
+ 
+    
+</head>
+<body>
+ <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
             <div class="row">
@@ -74,7 +79,7 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Breadcrumb Section Begin  -->
+    <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
@@ -161,24 +166,24 @@
             </div>
             
             <!-- 부트스트랩 테이블 -->
-            <form name="formm" method="post"> <!-- action없어도되나 ?-->
+            <form name="formm" id="qna_form" method="post"> <!-- action없어도되나 ?-->
               <table class="table table-hover">  
 				  <thead class="table-light">
 				    <tr>
 				      <th scope="col">게시글 번호</th>
-				      <th scope="col">카테고리</th>
+				      <!--<th scope="col">카테고리</th>  -->
 				      <th scope="col">제목</th>
 				      <th scope="col">답변여부</th>
 				      <th scope="col">등록일자</th>
 				    </tr>
 				  </thead>  	  
 				    
-  				  <tbody>					    
+  				  <tbody>	
+				    <c:forEach items="${qnaList}" var="qnaVO">
 				    <tr>
-				      <c:forEach items="${qnaList}" var="qnaVO">
-				        <td> ${qnaVO.qseq} </td>
-						<td> ${qkind} </td>    
-				        <td> <a href="qna_view?qseq=${qnaVO.subject}"/>${qnaVO.subject}</td>
+				        <td>${qnaVO.qseq}</td>
+						<!--<td>${qkind}</td>--> 
+				        <td><a href="qna_view?qseq=${qnaVO.qseq}">${qnaVO.subject}</a></td>
 				        <td>
 				        	<c:choose>
 					        	<c:when test="${qnaVO.rep==1}">no</c:when>
@@ -186,16 +191,16 @@
 				            </c:choose>
 				        </td>      
 				        <td><fmt:formatDate value="${qnaVO.indate}" type="date"/></td>
-				      </c:forEach>
-				    </tr>				    	
+				    </tr>
+				    </c:forEach>	
 				  </tbody>				 	 
 				</table>
 				<br><br><br>
         
                 <!-- 버튼 -->
                 <div class="row">                   
-                    <div class="col-lg-12 text-center">
-                        <button type="button" class="site-btn" onclick="location.href='qna_write_form'">글 쓰기</button> <!-- type="submit"에서 수정함 -->
+                    <div class="col-lg-12 text-center">                      
+                      	<button type="button" class="site-btn" onclick="location.href='qna_write_form'">글 쓰기</button>
                         <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
                     </div>
                 </div> 
@@ -219,4 +224,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
+
 <%@ include file="../footer.jsp" %>
+</body>
+</html>

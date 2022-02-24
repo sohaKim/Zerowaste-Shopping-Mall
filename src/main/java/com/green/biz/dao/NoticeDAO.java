@@ -20,8 +20,8 @@ public class NoticeDAO {
 	}
 	
 	// 공지사항 글 번호로 내용 조회
-	public NoticeVO getNotice(int nseq) {
-		return mybatis.selectOne("mappings.notice-mapping.getNotice", nseq);
+	public NoticeVO getNotice(NoticeVO vo) {
+		return mybatis.selectOne("mappings.notice-mapping.getNotice", vo);
 	}
 	
 	

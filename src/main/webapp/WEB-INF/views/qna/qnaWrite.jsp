@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>    
-<%-- -- 나중에 Controller수정시 열기 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
---%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,18 +19,25 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    
-    <!-- 드롭다운/테이블 부트스트랩 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-    
-    
+<style>
+.col-lg-12 .site-btn {
+	font-size: 14px;
+	color: #ffffff;
+	font-weight: 800;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 13px 30px 12px;
+	background: #7fad39;
+	border: none;
+	margin: auto;
+	text-align: center;
+}
+
+</style>
 </head>
 <body>
  <!-- Hero Section Begin -->
@@ -158,7 +162,7 @@
     <!-- Map End -->
 
     <!-- Contact Form Begin -->
-    <!-- ▶ Q&A작성 폼 불러오기 -->    
+    <!-- ▶ Q&A작성 폼 불러오기 -->      
     <div class="contact-form spad">
         <div class="container">
             <div class="row">
@@ -169,77 +173,62 @@
                     </div>
                 </div>
             </div>
-            <form name="formm" method="post" action="qna_write">
-                <!-- 카테고리선택 추가기능 -->    
-                <div class="dropdown">
-				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-				     카테고리 선택
-				  </a>
-				 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-				    <li><a class="dropdown-item" href="#">1.상품 문의</a></li>
-				    <li><a class="dropdown-item" href="#">2.배송 문의</a></li>
-				    <li><a class="dropdown-item" href="#">3.환불 문의</a></li>
-				    <li><a class="dropdown-item" href="#">4.기타 문의</a></li>
-				  </ul>
-				</div>
-				  
-				  <!-- productWrite.jsp참고해서 위에꺼 c:forEach로 다 바꿔야함 -->
-				  <!--  
-				  <div class="dropdown">
-				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-				     카테고리 선택
-				  </a>
-				  <select name="qkind" id="qkind">
-					  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">  
-					  	<li><c:forEach items="${kindList}" var="kind" varStatus="status">
-					    	<option value="${status.count}">${kind}</option>
-					   		</c:forEach> 
-					     </li>
-					   </ul> 
-				   </select>      
-				  </div>
-				  -->
-				  
-				<br>  
-                 <div class="form-group">
-				 	<label for="exampleInputEmail1" class="form-label mt-4"><img src="img/qna/note_icon.png"><b>제목</b></label>
-				    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="※ 제목은 20자 이내로 작성 가능합니다.">
-				    <small id="emailHelp" class="form-text text-muted"></small><!-- 쓸거있음 여따쓰기 -->
-				 </div>
-
-				<div class="form-group">
-				      <label for="exampleTextarea" class="form-label mt-4"><img src="img/qna/note_icon.png"> <b>질문 내용</b></label>
-				      <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="※ 문의 내용을 남겨주세요."></textarea>
-				</div>	
-                                 
+					<!-- 본문 form시작 -->
+					<form method="post" name="formm" class="form-horizontal" id="qna_form" action="qna_write">  
+            		<div class="col-lg-6">
+                        <div class="card" style="width:1100px; margin: auto;">
+                            <div class="card-header">
+                                <strong><img src="img/qna/note_icon.png">1:1 문의하기</strong> 남기기
+                            </div>              
+                            <div class="card-body card-block">       
+                                   <!-- 카테고리 선택 -->
+                                   <div class="row form-group">
+                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Category | <br>카테고리: </label></div>
+                                        <div class="col-12 col-md-9">
+										    <select name="qkind" class="form-control" id="qkind" onchange="handleOnChange(this)"> 
+												<c:forEach items="${qkindList}" var="qkind" varStatus="status">
+											  	   	<option class="selectCategory" value="${status.count}">${qkind}</option>
+											   	 </c:forEach>
+										   	 </select> 	
+                                        </div>
+                                    </div>                                  
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Title |<br>제목: </label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="subject" placeholder="※ 제목은 20자 이내로 작성 가능합니다." class="form-control"><small class="form-text text-muted">※ 주문내역이 있다면, 주문번호를 함께 남겨주세요.</small></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>문의내용: </label></div>
+                                        <div class="col-12 col-md-9"><textarea name="content" id="textarea-input" rows="10" placeholder="※ 문의 내용을 남겨주세요." class="form-control"></textarea></div>
+                                    </div>
+                                 </div>		
+                          </div>
+					
+                    <br><br><br>                 
                 <!-- 버튼 -->
-                <div class="row">                   
-                    <div class="col-lg-12 text-center">
-                        <button type="submit" class="site-btn">등록</button>
+                <div class="row" style="align:center;">                   
+                    <div class="col-lg-12 text-center" style="align:center;">
+                        <button type="submit" class="site-btn" id="qna_form">글 등록</button>
                         <button type="reset" class="site-btn" onclick="location.href='qna_write_form'">취소</button> <!-- 버튼2개 추가 -->
                         <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+                 </div> 
+               </div>
+              </div> 
+            </form>	   	
+          </div>
+      </div>
+      
+
    
     <!-- Contact Form End -->
     
 	<!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
-	<!-- 드롭다운 / 테이블 부트스트랩 -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
+	<script src="js/main.js"></script>
 
 <%@ include file="../footer.jsp" %>
 </body>

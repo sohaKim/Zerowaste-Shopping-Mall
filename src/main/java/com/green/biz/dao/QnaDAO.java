@@ -18,8 +18,8 @@ public class QnaDAO  {
 		return mybatis.selectList("mappings.qna-mapping.listQna", id);
 	}
 	
-	public QnaVO getQna(int qseq) {
-		return mybatis.selectOne("mappings.qna-mapping.getQna", qseq);
+	public QnaVO getQna(QnaVO vo) {
+		return mybatis.selectOne("mappings.qna-mapping.getQna", vo);
 	}
 	
 	public void insertQna(QnaVO vo) {

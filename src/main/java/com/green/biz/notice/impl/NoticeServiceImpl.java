@@ -19,8 +19,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public NoticeVO getNotice(int nseq) {
-		return noticeDao.getNotice(nseq);
+	public NoticeVO getNotice(NoticeVO vo) {
+		return noticeDao.getNotice(vo);
 	}
 
 	// *** Admin관리자 페이지 작성시 추가 부분
