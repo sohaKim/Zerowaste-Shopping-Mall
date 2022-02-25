@@ -11,9 +11,18 @@ public interface NoticeService{
 	// 공지사항 글 번호로 내용 조회
 	NoticeVO getNotice(NoticeVO vo);
 
+	// ==> key값(검색값)으로 Notice 리스트 조회  02.25추가
+	public List<NoticeVO> searchNotice(String content);
+	
+	// ==> 카테고리별 클릭시 Notice 리스트조회 02.25 추가
+	public List<NoticeVO> getNoticeByCategory(NoticeVO vo);
+	
+	// ==> 게시판 조회수  02.25 추가
+	public void noticeCount(NoticeVO vo);
+		
 	// ▶▶ Admin관리자 페이지 작성시 추가 부분  미리작성
 	// Notice내용 삽입
-	void insertNotice(NoticeVO vo);
+	public void insertNotice(NoticeVO vo);
 
 }
 

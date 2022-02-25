@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %> 
-<%-- controller 수정하고 열기
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
---%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,10 +122,13 @@
 						제로웨이스트를 추구하는 조원들이 만든 친환경 상품 판매 샵 입니다.<br>
 						천연 재료의 사용을 적극 활용하여 일상생활 속에서 쓰레기 발생을 줄이기 위해 노력하고,
 						플라스틱 등 썩지 않는 재료의 사용을 줄이고, 불필요한 소비를 줄이는 등의 습관으로
-						자연친화적인 태도를 기르고, 지구 아낌에 동참해주십사 해당 상품을 판매하는 웹사이트를 구현하였습니다.</p>
+						자연친화적인 태도를 기르고, 지구 아낌에 동참해주십사<br>해당 상품을 판매하는 웹사이트를 구현하였습니다.</p>
 					<p><img src="aboutus/images/location_icon.png"/>Make Clean Earth with Us |<br>
-						지구와 인간이 공존할 수 있는 깨끗한 환경만들기에 동참해 주세요.</p>
-					<!--버튼제거  <a class="btn hvr-hover" href="#">Read More</a>-->
+						지구와 인간이 공존할 수 있는 깨끗한 환경 만들기에 동참해 주세요.</p>
+					<p><img src="aboutus/images/location_icon.png"/>Nearest Offline Shop |<br>
+						지금 가까운 곳의 오프라인 샵을 찾아보세요.<br>						
+						구글지도 찾아보기 →<a href="https://www.google.co.kr/maps/search/%EC%A0%9C%EB%A1%9C%EC%9B%A8%EC%9D%B4%EC%8A%A4%ED%8A%B8%EC%83%B5/@37.5228753,126.9246331,12z/data=!3m1!4b1" target="_blank"><img src="aboutus/images/shop_icon.png"></a></p>			
+                	    
                 </div>
             </div>
             <div class="row my-5">
@@ -180,8 +180,8 @@
                             <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
                         </div>
                         <div class="team-description">
-                            <p><img src="aboutus/images/git.png"> https://github.com/sohaKim</p>
-                            <p><img src="aboutus/images/email.png"> ksy2710@hanmail.net</p>
+                            <p><a href="https://github.com/sohaKim" target="_blank"><img src="aboutus/images/git.png"></a> https://github.com/sohaKim</p>
+                            <p><a href="mailto:﻿ ksy2710@hanmail.net?subject=문의 메일 보내기." target="_blank"><img src="aboutus/images/email.png"></a> ksy2710@hanmail.net</p>
                         </div>
                         <hr class="my-0"> </div>
                 </div>
@@ -207,8 +207,8 @@
                             <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
                         </div>
                         <div class="team-description">
-                            <p><img src="aboutus/images/git.png"> https://github.com/sooryunsohn</p>
-                            <p><img src="aboutus/images/email.png"> sooryun.sohn@gmail.com</p>
+                            <p><a href="https://github.com/sooryunsohn" target="_blank"><img src="aboutus/images/git.png"></a> https://github.com/sooryunsohn</p>
+                            <p><a href="mailto:﻿ ksy2710@hanmail.net?subject=문의 메일 보내기." target="_blank"><img src="aboutus/images/email.png"></a> sooryun.sohn@gmail.com</p>
                         </div>
                         <hr class="my-0"> </div>
                 </div>
@@ -234,38 +234,11 @@
                             <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
                         </div>
                         <div class="team-description">
-                            <p><img src="aboutus/images/git.png">https://github.com/yaejinnx</p>
-                            <p><img src="aboutus/images/email.png"> yaezinny95@gmail.com</p>
+                            <p><a href="https://github.com/yaejinn" target="_blank"><img src="aboutus/images/git.png"></a>https://github.com/yaejinnx</p>
+                            <p><a href="mailto:﻿ ksy2710@hanmail.net?subject=문의 메일 보내기."><img src="aboutus/images/email.png" target="_blank"></a> yaezinny95@gmail.com</p>
                         </div>
                         <hr class="my-0"> </div>
                 </div>
-               	<!--  네번째 사람 없애기
-                <div class="col-sm-6 col-lg-3">
-                    <div class="hover-team">
-                        <div class="our-team"> <img src="aboutus/images/img-1.jpg" alt="" />
-                            <div class="team-content">
-                                <h3 class="title">Williamson</h3> <span class="post">Web Developer</span> </div>
-                            <ul class="social">
-                                <li>
-                                    <a href="#" class="fab fa-facebook"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-google-plus"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-youtube"></a>
-                                </li>
-                            </ul>
-                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
-                        </div>
-                        <div class="team-description">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
-                        </div>
-                        <hr class="my-0"> </div>
-                </div> -->
             </div>
         </div>
     </div>
