@@ -24,7 +24,15 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
+    
+<!-- 검색기능 자바스크립트 추가 02.25 -->
+<script type="text/javascript">
+	function go_search(content) {
+		
+		document.frm.action = "notice_list";  
+		document.frm.submit();
+	  }
+</script> 
 </head>
 <body>
 <!-- Hero Section Begin -->
@@ -96,14 +104,15 @@
 	<!-- Blog Section Begin -->		
     <section class="blog spad">
         <div class="container">
+        <form name="frm" method="post">
             <div class="row">
                 <div class="col-lg-4 col-md-5">
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__search">
                             <table>
                             	<tr>
-	                                <td><input type="text" name="key" placeholder="Search | 검색..."> <!-- name값 추가 02.22 -->
-	                                	<button type="submit" onclick="go_search()"><span class="icon_search"></span></button>
+	                                <td><input type="text" name="key" id="key" placeholder="Search | 검색..."> 
+	                                	<button type="submit" onclick="go_search(this.key)"><span class="icon_search"></span></button> 
                                 	</td>
                                 </tr>	
                             </table>
@@ -112,10 +121,10 @@
                             <h4>Categories | 카테고리</h4>
                             <ul>
                                 <li><a href="#">All</a></li>
-                                <li><a href="#">Notice | 일반 공지</a></li>
-                                <li><a href="#">Shipping | 배송</a></li>
-                                <li><a href="#">Events | 이벤트</a></li>
-                                <li><a href="#">Etc | 기타</a></li>
+                                <li><a href="category?nkind=1">Notice | 일반 공지</a></li>
+                                <li><a href="category?nkind=2">Shipping | 배송</a></li>
+                                <li><a href="category?nkind=3">Events | 이벤트</a></li>
+                                <li><a href="category?nkind=4">Etc | 기타</a></li>
                             </ul>
                         </div>
                         <!-- 제로웨이스트 관련 뉴스 url만 연결, 이미지는 수정필요 -->
@@ -166,14 +175,12 @@
                     </div>
                 </div>
                 
-                <!-- 공지사사항용 이미지 삽입(크기 조정필요) width: 370px, height: 265px -->
-                <!-- 성공시 상세보기 화면 noticeDetails.jsp 이동가능  -->
-                 <!-- form추가 김소연 02.22, 자바스크립트 -->               
+                <!-- 공지사사항용 이미지 삽입(크기 조정필요) width: 370px, height: 266px -->
+                <!-- 성공시 상세보기 화면 noticeDetails.jsp 이동가능  -->            
                 <div class="col-lg-8 col-md-7">
                    	<div class="row">                   	
-                   	    <div class="col-lg-6 col-md-6 col-sm-6">
-                   	    <form name="frm" method="post">
-                   	    	<c:forEach items="${noticeList}" var="noticeVO"> 
+                   	    <div class="col-lg-6 col-md-6 col-sm-6"> 
+                   	    	<c:forEach items="${noticeList}" var="noticeVO">
                             	<div class="blog__item">	
 	                                <div class="blog__item__pic">
 	                                    <img style="width:370px; height:266px;" src="img/blog/${noticeVO.notimg}"/>
@@ -184,16 +191,13 @@
 	                                        <li><i class="fa fa-comment-o"></i>조회수: ${noticeVO.count}</li>
 	                                    </ul>
 	                                    <h5><img src="img/blog/tools_icon.png"><a href="notice_view?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h5>
-	                                    <p style="white-space:pre;">${noticeVO.content}</p>
+	                                    <p>${noticeVO.content}</p>
 	                                    <a href="notice_view?nseq=${noticeVO.nseq}" class="blog__btn">Details|상세보기 <span class="arrow_right"></span></a>
 	                               </div>            
                              	</div> 
-                            </c:forEach>
-                            </form>              
+                            </c:forEach>                                   
 						</div>
-						
-										 
-                        <div class="col-lg-12">
+						   <div class="col-lg-12">
                             <div class="product__pagination blog__pagination">
                                 <a href="#">1</a>
                                 <a href="#">2</a>
@@ -202,13 +206,11 @@
                             </div>
                         </div>
                       </div>    
-                  </div>
-                  
-             </div>   
+                  </div> 
+             </div>
+          </form>      
         </div>
     </section>
-    
-
     <!-- Blog Section End -->
     
     <!-- Js Plugins -->

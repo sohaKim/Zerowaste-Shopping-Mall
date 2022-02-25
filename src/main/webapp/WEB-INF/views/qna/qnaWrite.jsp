@@ -200,19 +200,18 @@
                                         <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>문의내용: </label></div>
                                         <div class="col-12 col-md-9"><textarea name="content" id="textarea-input" rows="10" placeholder="※ 문의 내용을 남겨주세요." class="form-control"></textarea></div>
                                     </div>
-                                 </div>		
+                              </div>		
                           </div>
-					
+					 </div>
                     <br><br><br>                 
                 <!-- 버튼 -->
                 <div class="row" style="align:center;">                   
                     <div class="col-lg-12 text-center" style="align:center;">
                         <button type="submit" class="site-btn" id="qna_form">글 등록</button>
-                        <button type="reset" class="site-btn" onclick="location.href='qna_write_form'">취소</button> <!-- 버튼2개 추가 -->
+                        <button type="reset" class="site-btn" onclick="location.href='qna_write_form'">작성취소</button> <!-- 버튼2개 추가 -->
                         <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
-                 </div> 
-               </div>
-              </div> 
+                   </div> 
+               </div> 
             </form>	   	
           </div>
       </div>

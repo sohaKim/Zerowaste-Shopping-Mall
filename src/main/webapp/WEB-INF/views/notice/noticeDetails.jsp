@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-<title>Insert title here</title>
+
 </head>
 <body>
   <!-- Hero Section Begin -->
@@ -100,30 +100,21 @@
             <div class="row">
                 <div class="col-lg-4 col-md-5 order-md-1 order-2">
                     <div class="blog__sidebar">
-                         <div class="blog__sidebar__search">
-                            <table>
-                            	<tr>
-	                                <td><input type="text" name="key" placeholder="Search | 검색..."> <!-- name값 추가 02.22 -->
-	                                	<button type="submit" onclick="go_search()"><span class="icon_search"></span></button>
-                                	</td>
-                                </tr>	
-                            </table>
-                        </div>
+						<!-- 검색기능 삭제 -->
 							<div class="blog__sidebar__item">
                             <h4>Categories | 카테고리</h4>
-                            <ul>
+                           <ul>
                                 <li><a href="#">All</a></li>
-                                <li><a href="#">Notice | 일반 공지</a></li>
-                                <li><a href="#">Shipping | 배송</a></li>
-                                <li><a href="#">Events | 이벤트</a></li>
-                                <li><a href="#">Etc | 기타</a></li>
+                                <li><a href="category?nkind=1">Notice | 일반 공지</a></li>
+                                <li><a href="category?nkind=2">Shipping | 배송</a></li>
+                                <li><a href="category?nkind=3">Events | 이벤트</a></li>
+                                <li><a href="category?nkind=4">Etc | 기타</a></li>
                             </ul>
                         </div>
                         <!-- 제로웨이스트 관련 뉴스 url만 연결, 이미지는 수정필요 -->
                         <div class="blog__sidebar__item">
                             <h4>Recent News | 새 소식</h4>
-                            <div class="blog__sidebar__recent">
-                            
+                            <div class="blog__sidebar__recent">                           
                                 <a href="https://www.jungle.co.kr/magazine/203655" target="_blank" class="blog__sidebar__recent__item">
                                     <div class="blog__sidebar__recent__item__pic">
                                     	<img src="img/blog/sidebar/sr-1.jpg" alt="">                                     
@@ -175,14 +166,15 @@
 						<span>Categories: </span> ${nkind}                             
 		                <h5><b>Title: ${noticeVO.subject}</b></h5>			                                          		                             	 
 	                    <span>Notice작성일자: </span><fmt:formatDate value="${noticeVO.indate}" type="date"/> |  조회수: ${noticeVO.count}<br>    
-                    	<hr>	                	
+                    	<hr>
+                    	<br>	                	
                         <img src="img/blog/${noticeVO.notimg}"/>   
                         <p style="white-space:pre;">${noticeVO.content}</p> 
                      </div> 
 				     <!-- 버튼 -->
 			         <div class="row">                   
 			            <div class="col-lg-12 text-center">
-			                <button type="button" class="site-btn" onclick="location.href='notice_list'">목록으로 돌아가기</button> <!--notice목록-->			                        
+			                <button type="button" class="site-btn" onclick="location.href='notice_list'">목록으로 </button>		                        
 			             </div>
 			            </div> 
 			          </form>   
@@ -191,7 +183,6 @@
            </div>
         </section>  
         <!-- 세부화면 끝 -->   
-
       <!-- Blog Details Section End -->
 
     <!-- Js Plugins -->

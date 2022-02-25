@@ -187,12 +187,12 @@
                            
                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>문의내용: </label></div>
-                                 <div class="col-10 col-md-9"><textarea placeholder="${qnaVO.content}" id="textarea-input" rows="10" class="form-control"></textarea></div>
+                                 <div class="col-10 col-md-9" style="white-space:pre;"><textarea placeholder="${qnaVO.content}" id="textarea-input" rows="10" class="form-control"></textarea></div>
                            </div>
                            
                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>답변내용: </label></div>
-                                 <div class="col-5 col-md-9"><textarea placeholder="${qnaVO.reply}" id="textarea-input" rows="10" class="form-control"></textarea></div>
+                                 <div class="col-5 col-md-9" style="white-space:pre;"><textarea placeholder="${qnaVO.reply}" id="textarea-input" rows="10" class="form-control"></textarea></div>
                            </div>  
                   	    </div>
                   	 </div>   		
