@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.green.biz.dto.ProductVO" %>
 <%@ include file="header.jsp" %>  
+
+<%
+	List<ProductVO> listProduct = (List<ProductVO>)(request.getAttribute("productKindList"));
+	System.out.println("List Size="+listProduct.size());
+%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,7 +110,7 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">All</a></li>
+                            <!--<li><a href="#">All</a></li>  -->
                             <li><a href="category?kind=1">LIVING</a></li>
                             <li><a href="category?kind=2">KITCHEN</a></li>
                             <li><a href="category?kind=3">BATHROOM</a></li>
@@ -169,8 +176,8 @@
                             <ul>
                                 <li><a href="#">All</a></li>
                             	<li><a href="category?kind=1">LIVING</a></li>
-                            	<li><a href="category?kind=2">KITCHEN</a></li>
-                            	<li><a href="category?kind=3">BATHROOM</a></li>
+                            	<li><a href="category?kind=2">BATHROOM</a></li>
+                            	<li><a href="category?kind=3">KITCHEN</a></li>
                             	<li><a href="category?kind=4">KIT</a></li>
                             	<li><a href="category?kind=5">ETC</a></li>
                             </ul>
@@ -192,7 +199,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sidebar__item sidebar__item__color--option">
+                        <!--<div class="sidebar__item sidebar__item__color--option">
                             <h4>Colors</h4>
                             <div class="sidebar__item__color sidebar__item__color--white">
                                 <label for="white">
@@ -322,13 +329,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 
                 
                 <div class="col-lg-9 col-md-7">
-                    <div class="product__discount">
+                    <!--<div class="product__discount">
                         <div class="section-title product__discount__title">
                             <h2>Sale Off</h2>
                         </div>
@@ -444,7 +451,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="filter__item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
@@ -470,19 +477,223 @@
                             </div>
                         </div>
                     </div> 
-                	 <article>
+                	 <!--<article>
 					    <h2> Item</h2>     
 					    <c:forEach items="${productKindList}"  var="productVO">
 					      <div id="item">
 					        <a href="product_detail?pseq=${productVO.pseq}"> 
-					          <img src="product_images/${productVO.image}" />
+					          <img src="product_images/${productVO.image}" width="120px" height="110px" />
 					          <h3>${productVO.name} </h3>        
 					          <p>${productVO.price2} </p>
 					        </a>  
 					      </div>
 					    </c:forEach>    
 					    <div class="clear"></div>
-					  </article>
+					  </article>  -->
+					  
+					
+					  <!-- 예진 상품나열 기본틀 -->
+					  <!--<div class="col-lg-9 col-md-7">-->
+					  <div class="row">
+					  <% for (int i=0; i<listProduct.size(); i=i+3) { %>
+					  <div class="col-lg-4">
+					  	<div class="product__discount">
+					  		<a href="product_detail?pseq=<%= listProduct.get(i).getPseq() %>"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/<%= listProduct.get(i).getImage() %>"></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#"><%= listProduct.get(i).getName() %></a></h5>
+					  					<!--<h5>${productVO.image}</h5>상품이름형식보기-->
+					  					<div class="product__item__price"><%= listProduct.get(i).getPrice2() %>원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  	
+					  	</div>
+					 </div>
+					 
+					 <% if (i+1 <listProduct.size() ) { %>
+					 <div class="col-lg-4">
+					  	<div class="product__discount">
+					  		<a href="product_detail?pseq=<%= listProduct.get(i+1).getPseq() %>"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/<%= listProduct.get(i+1).getImage() %>"></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#"><%= listProduct.get(i+1).getName() %></a></h5>
+					  					<!--<h5>${productVO.image}</h5>상품이름형식보기-->
+					  					<div class="product__item__price"><%= listProduct.get(i+1).getPrice2() %>원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  	
+					  	</div>
+					 </div>
+					 <% }%>
+					 
+					 <% if (i+2 <listProduct.size() ) { %>
+					 <div class="col-lg-4">
+					  	<div class="product__discount">
+					  		<a href="product_detail?pseq=<%= listProduct.get(i+2).getPseq() %>"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/<%= listProduct.get(i+2).getImage() %>"></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#"><%= listProduct.get(i+2).getName() %></a></h5>
+					  					<!--<h5>${productVO.image}</h5>상품이름형식보기-->
+					  					<div class="product__item__price"><%= listProduct.get(i+2).getPrice2() %>원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  	
+					  	</div>
+					 </div>
+					 <% } %>
+					<%} %>
+					</div>
+					
+					
+					
+					<!-- 
+					     <div class="col-lg-4">
+					     	<div class="product__discount">
+					  		
+					  		<c:forEach items="${productKindList}"  var="productVO">
+					  		<a href="product_detail?pseq=${productVO.pseq}"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#">${productVO.name}</a></h5>
+					  					
+					  					<div class="product__item__price">${productVO.price2 }원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  			</c:forEach> 
+					  		
+					  		</div>
+					  	</div> -->
+					  						 
+					 
+					 
+					 
+					 
+					 
+					 
+					 <!-- 예진 4x4x4부트스트랩 나열  똑같은것만 한줄에 3개씩나옴-->
+					 <!--<div class="container-fluid">
+					   <div class="row">
+					     <div class="col-sm-4"><div class="product__discount">
+					  		
+					  		<c:forEach items="${productKindList}"  var="productVO">
+					  		<a href="product_detail?pseq=${productVO.pseq}"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#">${productVO.name}</a></h5>
+					  					
+					  					<div class="product__item__price">${productVO.price2 }원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  			</c:forEach> 
+					  		
+					  	</div>
+					  	</div>
+					     <div class="col-sm-4"><div class="product__discount">
+					  		
+					  		<c:forEach items="${productKindList}"  var="productVO">
+					  		<a href="product_detail?pseq=${productVO.pseq}"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#">${productVO.name}</a></h5>
+					  					
+					  					<div class="product__item__price">${productVO.price2 }원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  			</c:forEach> 
+					  		
+					  	</div>
+					  	</div>
+					     <div class="col-sm-4"><div class="product__discount">
+					  		
+					  		<c:forEach items="${productKindList}"  var="productVO">
+					  		<a href="product_detail?pseq=${productVO.pseq}"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#">${productVO.name}</a></h5>
+					  					
+					  					<div class="product__item__price">${productVO.price2 }원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  			</c:forEach> 
+					  		
+					  	</div>
+					  	</div>
+					   </div>
+					 </div>-->
+					 
+					 <!--데스크탑에서 col-lg-4로하는것 but 한줄에 같은 아이템으로 3번씩나옴
+					 <div class="container-fluid">
+					   <div class="row">
+					     <div class="col-lg-4"><div class="product__discount">
+					  		
+					  		<c:forEach items="${productKindList}"  var="productVO">
+					  		<a href="product_detail?pseq=${productVO.pseq}"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#">${productVO.name}</a></h5>
+					  					
+					  					<div class="product__item__price">${productVO.price2 }원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  			</c:forEach> 
+					  		
+					  	</div>
+					  	</div>
+					     <div class="col-lg-4"><div class="product__discount">
+					  		<c:forEach items="${productKindList}"  var="productVO">
+					  		<a href="product_detail?pseq=${productVO.pseq}"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#">${productVO.name}</a></h5>
+					  					
+					  					<div class="product__item__price">${productVO.price2 }원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  			</c:forEach> 
+					  	
+					  		
+					  	</div>
+					  	</div>
+					     <div class="col-lg-4"><div class="product__discount">
+					  		<c:forEach items="${productKindList}"  var="productVO">
+					  		<a href="product_detail?pseq=${productVO.pseq}"> 
+					  			<div class="product__discount __item">
+					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
+					  				<div class="product__discount__item__text">
+					  					<h5><a href="#">${productVO.name}</a></h5>
+					  					
+					  					<div class="product__item__price">${productVO.price2 }원</div>
+					  				</div>
+					  			</div>
+					  			</a>
+					  			</c:forEach> 
+					  	
+					  		
+					  	</div>
+					  	</div>
+					   </div>
+					 </div>-->
+					 
+					 
+					  
                     <!--<div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -665,7 +876,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     <!-- Product Section End -->
 
