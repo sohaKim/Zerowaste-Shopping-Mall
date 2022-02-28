@@ -46,4 +46,13 @@ public class QnaDAO  {
 		mybatis.update("mappings.qna-mapping.updateQna", vo);
 	}
 
+	
+	// Q&A 상태별 보기
+	public List<QnaVO> selectQnaRepList(QnaVO vo) {
+			
+		return mybatis.selectList("mappings.qna-mapping.selectQnaRepList", vo);
+	}
+}
+
+
 }

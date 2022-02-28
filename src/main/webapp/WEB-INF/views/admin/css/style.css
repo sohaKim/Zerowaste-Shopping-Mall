@@ -1,0 +1,59 @@
+/*
+	어드민 전체 페이지 css
+*/
+
+/*
+	헤더부분
+*/
+#wrap {
+	width: 1140px;
+	text-align: center;
+	margin: 0px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	height: 100px;
+}
+#submenu {
+	float: left;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+#submenu ul {
+	list-style: none;
+}
+#submenu ul li {
+	display: inline-block;
+	text-decoration: none;
+}
+#logout {
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-end: 40px;
+	display: inline-block;
+	float: right;
+}
+
+
+
+
+
+/*
+	본문부분
+*/
+#main{
+	width: 971px;
+	margin: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+
+
+
