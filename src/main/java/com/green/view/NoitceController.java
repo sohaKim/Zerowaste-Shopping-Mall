@@ -38,7 +38,7 @@ public class NoitceController {
 	 * 왼쪽 카테고리바에서 카테고리 번호(a href="category?kind=1")를 누를경우
 	 * 해당 카테고리에 해당되는 항목만 리스트에 나열
 	 */
-	@GetMapping(value="/category")
+	@GetMapping(value="/notice_category")
 	public String getNoticeByCategory(NoticeVO vo, Model model) {
 		
 		List<NoticeVO> noticeList = noticeService.getNoticeByCategory(vo);
