@@ -40,4 +40,9 @@ public class OrderDAO {
 		
 		mybatis.update("mappings.order-mapping.updateOrderResult",odseq);
 	}
+	
+	public List<OrderVO> selectOrderByResult(OrderVO vo) {
+		
+		return mybatis.selectList("mappings.order-mapping.selectOrderByResult", vo);
+	}
 }

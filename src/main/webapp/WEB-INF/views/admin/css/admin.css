@@ -1,0 +1,19 @@
+/*
+	어드민 로그인 페이지 css
+*/
+#wrap {
+	width: 971px;
+	text-align: center;
+	margin: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height: 923px;
+}
+
+
+
+#loginform table {
+	margin-top: 150px;
+	text-align: center;
+}
+

@@ -11,10 +11,7 @@
  		<typeAlias type="com.green.biz.dto.NoticeVO" alias="notice" />
  		<typeAlias type="com.green.biz.dto.MemberVO" alias="member"/>
  		<typeAlias type="com.green.biz.dto.FaqVO" alias="faq"/>
- 		<!--
- 		<typeAlias type="com.green.biz.dto.WorkerVO" alias="worker"/>
-  		-->
- 		
+ 		<typeAlias type="com.green.biz.dto.WorkerVO" alias="worker"/> 		
  	</typeAliases>
  	
  	
@@ -26,11 +23,8 @@
  		<mapper resource="mappings/qna-mapping.xml"/>
  		<mapper resource="mappings/notice-mapping.xml"/>
  		<mapper resource="mappings/member-mapping.xml"/>
- 		<mapper resource="mappings/faq-mapping.xml"/>
- 		
- 		<!-- 						
+ 		<mapper resource="mappings/faq-mapping.xml"/>			
 		<mapper resource="mappings/admin-mapping.xml"/>  
-		-->
  	</mappers>	
  </configuration>
  

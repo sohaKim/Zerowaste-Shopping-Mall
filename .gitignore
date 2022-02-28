@@ -17,6 +17,10 @@ local.properties
 pom.*
 MANIFEST.*
 database.properties
+*/target/**
+.classpath
+.settings
+.project
 
 # External tool builders
 .externalToolBuilders/
