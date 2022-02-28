@@ -30,6 +30,14 @@ public class QnaServiceImpl implements QnaService {
 		qnaDao.insertQna(vo);
 	}
 
+	// Qna update수정,  답변이 없을경우만 수정  조건,   02.26 김소연 추가
+	@Override
+	public void updateQnabyQseq(QnaVO vo) {
+		
+		qnaDao.updateQnabyQseq(vo);
+		
+	}
+
 	// ▶▶ Admin관리자 페이지 작성시 추가 부분 
 	@Override
 	public List<QnaVO> listAllQna() {
@@ -40,6 +48,7 @@ public class QnaServiceImpl implements QnaService {
 	public void updateQna(QnaVO vo) {
 		qnaDao.updateQna(vo);
 	}
+
 }
 
 

@@ -194,11 +194,11 @@
                                     </div>                                  
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Title |<br>제목: </label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="subject" placeholder="※ 제목은 20자 이내로 작성 가능합니다." class="form-control"><small class="form-text text-muted">※ 주문내역이 있다면, 주문번호를 함께 남겨주세요.</small></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="subject" name="subject" placeholder="※ 제목은 20자 이내로 작성 가능합니다." class="form-control"><small class="form-text text-muted">※ 주문내역이 있다면, 주문번호를 함께 남겨주세요.</small></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>문의내용: </label></div>
-                                        <div class="col-12 col-md-9"><textarea name="content" id="textarea-input" rows="10" placeholder="※ 문의 내용을 남겨주세요." class="form-control"></textarea></div>
+                                        <div class="col-12 col-md-9"><textarea name="content" id="content" rows="10" placeholder="※ 문의 내용을 남겨주세요." class="form-control"></textarea></div>
                                     </div>
                               </div>		
                           </div>

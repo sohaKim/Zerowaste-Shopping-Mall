@@ -1,10 +1,8 @@
 package com.green.biz.order.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.green.biz.dao.CartDAO;
 import com.green.biz.dto.CartVO;
 import com.green.biz.order.CartService;
@@ -22,9 +20,9 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public List<CartVO> listCart(String userid) {
+	public List<CartVO> listCart(String id) {
 		
-		return cartDao.listCart(userid);
+		return cartDao.listCart(id);
 	}
 
 	@Override
@@ -33,11 +31,20 @@ public class CartServiceImpl implements CartService {
 		cartDao.deleteCart(cseq);
 	}
 
+	// 장바구니 수량 업데이트 김소연 추가 02.28 -- vo로 받기
+	@Override
+	public void updateQuantityOfCart(CartVO vo) {
+		
+		cartDao.updateQuantityOfCart(vo);
+		
+	}
+	
 	@Override
 	public void updateCart(int cseq) {
 
 		cartDao.updateCart(cseq);
 		
 	}
+
 
 }

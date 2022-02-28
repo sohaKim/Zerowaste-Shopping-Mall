@@ -48,54 +48,96 @@ public class MypageController {
          return "redirect:cart_list";
       }
    }
-/*
- * 장바구니 목록 처리  
- * 수량 X 금액 = 총 금액 계산까지~~~ 
- * shopping-cart.jsp 미리구현  -02.22
- */
-//   @GetMapping(value="shoping-cart")
-//   public String listCart(HttpSession session, Model model) {
-//      
-////      MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-////      
-////      // 로그인이 안되어 있으면 로그인 페이지로
-////      if (loginUser == null) {
-////         return "member/login"; // jsp이동
-////      
-////      // 로그인이 되어 있으면, 장바구니 목록으로
-////      // cart-mapping.xml의  "listCart" - id로 가져옴
-////      } else {
-////         List<CartVO> cartList = cartService.listCart(loginUser.getId());
-////         
-////         // 총액 계산 = 수량 * 판매가
-////         int totalAmount = 0;
-////         for (CartVO vo : cartList) {
-////            totalAmount += vo.getQuantity() * vo.getPrice2();
-////         }
-////         
-////         // 장바구니 목록과 위의 계산 내용을 내장객체에 저장
-////         model.addAttribute("cartList", cartList);   // shopping-cart.jsp의 $ {cartList}
-////         model.addAttribute("totalPrice", totalAmount); // shopping-cart.jsp의  ${totalPrice}, 총금액
-////         
-//         return "shoping-cart"; // jsp
-//      }
-//   }
-   @GetMapping(value="shoping-cart")
-   public String listCart(){
-	   return "shoping-cart";
-   }
    /*
-    * 장바구니 항목 삭제 요청 처리
+    * 장바구니 목록 처리  
+    * 수량 X 금액 = 총 금액 계산까지~~~ 
+    * shopping-cart.jsp 미리구현  -02.22
     */
-   @PostMapping(value="/cart_delete")
-   public String cartDelete(@RequestParam(value="cseq") int[] cseq) {
-	   
-	   for(int i=0; i<cseq.length; i++) {
-		   System.out.println(("삭제할 cart seq = " +cseq[i]));
-		   cartService.deleteCart(cseq[i]);
-	   }
-	   return "redirect:cart_list";
-   }
+      @GetMapping(value="shoping-cart")
+      public String listCart(HttpSession session, Model model) {
+         
+         MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+         
+         // 로그인이 안되어 있으면 로그인 페이지로
+         if (loginUser == null) {
+            return "member/login"; // jsp이동
+         
+         // 로그인이 되어 있으면, 장바구니 목록으로
+         // cart-mapping.xml의  "listCart" - id로 가져옴
+         } else {
+            List<CartVO> cartList = cartService.listCart(loginUser.getId());
+            
+            // 총액 계산 = 수량 * 판매가
+            int totalAmount = 0;
+            for (CartVO vo : cartList) {
+               totalAmount += vo.getQuantity() * vo.getPrice2();
+            }
+            
+            // 장바구니 목록과 위의 계산 내용을 내장객체에 저장
+            model.addAttribute("cartList", cartList);   // shopping-cart.jsp의 $ {cartList}
+            model.addAttribute("totalPrice", totalAmount); // shopping-cart.jsp의  ${totalPrice}, 총금액
+            
+            return "shoping-cart"; // jsp
+         }
+      }
+      
+      
+   //   @GetMapping(value="shoping-cart")
+   //   public String listCart(){
+//   	   return "shoping-cart";
+   //   }
+      /*
+       * 장바구니 항목 삭제 요청 처리
+       */
+      @PostMapping(value="/cart_delete")
+      public String cartDelete(@RequestParam(value="cseq") int[] cseq) {
+   	   
+   	   for(int i=0; i<cseq.length; i++) {
+   		   System.out.println(("삭제할 cart seq = " +cseq[i]));
+   		   cartService.deleteCart(cseq[i]);
+   	   }
+   	   return "redirect:shoping-cart";
+      }
+      /*
+       * 장바구니 항목의 품목 수량 변경
+       * id로 받기
+       * 김소연 추가 02.28
+       * 
+       */
+   //   @PostMapping(value="/cart_quantity_change")
+   //   public String updateQuantityOfCart(CartVO vo) {
+//   	   
+//   	   cartService.updateQuantityOfCart(vo);
+//   	   
+//   	   return "redirect:shoping-cart"; //jsp
+   //   }
+   //	
+      
+      // shoping-cart.jsp의 quantity, pseq --command객체 CartVO 로 받음
+      @PostMapping(value="/cart_quantity_change") 
+      
+      public String updateQuantityOfCart(CartVO vo, Model model, HttpSession session) {
+         
+         // (1) 세션에 저장된 사용자 정보를 읽어 온다.
+         //       MemberController의 loginAction -- loginUser
+         MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+            
+         // (2) 로그인이 안되어 있으면 로그인, 
+         //          로그인이 되어 있으면, 장바구니에 항목 저장   
+         if (loginUser == null) {
+            return "member/login";
+            
+         } else {
+            vo.setId(loginUser.getId()); // 
+            
+            cartService.updateQuantityOfCart(vo);
+            
+            // (3) 장바구니 목록 조회하여 화면 표시
+            return "redirect:shoping-cart"; //jsp
+         }
+      }
+      
+      
    /*
     * 장바구니 내역의 주문 처리
     */

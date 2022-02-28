@@ -10,10 +10,13 @@ public interface CartService {
 	void insertCart(CartVO vo);
 
 	// 장바구니 목록
-	List<CartVO> listCart(String userid);
+	List<CartVO> listCart(String id);
 
 	// 장바구니에서 항목 삭제
 	void deleteCart(int cseq);
+	
+	// 장바구니 수량 업데이트 김소연 추가 02.28 -- vo로 받기
+	public void updateQuantityOfCart(CartVO vo);
 
 	// 장바구니 업데이트
 	void updateCart(int cseq);
