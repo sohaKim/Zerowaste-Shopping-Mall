@@ -48,4 +48,9 @@
 		WHERE odseq=#{odseq}
 	</update>
 	
+	<!-- 주문처리상태별 보기 -->
+	<select resultType="order" id="selectOrderByResult">
+		SELECT * FROM order_view WHERE result=#{result} ORDER BY odseq
+	</select>
+	
 </mapper>

@@ -30,5 +30,10 @@
 		 SET reply=#{reply}, rep='2'
 		WHERE qseq=#{qseq}
 	</update>
+	
+	<!--  QnA 상태별 보기 -->
+	<select id="selectQnaRepList" resultType="qna">
+		SELECT * FROM qna WHERE rep=#{rep} ORDER BY indate DESC
+	</select>
 </mapper>
 
