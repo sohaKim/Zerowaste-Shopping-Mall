@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %> 
-<%-- -- 나중에 Controller수정시 열기 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
---%>
+<%@ include file="header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -160,104 +157,22 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Shoping Cart Section Begin -->
+    <!-- Shoping Cart Section Begin -->    
     <section class="shoping-cart spad">
+    <form name="formm" id="theform" method="post">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="shoping__product">Products<br>상품</th>
-                                    <th>Price<br>금액</th>
-                                    <th>Quantity<br>수량</th>
-                                    <th>Total<br>총 금액</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                                                      
-                            <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        10,000원
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        10,000원
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <!--<span class="icon_close"></span>-->
-                                        <input type="checkbox" name="cseq" value= "${cartVO.cseq}">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-2.jpg" alt="">
-                                        <h5>Fresh Garden Vegetable</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        8,000원
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        8,000원
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <!--<span class="icon_close"></span>-->
-                                        <input type="checkbox" name="cseq" value= "${cartVO.cseq}">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-3.jpg" alt="">
-                                        <h5>Organic Bananas</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        20,000원
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        20,000원
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <!--<span class="icon_close"></span>-->
-                                        <input type="checkbox" name="cseq" value= "${cartVO.cseq}">
-                                    </td>
-                                </tr>
-                                
-                                  
-                        <!-- C코드로 수정 시작 -->
-                        <!-- controller 구현 완료 후 위의 tr/td항목 모두 삭제 -->
-                        <!-- 상품 이미지크기 100px, 100px -->
-                        <!--  
-                        <form name="formm" id="theform" method="post">
+                                                         
+                     <!-- C코드로 수정 시작 -->
+                     <!-- 상품 이미지크기 100px, 100px -->                         
+                     
+                     <c:forEach items="${cartList}" var="cartVO"> 
                         <c:choose>
-                        <c:when test= "${cartList.size() == 0}">
-					      <h3 style="color: red;text-align: center;"> 장바구니가 비었습니다. </h3> 
-					    </c:when> 
+	                        <c:when test= "${cartList.size()==0}">
+						      	<h1> 장바구니가 비었습니다. </h1> 
+						    </c:when> 
                         <c:otherwise>
 	                        <table>
 	                            <thead>
@@ -265,66 +180,59 @@
 	                                    <th class="shoping__product">Products<br>상품</th>
 	                                    <th>Price<br>금액</th>
 	                                    <th>Quantity<br>수량</th>
+	                                    <th></th>
 	                                    <th>Total<br>총 금액</th>
+	                                    <th>Delete<br>삭제</th>
 	                                    <th></th>
 	                                </tr>
 	                            </thead>                             
-	
-	                             <tbody>
-	                             <c:forEach items="${cartList}"  var="cartVO">                             
+	                             <tbody>                          
 	                                <tr>
 	                                    <td class="shoping__cart__item">
 	                                    	<a href="product_detail?pseq=${cartVO.pseq}">
-	                                        	<img src="img/cart/cart-1.jpg" alt=""> 
+	                                        	<img style="width:100px; height:100px" src="img/product_images/" alt="image">
 	                                         </a>
 	                                        <h5>${cartVO.pname}</h5>                                        	
 	                                    </td>
-	                                    <td class="shoping__cart__price">
-	                                        <input type="text" value="${cartVO.price2}">
-	                                         <안써요 막기fmt:formatNumber value="${cartVO.price2}" type="currency"/> 
+	                                    <td class="shoping__cart__price">	                                        
+	                                         <fmt:formatNumber value="${cartVO.price2}" type="currency"/> 
 	                                    </td>
 	                                    <td class="shoping__cart__quantity">
-	                                        <div class="quantity">
+	                                        <div class="quantity_btn">
 	                                            <div class="pro-qty">
-	                                                <input type="text" value="${cartVO.quantity}">
+	                                                <input type="text" name="quantity" id="quantity" value="${cartVO.quantity}">
 	                                            </div>
 	                                        </div>
 	                                    </td>
-	                                  </tr> 
-	                                </c:forEach>    
-		                              <tr> 
-		                                  <td class="shoping__cart__total">		                                      
+	                                    <td class= "shoping__cart__quantity">
+	                                    	<div class="quantity_modify_btn">
+	                                    		<button type="button" class="site-btn" onclick="go_cart_change()">변경</button>
+	                                    	</div>	
+	                                    </td>
+	                                    <td class="shoping__cart__total">		                                      
 		                                      <fmt:formatNumber value="${cartVO.price2*cartVO.quantity}" type="currency"/>
-		                                  </td>
+		                                
+		                                
+		                                </td>
 	                                    <td class="shoping__cart__item__close">	                                       
 	                                        <input type="checkbox" name="cseq" value= "${cartVO.cseq}">
 	                                    </td>
-		                              </tr>
+	                                  </tr>   
 	                             </tbody>
 	                        </table>
                         </c:otherwise>	                        
                         </c:choose>
-                        </form>
-                        -->                           
-                        <!-- C코드 수정 끝 -->
-                                
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            
+                     </c:forEach>                                       
+                  </div>
+               </div>
+          </div>
+
             <!-- 버튼 -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="shop-grid" class="primary-btn cart-btn">CONTINUE SHOPPING | 쇼핑계속</a>
-                        <!--  
-                        <a href="shopping-cart" class="primary-btn cart-btn cart-btn"><span class="icon_loading"></span>
-                            Update Cart | 업데이트</a>-->
-                        <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="go_cart_delete()">Delete Cart | 삭제하기</a>    
-                            
+ 						<a href="#" class="primary-btn cart-btn cart-btn-right" onclick="go_cart_delete()">Delete | 삭제</a>    
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -343,24 +251,19 @@
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
                         <h5>Cart Total | 장바구니 금액</h5>
-                        <ul>
-                        	<!-- C코드로 수정 추가 부분 -->
-                        	<!-- controller 구현 완료 후 반영하기-->
-                            <li>Subtotal | 소계 <span>38,000원</span></li> <!-- <fmt:formatNumber value="${totalPrice}" type="currency"/> -->
-                            <li>Total | 총 금액 <span>38,000원</span></li>  <!-- <fmt:formatNumber value="${totalPrice}" type="currency"/> -->
+                        <ul>                       	
+                            <li>Subtotal | 소계 <span><fmt:formatNumber value="${totalPrice}" type="currency"/></span></li> 
+                            <li>Total | 총 금액 <span><fmt:formatNumber value="${totalPrice}" type="currency"/></span></li>  
                         </ul>
-                        
-                        <!-- C코드로 수정 추가 부분 -->
-                        <!-- controller 구현 완료 후 반영하기-->
-                        <!--  
+                   
                         <c:if test= "${cartList.size() != 0}">            
                         	<a href="checkout" class="primary-btn" onclick="go_order_insert()">PROCEED TO CHECKOUT | 결제하기</a>
                     	</c:if>
-                    	-->
                     </div>
                 </div>
             </div>
         </div>
+    </form>    
     </section>
     <!-- Shoping Cart Section End -->
         <!-- Js Plugins -->

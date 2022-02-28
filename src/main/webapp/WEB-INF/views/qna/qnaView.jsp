@@ -166,7 +166,8 @@
             <br><br>
             
 			<!-- 본문 form시작 --><!--  action="qna_write"????? -->
-			<form method="post" name="formm" class="form-horizontal" id="qna_form">  
+			<form method="post" name="formm" class="form-horizontal" id="qna_form"> 
+			<input type="hidden" name="qseq" value="${qnaVO.qseq}"> 
             	<div class="col-lg-6">
                     <div class="card" style= "width:900px; margin:auto;">
                         <div class="card-header">
@@ -177,23 +178,36 @@
                             <!-- 카테고리 선택 -->
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Category | <br>카테고리: </label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input" value="${qkind}" class="form-control">
+                                <div class="col-7 col-md-9"><input type="text" id="qkind" value="${qkind}" name="qkind" class="form-control">
                            </div>
                                                              
                            <div class="row form-group">
                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Title |<br>제목: </label></div>
-                               <div class="col-12 col-md-9"><input type="text" id="text-input" value="${qnaVO.subject}" class="form-control"></div>
+                               <div class="col-12 col-md-9"><input type="text" id="subject" value="${qnaVO.subject}" name="subject" class="form-control"></div>
                            </div>
                            
                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>문의내용: </label></div>
-                                 <div class="col-10 col-md-9" style="white-space:pre;"><textarea placeholder="${qnaVO.content}" id="textarea-input" rows="10" class="form-control"></textarea></div>
+                                 <div class="col-10 col-md-9" style="white-space:pre;"><textarea name="content" id="content" rows="10" class="form-control">${qnaVO.content}</textarea></div>
                            </div>
                            
+                                                      
                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>답변내용: </label></div>
-                                 <div class="col-5 col-md-9" style="white-space:pre;"><textarea placeholder="${qnaVO.reply}" id="textarea-input" rows="10" class="form-control"></textarea></div>
-                           </div>  
+                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Reply |<br>답변여부: </label></div>
+								<div class="col-10 col-md-9" id="rep">	
+									<c:choose>
+							        	<c:when test="${qnaVO.rep==1}"><img src="img/qna/check-icon.png"> no</c:when>
+							            <c:when test="${qnaVO.rep==2}"><img src="img/qna/check-icon.png"> yes</c:when>
+						            </c:choose>	
+						         </div>   
+                           </div>
+                           
+                           	    <c:if test="${qnaVO.rep==2}">
+			                        <div class="row form-group">
+			                             <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Reply Content |<br>답변내용: </label></div>
+			                             <div class="col-5 col-md-9" style="white-space:pre;"><textarea name="reply" id="reply" rows="10" class="form-control">${qnaVO.reply}</textarea></div>	
+			                        </div>
+		                        </c:if>		                           
                   	    </div>
                   	 </div>   		
                   </div>                    
@@ -202,6 +216,8 @@
               <!-- 버튼 -->
               <div class="row">                   
                     <div class="col-lg-12 text-center">
+                    	<!-- <button type="button" class="site-btn" onclick="location.href='qna_update_form'">수정 하기</button> -->
+                    	<button type="button" class="site-btn" onClick="go_mod('${qnaVO.qseq}')">수정 하기</button>
                         <button type="button" class="site-btn" onclick="location.href='qna_list'">목록 이동</button> <!-- type="submit"에서 수정함 -->
                         <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
                     </div>
@@ -220,6 +236,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript" src="js/qna.js"></script>
     
 	<!-- 드롭다운 / 테이블 부트스트랩 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

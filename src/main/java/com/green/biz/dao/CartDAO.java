@@ -20,9 +20,9 @@ public class CartDAO  {
 	}
 	
 	// 장바구니 목록
-	public List<CartVO> listCart(String userid) {
+	public List<CartVO> listCart(String id) {
 		
-		return mybatis.selectList("mappings.cart-mapping.listCart", userid);
+		return mybatis.selectList("mappings.cart-mapping.listCart", id);
 	}
 	
 	// 장바구니에서 항목 삭제
@@ -31,9 +31,18 @@ public class CartDAO  {
 		mybatis.delete("mappings.cart-mapping.deleteCart", cseq);
 	}
 	
+	// 장바구니 수량 업데이트 김소연 추가 02.28 -- vo로 받기
+	public void updateQuantityOfCart(CartVO vo) {
+		
+		mybatis.update("mappings.cart-mapping.updateQuantityOfCart", vo);
+	}
+	
+	
 	// 장바구니 항목을 '처리'로 업데이트
 	public void updateCart(int cseq) {
 		
 		mybatis.update("mappings.cart-mapping.updateCart", cseq);
 	}
+	
+
 }

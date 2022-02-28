@@ -18,6 +18,12 @@
 		WHERE cseq=#{cseq}
 	</delete>
 	
+	<!-- 장바구니 수량변경  02.28추가 -->
+	<update id="updateQuantityOfCart">
+		UPDATE cart
+		SET cseq=#{cseq}, pseq=#{pseq}, quantity=#{quantity}	 
+	</update>
+
 	<!-- 장바구니 항목의 주문 처리 결과-->
 	<update id="updateCart" parameterType="int">
 		UPDATE cart SET result='2'
@@ -25,4 +31,3 @@
 	</update>
 	
 </mapper>
-
