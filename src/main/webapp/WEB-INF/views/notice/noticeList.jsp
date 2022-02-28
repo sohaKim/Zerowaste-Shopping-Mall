@@ -121,10 +121,10 @@
                             <h4>Categories | 카테고리</h4>
                             <ul>
                                 <li><a href="#">All</a></li>
-                                <li><a href="category?nkind=1">Notice | 일반 공지</a></li>
-                                <li><a href="category?nkind=2">Shipping | 배송</a></li>
-                                <li><a href="category?nkind=3">Events | 이벤트</a></li>
-                                <li><a href="category?nkind=4">Etc | 기타</a></li>
+                                <li><a href="notice_category?nkind=1">Notice | 일반 공지</a></li>
+                                <li><a href="notice_category?nkind=2">Shipping | 배송</a></li>
+                                <li><a href="notice_category?nkind=3">Events | 이벤트</a></li>
+                                <li><a href="notice_category?nkind=4">Etc | 기타</a></li>
                             </ul>
                         </div>
                         <!-- 제로웨이스트 관련 뉴스 url만 연결, 이미지는 수정필요 -->
