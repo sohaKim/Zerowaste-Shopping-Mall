@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
@@ -90,8 +91,16 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="index">HOME</a></li>
-                            <li class="active"><a href="shop-grid">Shop</a></li>
-                            <li><a href="mypage/mypage">MYPAGE</a>
+                            <li class="active"><a href="shop-grid">Shop</a>
+                            	<ul class="header__menu__dropdown">  
+	                            	<li><a href="category?kind=1">LIVING</a></li>
+		                            <li><a href="category?kind=2">BATHROOM</a></li>
+		                            <li><a href="category?kind=3">KITCHEN</a></li>
+		                            <li><a href="category?kind=4">KIT</a></li>
+		                            <li><a href="category?kind=5">ETC</a></li>                         	
+                            	</ul>
+                            </li>
+                            <li><a href="mypage">MYPAGE</a>
                                 
                             </li>
                              <li><a href="#">NOTICE</a>
@@ -120,8 +129,9 @@
         </div>
         <!-- JS -->
         <script src="member/member.js"></script>
-        <script type="text/javascript" src="product/product.js"></script>
+        <script src="mypage/mypage.js"></script>
+         
     </header>
     <!-- Header Section End -->
-</body>
+<!--</body>-->
 </html>

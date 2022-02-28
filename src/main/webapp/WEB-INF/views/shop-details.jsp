@@ -9,7 +9,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>SaveEarth::샵메인페이지</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -23,7 +23,9 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-<title>Insert title here</title>
+    
+    
+
 </head>
 <body>
 <!-- Page Preloder -->
@@ -139,17 +141,18 @@
     </section>
     <!-- Hero Section End -->
 
+
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Vegetable’s Package</h2>
+                        <h2>${productVO.name}</h2>
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
                             <a href="shop-grid">Shop</a>
-                            <span>Vegetable’s Package</span>
+                            <span>${productVO.name}</span>
                         </div>
                     </div>
                 </div>
@@ -165,8 +168,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="product_images/${productVO.image}" alt="">
+                            <img src="product_images/${productVO.image}">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
@@ -181,30 +183,38 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
+                  <form  method="post" name="formm" id="theform">  
+                  <fieldset>
                     <div class="product__details__text">
                         <h3>${productVO.name}</h3>
-                        <div class="product__details__rating">
+                        <!--<div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
-                        </div>
-                        <div class="product__details__price">$50.00</div>
-                         
-                   
+                        </div>--><br>
                         
+                        <label> 가 격 :  </label>  
+                        <div class="product__details__price"><fmt:formatNumber type="currency" value="${productVO.price2}"/></div>
+                        <br>
+                        <label> 수 량 :  </label>  
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" value="1"name="quantity" id="quantity" size="2">
                                 </div>
                             </div>
                         </div>
-                        <a href="shoping-cart" class="primary-btn">ADD TO CART</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                        <ul>
+                        <input  type="hidden" name="pseq" value="${productVO.pseq}">
+                      
+                        <br><br>
+                        <div id="buttons">
+				          <input type="button" value="장바구니에 담기"   class="btn btn-outline-success"    onclick="go_cart()">&nbsp;&nbsp;&nbsp;&nbsp;
+				          <input type="button" value="즉시 구매"       class="btn btn-outline-success"    onclick="go_order()"> 
+				        </div>
+                        <!--<ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                             <li><b>Weight</b> <span>0.5 kg</span></li>
@@ -216,8 +226,10 @@
                                     <a href="#"><i class="fa fa-pinterest"></i></a>
                                 </div>
                             </li>
-                        </ul>
+                        </ul>-->
                     </div>
+                      </fieldset>
+                    </form>
                 </div>
                 <div class="col-lg-12">
                     <div class="product__details__tab">
@@ -239,7 +251,8 @@
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h6>Products Infomation</h6>
-                                    <p>설명</p>
+                                    <div style="white-space:pre;"><c:out value="${productVO.content}" /></div>
+                                    
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -263,7 +276,7 @@
     <!-- Product Details Section End -->
 
     <!-- Related Product Section Begin -->
-    <section class="related-product">
+    <!--<section class="related-product">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -335,7 +348,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!-- Related Product Section End -->
 
 

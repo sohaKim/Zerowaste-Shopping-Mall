@@ -1,94 +1,111 @@
-//package com.green.view;
-//
-//import java.util.List;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
-//
-//import com.green.biz.dto.ProductVO;
-//import com.green.biz.product.ProductService;
-//
-//@Controller
-//public class ProductController {
-//	
-//	@Autowired
-//	private ProductService productService;
-//	//@RequestMapping(value="/product_detail", method=RequestMethod.GET)
-//	@GetMapping(value="/product_detail")
-//	public String productDetailAction(ProductVO vo, Model model) {
-//		
-//		//��ǰ �� ��ȸ
-//		ProductVO product = productService.getProduct(vo);
-//		
-//		model.addAttribute("productVO", product);
-//		
-//		return "product/productDetail";
-//	}
-//	
-//	@GetMapping(value="/category")
-//	public String productKindAction(ProductVO vo, Model model) {
-//		
-//		List<ProductVO> listProduct = productService.getProductListByKind(vo);
-//		
-//		model.addAttribute("productKindList", listProduct);
-//		
-//		return "product/productKind";
-//	}
-//}
 package com.green.view;
 
 
-//import java.util.List;
+import java.util.List;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-//import com.green.biz.dto.ProductVO;
-//import com.green.biz.product.ProductService;
+import com.green.biz.dto.ProductVO;
+import com.green.biz.product.ProductService;
+
+import utils.Criteria;
+import utils.PageMaker;
 
 @Controller
 public class ProductController {
 
-   
-   @RequestMapping(value="/shop-grid", method=RequestMethod.GET)
-   public String shopmain() {   // TODO: Model �־�� ��.
-      
-      return "shop-grid";
-   }
-   
-   @RequestMapping(value="/shop-details", method=RequestMethod.GET)
-   public String shopdetail() {   // TODO: Model �־�� ��.
-      
-      return "shop-details";
-   }
-
-//	@Autowired
-//	private ProductService productService;
-//	//@RequestMapping(value="/product_detail", method=RequestMethod.GET)
-//	@GetMapping(value="/product_detail")
-//	public String productDetailAction(ProductVO vo, Model model) {
-//		
-//		//��ǰ �� ��ȸ
-//		ProductVO product = productService.getProduct(vo);
-//		
-//		model.addAttribute("productVO", product);
-//		
-//		return "shop-details";
-//	}
-//	
-//	@GetMapping(value="/category")
-//	public String productKindAction(ProductVO vo, Model model) {
-//		
-//		List<ProductVO> listProduct = productService.getProductListByKind(vo);
-//		
+	@Autowired
+	//상품상세페이지구현
+	private ProductService productService;
+	//@RequestMapping(value="/product_detail", method=RequestMethod.GET)
+	@GetMapping(value="/product_detail")
+	public String productDetailAction(ProductVO vo, Model model) {
+		
+		//��ǰ �� ��ȸ
+		ProductVO product = productService.getProduct(vo);
+		
+		model.addAttribute("productVO", product);
+		
+		return "shop-details";
+	}
+	
+//	//샵메인페이지구현
+//	//  @RequestMapping(value="/shop-grid", method=RequestMethod.GET)
+//	 @GetMapping(value="/shop-grid")
+//	 public String shopmain(ProductVO vo, Model model) {   // TODO: Model �־�� ��.
+//			
+//		List<ProductVO> listProduct = productService.listProduct(vo);
+//		   
 //		model.addAttribute("productKindList", listProduct);
+//			
+//	    return "shop-grid";
+//	 }
+	
+	//모든제품 나열
+	 @RequestMapping(value="/shop-grid", method=RequestMethod.GET)
+	   public String shopmain(@RequestParam(value="key", defaultValue="") String name, Model model) {  
+	      
+	      List<ProductVO> listProduct = productService.listProduct(name);
+	      for(ProductVO vo: listProduct) {
+	    	  System.out.println(vo);
+	      }
+	      model.addAttribute("productList", listProduct);
+	      
+	      return "shop-grid";
+	   }
+
+	//샵카테고리페이지구현
+	@GetMapping(value="/category")
+	public String productKindAction(ProductVO vo, Model model, HttpServletRequest request) {
+		
+		List<ProductVO> categoryProduct = productService.getProductListByKind(vo);
+		System.out.println("카터고리코드: " + vo.getKind());
+		System.out.println("<<<<<< 카터고리별 상품 >>>>>>");
+		for(ProductVO prod : categoryProduct) {
+			System.out.println(prod);
+		}
+		
+		//model.addAttribute("productKindList", categoryProduct);
+		request.setAttribute("productKindList", categoryProduct);
+		
+		
+		
+		return "shop-grid";
+	}
+	
+//	@RequestMapping(value="/category")
+//	public String ProductList( // productList.jsp의 상품명 name=key
+//			@RequestParam(value="key", defaultValue="") String name,
+//			 Criteria criteria,
+//			 HttpSession session, Model model){
 //		
-//		return "shop-grid";
+//		
+//			// 상품 목록 조회
+//			List<ProductVO> prodList = productService.getListWithPaging(criteria, name);
+//				
+//			// 화면에 표시할 페이지 버튼 정보 설정		
+//			PageMaker pageMaker = new PageMaker(); // PageMaker() 객체생성	
+//			pageMaker.setCriteria(criteria); // 현재 페이지와 페이지당 항목 수 정보 설정		
+//			int totalCount = productService.countProductList(name); // 전체 게시글 수 조회 (product-mapping.xml) 
+//			
+//			// 전체 상품목록 개수 설정 메소드(setTotalCount) 구현 및 페이지정보(fieldInit()) 초기화
+//			pageMaker.setTotalCount(totalCount); 
+//			System.out.println("[ProductList] pageMaker=" + pageMaker);
+//				
+//			model.addAttribute("productKindList", prodList); // productList.jsp의 ${productList}
+//			model.addAttribute("productListSize", prodList.size()); //  productList.jsp의 ${productListSize}
+//			model.addAttribute("pageMaker", pageMaker); // page_area.jsp의 ${pageMaker}
+//			return "shop-grid"; // jsp
+//		
 //	}
 }

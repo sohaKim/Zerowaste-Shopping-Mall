@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVO> getProductListByKind(ProductVO vo) {
 		
-		return pDao.getBestProductList();
+		return pDao.getProductListByKind(vo);
 	}
 
 	@Override
