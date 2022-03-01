@@ -49,7 +49,8 @@
 							<c:forEach items="${productList }" var="productVO">
 								<tr>
 									<td>${productVO.pseq}</td>
-									<td><a href="admin_product_detail?pseq=${productVO.pseq }">${productVO.name }</a></td>
+									<td><a	href="admin_product_detail${pageMaker.makeQuery(pageMaker.criteria.pageNum)}&pseq=${productVO.pseq}">${productVO.name }</a></td>
+									<!-- <td><a href="admin_product_detail?pseq=${productVO.pseq }">${productVO.name }</a></td>  페이징 기능 없는 것 -->
 									<td><fmt:formatNumber value="${productVO.price1 }" /></td>
 									<td><fmt:formatNumber value="${productVO.price2 }" /></td>
 									<td><fmt:formatDate value="${productVO.regdate }" /></td>
@@ -63,14 +64,20 @@
 										</c:choose>
 								</tr>
 							</c:forEach>
+							<!--  페이징.. -->
+							<!-- <tr>
+							<td>${paging}</td>
+							</tr> -->
+							<!--  페이징 끝 -->
 						</c:otherwise>
 					</c:choose>
 				</table>
 </form>
 			</div>
+<%@ include file="../page_area.jsp"%>
 
 		</div>
-	</div>
 
+	</div>
 
 	<%@ include file="../footer.jsp"%>

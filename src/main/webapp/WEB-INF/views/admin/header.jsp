@@ -23,7 +23,8 @@
 					<a href="admin_order_list">  주문리스트 </a> | 
 					<a href="admin_member_list">  회원리스트 </a> | 
 					<a href="admin_qna_list">  QnA리스트 </a> | 
-					<a href="#">  판매실적 </a> 
+					<a href="#"> Notice</a> | 
+					<a href="#">  판매실적 </a>
 				</div>
 			
 			<div class="col-2" style="margin: 10px 0; text-align:right; padding-right: 20px;"><a href="admin_logout" >로그아웃</a></div>

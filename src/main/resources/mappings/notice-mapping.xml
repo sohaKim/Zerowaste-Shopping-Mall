@@ -39,7 +39,7 @@
 	<!-- ▶▶Admin 관리자 기능에 추가해야되나? 혹시몰라 mapping만 작성 -->
 	<insert id="insertNotice">
 		INSERT INTO notice(nseq, nkind, subject, content, notimg)
-		VALUES(notice_seq.NEXTBAL, #{nkind} #{subject}, #{content}, #{notimg})
+		VALUES(notice_seq.NEXTVAL, #{nkind}, #{subject}, #{content}, #{notimg})
 	</insert>
 
 </mapper>

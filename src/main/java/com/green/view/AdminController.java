@@ -28,6 +28,9 @@ import com.green.biz.order.OrderService;
 import com.green.biz.product.ProductService;
 import com.green.biz.qna.QnaService;
 
+import utils.Criteria;
+import utils.PageMaker;
+
 @Controller
 @SessionAttributes("adminUser")
 public class AdminController {
@@ -90,26 +93,56 @@ public class AdminController {
 	/*
 	 * 		어드민 상품 페이지 관련 
 	 */
-	// 어드민 메인 = 상품리스트
+//	// 어드민 메인 = 상품리스트
+//	@RequestMapping(value="/admin_product_list")
+//	public String adminProductList(@RequestParam(value="key", defaultValue="") String name,
+//			HttpSession session, Model model) {			// TODO: Criteria(페이징) 기능 안 넣음. 	
+//		
+//		// 관리자 로그인 확인
+//		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+//		
+//		if (adminUser == null) {
+//			return "admin/main";
+//		} else {
+//			// 상품 목록조회
+//			List<ProductVO> prodList = productService.listProduct(name);
+//			
+//			model.addAttribute("productList", prodList);
+//			
+//			return "admin/product/productList";
+//		}
+//		
+//	}
+	
+	// 페이징기능 있는 어드민 프로덕트리스트.
 	@RequestMapping(value="/admin_product_list")
 	public String adminProductList(@RequestParam(value="key", defaultValue="") String name,
-			HttpSession session, Model model) {			// TODO: Criteria(페이징) 기능 안 넣음. 	
-		
-		// 관리자 로그인 확인
+			Criteria criteria, HttpSession session, Model model) {
+		// 관리자 로그인 확인.
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 		
 		if (adminUser == null) {
 			return "admin/main";
 		} else {
 			// 상품 목록조회
-			List<ProductVO> prodList = productService.listProduct(name);
+			List<ProductVO> prodList = productService.getListWithPaging(criteria, name);
+			
+			// 화면에 표시할 페이지 버튼 정보 설정.
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCriteria(criteria);						// 현재 페이지와 페이지당 항목 수 설정.
+			int totalCount = productService.countProductList(name);
+			pageMaker.setTotalCount(totalCount);				// 전체 상품목록 개수 설정 및 페이지 정보 초기화
+			System.out.println("[adminProductList] pageMaker = " + pageMaker);
 			
 			model.addAttribute("productList", prodList);
+			model.addAttribute("productListSize", prodList.size());
+			model.addAttribute("pageMaker", pageMaker);
 			
 			return "admin/product/productList";
 		}
-		
-	}
+	}	
+	
+	
 	
 	// 어드민에서 카테고리별 상품보기
 	@GetMapping(value="/admin_product_category")
@@ -342,5 +375,35 @@ public class AdminController {
 		
 		return "admin/qna/qnaRep";
 	}
+	
+	// Q&A 상세보기
+	@PostMapping(value="/admin_qna_detail")
+	public String adminQnaDetail(QnaVO vo, Model model) {
+		
+		String[] qkindList = {"", "상품", "배송", "환불", "기타"};
+		
+		QnaVO qna = qnaService.getQna(vo); 
+		
+		model.addAttribute("qnaVO", qna);
+		
+		int index = Integer.parseInt(qna.getQkind());
+		model.addAttribute("qkind", qkindList[index]);
+		
+		return "admin/qna/qnaDetail";
+	}
+	
+	
+	// Q&A 답변 처리
+	@PostMapping(value="/admin_qna_repsave")
+	public String adminQnaRepsave(QnaVO vo) {
+		
+		// QnA 서비스의 update 호출
+		qnaService.updateQna(vo);
+		
+		// Qna 게시글 목록 호출
+		return "redirect:admin_qna_list";
+		
+	}
+	
 	
 }
