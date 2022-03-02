@@ -3,6 +3,8 @@ package com.green.biz.notice;
 import java.util.List;
 import com.green.biz.dto.NoticeVO;
 
+import utils.Criteria;
+
 public interface NoticeService{
 
 	// 조건없이 모든 Notice조회
@@ -23,6 +25,12 @@ public interface NoticeService{
 	// ▶▶ Admin관리자 페이지 작성시 추가 부분  미리작성
 	// Notice내용 삽입
 	public void insertNotice(NoticeVO vo);
+	
+	public void updateNotice(NoticeVO vo);
+	
+	public int countNoticeList(String subject);
+	
+	public List<NoticeVO> getNoticeListWithPaging(Criteria criteria, String subject);
 
 }
 

@@ -10,6 +10,8 @@ import com.green.biz.dao.NoticeDAO;
 import com.green.biz.dto.NoticeVO;
 import com.green.biz.notice.NoticeService;
 
+import utils.Criteria;
+
 @Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
 
@@ -55,11 +57,29 @@ public class NoticeServiceImpl implements NoticeService {
 	public void insertNotice(NoticeVO vo) {
 		noticeDao.insertNotice(vo);
 	}
+	
+	@Override
+	public void updateNotice(NoticeVO vo) {
+		noticeDao.updateNotice(vo);
+	}
 
 	@Override
 	public void noticeCount(NoticeVO vo) {
 		noticeDao.noticeCount(vo);
 		
 	}
+
+	// 페이징
+	@Override
+	public int countNoticeList(String subject) {
+		return noticeDao.countNoticeList(subject);
+	}
+
+	@Override
+	public List<NoticeVO> getNoticeListWithPaging(Criteria criteria, String subject) {
+		
+		return noticeDao.getNoticeListWithPaging(criteria, subject);
+	}
+
 	
 }

@@ -17,6 +17,11 @@ public interface ProductService {
 	
 	List<ProductVO> getProductListByKind(ProductVO vo);
 	
+	// 카테고리 페이징
+//	public List<ProductVO> categoryWithPaging(Criteria criteria, String name);
+//	
+//	public int countCategoryProductList(String name);
+	
 	public int countProductList(String name);
 	
 	public List<ProductVO> listProduct(String name);

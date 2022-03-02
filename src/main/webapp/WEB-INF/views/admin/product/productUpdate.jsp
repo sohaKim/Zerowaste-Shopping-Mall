@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<script type="text/javascript" src="admin/product/product.js"></script>
 <style>
 div .input-group {
 	margin-bottom: 10px;
@@ -12,18 +13,20 @@ div .input-group {
 			<h3>상품 수정</h3>
 			<div class="border border-2" style="padding: 10px;">
 				<form class="form-floating" name="frm" id="update_form" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="pseq" value="${productVO.pseq}"> <input type="hidden" name="code"> <input type="hidden"
-						name="nonmakeImg" value="${productVO.image}"
-					>
+					<input type="hidden" name="pseq" value="${productVO.pseq}">
+					<input type="hidden" name="code"> 
+					<input type="hidden" name="nonmakeImg" value="${productVO.image}">
 					<!--  기존 이미지 저장. 이미지 업데이트 안했을 때 사용  -->
 					<div class="input-group d-flex justify-content-between">
 						<div class="d-inline-flex">
-							<span class="input-group-text" style="margin-right: 2px;">상품명</span> <input type="text" class="input-sm" size="25" placeholder="상품명" id="name"
+							<span class="input-group-text" style="margin-right: 2px;">상품명</span> 
+							<input type="text" class="input-sm" size="25" placeholder="상품명" id="name"
 								name="name" value="${productVO.name }"
 							>
 						</div>
 						<div class="d-inline-flex">
-							<span class="input-group-text" style="margin-right: 2px;">카테고리</span> <select name="kind" id="kind">
+							<span class="input-group-text" style="margin-right: 2px;">카테고리</span> 
+							<select name="kind" id="kind">
 								<ul class="dropdown-menu">
 									<c:forEach items="${kindList}" var="kind" varStatus="status">
 										<c:choose>

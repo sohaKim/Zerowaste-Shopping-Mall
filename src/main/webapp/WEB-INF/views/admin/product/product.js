@@ -47,7 +47,7 @@ function go_save() {
 	      $("#product_image").focus();
 	 } else {
 		 // 주의: 이미지 파일을 전송하므로 encType 설정되어야 함.
-		 $("#wirte_form").attr("encoding", "multipart/form-data");
+		 $("#write_form").attr("encoding", "multipart/form-data");
 		 $("#write_form").attr("action", "admin_product_write").submit();
 	 }
 	

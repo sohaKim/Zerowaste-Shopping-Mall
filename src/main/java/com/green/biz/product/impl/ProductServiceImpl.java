@@ -41,6 +41,19 @@ public class ProductServiceImpl implements ProductService {
 		
 		return pDao.getProductListByKind(vo);
 	}
+	
+	// 카테고리 페이징
+//	@Override
+//	public List<ProductVO> categoryWithPaging(Criteria criteria, String name) {
+//	
+//		return pDao.categoryWithPaging(criteria, name);
+//	}
+//	
+//	@Override
+//	public int countCategoryProductList(String name) {
+//		return pDao.countCategoryProductList(name);
+//	}
+	
 
 	@Override
 	public int countProductList(String name) {
@@ -77,5 +90,9 @@ public class ProductServiceImpl implements ProductService {
 		
 		return pDao.getProductSales();
 	}
+
+	
+
+
 
 }

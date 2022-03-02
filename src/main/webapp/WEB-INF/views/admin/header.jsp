@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="admin/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="admin/product/product.js"></script>
+
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap-grid.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -23,7 +23,7 @@
 					<a href="admin_order_list">  주문리스트 </a> | 
 					<a href="admin_member_list">  회원리스트 </a> | 
 					<a href="admin_qna_list">  QnA리스트 </a> | 
-					<a href="#"> Notice</a> | 
+					<a href="admin_notice_list"> Notice</a> | 
 					<a href="#">  판매실적 </a>
 				</div>
 			

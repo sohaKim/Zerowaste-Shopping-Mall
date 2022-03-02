@@ -19,11 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.green.biz.admin.AdminService;
 import com.green.biz.dto.MemberVO;
+import com.green.biz.dto.NoticeVO;
 import com.green.biz.dto.OrderVO;
 import com.green.biz.dto.ProductVO;
 import com.green.biz.dto.QnaVO;
 import com.green.biz.dto.WorkerVO;
 import com.green.biz.member.MemberService;
+import com.green.biz.notice.NoticeService;
 import com.green.biz.order.OrderService;
 import com.green.biz.product.ProductService;
 import com.green.biz.qna.QnaService;
@@ -45,6 +47,8 @@ public class AdminController {
 	private OrderService orderService;
 	@Autowired
 	private QnaService qnaService;
+	@Autowired
+	private NoticeService noticeService;
 
 	// 어드민 로그인 창 띄우기
 	@GetMapping(value = "/admin_login_form")
@@ -145,13 +149,41 @@ public class AdminController {
 	
 	
 	// 어드민에서 카테고리별 상품보기
+
 	@GetMapping(value="/admin_product_category")
 	public String productKindList(ProductVO vo, Model model) {
 		List<ProductVO> listProduct = productService.getProductListByKind(vo);
-		model.addAttribute("adminproductKindList", listProduct);
+		model.addAttribute("adminProductKindList", listProduct);
 		
 		return "admin/product/productKind";
 	}
+
+	// 카테고리 페이징
+//	@GetMapping(value="/admin_product_category")
+//	public String productKindList(@RequestParam(value="key", defaultValue="") String name, 
+//			Criteria criteria, HttpSession session, Model model, ProductVO vo) {
+//		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+//		
+//		if (adminUser == null) {
+//			return "admin/admin";
+//		} else {
+//			List<ProductVO> listProduct = productService.categoryWithPaging(criteria, name);
+//			
+//			// 화면에 표시할 페이지 버튼 정보 설정.
+//			PageMaker pageMaker = new PageMaker();
+//			pageMaker.setCriteria(criteria);						// 현재 페이지와 페이지당 항목 수 설정.
+//			int totalCount = productService.countCategoryProductList(vo.getKind());
+//			pageMaker.setTotalCount(totalCount);				// 전체 상품목록 개수 설정 및 페이지 정보 초기화
+//			System.out.println("[adminProductKindList] pageMaker = " + pageMaker);
+//			
+//			model.addAttribute("adminProductKindList", listProduct);
+//			
+//			model.addAttribute("productListSize", listProduct.size());
+//			model.addAttribute("pageMaker", pageMaker);
+//			
+//			return "admin/product/productKind";
+//		}
+//	}
 
 	// 상품 등록 페이지 표시
 	@PostMapping(value="/admin_product_write_form")
@@ -406,4 +438,170 @@ public class AdminController {
 	}
 	
 	
+	
+	/*
+	 * 		Notice 관련
+	 */
+	
+
+	// 공지사항 목록
+/*	@GetMapping(value="/admin_notice_list")
+	public String adminNoticeList(@RequestParam(value="key", defaultValue="") String content, Model model) {
+		List<NoticeVO> noticeList = noticeService.searchNotice(content);
+
+		model.addAttribute("noticeList", noticeList);
+		
+		return "admin/notice/noticeList";
+	}
+	
+*/	
+	
+@RequestMapping(value="/admin_notice_list")
+	public String adminNoticeList(@RequestParam(value="key", defaultValue="") String subject,
+			Criteria criteria, HttpSession session, Model model) {
+		// 관리자 로그인 확인.
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if (adminUser == null) {
+			return "admin/main";
+		} else {
+			// 공지 목록조회
+			List<NoticeVO> noticeList = noticeService.getNoticeListWithPaging(criteria, subject);
+			
+			// 화면에 표시할 페이지 버튼 정보 설정.
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCriteria(criteria);						// 현재 페이지와 페이지당 항목 수 설정.
+			int totalCount = noticeService.countNoticeList(subject);
+			pageMaker.setTotalCount(totalCount);				// 전체 공지 목록 개수 설정 및 페이지 정보 초기화
+			System.out.println("[adminNoticeList] pageMaker = " + pageMaker);
+			
+			model.addAttribute("noticeList", noticeList);
+			model.addAttribute("noticeListSize", noticeList.size());
+			model.addAttribute("pageMaker", pageMaker);
+			
+			return "admin/notice/noticeList";
+		}
+	}	
+
+
+ // 공지 등록 페이지 표시
+	@PostMapping(value="/admin_notice_write_form")
+	public String adminNoticeWriteView(Model model) {
+		String kindList[] = {"일반", "배송", "이벤트", "기타"};
+		
+		model.addAttribute("nkindList", kindList);
+		return "admin/notice/noticeWrite";
+	}
+	
+	// 공지 등록 처리
+	@PostMapping(value="/admin_notice_write")
+	public String adminNoticeWrite(@RequestParam(value="notice_image") MultipartFile uploadFile,
+																NoticeVO vo, HttpSession session) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+			
+		if (adminUser == null) {
+			return "admin/main";
+		} else {
+			String fileName = "";
+			if (!uploadFile.isEmpty()) {			// 이미지 파일이 있는 경우.
+				fileName = uploadFile.getOriginalFilename();
+				
+				// vo 객체에 이미지 파일 저장.
+				vo.setNotimg(fileName);
+				
+				// 이미지 파일의 실제 저장경로 구하기
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/notice_images/");
+				System.out.println("이미지 경로: " + image_path);
+			
+				try {
+					// 이미지 파일을 위의 경로로 이동시킨다
+					File dest = new File(image_path + fileName);
+					uploadFile.transferTo(dest);
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		noticeService.insertNotice(vo);
+		
+		return "redirect:admin_notice_list";
+	}
+	
+	// 공지 상세보기
+	@GetMapping(value="/admin_notice_detail")
+	public String adminNoticeDetail(NoticeVO vo, Model model) {
+		String kindList[] = {"", "일반","배송", "이벤트", "기타"};
+		
+		NoticeVO notice = noticeService.getNotice(vo);
+		
+		model.addAttribute("noticeVO", notice);
+		
+		int index = Integer.parseInt(notice.getNkind());
+		model.addAttribute("kind", kindList[index]);
+		
+		return "admin/notice/noticeDetail";
+	}
+
+	
+	 // 공지 수정 창열기
+	@PostMapping(value="/admin_notice_update_form")
+	public String adminNoticeUpdateView(NoticeVO vo, Model model) {
+		String kindList[] = {"일반", "배송", "이벤트", "기타"};
+		
+		NoticeVO notice = noticeService.getNotice(vo);
+		
+		model.addAttribute("noticeVO", notice);
+		model.addAttribute("kindList", kindList);
+		
+		return "admin/notice/noticeUpdate";
+	}
+	
+	
+	//상품 수정 처리
+	@PostMapping(value="/admin_notice_update")
+	public String adminNoticeUpdate(@RequestParam(value="notice_image") MultipartFile uploadFile, 
+																	@RequestParam(value="nonmakeImg") String origImage,
+																	NoticeVO vo, HttpSession session) { 
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if (adminUser == null) {
+			return "admin/main";
+		} else {
+			String fileName = "";
+			
+			// 이미지 파일을 수정 시 설정.
+			if (!uploadFile.isEmpty()) {			// 이미지 파일이 있는 경우.
+				fileName = uploadFile.getOriginalFilename();
+				
+				// vo 객체에 이미지 파일 저장.
+				vo.setNotimg(fileName);
+				
+				// 이미지 파일의 실제 저장경로 구하기.
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/notice_images/");
+				System.out.println("이미지 경로: " + image_path);
+			
+				try {
+					// 이미지 파일을 위의 경로로 이동시킨다...
+					File dest = new File(image_path + fileName);
+					uploadFile.transferTo(dest);
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			} else {
+				// 기존 이미지로 image 필드 설정..
+				vo.setNotimg(origImage);
+			}
+		
+			noticeService.updateNotice(vo);
+			
+			return "redirect:admin_notice_list";
+		}
+	}
+	
+	
+
+	
+	
+
 }

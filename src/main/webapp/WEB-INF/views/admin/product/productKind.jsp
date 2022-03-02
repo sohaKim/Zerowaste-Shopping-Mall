@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<script type="text/javascript" src="admin/product/product.js"></script>
+<style>
+th, td {
+	text-align: center;
+}
+</style>
 
 
 	<div class="container">
@@ -8,7 +14,7 @@
 			<div class="col-3" style="margin-top: 54px;">
 				<h4 style="margin: 10px 10px 10px 30px;">Category</h4>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item"><a href="admin_product_category?kind=''">ALL</a></li>
+					<li class="list-group-item"><a href="admin_product_list">ALL</a></li>
 					<li class="list-group-item"><a href="admin_product_category?kind=1">LIVING</a></li>
 					<li class="list-group-item"><a href="admin_product_category?kind=2">BATHROOM</a></li>
 					<li class="list-group-item"><a href="admin_product_category?kind=3">KITCHEN</a></li>
@@ -30,7 +36,7 @@
 				<thead>
 					<tr>
 						<th scope="col">번호</th>
-						<th scope="col">상품명</th>
+						<th scope="col" style="width: 350px;">상품명</th>
 						<th scope="col">원가</th>
 						<th scope="col">판매가</th>
 						<th scope="col">등록일</th>
@@ -46,9 +52,10 @@
 							</tr>
 						</c:when>
 						<c:otherwise>
-							<c:forEach items="${adminproductKindList }" var="productVO">
+							<c:forEach items="${adminProductKindList}" var="productVO">
 								<tr>
 									<td>${productVO.pseq}</td>
+									<!--  <td style="text-align: left;"><a href="admin_product_detail${pageMaker.makeQuery(pageMaker.criteria.pageNum)}&pseq=${productVO.pseq}">${productVO.name }</a></td>-->
 									<td><a href="admin_product_detail?pseq=${productVO.pseq }">${productVO.name }</a></td>
 									<td><fmt:formatNumber value="${productVO.price1 }" /></td>
 									<td><fmt:formatNumber value="${productVO.price2 }" /></td>
@@ -68,6 +75,27 @@
 				</table>
 </form>
 			</div>
+<!--  페이징 부분 -->
+		<!-- <nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+
+				<c:if test="${pageMaker.prev}">
+					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(pageMaker.startPage-1)}">이전</a></li>
+				</c:if>
+-->
+				<!-- [1][2][3]... 표시 부분 -->
+				<!-- 
+				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
+					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(index)}">${index}</a></li>
+				</c:forEach>
+
+				<c:if test="${pageMaker.next}">
+					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(pageMaker.endPage+1)}">다음</a></li>
+				</c:if>
+			</ul>
+		</nav>
+		 -->
+		<!--  페이징 끝 -->
 
 		</div>
 	</div>

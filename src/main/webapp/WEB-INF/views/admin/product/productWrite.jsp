@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<script type="text/javascript" src="admin/product/product.js"></script>
 <style>
 div .input-group {
 	margin-bottom: 10px;
