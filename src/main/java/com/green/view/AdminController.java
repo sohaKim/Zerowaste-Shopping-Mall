@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,6 +24,7 @@ import com.green.biz.dto.NoticeVO;
 import com.green.biz.dto.OrderVO;
 import com.green.biz.dto.ProductVO;
 import com.green.biz.dto.QnaVO;
+import com.green.biz.dto.SalesQuantity;
 import com.green.biz.dto.WorkerVO;
 import com.green.biz.member.MemberService;
 import com.green.biz.notice.NoticeService;
@@ -376,7 +378,7 @@ public class AdminController {
 		
 		return "redirect:admin_order_list";
 	}
-	
+		
 	// 주문처리 상태별 상품 목록보기
 	@GetMapping(value="/result")
 	public String selectOrderByResult(OrderVO vo, Model model) {
@@ -558,7 +560,7 @@ public class AdminController {
 	}
 	
 	
-	//상품 수정 처리
+	//공지 수정 처리
 	@PostMapping(value="/admin_notice_update")
 	public String adminNoticeUpdate(@RequestParam(value="notice_image") MultipartFile uploadFile, 
 																	@RequestParam(value="nonmakeImg") String origImage,
@@ -600,7 +602,25 @@ public class AdminController {
 	}
 	
 	
-
+	
+	/*
+	 * 		판매실적
+	 */
+	// 상품별 판매실적 화면출력..
+	@RequestMapping(value="/admin_sales_record_form")
+	public String adminProductSalesChart() {
+		
+		return "admin/order/salesRecord";
+	}
+	
+	
+	// 차트를 위한 상품별 판매실적 조회(JSON 데이터 포맷 전송
+	@RequestMapping(value="/sales_record_chart", produces="application/json; charset=utf-8") 
+	@ResponseBody				// 데이터 자체를 리턴
+	public List<SalesQuantity> salesRecordChart() {
+	
+		return productService.getProductSales();
+	}
 	
 	
 
