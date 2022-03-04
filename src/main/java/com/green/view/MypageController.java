@@ -123,7 +123,7 @@ public class MypageController {
       // shoping-cart.jsp의 quantity
       @RequestMapping(value="/cart_quantity_change") 
       
-      public String updateQuantityOfCart(@RequestParam int[]quantity, 
+      public String updateQuantityOfCart(@RequestParam int[] quantity, 
     		  							 @RequestParam int[] pseq, 
     		  							 Model model, HttpSession session, CartVO vo) {
          

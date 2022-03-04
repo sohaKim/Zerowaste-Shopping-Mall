@@ -4,7 +4,7 @@
 
 	<select id="listFaq" resultType="faq">
 		SELECT * FROM faq
-		ORDER BY indate DESC
+		ORDER BY fseq
 	</select>
 	
 </mapper>
