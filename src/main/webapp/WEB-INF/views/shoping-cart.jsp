@@ -24,6 +24,21 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+<style>
+#quantity {
+
+	border:none;
+
+	width: 70px;
+    height: 50px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    background: #f5f5f5;
+    margin-bottom: 5px;
+
+}
+</style>
 
 </head>
 <body>
@@ -158,82 +173,86 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Shoping Cart Section Begin -->    
-    <section class="shoping-cart spad">
-    <form name="formm" id="theform" method="post">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__table">
-                                                         
-                     <!-- C코드로 수정 시작 -->
-                     <!-- 상품 이미지크기 100px, 100px -->                         
-                     
-                     <c:forEach items="${cartList}" var="cartVO"> 
-                        <c:choose>
-	                        <c:when test= "${cartList.size()==0}">
-						      	<h1> 장바구니가 비었습니다. </h1> 
-						    </c:when> 
-                        <c:otherwise>
+    <section class="shoping-cart spad">                            
+    <c:choose>
+	     <c:when test= "${map.count == 0}">
+		 	<h1> 장바구니가 비었습니다. </h1> 
+		  </c:when> 
+		  
+          <c:otherwise>
+          <div class="container">
+          <form name="formm" id="theform" method="post">
+            <div class="row">           
+                <div class="col-lg-12">                
+                    <div class="shoping__cart__table">                               
 	                        <table>
 	                            <thead>
 	                                <tr>
 	                                    <th class="shoping__product">Products<br>상품</th>
 	                                    <th>Price<br>금액</th>
 	                                    <th>Quantity<br>수량</th>
-	                                    <th></th>
+	                                   	<th></th>  
 	                                    <th>Total<br>총 금액</th>
 	                                    <th>Delete<br>삭제</th>
 	                                    <th></th>
 	                                </tr>
 	                            </thead>                             
-	                             <tbody>                          
+	                             <tbody>
+	                             <c:forEach var="cartVO" items="${map.cartList}" varStatus="i">                           
 	                                <tr>
 	                                    <td class="shoping__cart__item">
 	                                    	<a href="product_detail?pseq=${cartVO.pseq}">
-	                                        	<img style="width:100px; height:100px" src="img/product_images/" alt="image">
+	                                        	<img style="width:100px; height:100px" src="product_images/${cartVO.image}" alt="image">
 	                                         </a>
 	                                        <h5>${cartVO.pname}</h5>                                        	
 	                                    </td>
-	                                    <td class="shoping__cart__price">	                                        
-	                                         <fmt:formatNumber value="${cartVO.price2}" type="currency"/> 
+	                                    <td class="shoping__cart__price" id="price">
+	                                    	 <input id="price" type="hidden" name="price" value="${cartVO.price2}">	                                        
+	                                         <!--<fmt:formatNumber value="${cartVO.price2}" type="currency"/>-->
+	                                         <fmt:formatNumber value="${cartVO.price2}" pattern="###,###,###"/>                                        
 	                                    </td>
 	                                    <td class="shoping__cart__quantity">
 	                                        <div class="quantity_btn">
-	                                            <div class="pro-qty">
-	                                                <input type="text" name="quantity" id="quantity" value="${cartVO.quantity}">
-	                                            </div>
+	                                             <div id="quantity_input">
+			                                         <input type="number" name="quantity" id="quantity" value="${cartVO.quantity}">
+			                                         <input type="hidden" name="pseq" value="${cartVO.pseq}">
+		                                         </div>
 	                                        </div>
 	                                    </td>
+	                                     
+	                                      
 	                                    <td class= "shoping__cart__quantity">
 	                                    	<div class="quantity_modify_btn">
-	                                    		<button type="button" class="site-btn" onclick="go_cart_change()">변경</button>
-	                                    	</div>	
+		                                    	<input type="hidden" name="count" value="${map.count}">
+		 										<button type="submit" id="btnUpdate" class="site-btn" onclick="go_cart_change()">수정</button> 
+		 									</div>		
 	                                    </td>
-	                                    <td class="shoping__cart__total">		                                      
-		                                      <fmt:formatNumber value="${cartVO.price2*cartVO.quantity}" type="currency"/>
-		                                
-		                                
+	                                     
+	                                    
+	                                    <td class="shoping__cart__total" id="pseqPrice">	                                      
+		                                     <!--  <span><fmt:formatNumber  value="${cartVO.price2*cartVO.quantity}" type="currency"/></span> -->
+		                                    <!-- <input id="output" type="text" onchange="NumFormat(this)" readonly="only"> --> 
+		                                    <fmt:formatNumber pattern="###,###,###" value="${cartVO.money}"/> <!-- 데이터삽입 필요 -->
 		                                </td>
 	                                    <td class="shoping__cart__item__close">	                                       
 	                                        <input type="checkbox" name="cseq" value= "${cartVO.cseq}">
 	                                    </td>
-	                                  </tr>   
+	                                  </tr> 
+	                                 </c:forEach>   
 	                             </tbody>
-	                        </table>
-                        </c:otherwise>	                        
-                        </c:choose>
-                     </c:forEach>                                       
-                  </div>
-               </div>
-          </div>
-
+	                        </table>                                   
+                 		</div>  
+               		</div>	
+            	</div>
+          
             <!-- 버튼 -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="shop-grid" class="primary-btn cart-btn">CONTINUE SHOPPING | 쇼핑계속</a>
- 						<a href="#" class="primary-btn cart-btn cart-btn-right" onclick="go_cart_delete()">Delete | 삭제</a>    
+ 						<a href="#" class="primary-btn cart-btn cart-btn-right" onclick="go_cart_delete()">Delete | 삭제</a>  	 
                     </div>
+                    
                 </div>
                 <div class="col-lg-6">
                 	<!--
@@ -252,19 +271,27 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total | 장바구니 금액</h5>
                         <ul>                       	
+                           <!-- 
                             <li>Subtotal | 소계 <span><fmt:formatNumber value="${totalPrice}" type="currency"/></span></li> 
-                            <li>Total | 총 금액 <span><fmt:formatNumber value="${totalPrice}" type="currency"/></span></li>  
+                            <li>Total | 총 금액 <span><fmt:formatNumber value="${totalPrice}" type="currency"/></span></li>
+                            -->
+                            <li>Subtotal | 소계 <span><fmt:formatNumber value="${map.sumMoney}" type="currency"/></span></li>
+                            <li>Subtotal | 배송비 <span><fmt:formatNumber value="${map.fee}" type="currency"/></span></li>
+                            <li>Total | 전체 금액 <span><fmt:formatNumber value="${map.allSum}" type="currency"/></span></li>  
                         </ul>
                    
-                        <c:if test= "${cartList.size() != 0}">            
+                        <c:if test= "${map.cartList.size() != 0}">            
                         	<a href="checkout" class="primary-btn" onclick="go_order_insert()">PROCEED TO CHECKOUT | 결제하기</a>
                     	</c:if>
                     </div>
                 </div>
             </div>
+           </form> 
         </div>
-    </form>    
+	  </c:otherwise>
+    </c:choose>
     </section>
+    
     <!-- Shoping Cart Section End -->
         <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

@@ -7,11 +7,57 @@
 		VALUES(cart_seq.NEXTVAL,#{id},#{pseq},#{quantity})
 	</insert>
 	
+	
+	<!-- 김소연 추가 시작 03.03 -->
+	
+	<!-- 1.장바구니에 동일한 상품 레코드 확인 -->
+	 
+	<select id="countCart" resultType="int">
+		SELECT COUNT(*)
+		FROM cart
+		WHERE id = #{id}
+		AND pseq = #{pseq}
+	</select>
+	 
+	<!-- 2.장바구니에 동일한 상품pseq가 존재할경우 수정 update -->
+	 
+	<update id="updatePseqCart">
+		UPDATE cart
+		SET quantity = #{quantity} + quantity
+		WHERE id = #{id}
+		AND pseq = #{pseq}		
+	</update>
+		
+	<!-- 
 	<select id="listCart" parameterType="String" resultType="cart">
 		SELECT * FROM cart_view
 		WHERE id=#{id}
 	</select>
+	 -->
+	 
+	 <!--new 3.장바구니 리스트 조회 new -->
+	 <select id="listCart" resultType="cart">
+		SELECT * FROM cart_view
+		WHERE id=#{id}				
+	</select>
 	
+	<!-- 4. 장바구니 수량 수정  -->
+	<update id="updateQuantityOfCart">
+		UPDATE cart
+		SET quantity = #{quantity}
+		WHERE id= #{id}
+		AND pseq = #{pseq}
+	</update>
+	
+	<!-- 5. 장바구니 전체 금액 합계 -->
+	<select id="sumMoney" resultType="int">
+		SELECT NVL(SUM(price2 * quantity), 0) money
+		FROM cart c, product p
+		WHERE c.pseq = p.pseq
+		AND c.id = #{id}	
+	</select>		 
+	<!-- 김소연 추가 끝 03.03 -->
+	 
 	<!-- 장바구니 삭제는 실제 cart테이블이 대상 -->
 	<delete id="deleteCart" parameterType="int">
 		DELETE FROM cart
@@ -19,10 +65,17 @@
 	</delete>
 	
 	<!-- 장바구니 수량변경  02.28추가 -->
+	<!-- 모든 상품이 첫번째 항목과 동일하게 수량 적용됨 ㅠ -->
+ 	<!--  
 	<update id="updateQuantityOfCart">
 		UPDATE cart
-		SET cseq=#{cseq}, pseq=#{pseq}, quantity=#{quantity}	 
+		SET quantity=#{quantity}
 	</update>
+	-->
+	
+
+
+
 
 	<!-- 장바구니 항목의 주문 처리 결과-->
 	<update id="updateCart" parameterType="int">

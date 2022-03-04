@@ -107,7 +107,7 @@
                             	<ul class="header__menu__dropdown">
 	                            	<li><a href="notice_list">NOTICE</a></li>
 	                            	<li><a href="aboutus">ABOUT US</a></li>
-	                            	<li><a href="faq">FAQ</a></li>                         	
+	                            	<li><a href="faq_list">FAQ</a></li>                         	
                             	</ul>
                             </li>
                             <li><a href="qna_list">Q&amp;A(1:1)</a></li>

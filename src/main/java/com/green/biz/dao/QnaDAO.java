@@ -4,6 +4,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.green.biz.dto.QnaVO;
 
 @Repository
@@ -35,6 +36,7 @@ public class QnaDAO  {
 	
 	// ▶▶ Admin관리자 페이지 작성시 추가 부분 
 	// 관리자가 조건없이 모든 Q&A를 최신순으로 조회
+
 	public List<QnaVO> listAllQna() {
 		
 		return mybatis.selectList("mappings.qna-mapping.listAllQna");
