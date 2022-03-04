@@ -151,7 +151,6 @@ public class AdminController {
 	
 	
 	// 어드민에서 카테고리별 상품보기
-
 	@GetMapping(value="/admin_product_category")
 	public String productKindList(ProductVO vo, Model model) {
 		List<ProductVO> listProduct = productService.getProductListByKind(vo);
@@ -159,34 +158,35 @@ public class AdminController {
 		
 		return "admin/product/productKind";
 	}
-
+	
 	// 카테고리 페이징
-//	@GetMapping(value="/admin_product_category")
-//	public String productKindList(@RequestParam(value="key", defaultValue="") String name, 
-//			Criteria criteria, HttpSession session, Model model, ProductVO vo) {
-//		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
-//		
-//		if (adminUser == null) {
-//			return "admin/admin";
-//		} else {
-//			List<ProductVO> listProduct = productService.categoryWithPaging(criteria, name);
+//		@GetMapping(value="/admin_product_category")
+//		public String productKindList(@RequestParam(value="key", defaultValue="") String name, 
+//				Criteria criteria, HttpSession session, Model model, ProductVO vo) {
+//			WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
 //			
-//			// 화면에 표시할 페이지 버튼 정보 설정.
-//			PageMaker pageMaker = new PageMaker();
-//			pageMaker.setCriteria(criteria);						// 현재 페이지와 페이지당 항목 수 설정.
-//			int totalCount = productService.countCategoryProductList(vo.getKind());
-//			pageMaker.setTotalCount(totalCount);				// 전체 상품목록 개수 설정 및 페이지 정보 초기화
-//			System.out.println("[adminProductKindList] pageMaker = " + pageMaker);
-//			
-//			model.addAttribute("adminProductKindList", listProduct);
-//			
-//			model.addAttribute("productListSize", listProduct.size());
-//			model.addAttribute("pageMaker", pageMaker);
-//			
-//			return "admin/product/productKind";
+//			if (adminUser == null) {
+//				return "admin/main";
+//			} else {
+//				List<ProductVO> listProduct = productService.categoryWithPaging(criteria, name, vo.getKind());
+//				
+//				// 화면에 표시할 페이지 버튼 정보 설정.
+//				PageMaker pageMaker = new PageMaker();
+//				pageMaker.setCriteria(criteria);						// 현재 페이지와 페이지당 항목 수 설정.
+//				int totalCount = productService.countCategoryProductList(vo.getKind());
+//				pageMaker.setTotalCount(totalCount);				// 전체 상품목록 개수 설정 및 페이지 정보 초기화
+//				System.out.println("[adminProductKindList] pageMaker = " + pageMaker);
+//				
+//				model.addAttribute("adminProductKindList", listProduct);
+//				model.addAttribute("kind", vo.getKind());
+//				
+//				model.addAttribute("productListSize", listProduct.size());
+//				model.addAttribute("pageMaker", pageMaker);
+//				
+//				return "admin/product/productKind";
+//			}
 //		}
-//	}
-
+	
 	// 상품 등록 페이지 표시
 	@PostMapping(value="/admin_product_write_form")
 	public String adminProductWriteView(Model model) {
@@ -484,6 +484,15 @@ public class AdminController {
 			return "admin/notice/noticeList";
 		}
 	}	
+
+// 어드민에서 카테고리별 공지보기
+@GetMapping(value="/admin_notice_category")
+public String noticeKindList(NoticeVO vo, Model model) {
+	List<NoticeVO> listNotice = noticeService.getNoticeByCategory(vo);
+	model.addAttribute("adminNoticeKindList", listNotice);
+	
+	return "admin/notice/noticeKind";
+}
 
 
  // 공지 등록 페이지 표시

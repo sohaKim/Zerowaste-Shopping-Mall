@@ -44,55 +44,23 @@ function go_wrt() {
 						</tr>
 					</thead>
 					
-				<c:choose>
-				<c:when test="${noticeListSize<=0}">
-					<tr>
-						<td width="100%" colspan="7" align="center" height="23">등록된 공지가 없습니다.</td>
-					</tr>
-				</c:when>
-				<c:otherwise>
-					<c:forEach items="${noticeList }" var="noticeVO">
+					<c:forEach items="${adminNoticeKindList}" var="noticeVO">
 						<tr>
 							<td>${noticeVO.nseq}</td>
-							<td><a href="admin_notice_detail${pageMaker.makeQuery(pageMaker.criteria.pageNum)}&nseq=${noticeVO.nseq}">${noticeVO.subject}</a></td>
-							<!-- <a href="admin_notice_detail?nseq=${noticeVO.nseq }">${noticeVO.subject }</a></td>  -->
+							<td><a href="admin_notice_detail?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></td> 
 							<td><c:choose>
 									<c:when test='${noticeVO.nkind=="1"}'>일반</c:when>
 									<c:when test='${noticeVO.nkind=="2" }'>배송</c:when>
 									<c:when test='${noticeVO.nkind=="3" }'>이벤트</c:when>
 									<c:when test='${noticeVO.nkind=="4" }'>기타</c:when>
 								</c:choose></td>
-							<td><fmt:formatDate value="${noticeVO.indate }" /></td>
+							<td><fmt:formatDate value="${noticeVO.indate}" /></td>
 						</tr>
 					</c:forEach>
-					</c:otherwise>
-					</c:choose>
 
 				</table>
 			</form>
 		</div>
-		<!--  페이징 부분 -->
-
-		<nav aria-label="Page navigation example">
-			<ul class="pagination justify-content-center">
-
-				<c:if test="${pageMaker.prev}">
-					<li class="page-item"><a class="page-link" href="admin_notice_list${pageMaker.makeQuery(pageMaker.startPage-1)}">이전</a></li>
-				</c:if>
-
-				<!-- [1][2][3]... 표시 부분 -->
-
-				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-					<li class="page-item"><a class="page-link" href="admin_notice_list${pageMaker.makeQuery(index)}">${index}</a></li>
-				</c:forEach>
-
-				<c:if test="${pageMaker.next}">
-					<li class="page-item"><a class="page-link" href="admin_notice_list${pageMaker.makeQuery(pageMaker.endPage+1)}">다음</a></li>
-				</c:if>
-			</ul>
-		</nav>
-
-		<!--  페이징 끝 -->
 
 	</div>
 </div>

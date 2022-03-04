@@ -27,8 +27,8 @@ th, td {
 			<form name="frm" id="prod_form" method="post">
 				<div class="input-group" style="margin-bottom: 10px;">
 					<input type="text" class="input-lg" placeholder="상품명 입력" id="key" name="key"> 
-					<input class="btn btn-outline-primary btn-sm" type="button" name="btn_search" value="검색" onClick="go_search()"
-					> <input class="btn btn-primary" type="button" value="상품 등록" name="btn_write" onClick="go_wrt()" style="margin-left: 420px;">
+					<input class="btn btn-outline-primary btn-sm" type="button" name="btn_search" value="검색" onClick="go_search()">
+					<input class="btn btn-primary" type="button" value="상품 등록" name="btn_write" onClick="go_wrt()" style="margin-left: 420px;">
 				</div>
 				<table class="table table-hover">
 					<thead>

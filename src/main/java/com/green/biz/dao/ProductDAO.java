@@ -37,18 +37,19 @@ public class ProductDAO {
 		
 		return mybatis.selectList("mappings.product-mapping.getProductListByKind",vo);
 	}
-	
-//	public List<ProductVO> categoryWithPaging(Criteria criteria, String name) {
+// 카테고리 + 페이징 일단 보류 (수련 3/4)	
+//	public List<ProductVO> categoryWithPaging(Criteria criteria, String name, String kind) {
 //		HashMap<String,Object> map = new HashMap<>();
 //		map.put("criteria", criteria);
 //		map.put("name", name);
+//		map.put("kind", kind);
 //		
 //		return mybatis.selectList("mappings.product-mapping.categoryWithPaging", map);
 //	}
 //	
-//	public int countCategoryProductList(String name) {
+//	public int countCategoryProductList(String kind) {
 //		
-//		return mybatis.selectOne("mappings.product-mapping.countCategoryProductList", name);
+//		return mybatis.selectOne("mappings.product-mapping.countCategoryProductList", kind);
 //	}
 	
 	//��ü ��ǰ�� ���� ����

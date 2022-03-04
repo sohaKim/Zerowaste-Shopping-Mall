@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <script type="text/javascript" src="admin/product/product.js"></script>
 <style>
@@ -7,7 +6,6 @@ th, td {
 	text-align: center;
 }
 </style>
-
 
 	<div class="container">
 		<div class="row">
@@ -26,7 +24,7 @@ th, td {
 
 			<div class="col-9">
 				<h3 style="margin: 10px;">상품 리스트</h3>
-				<form name="frm" id="prod_form" method="post">	
+				<form name="frm" id="prod_form" method="post">
 					<div class="input-group" style="margin-bottom: 10px;">
 						<input type="text" class="input-lg" placeholder="상품명 입력" id="key" name="key">
 						<input class="btn btn-outline-primary btn-sm" type="button" name="btn_search" value="검색" onClick="go_search()"> 	
@@ -55,8 +53,8 @@ th, td {
 							<c:forEach items="${adminProductKindList}" var="productVO">
 								<tr>
 									<td>${productVO.pseq}</td>
-									<!--  <td style="text-align: left;"><a href="admin_product_detail${pageMaker.makeQuery(pageMaker.criteria.pageNum)}&pseq=${productVO.pseq}">${productVO.name }</a></td>-->
-									<td><a href="admin_product_detail?pseq=${productVO.pseq }">${productVO.name }</a></td>
+									<!-- <td style="text-align: left;"><a href="admin_product_detail${pageMaker.makeQuery(pageMaker.criteria.pageNum)}&pseq=${productVO.pseq}">${productVO.name }</a></td> -->
+									 <td style="text-align: left;"><a href="admin_product_detail?pseq=${productVO.pseq }">${productVO.name }</a></td>
 									<td><fmt:formatNumber value="${productVO.price1 }" /></td>
 									<td><fmt:formatNumber value="${productVO.price2 }" /></td>
 									<td><fmt:formatDate value="${productVO.regdate }" /></td>
@@ -75,28 +73,28 @@ th, td {
 				</table>
 </form>
 			</div>
-<!--  페이징 부분 -->
-		<!-- <nav aria-label="Page navigation example">
+<!--  페이징 부분 
+
+		<nav aria-label="Page navigation example">
 			<ul class="pagination justify-content-center">
 
 				<c:if test="${pageMaker.prev}">
-					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(pageMaker.startPage-1)}">이전</a></li>
+					<li class="page-item"><a class="page-link" href="admin_product_category${pageMaker.makeKindQuery(pageMaker.startPage-1)}">이전</a></li>
 				</c:if>
--->
-				<!-- [1][2][3]... 표시 부분 -->
-				<!-- 
+
+ 				 [1][2][3]... 표시 부분 
+	
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(index)}">${index}</a></li>
+					<li class="page-item"><a class="page-link" href="admin_product_category${pageMaker.makeKindQuery(index, kind)}">${index}</a></li>
 				</c:forEach>
 
 				<c:if test="${pageMaker.next}">
-					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(pageMaker.endPage+1)}">다음</a></li>
+					<li class="page-item"><a class="page-link" href="admin_product_category${pageMaker.makeKindQuery(pageMaker.endPage+1)}">다음</a></li>
 				</c:if>
 			</ul>
 		</nav>
-		 -->
-		<!--  페이징 끝 -->
 
+<!-- 페이징 끝 -->
 		</div>
 	</div>
 

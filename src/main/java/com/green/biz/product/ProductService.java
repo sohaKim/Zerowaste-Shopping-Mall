@@ -17,10 +17,10 @@ public interface ProductService {
 	
 	List<ProductVO> getProductListByKind(ProductVO vo);
 	
-	// 카테고리 페이징
-//	public List<ProductVO> categoryWithPaging(Criteria criteria, String name);
+//	 카테고리 페이징, 일단 보류 (3/4 수련)
+//	public List<ProductVO> categoryWithPaging(Criteria criteria, String name, String kind);
 //	
-//	public int countCategoryProductList(String name);
+//	public int countCategoryProductList(String kind);
 	
 	public int countProductList(String name);
 	
