@@ -11,7 +11,7 @@ public interface QnaService {
 
 	public void insertQna(QnaVO vo);
 
-	// Qna update수정,  답변이 없을경우만 수정  조건,   02.26 김소연 추가
+	// Qna update수정,  답변이 없을경우만 수정  조건
 	public void updateQnabyQseq(QnaVO vo);
 	
 	

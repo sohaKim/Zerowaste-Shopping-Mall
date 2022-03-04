@@ -18,7 +18,7 @@ public class CartVO {
 	private int price2;		// 판매가
 	private Timestamp indate;	// 등록일
 	private String image;   // 이미지
-	private int money;	   // 상품 가격(?)
+	private int money;	   // 상품 가격 추가항목
 
 	
 }

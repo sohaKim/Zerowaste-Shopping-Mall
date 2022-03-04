@@ -26,20 +26,23 @@
 
 	<!--▶▶ Admin관리자 페이지 작성시 추가 부분 -->
 	<!-- 관리자가 조건없이 모든 Q&A를 최신순으로 조회  -->
-	<!--  
 	<select id="listAllQna" resultType="qna">
 		SELECT * FROM qna
 		ORDER BY indate DESC
 	</select>
-	-->
+
 	  
 	<!--▶▶ Admin관리자 페이지 Q&A 답변여부 수정 -->
-	<!--
 	<update id="updateQna">
 		UPDATE qna
 		 SET reply=#{reply}, rep='2'
 		WHERE qseq=#{qseq}
 	</update>	
-	-->
-	
+
+	<!--▶▶ Admin관리자 페이지 작성시 추가 부분 -->
+	<!--  QnA 상태별 보기 -->
+	<select id="selectQnaRepList" resultType="qna">
+		SELECT * FROM qna WHERE rep=#{rep} ORDER BY indate DESC
+	</select>
+
 </mapper>

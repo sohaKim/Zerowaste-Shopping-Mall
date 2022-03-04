@@ -39,9 +39,7 @@
 		WHERE qseq=#{qseq}
 	</update>	
 
-
-
-	
+	<!--▶▶ Admin관리자 페이지 작성시 추가 부분 -->
 	<!--  QnA 상태별 보기 -->
 	<select id="selectQnaRepList" resultType="qna">
 		SELECT * FROM qna WHERE rep=#{rep} ORDER BY indate DESC

@@ -271,10 +271,6 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total | 장바구니 금액</h5>
                         <ul>                       	
-                           <!-- 
-                            <li>Subtotal | 소계 <span><fmt:formatNumber value="${totalPrice}" type="currency"/></span></li> 
-                            <li>Total | 총 금액 <span><fmt:formatNumber value="${totalPrice}" type="currency"/></span></li>
-                            -->
                             <li>Subtotal | 소계 <span><fmt:formatNumber value="${map.sumMoney}" type="currency"/></span></li>
                             <li>Subtotal | 배송비 <span><fmt:formatNumber value="${map.fee}" type="currency"/></span></li>
                             <li>Total | 전체 금액 <span><fmt:formatNumber value="${map.allSum}" type="currency"/></span></li>  

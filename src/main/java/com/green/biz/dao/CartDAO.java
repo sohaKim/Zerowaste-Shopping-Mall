@@ -15,15 +15,15 @@ public class CartDAO  {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	// 장바구니 담기
+	// 장바구니 담기 --삽입
 	public void insertCart(CartVO vo) {
 		
 		mybatis.insert("mappings.cart-mapping.insertCart", vo);
 	}
 	
 	
-	// 장바구니 동일한 상품 레코드 확인 --김소연 추가 03.03	
-	// 1. 장바구니에 동일한 상품 레코드 확인
+	// 장바구니 동일한 상품 레코드 확인 
+	// 장바구니에 동일한 상품 레코드 확인
 	public int countCart(int pseq, String id) {
 		Map<String, Object>map = new HashMap<String, Object>();
 		map.put("pseq", pseq);
@@ -32,20 +32,20 @@ public class CartDAO  {
 		return mybatis.selectOne("mappings.cart-mapping.countCart", map);
 	}
 	
-	// 장바구니 동일한 상품 레코드 확인 --김소연 추가 03.03	
-	// 2. 장바구니 수량 변경
+	// 장바구니 동일한 상품 레코드 확인 
+	// 장바구니 수량 변경
 	public void updatePseqCart(CartVO vo) {
 		
 		mybatis.update("mappings.cart-mapping.updatePseqCart", vo);
 	}	
 	
-	//  장바구니 목록 --김소연 확인 03.03-- mapping은 바껴도 그대로
+	//  장바구니 목록
 	public List<CartVO> listCart(String id) {
 		
 		return mybatis.selectList("mappings.cart-mapping.listCart", id);
 	}
 	
-	// 장바구니 금액 합계 수정 -- 김소연 확인 03.03
+	// 장바구니 금액 합계 수정 
 	public int sumMoney(String id) {
 		
 		mybatis.selectOne("mappings.cart-mapping.sumMoney", id);
@@ -53,8 +53,7 @@ public class CartDAO  {
 		return mybatis.selectOne("mappings.cart-mapping.sumMoney", id);
 	}
 	
-	
-	
+
 	// 장바구니에서 항목 삭제
 	public void deleteCart(int cseq) {
 		
@@ -67,7 +66,6 @@ public class CartDAO  {
 		mybatis.update("mappings.cart-mapping.updateQuantityOfCart", vo);
 	}
 	
-
 	
 	// 장바구니 항목을 '처리'로 업데이트
 	public void updateCart(int cseq) {

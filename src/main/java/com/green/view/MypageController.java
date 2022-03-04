@@ -32,7 +32,6 @@ public class MypageController {
    
 
    /*
-    * 진행중~~~ 03.02
     * 장바구니 담기 요청 처리
     * 동일 상품이 있을경우 항목 추가가 아닌, 개수추가 +1 
     */
@@ -55,9 +54,7 @@ public class MypageController {
        
        // +) 장바구니에 기존 상품이 있는지 확인
        int count = cartService.countCart(vo.getPseq(), vo.getId());
-       
-       //count == 0  ? cartService.updatePseqCart(vo) : cartService.insertCart(vo);
-       
+              
 	       if (count == 0) {
 	    	   // 없으면 insert
 	    	   cartService.insertCart(vo);
@@ -71,14 +68,13 @@ public class MypageController {
        
     }
  }
-   
+  
 
  /*
-  *  03.03 김소연 수정 진행중~~
   * 장바구니 목록 처리  
   * 수량 X 금액 = 총 금액 계산까지~~~ 
   *  +)배송비 포함, 30,000원이상 무료배송, 미만시 얼마 추가
-  * shopping-cart.jsp 
+  * shoping-cart.jsp 
   */
  
  @RequestMapping(value="shoping-cart")
@@ -108,8 +104,7 @@ public class MypageController {
        map.put("sumMoney", sumMoney); 	// 장바구니 전체 금액
        map.put("fee", fee);	   // 배송비
        map.put("allSum", sumMoney+fee);   // 주문 상품 전체 금액
-       
-       
+             
        
        // 장바구니 목록과 위의 계산 내용을 내장객체에 저장
        model.addAttribute("map", map);      // map 변수 저장
@@ -124,10 +119,8 @@ public class MypageController {
       /*
        * 장바구니 항목의 품목 수량 변경
        * id로 받기
-       * 03.03 김소연 수정 시작
        */
-      // shoping-cart.jsp의 quantity--command객체 CartVO 로 받음
-      // 첫번째 pseq항목의 quantity만 변경되며, 모든 pseq가 변경됨
+      // shoping-cart.jsp의 quantity
       @RequestMapping(value="/cart_quantity_change") 
       
       public String updateQuantityOfCart(@RequestParam int[]quantity, 
@@ -173,8 +166,9 @@ public class MypageController {
    	   return "redirect:shoping-cart";
       }
 
-
+   ///////////////////////////////// 김소연 수정 끝
       
+  
    /*
     * 장바구니 내역의 주문 처리
     */
@@ -190,7 +184,6 @@ public class MypageController {
 		   
 		   int oseq = orderService.insertOrder(vo);
 		   
-		   //TODO:주문번호전달
 		   model.addAttribute("oseq",oseq);
 		   
 		   return "redirect:order_list";
