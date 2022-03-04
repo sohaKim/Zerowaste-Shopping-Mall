@@ -1,13 +1,17 @@
 package com.green.view;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.green.biz.dto.CartVO;
@@ -26,66 +30,136 @@ public class MypageController {
    @Autowired
    private OrderService orderService;
    
-   @PostMapping(value="/cart_insert") // mypage.js의 "cart_insert"
-   // productDetail.jsp의 quantity, pseq --command객체 CartVO 로 받음
-   public String insertCart(CartVO vo, Model model, HttpSession session) {
-      
-      // (1) 세션에 저장된 사용자 정보를 읽어 온다.
-      //       MemberController의 loginAction -- loginUser
-      MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-         
-      // (2) 로그인이 안되어 있으면 로그인, 
-      //          로그인이 되어 있으면, 장바구니에 항목 저장   
-      if (loginUser == null) {
-         return "member/login";
-         
-      } else {
-         vo.setId(loginUser.getId()); // 
-         
-         cartService.insertCart(vo);
-         
-         // (3) 장바구니 목록 조회하여 화면 표시
-         return "redirect:cart_list";
-      }
-   }
+
    /*
-    * 장바구니 목록 처리  
-    * 수량 X 금액 = 총 금액 계산까지~~~ 
-    * shopping-cart.jsp 미리구현  -02.22
+    * 진행중~~~ 03.02
+    * 장바구니 담기 요청 처리
+    * 동일 상품이 있을경우 항목 추가가 아닌, 개수추가 +1 
     */
-      @GetMapping(value="shoping-cart")
-      public String listCart(HttpSession session, Model model) {
+   
+ @RequestMapping(value="/cart_insert") // mypage.js의 "cart_insert"
+ // productDetail.jsp의 quantity, pseq --command객체 CartVO 로 받음
+ public String insertCart(CartVO vo, Model model, HttpSession session) {
+    
+    // (1) 세션에 저장된 사용자 정보를 읽어 온다.
+    //       MemberController의 loginAction -- loginUser
+    MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+       
+    // (2) 로그인이 안되어 있으면 로그인, 
+    //          로그인이 되어 있으면, 장바구니에 항목 저장   
+    if (loginUser == null) {
+       return "member/login";
+       
+    } else {
+       vo.setId(loginUser.getId()); // 
+       
+       // +) 장바구니에 기존 상품이 있는지 확인
+       int count = cartService.countCart(vo.getPseq(), vo.getId());
+       
+       //count == 0  ? cartService.updatePseqCart(vo) : cartService.insertCart(vo);
+       
+	       if (count == 0) {
+	    	   // 없으면 insert
+	    	   cartService.insertCart(vo);
+	       } else {
+	    	   // 있으면 update
+	    	   cartService.updatePseqCart(vo);
+	       }
+     
+	    // (3) 장바구니 목록 조회하여 화면 표시
+	    return "redirect:shoping-cart"; 
+       
+    }
+ }
+   
+
+ /*
+  *  03.03 김소연 수정 진행중~~
+  * 장바구니 목록 처리  
+  * 수량 X 금액 = 총 금액 계산까지~~~ 
+  *  +)배송비 포함, 30,000원이상 무료배송, 미만시 얼마 추가
+  * shopping-cart.jsp 
+  */
+ 
+ @RequestMapping(value="shoping-cart")
+ public String listCart(CartVO vo, HttpSession session, Model model) {
+    
+    MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+    
+    // 로그인이 안되어 있으면 로그인 페이지로
+    if (loginUser == null) {
+       return "member/login"; // jsp이동
+    
+    // 로그인이 되어 있으면, 장바구니 목록으로
+    // cart-mapping.xml의  "listCart" - id로 가져옴
+    } else {
+
+       // -->변동
+       Map<String, Object> map = new HashMap<String, Object>(); 
+       List<CartVO> cartList = cartService.listCart(loginUser.getId()); // 장바구니 정보 
+       int sumMoney = cartService.sumMoney(loginUser.getId()); // 장바구니 전체 금액 호출
+       
+       // 장바구니 전체 금액에 따라 배송비 구분
+       // 배송비(30,000원 이상 무료, 미만 3,000원     
+       int fee = sumMoney >= 30000 ? 0 : 3000;
+       
+       map.put("cartList", cartList); // 장바구니 정보를 map에 저장
+       map.put("count", cartList.size());  // 장바구니 상품의 유무
+       map.put("sumMoney", sumMoney); 	// 장바구니 전체 금액
+       map.put("fee", fee);	   // 배송비
+       map.put("allSum", sumMoney+fee);   // 주문 상품 전체 금액
+       
+       
+       
+       // 장바구니 목록과 위의 계산 내용을 내장객체에 저장
+       model.addAttribute("map", map);      // map 변수 저장
+       model.addAttribute("cartList", cartList);   // shopping-cart.jsp의 $ {cartList}
+       
+       
+       return "shoping-cart"; // jsp
+    }
+ } 
+ 
+ 
+      /*
+       * 장바구니 항목의 품목 수량 변경
+       * id로 받기
+       * 03.03 김소연 수정 시작
+       */
+      // shoping-cart.jsp의 quantity--command객체 CartVO 로 받음
+      // 첫번째 pseq항목의 quantity만 변경되며, 모든 pseq가 변경됨
+      @RequestMapping(value="/cart_quantity_change") 
+      
+      public String updateQuantityOfCart(@RequestParam int[]quantity, 
+    		  							 @RequestParam int[] pseq, 
+    		  							 Model model, HttpSession session, CartVO vo) {
          
-         MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-         
-         // 로그인이 안되어 있으면 로그인 페이지로
+         // (1) 세션에 저장된 사용자 정보를 읽어 온다.
+         //       MemberController의 loginAction -- loginUser
+         MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+            
+         // (2) 로그인이 안되어 있으면 로그인, 
+         //          로그인이 되어 있으면, 장바구니에 항목 저장   
          if (loginUser == null) {
-            return "member/login"; // jsp이동
-         
-         // 로그인이 되어 있으면, 장바구니 목록으로
-         // cart-mapping.xml의  "listCart" - id로 가져옴
+            return "member/login";
+            
          } else {
-            List<CartVO> cartList = cartService.listCart(loginUser.getId());
-            
-            // 총액 계산 = 수량 * 판매가
-            int totalAmount = 0;
-            for (CartVO vo : cartList) {
-               totalAmount += vo.getQuantity() * vo.getPrice2();
-            }
-            
-            // 장바구니 목록과 위의 계산 내용을 내장객체에 저장
-            model.addAttribute("cartList", cartList);   // shopping-cart.jsp의 $ {cartList}
-            model.addAttribute("totalPrice", totalAmount); // shopping-cart.jsp의  ${totalPrice}, 총금액
-            
-            return "shoping-cart"; // jsp
+              vo.setId(loginUser.getId()); // id가져오기
+              
+            // 레코드의 갯수 만큼 반복문 실행
+              for(int i=0; i<pseq.length; i++) {
+            	  vo.setId(loginUser.getId());
+            	  vo.setQuantity(quantity[i]);
+            	  vo.setPseq(pseq[i]);
+            	  
+            	  cartService.updateQuantityOfCart(vo);
+              }
+     
+            // (3) 장바구니 목록 조회하여 화면 표시
+            return "redirect:shoping-cart"; //jsp
          }
       }
-      
-      
-   //   @GetMapping(value="shoping-cart")
-   //   public String listCart(){
-//   	   return "shoping-cart";
-   //   }
+  
       /*
        * 장바구니 항목 삭제 요청 처리
        */
@@ -98,45 +172,8 @@ public class MypageController {
    	   }
    	   return "redirect:shoping-cart";
       }
-      /*
-       * 장바구니 항목의 품목 수량 변경
-       * id로 받기
-       * 김소연 추가 02.28
-       * 
-       */
-   //   @PostMapping(value="/cart_quantity_change")
-   //   public String updateQuantityOfCart(CartVO vo) {
-//   	   
-//   	   cartService.updateQuantityOfCart(vo);
-//   	   
-//   	   return "redirect:shoping-cart"; //jsp
-   //   }
-   //	
-      
-      // shoping-cart.jsp의 quantity, pseq --command객체 CartVO 로 받음
-      @PostMapping(value="/cart_quantity_change") 
-      
-      public String updateQuantityOfCart(CartVO vo, Model model, HttpSession session) {
-         
-         // (1) 세션에 저장된 사용자 정보를 읽어 온다.
-         //       MemberController의 loginAction -- loginUser
-         MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
-            
-         // (2) 로그인이 안되어 있으면 로그인, 
-         //          로그인이 되어 있으면, 장바구니에 항목 저장   
-         if (loginUser == null) {
-            return "member/login";
-            
-         } else {
-            vo.setId(loginUser.getId()); // 
-            
-            cartService.updateQuantityOfCart(vo);
-            
-            // (3) 장바구니 목록 조회하여 화면 표시
-            return "redirect:shoping-cart"; //jsp
-         }
-      }
-      
+
+
       
    /*
     * 장바구니 내역의 주문 처리

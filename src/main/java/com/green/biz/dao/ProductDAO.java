@@ -12,7 +12,7 @@ import com.green.biz.dto.SalesQuantity;
 
 import utils.Criteria;
 
-@Repository		//½ºÇÁ¸µ °´Ã¼·Î µî·Ï
+@Repository		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½
 public class ProductDAO {
 	
 	@Autowired
@@ -37,18 +37,18 @@ public class ProductDAO {
 		
 		return mybatis.selectList("mappings.product-mapping.getProductListByKind",vo);
 	}
-	//ÀüÃ¼ »óÇ°ÀÇ °¹¼ö Á¾·ù
+	//ï¿½ï¿½Ã¼ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int countProductList(String name) {
 		
 		return mybatis.selectOne("mappings.product-mapping.countProductList",name);
 	}
 	
-	//»óÇ° ¸ñ·Ï Á¶È¸
+	//ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	public List<ProductVO> listProduct(String name){
 		
 		return mybatis.selectList("mappings.product-mapping.listProduct",name);
 	}
-	//ÆäÀÌÁöº° »óÇ°¸ñ·Ï Á¶È¸
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	public List<ProductVO> getListWithPaging(Criteria criteria,String name) {
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("criteria", criteria);
@@ -57,19 +57,19 @@ public class ProductDAO {
 		return mybatis.selectList("mappings.product-mapping.listWithPaging",map);
 	}
 	
-	//»óÇ° Ãß°¡
+	//ï¿½ï¿½Ç° ï¿½ß°ï¿½
 	public void insertProduct(ProductVO vo) {
 		
 		mybatis.insert("mappings.product-mapping.insertProduct",vo);
 	}
 	
-	//»óÇ°Á¤º¸ ¼öÁ¤
+	//ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void updateProduct(ProductVO vo) {
 		
 		mybatis.update("mappings.product-mapping.updateProduct",vo);
 	}
 	
-	//Á¦Ç°º° ÆÇ¸Å ½ÇÀû Á¶È¸
+	//ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	public List<SalesQuantity>getProductSales(){
 		
 		return mybatis.selectList("mappings.product-mapping.getProductSales");

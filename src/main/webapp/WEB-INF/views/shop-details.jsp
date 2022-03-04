@@ -24,75 +24,10 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
-    
 
 </head>
 <body>
-<!-- Page Preloder -->
-<!--  <div id="preloder">
-        <div class="loader"></div>
-    </div>-->    
 
-    <!-- Humberger Begin -->
-<!--    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="index">Home</a></li>
-                <li><a href="shop-grid">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="shop-details">Shop Details</a></li>
-                        <li><a href="shopinig-cart">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
-            </ul>
-        </div>
-    </div>-->
-    <!-- Humberger End -->
-
-    
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -186,7 +121,8 @@
                   <form  method="post" name="formm" id="theform">  
                   <fieldset>
                     <div class="product__details__text">
-                        <h3>${productVO.name}</h3>
+                        <h3>${productVO.name}</h3>                       
+                   
                         <!--<div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -196,8 +132,11 @@
                             <span>(18 reviews)</span>
                         </div>--><br>
                         
-                        <label> 가 격 :  </label>  
-                        <div class="product__details__price"><fmt:formatNumber type="currency" value="${productVO.price2}"/></div>
+                        <label> 가 격 :  </label>                      
+                        <!-- 김소연 수정 03.03 -->
+                        <!--  <div class="product__details__price"><fmt:formatNumber type="currency" value="${productVO.price2}"/></div>-->
+                        <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>
+                        
                         <br>
                         <label> 수 량 :  </label>  
                         <div class="product__details__quantity">

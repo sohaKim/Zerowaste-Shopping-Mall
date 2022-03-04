@@ -1,10 +1,13 @@
 package com.green.biz.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.green.biz.dto.NoticeVO;
+
+import utils.notice.Criteria;
 
 
 @Repository
@@ -48,5 +51,23 @@ public class NoticeDAO {
 		
 		mybatis.insert("mappings.notice-mapping.insertNotice", vo);
 	}
+	
+	// ▶▶ Criteria 작성 후 추가 (1) -- 03.02	
+	// int nseq(공지번호) 총 개수 ncnt를  NoticeVO타입으로 매개변수로 받음	 
+	public int countNoticeList(NoticeVO vo) {
+		
+	return mybatis.selectOne("mappings.notice-mapping.countNoticeList", vo);
+	
+}
+	
+	// ▶▶ Criteria 작성 후 추가 (2) -- 03.02
+	public List<NoticeVO> getNoticeWithPaging(Criteria criteria, String content) {
+		HashMap<String, Object>map = new HashMap<>();
+		map.put("criteria", criteria);
+		map.put("content", content);
+		
+		return mybatis.selectList("mappings.notice-mapping.listWithPagingNotice", map);
+	}
+	
 }
 
