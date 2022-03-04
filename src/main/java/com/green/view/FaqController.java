@@ -18,20 +18,20 @@ public class FaqController {
 	/*
 	 * 모든 faq리스트 조회
 	 */
-//	@GetMapping(value="/faq_list")
-//	public String qnaList(Model model, FaqVO vo) {
-//		
-//		List<FaqVO> faqList = faqService.listFaq();
-//		model.addAttribute("faqList", faqList); // qnaList.jsp의 ${qnaList}
-//		
-//		return "faq/faqList"; // jsp
-//	}
-//}	
-	
-	// 화면 전달용 기본 클래스
 	@GetMapping(value="/faq_list")
-	public String qnaList() {
+	public String qnaList(Model model, FaqVO vo) {
+		
+		List<FaqVO> faqList = faqService.listFaq();
+		model.addAttribute("faqList", faqList); // qnaList.jsp의 ${qnaList}
 		
 		return "faq/faqList"; // jsp
 	}
 }	
+//	
+//	// 화면 전달용 기본 클래스
+//	@GetMapping(value="/faq_list")
+//	public String qnaList() {
+//		
+//		return "faq/faqList"; // jsp
+//	}
+//}	

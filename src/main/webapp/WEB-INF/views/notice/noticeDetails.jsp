@@ -37,13 +37,13 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                        <ul>
-                            <li><a href="#">All</a></li>
-                            <li><a href="category?kind=1">LIVING</a></li>
-                            <li><a href="category?kind=2">KITCHEN</a></li>
-                            <li><a href="category?kind=3">BATHROOM</a></li>
-                            <li><a href="category?kind=4">KIT</a></li>
-                            <li><a href="category?kind=5">ETC</a></li>
+                       <ul>
+                            <li><a href="#">All | 전체</a></li>
+                            <li><a href="category?kind=1">LIVING | 거실</a></li>
+                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4">KIT | 키트</a></li>
+                            <li><a href="category?kind=5">ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
@@ -53,10 +53,10 @@
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <span class="arrow_carrot-down"></span>
+                                    <!--  <span class="arrow_carrot-down"></span>-->
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
+                                <button type="submit" class="site-btn">SEARCH | 검색</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -64,8 +64,8 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+82 1688.1234</h5>
-                                <span>평일 오전9시-오후6시 </span>
+                                <h5>+82-1688-1234</h5>
+                                <span>평일 오전9시 - 오후6시 </span>
                             </div>
                         </div>
                     </div>
