@@ -222,3 +222,14 @@
     });
 
 })(jQuery);
+
+
+function filter(filter_str) {
+	var theForm = document.filter_form;
+	var $order = $("#order");
+	console.log("filter=" + filter_str)
+	$order.val(filter_str);
+	
+	theForm.action = "filter";
+	theForm.submit();
+}

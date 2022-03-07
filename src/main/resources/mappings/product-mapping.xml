@@ -17,9 +17,15 @@
 	</select>
 	
 	<!-- 카테고리별 상품 조회 -->
-	<select id="getProductListByKind" resultType="product">
+	<select id="getProductListByKind" parameterType="hashMap" resultType="product">
 		SELECT * FROM product 
-		WHERE kind=#{kind}
+		WHERE kind=#{product.kind}
+		ORDER BY #{order}
+	</select>
+	
+	<!-- 카테고리 all상품 조희0303 -->
+	<select id="getAllListByKind" resultType="product">
+		SELECT * FROM product 
 		ORDER BY name
 	</select>
 	
@@ -27,6 +33,11 @@
 	<select id="countProductList" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM product
 		WHERE name LIKE '%'||#{name}||'%'
+	</select>
+	
+	<!-- 조회한 총 상품의 갯수all0303-->
+	<select id="countProductListAll" resultType="int">
+		SELECT COUNT(*) FROM product
 	</select>
 	
 	<!--상품목록조회 -->
@@ -37,18 +48,47 @@
 		ORDER BY pseq DESC
 	</select>
 	
-	<!-- 페이지별 상품목록 조회 -->
-	<select id="listWithPaging" parameterType="hashMap" resultType="product">
+	<!-- 0303페이지별 상품목록 조회0304가격순이름순 다합쳐서 조회 -->
+	<select id="listWithPagingAll" parameterType="hashMap" resultType="product">
 	<![CDATA[
-	SELECT pseq,regdate,name,price1,price2,useyn,bestyn
-		FROM (SELECT row_number() over(ORDER BY name)rn,pseq,regdate,name,price1,price2,useyn,bestyn
-    		FROM product
-    	  WHERE name LIKE '%'||#{name}||'%')
+	SELECT pseq,name,price2,image
+		FROM (SELECT row_number() over(ORDER BY name)rn,pseq,name,price2,image
+    		FROM product)
 	WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage} 
 		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
 	]]>
 	</select>
 	
+	<select id="listWithPagingFilterLow" parameterType="hashMap" resultType="product">
+	<![CDATA[
+	SELECT pseq,name,price2,image, kind
+	  FROM (SELECT row_number() over(ORDER BY price2 ASC) rn, pseq, name, price2, image, kind
+	    	  FROM product)
+	 WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage} 
+	   AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+	]]>
+	</select>
+
+	<select id="listWithPagingFilterHigh" parameterType="hashMap" resultType="product">
+	<![CDATA[
+	SELECT pseq,name,price2,image, kind
+	  FROM (SELECT row_number() over(ORDER BY price2 DESC) rn, pseq, name, price2, image, kind
+	    	  FROM product)
+	 WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage} 
+	   AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+	]]>
+	</select>
+
+	<select id="listWithPagingFilterName" parameterType="hashMap" resultType="product">
+	<![CDATA[
+	SELECT pseq,name,price2,image, kind
+	  FROM (SELECT row_number() over(ORDER BY name) rn, pseq, name, price2, image, kind
+	    	  FROM product)
+	 WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage} 
+	   AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+	]]>
+	</select>
+			
 	<!-- 상품 추가 -->
 	<insert id="insertProduct" >
 		INSERT INTO product(pseq,kind,name,price1,price2,price3,content,image)

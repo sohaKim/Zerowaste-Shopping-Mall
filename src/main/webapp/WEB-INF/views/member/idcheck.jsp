@@ -9,7 +9,7 @@
 <link href="CSS/subpage.css" rel="stylesheet">
 <style type="text/css">
 body{   
-  background-color:#BDBD00;
+  background-color:#7fad39;
   font-family: Verdana;
 }
 #wrap{     
@@ -40,7 +40,7 @@ function idok(){
   		action="id_check_form" >
     User ID <input type=text name="id" value="${id}"> 
             <input type=submit value="검색" class="submit"><br>     
-    <div style="margin-top: 20px">   
+    <div style="margin-top: 10px">   
       <c:if test="${message == 1}">
         <script type="text/javascript">
           opener.document.formm.id.value="";

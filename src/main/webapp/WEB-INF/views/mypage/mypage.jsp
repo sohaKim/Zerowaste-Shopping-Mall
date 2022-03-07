@@ -29,11 +29,11 @@
 
 		        <div class="col-8">
 		          <div class="order_details_iner">
-		            <h3>My Page(${title})</h3><hr>
+		            <h3>My Page | ${title}</h3><hr>
 		            <form name="formm" method="post">
-		            <table class="table table-borderless" id="cartList">
+		            <table class="table table-bordered border-dark text-center" id="cartList">
 		              <thead>
-		                <tr>
+		                <tr class="table table-success ">
 		                  <th scope="col">주문일자</th>
 		                  <th scope="col">주문번호</th>
 		                  <th scope="col" colspan="2">상품명</th>
@@ -48,7 +48,7 @@
 		                  <td>${orderVO.oseq}</td>
 		                  <td colspan="2"><span>${orderVO.pname} </span></td>
 		                  <td> <span><fmt:formatNumber value="${orderVO.price2}" type="currency"/></span></td>
-		                  <td><a href="order_detail?oseq=${orderVO.oseq}"> 조회 </a></td>
+		                  <td><a href="order_detail?oseq=${orderVO.oseq}" style="color:#7fad39; font-weight: bold;"> 조회 </a></td>
 		                </tr>
 		              </tbody>
 		              </c:forEach>

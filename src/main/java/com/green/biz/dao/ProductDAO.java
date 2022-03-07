@@ -2,6 +2,7 @@ package com.green.biz.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import com.green.biz.dto.SalesQuantity;
 
 import utils.Criteria;
 
-@Repository		//½ºÇÁ¸µ °´Ã¼·Î µî·Ï
+@Repository		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½
 public class ProductDAO {
 	
 	@Autowired
@@ -33,22 +34,58 @@ public class ProductDAO {
 		return mybatis.selectOne("mappings.product-mapping.getProduct", vo);
 	}
 	
-	public List<ProductVO> getProductListByKind(ProductVO vo){
+	//0304shopgridì´ë¦„ìˆœì¡°íšŒ
+	public List<ProductVO> getProductListByKind(ProductVO vo, String order){
+		Map<String, Object> map = new HashMap<>();
 		
-		return mybatis.selectList("mappings.product-mapping.getProductListByKind",vo);
+		map.put("product", vo);
+		map.put("order", order);
+		
+		return mybatis.selectList("mappings.product-mapping.getProductListByKind", map);
 	}
-	//ÀüÃ¼ »óÇ°ÀÇ °¹¼ö Á¾·ù
+	//ì¹´í…Œê³ ë¦¬ë‚®ì€ ê°€ê²©ìˆœ0303
+	public List<ProductVO> getProductListByKindLow(ProductVO vo){
+			
+			return mybatis.selectList("mappings.product-mapping.getProductListByKindLow",vo);
+		}
+	
+	//ì¹´í…Œê³ ë¦¬ ë†’ì€ ê°€ê²©ìˆœ0303
+	public List<ProductVO> getProductListByKindHigh(ProductVO vo){
+		
+		return mybatis.selectList("mappings.product-mapping.getProductListByKindHigh",vo);
+	}
+	//ì¹´í…Œê³ ë¦¬all0303
+	public List<ProductVO> getAllListByKind(ProductVO vo){
+		
+		return mybatis.selectList("mappings.product-mapping.getAllListByKind",vo);
+	}
+	
+	// ì „ì²´ ìƒí’ˆì˜ ê°¯ìˆ˜ ì¡°íšŒ
 	public int countProductList(String name) {
 		
 		return mybatis.selectOne("mappings.product-mapping.countProductList",name);
 	}
+	//0303allì¹´í…Œê³ ë¦¬ì¡°íšŒ
+	public int countProductListAll() {
+		
+		return mybatis.selectOne("mappings.product-mapping.countProductListAll");
+	}
 	
-	//»óÇ° ¸ñ·Ï Á¶È¸
+	//0303allë‚®ì€ê°€ê²©ìˆœì¹´í…Œê³ ë¦¬ì¡°íšŒ
+	public int countProductListAllLow(String category, String order) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("category", category);
+		map.put("order", order);
+		
+		return mybatis.selectOne("mappings.product-mapping.countProductListAllLow", map);
+	}	
+	
+	// ìƒí’ˆ ëª©ë¡ ì¡°íšŒ
 	public List<ProductVO> listProduct(String name){
 		
 		return mybatis.selectList("mappings.product-mapping.listProduct",name);
 	}
-	//ÆäÀÌÁöº° »óÇ°¸ñ·Ï Á¶È¸
+	// í˜ì´ì§€ë³„ ìƒí’ˆ ëª©ë¡ ì¡°íšŒ
 	public List<ProductVO> getListWithPaging(Criteria criteria,String name) {
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("criteria", criteria);
@@ -57,19 +94,44 @@ public class ProductDAO {
 		return mybatis.selectList("mappings.product-mapping.listWithPaging",map);
 	}
 	
-	//»óÇ° Ãß°¡
+	// 0303allí˜ì´ì§€ë³„ ìƒí’ˆ ëª©ë¡ ì¡°íšŒ
+	public List<ProductVO> getListWithPagingAll(Criteria criteria) {
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("criteria", criteria);
+		
+		return mybatis.selectList("mappings.product-mapping.listWithPagingAll",map);
+	}
+	
+	// 0303allë‚®ì€ê°€ê²©ìˆœ í˜ì´ì§€ë³„ ìƒí’ˆ ëª©ë¡ ì¡°íšŒ0304allì¹´í…Œê³ ë¦¬í˜ì´ì§•ë¶€ë¶„ê°€ê²©ìˆœì´ë¦„ìˆœì¡°íšŒ
+	public List<ProductVO> getListWithPagingAllFilter(Criteria criteria, String category, String order) {
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("criteria", criteria);
+		map.put("category", category);
+		map.put("order", order);
+		
+		if (order.equals("high")) {
+			return mybatis.selectList("mappings.product-mapping.listWithPagingFilterHigh",map);
+		} else if (order.equals("low")) {
+			return mybatis.selectList("mappings.product-mapping.listWithPagingFilterLow",map);
+		} else {
+			return mybatis.selectList("mappings.product-mapping.listWithPagingFilterName",map);
+		}
+	}
+	
+	
+	// ìƒí’ˆ ì¶”ê°€
 	public void insertProduct(ProductVO vo) {
 		
 		mybatis.insert("mappings.product-mapping.insertProduct",vo);
 	}
 	
-	//»óÇ°Á¤º¸ ¼öÁ¤
+	// ìƒí’ˆ ì •ë³´ ìˆ˜ì •
 	public void updateProduct(ProductVO vo) {
 		
 		mybatis.update("mappings.product-mapping.updateProduct",vo);
 	}
 	
-	//Á¦Ç°º° ÆÇ¸Å ½ÇÀû Á¶È¸
+	// â–¶ Admin ê´€ë¦¬ì í˜ì´ì§€ ì‘ì„±ì‹œ ì¶”ê°€ ë¶€ë¶„2
 	public List<SalesQuantity>getProductSales(){
 		
 		return mybatis.selectList("mappings.product-mapping.getProductSales");
