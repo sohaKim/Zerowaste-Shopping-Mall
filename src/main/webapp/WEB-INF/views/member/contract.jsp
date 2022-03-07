@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <head><title>SaveEarth:약관동의</title></head>
- 
+ <head>
+ <style>
+ body{background-color:#7fad39;}
+ </style>
+ <title>SaveEarth:약관동의</title>
+ </head>
+<body>
   <article>
     <h2>Join Us</h2>
     <form id="join" action="join_form" method="post" name="formm">
@@ -191,3 +196,4 @@
       
     </form>
   </article>
+</body> 

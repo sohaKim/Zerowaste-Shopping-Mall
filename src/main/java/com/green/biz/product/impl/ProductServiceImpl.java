@@ -37,15 +37,21 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> getProductListByKind(ProductVO vo) {
+	public List<ProductVO> getProductListByKind(ProductVO vo, String order) {
 		
-		return pDao.getProductListByKind(vo);
+		return pDao.getProductListByKind(vo, order);
 	}
 
 	@Override
 	public int countProductList(String name) {
 		
 		return pDao.countProductList(name);
+	}
+	//0303all페이징
+	@Override
+	public int countProductListAll() {
+		
+		return pDao.countProductListAll();
 	}
 
 	@Override
@@ -71,7 +77,21 @@ public class ProductServiceImpl implements ProductService {
 	
 		return pDao.getListWithPaging(criteria, name);
 	}
+	
+	//0303all
+	@Override
+	public List<ProductVO> getListWithPagingAll(Criteria criteria) {
+		
+		return pDao.getListWithPagingAll(criteria);
+	}
 
+	//0303all낮은가격순-->0304all카테고리이름순가격순
+	@Override
+	public List<ProductVO> getListWithPagingAllFilter(Criteria criteria, String category, String order) {
+	
+		return pDao.getListWithPagingAllFilter(criteria, category, order);
+	}
+	
 	@Override
 	public List<SalesQuantity> getProductSales() {
 		

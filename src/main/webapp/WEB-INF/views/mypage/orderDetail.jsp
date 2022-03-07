@@ -28,12 +28,12 @@
 <body>   
     <div class="col-8">
 		          <div class="order_details_iner">
-		            <h2>${title}</h2><hr>
+		            <h3>${title}</h3><hr>
 		            <form name="formm" method="post">
-		            <h3>주문자 정보</h3>
-		            <table class="table table-borderless" id="cartList">
+		            <h3>주문자 정보</h3><br>
+		            <table class="table table-border text-center" id="cartList">
 		              <thead>
-		                <tr>
+		                <tr class="table table-success">
 		                  <th scope="col">주문일자</th>
 		                  <th scope="col">주문번호</th>
 		                  <th scope="col">주문자</th>
@@ -50,34 +50,64 @@
 		                </tr>
 		              </tbody>
 		            </table>
-		            
-		            <h3>주문 상품 정보</h3>
-		            <table class="table table-borderless" id="cartList">
+		            <!-- 기존 주문 상품 정보 테이블 -->
+		            <!--<h3>주문 상품 정보</h3><br>
+		            <table class="table table-border text-center" id="cartList">
 		              <thead>
-		                <tr>
-       						<th>상품명</th> <th>상품별주문번호</th> <th>수량</th><th>가격</th> <th>처리 상태</th>    
+		                <tr class="table table-success">
+       						<th colspan="2">상품명</th> <th>상품별주문번호</th> <th>수량</th><th>가격</th> <th>처리 상태</th>    
      					</tr>
 		              </thead>
 		              <c:forEach items="${orderList}"  var="orderVO">
 		              <tbody>
 		                <tr>
+		                  <td><img src="product_images/L-01.jpg" width="70" height="80"/></td>
 		                  <td> ${orderVO.pname} </td>
 					      <td> ${orderVO.odseq} </td>          
 					      <td> ${orderVO.quantity} </td>
 					      <td> <fmt:formatNumber type="currency" value="${orderVO.price2*orderVO.quantity}" /> </td>
-		                </tr>
-		                <td>
-				         <c:choose>
-				         <c:when test='${orderVO.result=="1"}'> 진행중 </c:when>
-				         <c:otherwise> <span style="color:red"> 처리완료 </span></c:otherwise>
-				         </c:choose>
-				        </td>
+		                
+			              <td>
+					       <c:choose>
+					       <c:when test='${orderVO.result=="1"}'> 진행중 </c:when>
+					       <c:otherwise> <span style="color:red"> 처리완료 </span></c:otherwise>
+					       </c:choose>
+					      </td>
+				        </tr>
+		              </tbody>
+		              </c:forEach>
+		            </table>-->
+		            
+
+		            <table class="table table-border" id="cartList">
+		              <c:forEach items="${orderList}"  var="orderVO">
+		              <thead>
+		                <tr class="table table-success">
+       						<th colspan="3" style="vertical-align : left;">상품별주문번호 | ${orderVO.odseq}</th>    
+     					</tr>
+		              </thead>
+		              
+		              <tbody>
+		                <tr>
+		                  <td rowspan="2" width="120"><img src="product_images/${orderVO.image}" width="100" height="110"/></td>
+		                  <td style="text-align: left; vertical-align : middle;"> ${orderVO.pname}</td>
+		                  <td rowspan="2" style= "text-align : center; vertical-align : middle; font-weight: bold;">
+					       <c:choose>
+					       <c:when test='${orderVO.result=="1"}'> 진행중.. </c:when>
+					       <c:otherwise> <span style="color:red"> 처리완료 </span></c:otherwise>
+					       </c:choose>
+					      </td>
+					    </tr>
+					    <tr>   
+					      <td style="text-align: left; vertical-align : middle; "><fmt:formatNumber type="currency" value="${orderVO.price2*orderVO.quantity}"/> | ${orderVO.quantity}개 </td>       
+					    </tr>
 		              </tbody>
 		              </c:forEach>
 		            </table>
+		            
 		            <div class="clear"></div>
 				     <div id="buttons" style="float: right">
-				       <input type="button"    value="쇼핑 계속하기"  class="cancel"  onclick="location.href='index'">
+				       <input type="button"    value="쇼핑 계속하기"  class="btn btn-outline-success"  onclick="location.href='index'">
 				     </div>
 		            </form>
 		          </div>

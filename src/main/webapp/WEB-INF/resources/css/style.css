@@ -394,19 +394,28 @@ ol {
 	padding: 5px 10px;
 }
 
-.header__top__right__auth {
+/*0228세션위치 예진*/
+.header__top__right__auth ul {
+	position: relative;
 	display: inline-block;
+	text-align: right;
+}
+
+.header__top__right__auth ul li{
+	list-style: none;
+	font-size: 14px;
+	float:right;
+	color: #101517;
+	margin-left: 5px;
+	font-weight: bold;
 }
 
 .header__top__right__auth a {
-	display: block;
-	font-size: 14px;
-	color: #1c1c1c;
+	color: #101517;
+	margin-left: 5px;
+	font-weight: bold;
 }
 
-.header__top__right__auth a i {
-	margin-right: 6px;
-}
 
 .header__logo {
 	padding: 15px 0;
@@ -1253,10 +1262,10 @@ ol {
 /*---------------------
   Shop Grid
 -----------------------*/
-
+/*0305페이징부분 간격 padding조정 예진*/
 .product {
-	padding-top: 80px;
-	padding-bottom: 80px;
+	padding-top: 50px;
+	padding-bottom: 0px;
 }
 
 .product__discount {
@@ -1436,6 +1445,11 @@ ol {
 	color: #6f6f6f;
 	display: inline-block;
 }
+/*0303예진 정렬순*/
+.filter__sort ul {
+	list-style: none;
+	float:right;
+}
 
 .filter__sort .nice-select {
 	background-color: #fff;
@@ -1518,6 +1532,19 @@ ol {
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
 }
+
+.filter__option ul li{
+	list-style: none; 
+	float:left; 
+	color:#7fad39;
+	margin-left:5px;
+}
+.filter__option ul li a{
+
+	color:#7fad39;
+}
+
+
 
 .filter__option span:last-child {
 	margin: 0;

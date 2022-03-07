@@ -23,6 +23,73 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
  <body>
+ 
+   <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>All departments</span>
+                        </div>
+                        <ul>
+                            <li><a href="all">All | 전체</a></li>
+                            <li><a href="category?kind=1&order='name'">LIVING | 리빙</a></li>
+                            <li><a href="category?kind=2&order='name'">BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3&order='name'">KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4&order='name'">KIT | 키트</a></li>
+                            <li><a href="category?kind=5&order='name'">ETC | 기타</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    All Categories
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
+                                <button type="submit" class="site-btn">SEARCH | 검색</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+82-1688-1234</h5>
+                                <span>평일 오전9시 - 오후6시 </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+ 
+     <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Save Earth</h2>
+                        <div class="breadcrumb__option">
+                            <a href="index">Home</a>
+                            <span>MyPAGE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+ 
  	<!-- Blog Section Begin -->	
 	<form name="formm" method="post"> 
     <!--<section class="blog spad">  -->
@@ -33,40 +100,11 @@
                         <div class="blog__sidebar__item">
                             <h4>MyPAGE | 마이페이지</h4>
                             <ul>
-                                <li><a href="cart_list">장바구니(cart)내역</a></li>
+                                <li><a href="shoping-cart">장바구니(cart)내역</a></li>
 							    <li><a href="mypage">진행중인 주문내역</a></li>
 							    <li><a href="order_all">총 주문내역</a></li>
                             </ul>
                         </div>
                      </div>
                    </div>
-                
-                    
-  <!--  <article>
-    <h2> My Page(${title}) </h2>
-    <form name="formm" method="post">
-      <table id="cartList">
-      <tr>
-        <th>주문일자</th> <th>주문번호</th> <th>상품명</th> <th>결제 금액</th> <th>주문 상세</th> </th>    
-      </tr>
-      <c:forEach items="${orderList}"  var="orderVO">
-      <tr>  
-        <td> <fmt:formatDate value="${orderVO.indate}" type="date"/></td>
-        <td> ${orderVO.oseq} </td>    
-        <td> ${orderVO.pname} </td>
-        <td> <fmt:formatNumber value="${orderVO.price2}" type="currency"/> </td>
-        <td> <a href="order_detail?oseq=${orderVO.oseq}"> 조회 </a></td>
-      </tr>
-      </c:forEach>    
-      </table>   
-          
-      <div class="clear"></div>
-      <div id="buttons" style="float: right">
-       <input type="button"    value="쇼핑 계속하기"  class="cancel"  onclick="location.href='index'"> 
-      </div>
-    </form>  
-  </article>-->
-  
- 
-
 </html>

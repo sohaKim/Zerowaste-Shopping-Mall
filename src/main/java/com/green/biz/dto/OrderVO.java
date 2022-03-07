@@ -22,6 +22,7 @@ public class OrderVO {
 	private String pname;
 	private int quantity;
 	private int price2;
+	private String image;
 	private String result;
 	
 }
