@@ -44,6 +44,71 @@ function go_cart_delete(){
 		document.formm.submit();
 	}
 }
+/* 김소연 추가 02.28
+ * 장바구니 항목별 수량 ---금액 변경
+ * Quantity X Price  change
+ * shoping-cart.jsp의 form id ="theform"
+ */
+
+function go_cart_change() {
+
+	if($("#quantity").val()==""){
+		alert("수량을 입력해 주세요!");
+		
+	}else if($("#quantity").val()==0){
+		alert("수량은 1개 이상 입력해 주세요!");	
+		
+	}else if($("#quantity").val() > 100){
+		alert("수량이 너무 큽니다!");
+		
+	}else{
+		
+		$("#theform").attr("action","cart_quantity_change").submit();
+	}
+}
+
+
+
+//function go_cart_change() {
+//	var $quantity = $("#quantity");
+//	var $price = $("#price");
+//	var $pseqPrice = $("#pseqPrice");
+//
+//	if($quantity.val()==""){
+//		alert("수량을 입력해 주세요!");
+//		
+//	}else if($quantity.val()==0){
+//		alert("수량은 1개 이상 입력해 주세요!");	
+//		
+//	}else if($quantity.val() > 100){
+//		alert("수량이 너무 큽니다!");
+//		
+//	}else{
+//		$pseqPrice.value = $quantity*$price
+//		
+//		$("#theform").attr("action","cart_quantity_change").submit();
+//	}
+//}
+
+//function go_cart_change() {
+//	var price = document.formm.price.value; // pseq항목의 1개 가격 sell_price,
+//	var quantity = document.formm.quantity.value; // 수량  amount,
+//	var pseqPrice = document.formm.pseqPrice.value; // 합계 sum, price x quantity = pseqPrice
+//	
+//	
+//	hm = document.formm.quantity;
+//	pseqPrice = document.formm.pseqPrice;
+//	
+//	if (hm.value < 0) {
+//		hm.value = 0;
+//	}
+//	pseqPrice.value = parseInt(hm.value) * price;
+//		
+//		document.formm.action = "cart_quantity_change"
+//	}
+
+
+
 /*
 *장바구니에 저장된 상품 내역을 주문처리 요청
 */

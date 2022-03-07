@@ -27,8 +27,16 @@ public class QnaDAO  {
 		mybatis.insert("mappings.qna-mapping.insertQna", vo);
 	}
 	
+	// Qna update수정,  답변이 없을경우만 수정  조건,   02.26 김소연 추가
+	public void updateQnabyQseq(QnaVO vo) {
+		
+		mybatis.update("mappings.qna-mapping.updateQnabyQseq", vo);
+	}
+
+	
 	// ▶▶ Admin관리자 페이지 작성시 추가 부분 
 	// 관리자가 조건없이 모든 Q&A를 최신순으로 조회
+
 	public List<QnaVO> listAllQna() {
 		
 		return mybatis.selectList("mappings.qna-mapping.listAllQna");
@@ -39,5 +47,13 @@ public class QnaDAO  {
 		
 		mybatis.update("mappings.qna-mapping.updateQna", vo);
 	}
+
+	
+	// Q&A 상태별 보기
+	public List<QnaVO> selectQnaRepList(QnaVO vo) {
+			
+		return mybatis.selectList("mappings.qna-mapping.selectQnaRepList", vo);
+	}
 }
+
 

@@ -46,12 +46,12 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">All</a></li>
-                            <li><a href="category?kind=1">LIVING</a></li>
-                            <li><a href="category?kind=2">KITCHEN</a></li>
-                            <li><a href="category?kind=3">BATHROOM</a></li>
-                            <li><a href="category?kind=4">KIT</a></li>
-                            <li><a href="category?kind=5">ETC</a></li>
+                            <li><a href="#">All | 전체</a></li>
+                            <li><a href="category?kind=1">LIVING | 거실</a></li>
+                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4">KIT | 키트</a></li>
+                            <li><a href="category?kind=5">ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
@@ -61,10 +61,10 @@
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <span class="arrow_carrot-down"></span>
+                                    <!--  <span class="arrow_carrot-down"></span>-->
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
+                                <button type="submit" class="site-btn">SEARCH | 검색</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -72,8 +72,8 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+82 1688.1234</h5>
-                                <span>평일 오전9시-오후6시 </span>
+                                <h5>+82-1688-1234</h5>
+                                <span>평일 오전9시 - 오후6시 </span>
                             </div>
                         </div>
                     </div>
@@ -104,8 +104,8 @@
 	<!-- Blog Section Begin -->		
     <section class="blog spad">
         <div class="container">
-        <form name="frm" method="post">
-            <div class="row">
+        <form name="frm" method="post">           
+             <div class="row">
                 <div class="col-lg-4 col-md-5">
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__search">
@@ -178,9 +178,15 @@
                 <!-- 공지사사항용 이미지 삽입(크기 조정필요) width: 370px, height: 266px -->
                 <!-- 성공시 상세보기 화면 noticeDetails.jsp 이동가능  -->            
                 <div class="col-lg-8 col-md-7">
-                   	<div class="row">                   	
-                   	    <div class="col-lg-6 col-md-6 col-sm-6"> 
-                   	    	<c:forEach items="${noticeList}" var="noticeVO">
+                   	<div class="row">
+                   		<c:choose>
+						   <c:when test="${noticeListSize<=0}">
+						      <p style="align: center;"> 등록된 상품이 없습니다.</p>
+						   </c:when>
+					     <c:otherwise> 
+                   	   	   <c:forEach items="${noticeList}" var="noticeVO">   
+                   	         <div class="col-lg-6 col-md-6 col-sm-6">
+                   	                    	
                             	<div class="blog__item">	
 	                                <div class="blog__item__pic">
 	                                    <img style="width:370px; height:266px;" src="img/blog/${noticeVO.notimg}"/>
@@ -190,26 +196,32 @@
 	                                        <li><i class="fa fa-calendar-o"></i>작성일: <fmt:formatDate value= "${noticeVO.indate}" type="date"/></li>
 	                                        <li><i class="fa fa-comment-o"></i>조회수: ${noticeVO.count}</li>
 	                                    </ul>
-	                                    <h5><img src="img/blog/tools_icon.png"><a href="notice_view?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h5>
+	                                    <!--  <h5><img src="img/blog/tools_icon.png"><a href="notice_view?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h5>-->
+	                                    <h5><img src="img/blog/tools_icon.png"><a href="notice_view${pageMaker.makeQuery(pageMaker.criteria.pageNum)}&nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h5>
+	                                    
 	                                    <p>${noticeVO.content}</p>
 	                                    <a href="notice_view?nseq=${noticeVO.nseq}" class="blog__btn">Details|상세보기 <span class="arrow_right"></span></a>
 	                               </div>            
-                             	</div> 
-                            </c:forEach>                                   
-						</div>
-						   <div class="col-lg-12">
-                            <div class="product__pagination blog__pagination">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                      </div>    
+                             	</div>                                                               
+						     </div>
+                          </c:forEach>
+						  </c:otherwise>
+                          </c:choose> 
+	                      </div>
+	                          <div class="col-lg-6">
+	                             <div class="product__pagination blog__pagination">
+	                             	<hr>
+	                             	<div class="col-lg-6" style="text-align: center;">
+	                             		${paging}
+	                             	 </div>
+		                         </div>
+	                         </div>
+                         <%@ include file="page_area_notice.jsp"%>     
                   </div> 
              </div>
           </form>      
         </div>
+       
     </section>
     <!-- Blog Section End -->
     

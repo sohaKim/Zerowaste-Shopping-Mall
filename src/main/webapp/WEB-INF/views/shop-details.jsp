@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
-    
-
 </head>
 <body>
     <!-- Hero Section Begin -->
@@ -38,6 +36,7 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
+
                         <ul>
                             <li><a href="all">All | 전체</a></li>
                             <li><a href="category?kind=1">LIVING | 리빙</a></li>
@@ -54,7 +53,7 @@
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <span class="arrow_carrot-down"></span>
+                                    <!--  <span class="arrow_carrot-down"></span>-->
                                 </div>
                                 <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
                                 <button type="submit" class="site-btn">SEARCH | 검색</button>
@@ -75,7 +74,6 @@
         </div>
     </section>
     <!-- Hero Section End -->
-
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
@@ -121,18 +119,13 @@
                   <form  method="post" name="formm" id="theform">  
                   <fieldset>
                     <div class="product__details__text">
-                        <h3>${productVO.name}</h3>
-                        <!--<div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
-                        </div>--><br>
+                        <h3>${productVO.name}</h3>                       
+						<br>
                         
-                        <label> 가 격 :  </label>  
-                        <div class="product__details__price"><fmt:formatNumber type="currency" value="${productVO.price2}"/></div>
+                        <label> 가 격 :  </label>   
+                                           
+                        <!-- 김소연 수정 03.03 -->
+                        <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>                      
                         <br>
                         <label> 수 량 :  </label>  
                         <div class="product__details__quantity">
@@ -196,6 +189,7 @@
         </div>
     </section>
     <!-- Product Details Section End -->
+
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

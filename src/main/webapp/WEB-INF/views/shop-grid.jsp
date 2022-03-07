@@ -43,6 +43,7 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
+
                         <ul>
                             <li><a href="all">All | 전체</a></li>
                             <li><a href="category?kind=1&order='name'">LIVING | 리빙</a></li>
@@ -59,7 +60,7 @@
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <span class="arrow_carrot-down"></span>
+                                    <!--  <span class="arrow_carrot-down"></span>-->
                                 </div>
                                 <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
                                 <button type="submit" class="site-btn">SEARCH | 검색</button>

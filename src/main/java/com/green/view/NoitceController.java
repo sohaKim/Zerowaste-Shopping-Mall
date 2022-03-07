@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.green.biz.dto.NoticeVO;
 import com.green.biz.notice.NoticeService;
+import utils.notice.Criteria;
+import utils.notice.PageMaker;
 
 @Controller
 public class NoitceController {
@@ -20,18 +22,53 @@ public class NoitceController {
   * Notice공지사항 전제목록 보기(notice-홈 화면)
   * noticeList.jsp의 name="key" --> 검색 값
   * defaultValue="" key값 미입력시 null로 전체 목록 가져오도록 설정
-  * 상단에 @Autowired로 NoticeService구현 필요
+  * 
   */
+//	@RequestMapping(value="/notice_list")
+//	public String noticeList(@RequestParam(value="key", defaultValue="")String key,
+//							Model model) {   
+//	      
+//		List<NoticeVO> noticeList = noticeService.searchNotice(key); // 화면에 입력된 key(검색키워드)값
+//		
+//		model.addAttribute("noticeList", noticeList); // noticeList.jsp의 ${noticeList}
+//		
+//	    return "notice/noticeList"; // jsp
+//	}
+	
+	/* header.jsp에서 notice_list로 받기
+	 * Notice공지사항 전제목록 보기(notice-홈 화면)
+	 * noticeList.jsp의 name="key" --> 검색 값
+	 * defaultValue="" key값 미입력시 null로 전체 목록 가져오도록 설정
+	 * 
+	 * 
+	 * Criteria 설정(All카테고리에만 적용--6개씩 글 묶음)----03.02 수정
+	 */	
 	@RequestMapping(value="/notice_list")
-	public String noticeList(@RequestParam(value="key", defaultValue="")String key,
-							Model model) {   
+	public String noticeList(@RequestParam(value="key", defaultValue="")String content,
+			Criteria criteria, Model model, NoticeVO vo) {   
 	      
-		List<NoticeVO> noticeList = noticeService.searchNotice(key); // 화면에 입력된 key(검색키워드)값
+		List<NoticeVO> noticeList = noticeService.getNoticeWithPaging(criteria, content); // 화면에 입력된 key(검색키워드)값
 		
+		// 화면에 표시할 페이지 버튼 정보 설정		
+		PageMaker pageMaker = new PageMaker(); // PageMakerNoitce() 객체생성	
+		pageMaker.setCriteria(criteria); // 현재 페이지와 페이지당 항목 수 정보 설정		
+		int totalCount = noticeService.countNoticeList(vo); // 전체 게시글 수 조회 by nseq-NoticeVO타입 (notice-mapping.xml) 
+		
+		// 전체 상품목록 개수 설정 메소드(setTotalCount) 구현 및 페이지정보(fieldInit()) 초기화
+		pageMaker.setTotalCount(totalCount); 
+		System.out.println("[noticeList] pageMaker=" + pageMaker);
+
 		model.addAttribute("noticeList", noticeList); // noticeList.jsp의 ${noticeList}
+		model.addAttribute("noticeListSize", noticeList.size()); // noticeList.jsp의 ${noticeList}의 size
+		model.addAttribute("pageMaker", pageMaker); //noticeList.jsp의 ${pageMaker}
 		
 	    return "notice/noticeList"; // jsp
 	}	
+
+	
+	
+	
+	
 
 	/*
 	 * noticeList.jsp에서 
@@ -46,6 +83,9 @@ public class NoitceController {
 		
 		return "notice/noticeList"; // jsp
 	}
+		
+
+	
 
 /*
  * Notice Details(view) 게시글 상세보기 

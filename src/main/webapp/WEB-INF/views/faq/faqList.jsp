@@ -41,13 +41,13 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                        <ul>
-                            <li><a href="#">All</a></li>
-                            <li><a href="category?kind=1">LIVING</a></li>
-                            <li><a href="category?kind=2">KITCHEN</a></li>
-                            <li><a href="category?kind=3">BATHROOM</a></li>
-                            <li><a href="category?kind=4">KIT</a></li>
-                            <li><a href="category?kind=5">ETC</a></li>
+                       <ul>
+                            <li><a href="#">All | 전체</a></li>
+                            <li><a href="category?kind=1">LIVING | 거실</a></li>
+                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4">KIT | 키트</a></li>
+                            <li><a href="category?kind=5">ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
@@ -57,10 +57,10 @@
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <span class="arrow_carrot-down"></span>
+                                    <!--  <span class="arrow_carrot-down"></span>-->
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
+                                <button type="submit" class="site-btn">SEARCH | 검색</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -68,8 +68,8 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+82 1688.1234</h5>
-                                <span>평일 오전9시-오후6시 </span>
+                                <h5>+82-1688-1234</h5>
+                                <span>평일 오전9시 - 오후6시 </span>
                             </div>
                         </div>
                     </div>
@@ -155,86 +155,40 @@
       <!-- FAQ시작 / 부트스트랩 -->
       <!-- C태그 작성, 데이터 삽입후 아래 세개 삭제 -->
       <!-- 빨간색 강조글씨 <code>.accordion-body</code>-->
-      <!--  
+ 
       <form name="formm" id="faq_form" method="post">
       <c:forEach items="${faqList}" var="faqVO">       
       <div class="col-lg-9" style="margin:auto;">
-	    <div class="accordion" id="accordionPanelsStayOpenExample">
+      
+	  <div class="accordion" id="accordionExample">
 	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-	      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-	        <img src="faq/faq-icon.png">[$'{faqVO.fseq}']&nbsp;&nbsp;|&nbsp;&nbsp;<strong>${faqVO.subject}</strong>
+	    <h2 class="accordion-header" id="headingOne">
+	      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	        <img src="faq/faq-icon.png">[${faqVO.fseq}]&nbsp;&nbsp;|&nbsp;&nbsp;${faqVO.subject}
 	      </button>
 	    </h2>
-	    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-	      <div class="accordion-body">
-	        <p>${faqVO.indate}</p>
-	        <strong>${faqVO.subject}</strong><br>
-	        <p>${faqVO.content}</p> <br>감사합니다.
+		<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+		  <div class="accordion-body">
+	        <p><fmt:formatDate value="${faqVO.indate}" type="date"/></p>
+	        <strong>${faqVO.content1}</strong><br>
+	        <p style="white-space:pre;">${faqVO.content2}</p> <br>감사합니다.
 	      </div>
 	    </div>
 	  </div>
 	    </div>
 	  </div>
 	  </c:forEach>
-	  	<br><br><br>
-	  	-->
-	  <!-- C태그 종료 -->
-
-      <!-- FAQ시작 / 부트스트랩 -->
-      <div class="col-lg-9" style="margin:auto;">
-	    <div class="accordion" id="accordionPanelsStayOpenExample">
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-	      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-	        <img src="faq/faq-icon.png">[Q1]&nbsp;&nbsp;|&nbsp;&nbsp;<strong>제목제목 제목제목 제목제목  제목제목 </strong>
-	      </button>
-	    </h2>
-	    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-	      <div class="accordion-body">
-	        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-	      </div>
-	    </div>
-	  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-	        Accordion Item #2
-	      </button>
-	    </h2>
-	    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-	      <div class="accordion-body">
-	        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-	      </div>
-	    </div>
-	  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-	        Accordion Item #3
-	      </button>
-	    </h2>	   
-	    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-	      <div class="accordion-body">
-	        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	</div>
-	<br><br><br>
- 	<!-- FAQ끝 -->   
+	  	<br><br><br> 
         
     <!-- 버튼 -->
     <div class="row">                   
         <div class="col-lg-12 text-center">                      
-             <button type="button" class="site-btn" onclick="location.href='qna_write_form'">글 쓰기</button>
+             <button type="button" class="site-btn" onclick="location.href='qna_write_form'">문의글 남기기</button>
               <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
         </div>
-       </div>
-       
+       </div>     
     <br><br><br>    
-    <!--  </form>-->
+    </form>
 
     
 	<!-- Ogani Js Plugins -->

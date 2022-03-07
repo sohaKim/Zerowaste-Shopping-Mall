@@ -118,5 +118,11 @@
 		 GROUP BY pname
 	</select>
 	
+	
+	<!-- index 검색기능 03.03 김소연 추가 시작-->
+	
+	
+	
+	<!-- index 검색기능 03.03 김소연 추가 종료-->
 
 </mapper>
