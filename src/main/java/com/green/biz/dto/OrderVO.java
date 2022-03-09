@@ -10,6 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class OrderVO {
+
 	private int odseq;		// 주문 상세번호
 	private int oseq;		 	// 주문번호
 	private String id;			// 회원id
@@ -24,6 +25,7 @@ public class OrderVO {
 	private int quantity;		// 수량
 	private int price2;			// 1개당 금액
 	private String result;		// 결과(admin쪽) 1:미처리, 2:처리완료 
+
 	
 	// 김소연 추가 03.09
 	private String fee;			// 배송비

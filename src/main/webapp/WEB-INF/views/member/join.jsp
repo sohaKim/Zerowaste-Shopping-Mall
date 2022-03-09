@@ -38,7 +38,7 @@
                                 <label for="id"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="id" id="id" value="${id}" placeholder="Your ID" size="15"/>
                         		<input type="hidden"    name="reid" id="reid" value="${reid}">
-        			    		<a href="id_check_form" onclick = "window.open(this.href,'_blank','width=400,height=200'); return false;">중복체크</a>
+        			    		<a href="id_check_form" style="float:right; color:#7fad39; font-weight: bold;" onclick = "window.open(this.href,'_blank','width=400,height=200'); return false;">중복체크</a>
                             </div>
                         
                             <div class="form-group">

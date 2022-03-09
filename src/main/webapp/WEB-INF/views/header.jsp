@@ -40,40 +40,27 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <div class="header__top__right__language">
-                               
-                                <div>한국어</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">한국어</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
+                        <div class="header__top__right">                            
                             <div class="header__top__right__auth">
                                 <!--<a href="login_form"><i class="fa fa-user"></i> Login</a>-->
+                               <ul>
                                <c:choose>
 						       <c:when test="${empty sessionScope.loginUser}">
 						       <li>         
-						         <a href="login_form" >LOGIN(CUSTOMER</a>   
-							     <a href="admin_login_form" >| ADMIN)</a>
+						         <a href="login_form" >로그인 (고객</a>   
+							     <a href="admin_login_form" >| 관리자 )</a>
 							   </li>		       
 						       <li>/</li>
-						       <li><a href="join_form">JOIN</a></li>
+						       <li><a href="join_form">회원가입</a></li>
 						       </c:when>
 						       <c:otherwise>
-						       <li style="color:orange">
+						       <li style="color:#7fad39">
 						         ${sessionScope.loginUser.name}(${sessionScope.loginUser.id})
 						       </li>
-						       <li><a href="logout">LOGOUT</a></li>
+						       <li><a href="logout">로그아웃</a></li>
 						       </c:otherwise>       
 						       </c:choose>
+						       </ul>
                             </div>
                         </div>
                     </div>
@@ -91,13 +78,13 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="index">HOME</a></li>
-                            <li class="active"><a href="shop-grid">Shop</a>
+                            <li class="active"><a href="all">Shop</a>
                             	<ul class="header__menu__dropdown">  
-	                            	<li><a href="category?kind=1">LIVING</a></li>
-		                            <li><a href="category?kind=2">BATHROOM</a></li>
-		                            <li><a href="category?kind=3">KITCHEN</a></li>
-		                            <li><a href="category?kind=4">KIT</a></li>
-		                            <li><a href="category?kind=5">ETC</a></li>                         	
+	                            	<li><a href='category?kind=1&order="name"'>LIVING |리빙</a></li>
+		                            <li><a href='category?kind=2&order="name"'>BATHROOM | 욕실</a></li>
+		                            <li><a href='category?kind=3&order="name"'>KITCHEN | 주방</a></li>
+		                            <li><a href='category?kind=4&order="name"'>KIT | 키트</a></li>
+		                            <li><a href='category?kind=5&order="name"'>ETC | 기타</a></li>                         	
                             	</ul>
                             </li>
                             <li><a href="mypage">MYPAGE</a>

@@ -5,7 +5,7 @@
 <%@ include file="header.jsp" %>  
 
 <%
-	List<ProductVO> listProduct = (List<ProductVO>)(request.getAttribute("productKindList"));
+	List<ProductVO> listProduct = (List<ProductVO>)(request.getAttribute("allproductKindList"));
 	System.out.println("List Size="+listProduct.size());
 %>  
 <!DOCTYPE html>
@@ -43,24 +43,26 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-
                         <ul>
                             <li><a href="all">All | 전체</a></li>
-                            <li><a href="category?kind=1&order='name'">LIVING | 리빙</a></li>
-                            <li><a href="category?kind=2&order='name'">BATHROOM | 욕실</a></li>
-                            <li><a href="category?kind=3&order='name'">KITCHEN | 주방</a></li>
-                            <li><a href="category?kind=4&order='name'">KIT | 키트</a></li>
-                            <li><a href="category?kind=5&order='name'">ETC | 기타</a></li>
+                            <li><a href="category?kind=1">LIVING | 리빙</a></li>
+                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4">KIT | 키트</a></li>
+                            <li><a href="category?kind=5">ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
+                  <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <!--  <span class="arrow_carrot-down"></span>-->
+                                    <span class="arrow_carrot-down"></span>
                                 </div>
                                 <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
                                 <button type="submit" class="site-btn">SEARCH | 검색</button>
@@ -92,6 +94,7 @@
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
                             <span>Shop</span>
+                            <span>  - All</span>
                         </div>
                     </div>
                 </div>
@@ -124,51 +127,43 @@
                 <div class="col-lg-9 col-md-7">
                     <div class="filter__item">
                         <div class="row">
-                            <!--<div class="col-lg-4 col-md-5">
-                                <div class="filter__sort">
-                                    <span>Sort By</span>
+                            <div class="col-lg-4 col-md-5">
+                                <div class="filter__sort">  
+                                    <!--<span>Sort By</span>
                                     <select>
-                                    	<option value="#">이름순</option>
+                                    	<option value="all">등록순</option>
                                         <option value="low">낮은 가격순</option>
                                         <option value="high">높은 가격순</option>
-                                    </select>
-                                </div>
+                                    </select>-->
+                                    
+                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="filter__found">
+                           <div class="col-lg-4 col-md-4">
+                                <!--<div class="filter__found">
                                     <h6><span>16</span> Products found</h6>
-                                </div>
-                            </div>
-                            <input type="hidden" id="category" value="${category}">-->
-                            <!--<div class="col-lg-4 col-md-3">
-                                <div class="filter__option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
-                                </div>
-                            </div>-->
-                            <div class="col-lg-4 col-md-5">
-                                <div class="filter__sort"></div>
-                            </div>
-                           <div class="col-lg-4 col-md-4"></div> 
+                                </div>-->
+                            </div> 
                             <div class="col-lg-4 col-md-3">
                                 <div class="filter__option">
+                                    <!--<span class="icon_grid-2x2"></span>
+                                    <span class="icon_ul"></span>-->
                                     <form action="#" id="filter_form" name="filter_form">
                                     <input type="hidden" id="category" name="category" value="${category}">
                                     <input type="hidden" id="order" name="order">
-                                    <ul ><!-- onclick쪽 shop-grid에 맞게 수정 필요 -->
-		                                <li><a href="#" onclick="#">이름순</a></li>
+                                    <ul >
+		                                <li><a href="#" onclick="filter('name')">이름순</a></li>
 		                                <li>|</li>
-		                            	<li><a href="#" onclick="#">낮은 가격순</a></li>
+		                            	<li><a href="#" onclick="filter('low')">낮은 가격순</a></li>
 		                            	<li>|</li>
-		                            	<li><a href="#" onclick="#">높은 가격순</a></li>
+		                            	<li><a href="#" onclick="filter('high')">높은 가격순</a></li>
 		                            </ul>
 		                            </form>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div> 
 					
-					  <!-- 예진 상품나열 기본틀 0225완성 -->
+					  <!-- 예진 상품나열 기본틀 -->
 					  <!--<div class="col-lg-9 col-md-7">-->
 					  <div class="row">
 					  <% for (int i=0; i<listProduct.size(); i=i+3) { %>
@@ -225,6 +220,9 @@
 					 <% } %>
 					<%} %>
 					</div>
+					<div class="product__pagination">
+	                        ${paging} 
+                    </div>
                     </div>
                 </div>
             </div>
@@ -241,12 +239,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <!--<script>
-    function save_category(cat) {
-    	$("#category").val(cat);	
-    }
-    </script>-->
-    
+<%@ include file="page_area.jsp"%>
 <%@ include file="footer.jsp" %>  
 </body>
 </html>

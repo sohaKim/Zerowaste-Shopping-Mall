@@ -39,12 +39,12 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">All</a></li>
-                            <li><a href="category?kind=1">LIVING</a></li>
-                            <li><a href="category?kind=2">KITCHEN</a></li>
-                            <li><a href="category?kind=3">BATHROOM</a></li>
-                            <li><a href="category?kind=4">KIT</a></li>
-                            <li><a href="category?kind=5">ETC</a></li>
+                            <li><a href="all">All | 전체</a></li>
+                            <li><a href="category?kind=1">LIVING | 리빙</a></li>
+                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4">KIT | 키트</a></li>
+                            <li><a href="category?kind=5">ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                         <h2>${productVO.name}</h2>
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
-                            <a href="shop-grid">Shop</a>
+                            <a href="#">Shop</a>
                             <span>${productVO.name}</span>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                         <div class="product__details__pic__item">
                             <img src="product_images/${productVO.image}">
                         </div>
-                        <div class="product__details__pic__slider owl-carousel">
+                        <!--<div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
                                 src="img/product/details/thumb-1.jpg" alt="">
                             <img data-imgbigurl="img/product/details/product-details-3.jpg"
@@ -114,7 +114,7 @@
                                 src="img/product/details/thumb-3.jpg" alt="">
                             <img data-imgbigurl="img/product/details/product-details-4.jpg"
                                 src="img/product/details/thumb-4.jpg" alt="">
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
