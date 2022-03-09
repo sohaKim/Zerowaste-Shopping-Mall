@@ -175,13 +175,20 @@
     <!-- Shoping Cart Section Begin -->    
     <section class="shoping-cart spad">                            
     <c:choose>
-	     <c:when test= "${map.count == 0}">
-		 	<h1> 장바구니가 비었습니다. </h1> 
-		  </c:when> 
+	     <c:when test= "${map.count == 0}" >
+           <p style="text-align:center;"><i class="fa fa-shopping-cart fa-5x" aria-hidden="true"></i></p>
+           <h3 style="text-align:center;"> 장바구니가 비었습니다. </h3> 
+        </c:when>
 		  
           <c:otherwise>
           <div class="container">
           <form name="formm" id="theform" method="post">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6><span class="icon_tag_alt"></span><b><mark>30,000원</mark>이상 주문시 무료배송</b></h6>
+                    <br><br>
+                </div>
+            </div>
             <div class="row">           
                 <div class="col-lg-12">                
                     <div class="shoping__cart__table">                               
@@ -232,7 +239,7 @@
 	                                    <td class="shoping__cart__total" id="pseqPrice">	                                      
 		                                     <!--  <span><fmt:formatNumber  value="${cartVO.price2*cartVO.quantity}" type="currency"/></span> -->
 		                                    <!-- <input id="output" type="text" onchange="NumFormat(this)" readonly="only"> --> 
-		                                    <fmt:formatNumber pattern="###,###,###" value="${cartVO.money}"/> <!-- 데이터삽입 필요 -->
+		                                    <fmt:formatNumber pattern="###,###,###" value="${cartVO.money}"/> 
 		                                </td>
 	                                    <td class="shoping__cart__item__close">	                                       
 	                                        <input type="checkbox" name="cseq" value= "${cartVO.cseq}">
@@ -243,8 +250,7 @@
 	                        </table>                                   
                  		</div>  
                		</div>	
-            	</div>
-          
+            	</div>          
             <!-- 버튼 -->
             <div class="row">
                 <div class="col-lg-12">
@@ -277,7 +283,7 @@
                         </ul>
                    
                         <c:if test= "${map.cartList.size() != 0}">            
-                        	<a href="checkout" class="primary-btn" onclick="go_order_insert()">PROCEED TO CHECKOUT | 결제하기</a>
+                        	<button type="submit"  class="primary-btn" onclick="go_order_process()">PROCEED TO CHECKOUT | 결제하기</button>                       	
                     	</c:if>
                     </div>
                 </div>
@@ -298,6 +304,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/mypage.js"></script>
     <%@ include file="footer.jsp" %>  
 </body>
 </html>

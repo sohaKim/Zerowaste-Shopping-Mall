@@ -24,8 +24,10 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
+
 </head>
 <body>
+
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -36,13 +38,13 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                       <ul>
-                            <li><a href="#">All | 전체</a></li>
-                            <li><a href="category?kind=1">LIVING | 거실</a></li>
-                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
-                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
-                            <li><a href="category?kind=4">KIT | 키트</a></li>
-                            <li><a href="category?kind=5">ETC | 기타</a></li>
+                        <ul>
+                            <li><a href="#">All</a></li>
+                            <li><a href="category?kind=1">LIVING</a></li>
+                            <li><a href="category?kind=2">KITCHEN</a></li>
+                            <li><a href="category?kind=3">BATHROOM</a></li>
+                            <li><a href="category?kind=4">KIT</a></li>
+                            <li><a href="category?kind=5">ETC</a></li>
                         </ul>
                     </div>
                 </div>
@@ -52,10 +54,10 @@
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <!--  <span class="arrow_carrot-down"></span>-->
+                                    <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
-                                <button type="submit" class="site-btn">SEARCH | 검색</button>
+                                <input type="text" placeholder="What do yo u need?">
+                                <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -63,8 +65,8 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+82-1688-1234</h5>
-                                <span>평일 오전9시 - 오후6시 </span>
+                                <h5>+82 1688.1234</h5>
+                                <span>평일 오전9시-오후6시 </span>
                             </div>
                         </div>
                     </div>
@@ -73,6 +75,7 @@
         </div>
     </section>
     <!-- Hero Section End -->
+
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
@@ -119,12 +122,21 @@
                   <fieldset>
                     <div class="product__details__text">
                         <h3>${productVO.name}</h3>                       
-						<br>
+                   
+                        <!--<div class="product__details__rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <span>(18 reviews)</span>
+                        </div>--><br>
                         
-                        <label> 가 격 :  </label>   
-                                           
+                        <label> 가 격 :  </label>                      
                         <!-- 김소연 수정 03.03 -->
-                        <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>                      
+                        <!--  <div class="product__details__price"><fmt:formatNumber type="currency" value="${productVO.price2}"/></div>-->
+                        <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>
+                        
                         <br>
                         <label> 수 량 :  </label>  
                         <div class="product__details__quantity">
@@ -141,6 +153,19 @@
 				          <input type="button" value="장바구니에 담기"   class="btn btn-outline-success"    onclick="go_cart()">&nbsp;&nbsp;&nbsp;&nbsp;
 				          <input type="button" value="즉시 구매"       class="btn btn-outline-success"    onclick="go_order()"> 
 				        </div>
+                        <!--<ul>
+                            <li><b>Availability</b> <span>In Stock</span></li>
+                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                            <li><b>Weight</b> <span>0.5 kg</span></li>
+                            <li><b>Share on</b>
+                                <div class="share">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </li>
+                        </ul>-->
                     </div>
                       </fieldset>
                     </form>
@@ -187,6 +212,8 @@
             </div>
         </div>
     </section>
+    <!-- Product Details Section End -->
+
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -197,6 +224,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/mypage.js"></script>
 <%@ include file="footer.jsp" %>  
 </body>
 </html>

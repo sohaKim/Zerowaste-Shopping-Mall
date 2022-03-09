@@ -54,10 +54,17 @@ public class CartDAO  {
 	}
 	
 
-	// 장바구니에서 항목 삭제
+	// 장바구니에서 주문 전 항목 삭제
 	public void deleteCart(int cseq) {
 		
 		mybatis.delete("mappings.cart-mapping.deleteCart", cseq);
+	}
+	
+	// 03.09 김소연 추가
+	// 주문완료시 장바구니 데이터 비우기, 삭제 
+	public void emptyCartAfterOrder(String id) {
+		
+		mybatis.delete("mappings.cart-mapping.emptyCartAfterOrder", id);
 	}
 	
 	// 장바구니 수량 업데이트-- 김소연 확인 03.03 ---- mapping은 바껴도 그대로,  vo로 받기

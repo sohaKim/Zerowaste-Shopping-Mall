@@ -222,3 +222,14 @@
     });
 
 })(jQuery);
+
+/*-------------------
+  header.jsp의 검색창 search기능
+  03.04 김소연 추가
+--------------------- */
+
+function go_search_product(content) {
+	
+	document.frm.action = "product_search_list";  
+	document.frm.submit();
+  }
