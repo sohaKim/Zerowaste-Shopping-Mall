@@ -28,11 +28,22 @@ public class CartServiceImpl implements CartService {
 		return cartDao.listCart(id);
 	}
 
+	// 장바구니에 담간 항목 중 주문전에 삭제진행
 	@Override
 	public void deleteCart(int cseq) {
 		
 		cartDao.deleteCart(cseq);
 	}
+	
+	// 03.09 김소연 추가
+	// 주문완료시 장바구니 데이터 비우기, 삭제 
+	@Override
+	public void emptyCartAfterOrder(String id) {
+		
+		cartDao.emptyCartAfterOrder(id);
+		
+	}
+	
 
 	// 장바구니 수량 업데이트 
 	@Override

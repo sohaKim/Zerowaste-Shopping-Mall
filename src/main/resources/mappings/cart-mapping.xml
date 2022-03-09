@@ -31,7 +31,7 @@
 		WHERE id=#{id}				
 	</select>
 	
-	<!-- 장바구니 수량 수정  -->
+	<!-- 장바구니에서 상품의(pseq) 수량 수정  -->
 	<update id="updateQuantityOfCart">
 		UPDATE cart
 		SET quantity = #{quantity}
@@ -40,6 +40,7 @@
 	</update>
 	
 	<!-- 장바구니 전체 금액 합계 -->
+	<!-- NVL: 값이 null일경우 0 출력 -->
 	<select id="sumMoney" resultType="int">
 		SELECT NVL(SUM(price2 * quantity), 0) money
 		FROM cart c, product p
@@ -47,12 +48,20 @@
 		AND c.id = #{id}	
 	</select>		 
 	 
+	<!-- 장바구니에서 주문전 항목 삭제 --> 
 	<!-- 장바구니 삭제는 실제 cart테이블이 대상 -->
 	<delete id="deleteCart" parameterType="int">
 		DELETE FROM cart
 		WHERE cseq=#{cseq}
 	</delete>
 
+	<!-- 주문완료시 장바구니 데이터 비우기, 삭제 -->
+	<!--  03.09 김소연 추가 -->
+	<delete id="emptyCartAfterOrder">
+		DELETE FROM cart
+		WHERE id=#{id}
+	</delete>
+	
 
     <!-- ▶Admin -->
 	<!-- 장바구니 항목의 주문 처리 결과-->
