@@ -7,18 +7,11 @@
 	<select id="selectMaxOseq" resultType="int">
 		SELECT NVL2(MAX(oseq), MAX(oseq)+1,1) FROM orders
 	</select>
-
+	
 	
 	<!-- 새로운 주문 생성, oseq 결제 완료처리-->   
 	<insert id="insertOrder">
 		INSERT INTO orders(oseq,id) VALUES(#{oseq},#{id})
-	</insert>
-
-
-	<!-- 주문 상세 테이블에 상품 상세정보 생성 --> 
-	<insert id="insertOrderDetail">
-		INSERT INTO order_detail(odseq,oseq,pseq,quantity)
-		VALUES (order_detail_seq.NEXTVAL,#{oseq},#{pseq},#{quantity})
 	</insert>
 
 
@@ -29,15 +22,23 @@
 		WHERE id=#{id}	
 	</select>
 	
+	 
 	<!--▶  주문진행 페이지(checkout.jsp)에서 입력된 정보를 주문 (order_detail) 테이블에 저장하기-->
-	<!--▶  김소연 신규추가 03.07 --> 
-	<!--  
+	<!--▶  김소연 신규추가 03.07 성공ver-->
+	<!--    
 	<insert id="insertOrderDetail">
-		INSERT INTO orders(oseq, email, zonecode, roadaddr, detailaddr, phone, pseq, quantity, price2, shiprequest, paymethod, result)
-		VALUES (orders_seq.NEXTVAL, #{email}, #{zonecode}, #{roadaddr}, #{detailaddr}, #{phone}, #{pseq},
-				 #{quantity}, #{price2}, #{shiprequest}, #{paymethod}, #{result})
-	</insert>	
-	--> 
+		INSERT INTO order_detail(odseq, oseq, email, zonecode, roadaddr, detailaddr, phone, pseq, quantity, price2, shiprequest)
+		VALUES (order_detail_seq.NEXTVAL, #{oseq}, #{email}, #{zonecode}, #{roadaddr}, #{detailaddr}, #{phone}, #{pseq}, #{quantity}, #{price2}, #{shiprequest})
+	</insert>
+    -->
+    
+    <!--▶  주문진행 페이지(checkout.jsp)에서 입력된 정보를 주문 (order_detail) 테이블에 저장하기-->
+	<!--▶  김소연 총금액, mname 등 추가삽입 때문에 수정 진행중 03.09 -->   
+	<insert id="insertOrderDetail">
+		INSERT INTO order_detail(odseq, oseq, mname, email, zonecode, roadaddr, detailaddr, phone, pseq, pname, quantity, price2, fee, summoney, shiprequest)
+		VALUES (order_detail_seq.NEXTVAL, #{oseq}, #{mname}, #{email}, #{zonecode}, #{roadaddr}, #{detailaddr}, #{phone}, #{pseq}, #{pname}, #{quantity},
+				 #{price2}, #{fee}, #{summoney}, #{shiprequest})
+	</insert>
 
 		
 	<!--▶  주문테이블에 삽입 완료 후 인보이스 호출-->
