@@ -25,13 +25,11 @@ public class OrderVO {
 	private int quantity;		// 수량
 	private int price2;			// 1개당 금액
 	private String result;		// 결과(admin쪽) 1:미처리, 2:처리완료 
-	private String image;		// 상품이미지
-	
-	// 김소연 추가 03.09
+	private String image;		// 상품이미지	
 	private String email;		// 메일주소
 	private String shiprequest;	// 배송 요청사항 메시지;
 	private int fee;			// 배송비
-	private int summoney;	// 총 결제금액
+	private int ordertotal;	// 총 결제금액
 	
 	//private String paymethod;	// 결제수단  1:현금, 2:카드
 }

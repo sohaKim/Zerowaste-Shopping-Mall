@@ -20,8 +20,11 @@ public interface OrderService {
 	
 	// ▶ 주문테이블에 삽입 완료 후 인보이스 호출 --by oseq주문번호
 	// ▶  김소연 신규추가 03.08
-	// selectOne인지 selectList인지 잘 모르겠음...
 	public List<OrderVO> orderDetailInvoice(OrderVO vo);
+	
+	// ▶ 주문테이블에 삽입 완료 후 인보이스 호출 / 인적정보 --by oseq주문번호
+	// ▶  김소연 신규추가 03.10
+	public List<OrderVO> deliverInfo(OrderVO vo);
 		
 	public List<OrderVO> listOrderById(OrderVO vo);
 	
