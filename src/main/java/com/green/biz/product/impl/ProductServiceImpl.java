@@ -37,9 +37,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> getProductListByKind(ProductVO vo) {
+	public List<ProductVO> adminGetProductListByKind(ProductVO vo) {
 		
-		return pDao.getProductListByKind(vo);
+		return pDao.adminGetProductListByKind(vo);
 	}
 	
 //	 카테고리 페이징 일단 보류 (3/4 수련)
@@ -91,7 +91,11 @@ public class ProductServiceImpl implements ProductService {
 		return pDao.getProductSales();
 	}
 
-	
+	@Override
+	public void deleteProduct(int pseq) {
+
+		pDao.deleteProduct(pseq);
+	}
 
 
 

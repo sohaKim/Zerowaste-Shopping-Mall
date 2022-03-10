@@ -16,8 +16,12 @@
 		SELECT * FROM product WHERE pseq=#{pseq}
 	</select>
 	
-	<!-- 카테고리별 상품 조회 -->
-	<select id="getProductListByKind" resultType="product">
+	<select resultType="product" id="getProductListByKind" parameterType="hashMap">
+		SELECT * FROM productWHERE kind=#{product.kind}ORDER BY #{order}
+	</select>
+	
+	<!-- 어드민 카테고리별 상품 조회: 겹침 발생으로 이름 변경-->
+	<select id="adminGetProductListByKind" resultType="product">
 		SELECT * FROM product 
 		WHERE kind=#{kind}
 		ORDER BY name
@@ -81,8 +85,11 @@
 			SET kind=#{kind},useyn=#{useyn},name=#{name},price1=#{price1},price2=#{price2},
 				price3=#{price3},content=#{content},image=#{image},bestyn=#{bestyn} 
 		 WHERE pseq=#{pseq}
-				
 	</update>
+	<!-- 상품 삭제 -->
+	<delete id="deleteProduct" parameterType="int">
+		DELETE FROM product WHERE pseq=#{pseq}
+	</delete>
 	
 	<!-- 제품 판매실적을 위한 데이터 매핑 -->
 	<resultMap type="com.green.biz.dto.SalesQuantity" id="salesMap">

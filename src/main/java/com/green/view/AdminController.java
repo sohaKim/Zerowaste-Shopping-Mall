@@ -153,7 +153,7 @@ public class AdminController {
 	// 어드민에서 카테고리별 상품보기
 	@GetMapping(value="/admin_product_category")
 	public String productKindList(ProductVO vo, Model model) {
-		List<ProductVO> listProduct = productService.getProductListByKind(vo);
+		List<ProductVO> listProduct = productService.adminGetProductListByKind(vo);
 		model.addAttribute("adminProductKindList", listProduct);
 		
 		return "admin/product/productKind";
@@ -304,34 +304,20 @@ public class AdminController {
 			return "redirect:admin_product_list";
 		}
 	}
-
-	
-	// 상품 삭제 폼 열기
+	// 상품 삭제 처리
 	@GetMapping(value="/admin_product_delete")
-	public String adminProductDeleteFrom(ProductVO vo, HttpSession session) {
+	public String adminProductDelete(@RequestParam("pseq") int pseq, HttpSession session) {
 		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+//		ProductVO product = (ProductVO)session.getAttribute("productVO");
 		
 		if (adminUser == null) {
 			return "admin/main";
 		} else {
-			
+			productService.deleteProduct(pseq);
+
 			return "redirect:admin_product_list";
 		}
-	}
-	
-//	// 상품 삭제 처리
-//	@RequestMapping(value="/admin_product_delete")
-//	public String adminProductDelete(ProductVO vo, HttpSession session) {
-//		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
-//		
-//		if (adminUser == null) {
-//			return "admin/main";
-//		} else {
-//			productService.deleteProduct(vo);
-//			
-//			return "redirect:admin_product_list";
-//		}
-//	}
+}
 	
 	
 	

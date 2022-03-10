@@ -2,6 +2,7 @@ package com.green.biz.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,10 @@ public class ProductDAO {
 		
 		return mybatis.selectOne("mappings.product-mapping.getProduct", vo);
 	}
-	
-	public List<ProductVO> getProductListByKind(ProductVO vo){
 		
-		return mybatis.selectList("mappings.product-mapping.getProductListByKind",vo);
+	public List<ProductVO> adminGetProductListByKind(ProductVO vo){
+		
+		return mybatis.selectList("mappings.product-mapping.adminGetProductListByKind",vo);
 	}
 // 카테고리 + 페이징 일단 보류 (수련 3/4)	
 //	public List<ProductVO> categoryWithPaging(Criteria criteria, String name, String kind) {
@@ -72,16 +73,22 @@ public class ProductDAO {
 		return mybatis.selectList("mappings.product-mapping.listWithPaging",map);
 	}
 	
-	//��ǰ �߰�
+	// 상품 입력
 	public void insertProduct(ProductVO vo) {
 		
 		mybatis.insert("mappings.product-mapping.insertProduct",vo);
 	}
 	
-	//��ǰ���� ����
+	// 상품 정보 업데이트
 	public void updateProduct(ProductVO vo) {
 		
 		mybatis.update("mappings.product-mapping.updateProduct",vo);
+	}
+	
+	// 상품 삭제
+	public void deleteProduct(int pseq) {
+		
+		mybatis.delete("mappings.product-mapping.deleteProduct", pseq);
 	}
 	
 	//��ǰ�� �Ǹ� ���� ��ȸ

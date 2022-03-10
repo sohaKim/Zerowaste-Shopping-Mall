@@ -104,8 +104,6 @@ function go_mod_save(pseq) {
 		 } else {
 			 $("#bestyn").val("n");
 		 } 
-		 
-		 
 		 // 신상품 체크 수정 
 		 if ($("#useyn").is(":checked")) {
 			 $("#useyn").val("y");
@@ -118,13 +116,13 @@ function go_mod_save(pseq) {
 	 }
 }
 
-//상품 등록 창에서 취소하고 다시 목록으로 돌아가는거 
+//상품 등록 창에서 취소하고 다시 목록으로 돌아가기
 function go_write_list() {
 	$("#write_form").attr("action", "admin_product_list").submit();
 }
 
 
-// 상품 수정 창에서 취소하고 다시 목록으로 돌아가는거 
+// 상품 수정 창에서 취소하고 다시 목록으로 돌아가기 
 function go_mov() {
 	$("#update_form").attr("action", "admin_product_list").submit();
 }
@@ -135,8 +133,9 @@ function go_list() {
 	$("#detail_form").attr("action", "admin_product_list").submit();	
 }
 
-//
-//// 상품 삭제
-//function clickDel(pseq) {
-//	$("#frm").attr("action", "admin_product_delete?pseq="+pseq).submit();
-//}
+// 상품 삭제
+function go_deleteProduct(pseq) {
+	if(confirm("상품을 삭제하시겠습니까?")) {
+		$("#detail_form").attr("action", "admin_product_delete").submit();
+	}
+}
