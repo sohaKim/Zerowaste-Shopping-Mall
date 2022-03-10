@@ -61,6 +61,29 @@ function go_save(){
 	}
 		
 }
+
+// 3/9 회원정보 수정 관련 추가(수련)
+function go_updateMember(id) {
+	if ($("#pwdCheck").val() == "") {
+		alert("비밀번호를 입력해 주세요!");
+		$("#pwdCheck").focus();
+		return false;
+	} else if ($("#pwd").val() != $("#pwdCheck").val()) {
+		alert("비밀번호가 일치하지 않습니다. 다시 입력해 주세요!");
+		$("#pwdCheck").focus();
+	} else {
+		$("#updateMember").attr("action", "update_member").submit();
+	}
+}
+
+function go_deleteMember(id) {
+	if(confirm("탈퇴하시겠습니까?")){
+		$("#updateMember").attr("action", "deleteMember").submit();
+	}
+}
+
+
+
 /*
 *우편번호/주소 찾기 윈도우 오픈
 */

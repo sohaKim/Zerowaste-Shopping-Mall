@@ -17,6 +17,17 @@
       VALUES(#{id},#{pwd},#{name},#{email},#{zonecode},#{roadaddr},#{detailaddr},#{phone})
    </insert>
    
+   <!-- 3/9 회원정보 수정 추가 (수련)  -->
+   <update id="updateMember">
+   		UPDATE member
+   			SET pwd=#{pwd}, email=#{email}, zonecode=#{zonecode}, roadaddr=#{roadaddr}, detailaddr=#{detailaddr}, phone=#{phone}
+   			WHERE id=#{id}
+   </update>
+   <!-- 회원 탈퇴  -->
+   <update id="deleteMember">
+		UPDATE member SET useyn='2' WHERE id=#{id}
+   </update>
+   
    <!-- 우편주소로 주소찾기 --><!-- 
    <select id="selectAddressByDong" resultType="member">
       SELECT * FROM address WHERE dong LIKE '%'||#{dong}||'%'

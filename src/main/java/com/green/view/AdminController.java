@@ -111,14 +111,15 @@ public class AdminController {
 		
 	}
 	
-	// 어드민에서 카테고리별 상품보기
-	@GetMapping(value="/admin_product_category")
-	public String productKindList(ProductVO vo, Model model) {
-		List<ProductVO> listProduct = productService.getProductListByKind(vo);
-		model.addAttribute("adminproductKindList", listProduct);
-		
-		return "admin/product/productKind";
-	}
+	// 어드민에서 카테고리별 상품보기: 메소드 이름 변경으로 에러 발생, 어드민 관련 브랜치에서 수정 예정
+	// TODO: adminGetProductListByKind 메소드 만들어야 함.
+//	@GetMapping(value="/admin_product_category")
+//	public String productKindList(ProductVO vo, Model model) {
+//		List<ProductVO> listProduct = productService.getProductListByKind(vo);
+//		model.addAttribute("adminproductKindList", listProduct);
+//		
+//		return "admin/product/productKind";
+//	}
 
 	// 상품 등록 페이지 표시
 	@PostMapping(value="/admin_product_write_form")

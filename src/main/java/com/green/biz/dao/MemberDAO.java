@@ -74,4 +74,12 @@ public class MemberDAO {
 		
 		return mybatis.selectList("mappings.member-mapping.listMember",name);
 	}
+	
+	// 3/9 회원정보 수정 추가(수련)
+	public void updateMember(MemberVO vo) {
+		mybatis.update("mappings.member-mapping.updateMember", vo);
+	}
+	public void deleteMember(MemberVO vo) {
+		mybatis.update("mappings.member-mapping.deleteMember", vo);
+	}
 }
