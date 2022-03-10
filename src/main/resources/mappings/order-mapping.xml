@@ -11,7 +11,8 @@
 	
 	<!-- 새로운 주문 생성, oseq 결제 완료처리-->   
 	<insert id="insertOrder">
-		INSERT INTO orders(oseq,id) VALUES(#{oseq},#{id})
+		INSERT INTO orders(oseq,id, mname, email, zonecode, roadaddr, detailaddr, phone, shiprequest) 
+		VALUES(#{oseq},#{id}, #{mname}, #{email}, #{zonecode}, #{roadaddr}, #{detailaddr}, #{phone},  #{shiprequest})
 	</insert>
 
 
@@ -22,33 +23,31 @@
 		WHERE id=#{id}	
 	</select>
 	
-	 
+
+	
 	<!--▶  주문진행 페이지(checkout.jsp)에서 입력된 정보를 주문 (order_detail) 테이블에 저장하기-->
-	<!--▶  김소연 신규추가 03.07 성공ver-->
-	<!--    
+	<!--▶  김소연 총금액, mname 등 추가삽입 때문에 수정 진행중 03.10 -->  
 	<insert id="insertOrderDetail">
-		INSERT INTO order_detail(odseq, oseq, email, zonecode, roadaddr, detailaddr, phone, pseq, quantity, price2, shiprequest)
-		VALUES (order_detail_seq.NEXTVAL, #{oseq}, #{email}, #{zonecode}, #{roadaddr}, #{detailaddr}, #{phone}, #{pseq}, #{quantity}, #{price2}, #{shiprequest})
-	</insert>
-    -->
-    
-    <!--▶  주문진행 페이지(checkout.jsp)에서 입력된 정보를 주문 (order_detail) 테이블에 저장하기-->
-	<!--▶  김소연 총금액, mname 등 추가삽입 때문에 수정 진행중 03.09 -->   
-	<insert id="insertOrderDetail">
-		INSERT INTO order_detail(odseq, oseq, mname, email, zonecode, roadaddr, detailaddr, phone, pseq, pname, quantity, price2, fee, summoney, shiprequest)
-		VALUES (order_detail_seq.NEXTVAL, #{oseq}, #{mname}, #{email}, #{zonecode}, #{roadaddr}, #{detailaddr}, #{phone}, #{pseq}, #{pname}, #{quantity},
-				 #{price2}, #{fee}, #{summoney}, #{shiprequest})
+		INSERT INTO order_detail(odseq, oseq, pseq, pname, quantity, price2)
+		VALUES (order_detail_seq.NEXTVAL, #{oseq}, #{pseq}, #{pname}, #{quantity}, #{price2})
 	</insert>
 
-		
-	<!--▶  주문테이블에 삽입 완료 후 인보이스 호출-->
-	<!--▶  김소연 신규추가 03.08 --> 
+	  	
+	<!--▶  주문테이블에 삽입 완료 후 인보이스 호출, 상품목록 부분-->
+	<!--▶  김소연 신규추가 03.08 -->  
 	<select id="orderDetailInvoice" resultType="order">
 		SELECT * FROM order_detail
 		WHERE oseq=#{oseq}		
-	</select>	
-		
-		
+	</select>
+	
+	<!--▶  주문테이블에 삽입 완료 후 인보이스 호출, 개인정보 부분-->
+	<!-- ▶  김소연 신규추가 03.08  -->
+	<select id="deliverInfo" resultType="order">
+		SELECT * FROM orders
+		WHERE oseq=#{oseq}	
+	</select>
+	
+	
 	<!-- 마이페이지 -->
 	<!-- 주문내역 조회 -->
 	<select id="listOrderById" resultType="order">

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title> 주문완료 내역 </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 </head>
 <style>
 .receipt-content .logo a:hover {
@@ -217,38 +218,36 @@
   text-align: center;
   font-size: 12px;
   color: #969CAD; 
-}                    
+}   
+                                  
 </style>
 <body>
  
 <form id="formm" name="formm" method="get">              
 <div class="receipt-content">
-<c:forEach var="orderVO" items="${orderList}">
+
     <div class="container bootstrap snippets bootdey">
 		<div class="row">	 
 			<div class="col-md-12">
 				<div class="invoice-wrapper">				
-					<div class="intro">
-						<h5><strong>*${orderVO.mname} 님</strong></h5>						
+					<div class="intro">				
 						<b>주문완료 된 영수증 내역서 입니다.</b><br>
-					</div>
-
+					</div>				   
 					<div class="payment-info">
 						<div class="row">
 							<div class="col-sm-6">
 								<span>Order No | 주문번호</span>
 								<strong>${orderVO.oseq}</strong>
 							</div>
-							<div class="col-sm-6 text-right">
-								<span>Order Date | 주문일</span>
-								<strong>${orderVO.indate}</strong>
-							</div>
-						</div>	
+						</div>		
 					</div>
-
-					<div class="payment-details">					
+					
+					<div class="payment-details">										
 						<div class="row">
+						<c:forEach var="orderVO" items="${orderDetail}">
 							<div class="col-sm-6">
+								<span>Order Date | 주문일</span>
+								<strong>${orderVO.indate}</strong><br><br>
 								<span>Shipping Address | 배송정보</span><br>
 								<strong>
 									*수령인: ${orderVO.mname}<br>
@@ -262,42 +261,49 @@
 									<a href="#">
 										${orderVO.email}<br>
 									</a>
-								</p>
-								
+								</p>								
 							</div>
+							
 							<div class="col-sm-6 text-right">
 								<span>Payment by | 결제 정보</span><br>
 								<strong>
-									<!--연동 성공시 추후 paymethod 추가하기-->
+									연동 성공시 추후 paymethod 추가하기
 								</strong>
 								<p>
+									서울특별시 강남구 강남대로 428<br>
+									만이빌딩 5, 10층(역삼동)<br>
+									Save Earth<br> 
 									<a href="#">
 										saveearth@email.com<br>
 									</a>
 								</p>
 							</div>
-						</div>
+						</c:forEach>	
+						</div>	
 					</div>
+					
 					<div class="line-items">
 						<div class="headers clearfix">
 							<div class="row">
-								<div class="col-xs-4">Products | 상품명</div>
-								<div class="col-xs-3">Quantity</div>
-								<div class="col-xs-5 text-right">Amount</div>
+								<div class="col-lg-4 col-md-4" style="text-align: left;">Products | 상품명</div>
+								<div class="col-lg-3 col-md-3" style="text-align: center;">Quantity</div>
+								<div class="col-lg-5 col-md-5 text-right" style="text-align: right;">Amount</div>
 							</div>
 						</div>
 						<div class="items">
+						<c:forEach var="orderVO" items="${orderList}">						
 							<div class="row item">
-								<div class="col-xs-4 desc">
+								<div class="col-lg-4 col-md-4 desc" style="text-align: left;">
 									${orderVO.pname}
 								</div>
-								<div class="col-xs-3 qty">
+								<div class="col-lg-3 col-md-3 qty" style="text-align: center;">
 									${orderVO.quantity}
 								</div>
-								<div class="col-xs-5 amount text-right">
-									${orderVO.price2}
+								<div class="col-lg-5 col-md-5 text-right" style="text-align: right;">
+									<fmt:formatNumber value="${orderVO.price2}" type="currency"/>
 								</div>
 							</div>
+						</c:forEach>										
 						</div>
 						<div class="total text-right">
 							<p class="extra-notes">
@@ -306,31 +312,29 @@
 								감사합니다.
 							</p>
 							<div class="field">
-								Subtotal | 상품합계  : <span><fmt:formatNumber value="${orderVO.summoney}" type="currency"/></span>
+								Subtotal | 상품합계  : <span><fmt:formatNumber value="${productprice}" type="currency"/></span>
 							</div>
 							<div class="field">
-								Shipping | 배송비 : <span><fmt:formatNumber value="${orderVO.fee}" type="currency"/></span>
+								Shipping | 배송비 : <span><fmt:formatNumber value="${fee}" type="currency"/></span>
 							</div>
 							<div class="field grand-total">
-								<b>Total | 총 합계  : <span><fmt:formatNumber value="${orderVO.summoney + orderVO.fee}" type="currency"/></span></b>
+								<b>Total | 총 합계  : <span><fmt:formatNumber value="${ordertotal}" type="currency"/></span></b>
 							</div>
 						</div>
 
 						<div class="print">
-							<a href="/mypage">
-								<i class="fa fa-print"></i>
+							<a href="mypage">
+								<!-- <i class="fa fa-print"></i> -->
 								마이페이지
 							</a>
 						</div>
+						
 					</div>					
-				</div>
-				<div class="footer">
-					Copyright © 2021. Save Earth
 				</div>
 			</div>			
 		</div>
 	</div>
-</c:forEach>	
+		
 </div>                 
 </form>
  <script src="js/jquery-3.3.1.min.js"></script>

@@ -1,5 +1,6 @@
 package com.green.view;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -222,47 +223,7 @@ public class MypageController {
             return "checkout"; // jsp
          }
       } 
-       
-      
-    /*
-    * 주문하기 화면(checkout.jsp)의 주문 처리
-    * 장바구니에 담긴 상품을 '결제 진행하기' 화면으로 이동
-    * 결제 완료시 orders & order_detail 테이블에 데이터 삽입 및 장바구니 비워짐
-    * --현금 / --카드(아임포트) 데이터 삽입 성공완료
-    * 
-    * +)주문완료시 장바구니 cart테이블 비우기 진행
-    */
-//   @PostMapping(value="/order_invoice")
-//   public String orderInsert(OrderVO vo,HttpSession session, Model model , CartVO cart,
-//		   			@RequestParam(value="zonecode")String zonecode,
-//		   			@RequestParam(value="addr1")String addr1,
-//		   			@RequestParam(value="addr2")String addr2) {
-//	   
-//	   MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-//	   
-//	   if(loginUser == null) {
-//		   return "member/login";
-//	   }else {
-//		   vo.setId(loginUser.getId());
-//		   
-//		   // 주소정보 추가 03.09
-//			vo.setZonecode(zonecode);
-//			vo.setRoadaddr(addr1);
-//			vo.setDetailaddr(addr2);		
-//			
-//		   
-//		   int oseq = orderService.insertOrder(vo);
-//		   
-//		   model.addAttribute("oseq",oseq);
-//		   
-//			// 주문완료시 cart장바구니 테이블 삭제진행
-//			// 파라메터에 cartVO 추가			
-//			cartService.emptyCartAfterOrder(vo.getId()); 
-//		   
-//		   
-//		   return "redirect:order_detail_invoice"; // jsp의 value값으로 이동
-//	   }
-//   }      
+            
       /*
        * 주문하기 화면(checkout.jsp)의 주문 처리
        * 장바구니에 담긴 상품을 '결제 진행하기' 화면으로 이동
@@ -303,26 +264,46 @@ public class MypageController {
    		   return "redirect:order_detail_invoice"; // jsp의 value값으로 이동
    	   }
       }    
-   
-   @GetMapping(value="/order_detail_invoice")
-   public String orderDetailInvoice(OrderVO vo, HttpSession session, Model model) {	   
+                
+      // 영수증 출력화면 orerInvoice jsp 호출  
+      @GetMapping(value="/order_detail_invoice")
+      public String orderDetailInvoice(OrderVO order, HttpSession session, Model model) {	   
 
-	   MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-		   
-		if(loginUser == null) {
-			return "member/login";
-		}else {
-			vo.setId(loginUser.getId());
-			List<OrderVO> orderList = orderService.orderDetailInvoice(vo);	
-			
-			model.addAttribute("orderList", orderList);
-			
-			
-			return "orderInvoice";// jsp이동
-		}
-   } 
-   
-	
+   	   MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+   		   
+   		if(loginUser == null) {
+   			return "member/login";
+   		}else {
+   			
+   			order.setId(loginUser.getId());
+   			List<OrderVO> orderList = orderService.orderDetailInvoice(order);// invoice-상품정보
+   						
+   			// 주문 총액 계산
+   			int productprice = 0;
+   			int ordertotal = 0;
+   			
+   			for(OrderVO vo : orderList) {
+   				productprice +=(vo.getQuantity() * vo.getPrice2());
+   				
+   			}
+   			
+   	        // 장바구니 전체 금액에 따라 배송비 구분
+   	        // 배송비(30,000원 이상 무료, 미만 3,000원		
+   			int fee = productprice >= 30000 ? 0 : 3000;
+   			ordertotal = fee + productprice;
+
+   			List<OrderVO> orderDetail = orderService.deliverInfo(order);
+   				   			
+   			model.addAttribute("productprice", productprice);
+   			model.addAttribute("fee", fee);
+   			model.addAttribute("ordertotal", ordertotal);
+   			model.addAttribute("orderList", orderList);   			
+   			model.addAttribute("orderDetail", orderDetail);
+   			
+   			
+   			return "orderInvoice";// jsp이동
+   		}
+      }      
 
    /*
     * 마이페이지
