@@ -47,5 +47,15 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> listMember(String name) {
 		return mDao.listMember(name);
 	}
+
+	@Override
+	public void updateMember(MemberVO vo) {
+		mDao.updateMember(vo);
+	}
+
+	@Override
+	public void deleteMember(MemberVO vo) {
+		mDao.deleteMember(vo);		
+	}
 	
 }

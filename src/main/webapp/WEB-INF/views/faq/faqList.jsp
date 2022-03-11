@@ -25,10 +25,69 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
     <!-- 드롭다운 / 테이블 부트스트랩 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
- 
-    
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.4/tailwind.min.css">
+	
+<style>
+  @font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 300;
+    src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
+  }
+
+  html>body {
+    font-family: 'LotteMartDream', sans-serif;
+  }
+  
+.faq-box {
+  border:2px solid black;
+  background-color:#fff;
+  color:inherit;
+  padding:10px;
+}
+
+.faq-box__question {
+  cursor:pointer;
+}
+
+.faq-box__question::after {
+  content:"▼";
+  float:right;
+}
+
+.faq-box > ul > li {
+  padding:10px;
+}
+
+.faq-box > ul > li.hover > .faq-box__question::after {
+  content:"▲";
+}
+
+.faq-box__answer {
+  display:none;
+  /*background-color:rgba(0,0,0,0.3);*/
+  background-color:rgba(235, 249, 213, .5);
+  border-radius:10px;
+  padding:10px;
+}  
+
+</style>
+
 </head>
 <body>
  <!-- Hero Section Begin -->
@@ -53,16 +112,17 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
+                	<!-- 메인 홈화면의 상품검색 기능 버튼연결 -->
+                        <div class="hero__search__form" id="hero__search_form">
+                            <form action="#" style="display: block; margin-top: 0em;" method="post">
+                                <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
-                                    <!--  <span class="arrow_carrot-down"></span>-->
                                 </div>
-                                <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
-                                <button type="submit" class="site-btn">SEARCH | 검색</button>
+                                <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
+                                <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
                             </form>
                         </div>
+                        <!-- 메인 홈화면의 상품검색 기능 버튼연결 -->  
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
@@ -152,34 +212,37 @@
     <br><br><br>
     <!-- Map End -->
     
-      <!-- FAQ시작 / 부트스트랩 -->
-      <!-- C태그 작성, 데이터 삽입후 아래 세개 삭제 -->
-      <!-- 빨간색 강조글씨 <code>.accordion-body</code>-->
- 
-      <form name="formm" id="faq_form" method="post">
-      <c:forEach items="${faqList}" var="faqVO">       
-      <div class="col-lg-9" style="margin:auto;">
-      
-	  <div class="accordion" id="accordionExample">
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="headingOne">
-	      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-	        <img src="faq/faq-icon.png">[${faqVO.fseq}]&nbsp;&nbsp;|&nbsp;&nbsp;${faqVO.subject}
-	      </button>
-	    </h2>
-		<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-		  <div class="accordion-body">
-	        <p><fmt:formatDate value="${faqVO.indate}" type="date"/></p>
-	        <strong>${faqVO.content1}</strong><br>
-	        <p style="white-space:pre;">${faqVO.content2}</p> <br>감사합니다.
-	      </div>
-	    </div>
-	  </div>
-	    </div>
-	  </div>
-	  </c:forEach>
-	  	<br><br><br> 
-        
+<form name="formm" id="faq_form" method="post">
+            
+<!-- 부트스트랩 시작 -->    
+<section class="section section-faq">
+  <div class="container mx-auto">
+    <h1>*FAQ 리스트</h1><br><br>
+    <div class="faq-box">
+      <ul>
+      <c:forEach items="${faqList}" var="faqVO"> 
+        <li>
+          <div class="faq-box__question"><span>Q. ${faqVO.subject}</span></div>
+          <div class="faq-box__answer">
+            <div>
+            <fmt:formatDate value="${faqVO.indate}" type="date"/><br><br>
+            <strong>${faqVO.content1}</strong>
+              </div>
+            <div style="white-space:pre-line;">
+            ${faqVO.content2}<br>
+			감사합니다.
+            </div>
+          </div>
+        </li>
+       </c:forEach> 
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<br><br><br>   
+    
     <!-- 버튼 -->
     <div class="row">                   
         <div class="col-lg-12 text-center">                      
@@ -187,7 +250,7 @@
               <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
         </div>
        </div>     
-    <br><br><br>    
+    <br><br><br>   
     </form>
 
     
@@ -200,10 +263,35 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    	
+	<!-- 제이쿼리 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+<script type="text/javascript">
+function FaqBox__init() {
+	  $('.faq-box > ul > li').click(function() {
+	    let $this = $(this);
+	    
+	    $this.siblings('.hover').find(' > .faq-box__answer').stop().slideUp(300); 
+	    $this.siblings('.hover').removeClass('hover');
+	    
+	    if ( $this.hasClass('hover') ) {
+	      $this.find(' > .faq-box__answer').stop().slideUp(300); 
+	      $this.removeClass('hover');
+	    }
+	    else {
+	      $this.find(' > .faq-box__answer').stop().slideDown(300); 
+	      $this.addClass('hover');
+	    }
+	  });
+	  
+	  $('.faq-box__answer').click(function() {
+	    return false;
+	  });
+	}
 
-	<!-- 드롭다운 / 테이블 부트스트랩 -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	FaqBox__init();
+</script>
 
 
 <%@ include file="../footer.jsp" %>

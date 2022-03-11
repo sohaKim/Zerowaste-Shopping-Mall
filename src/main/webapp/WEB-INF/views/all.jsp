@@ -31,8 +31,18 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
+  <!-- 검색기능 자바스크립트 추가 03.10 -->
+<script type="text/javascript">
+
+ function go_search_product(name) {
+		
+		document.frm.action = "go_search_product";  
+		document.frm.submit();
+  }  
+</script>
 </head>
 <body>
+  <form name="frm" method="post">
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -58,16 +68,18 @@
                         <div class="hero__search__form">
                   <div class="col-lg-9">
                     <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
+                    	<!-- 메인 홈화면의 상품검색 기능 시작 -->
+                        <div class="hero__search__form" id="hero__search_form">
+                            <form action="#" style="display: block; margin-top: 0em;">
+                                <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
-                                    <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
-                                <button type="submit" class="site-btn">SEARCH | 검색</button>
+                                <input type="text" id="key" name="key" placeholder="상품명을 검색해주세요." style="border : none; width: 70%;
+                                	height: 48px; font-size: 16px; color: #b2b2b2; padding-left: 20px;">
+                                <button type="submit" class="site-btn" id="searchbtn" onclick="go_search_product(this.key)">SEARCH | 검색</button>
                             </form>
                         </div>
+                        <!-- 메인 홈화면의 상품검색 기능 끝 --> 
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
@@ -227,6 +239,7 @@
                 </div>
             </div>
     </section>
+    </form>   
     <!-- Product Section End -->
 
    
@@ -243,3 +256,4 @@
 <%@ include file="footer.jsp" %>  
 </body>
 </html>
+

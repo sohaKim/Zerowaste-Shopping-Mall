@@ -24,10 +24,9 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
-    
-
 </head>
 <body>
+
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -50,23 +49,27 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
+                 	<!-- 메인 홈화면의 상품검색 기능 버튼연결 -->
+                        <div class="hero__search__form" id="hero__search_form">
+                            <form action="#" style="display: block; margin-top: 0em;" method="post">
+                                <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
+
                                     <span class="arrow_carrot-down"></span>
+
                                 </div>
-                                <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
-                                <button type="submit" class="site-btn">SEARCH | 검색</button>
+                                <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
+                                <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
                             </form>
                         </div>
+                        <!-- 메인 홈화면의 상품검색 기능 버튼연결 --> 
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+82-1688-1234</h5>
-                                <span>평일 오전9시 - 오후6시 </span>
+                                <h5>+82 1688.1234</h5>
+                                <span>평일 오전9시-오후6시 </span>
                             </div>
                         </div>
                     </div>
@@ -121,7 +124,9 @@
                   <form  method="post" name="formm" id="theform">  
                   <fieldset>
                     <div class="product__details__text">
+
                         <h3>${productVO.name}</h3>
+
                         <!--<div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -131,9 +136,13 @@
                             <span>(18 reviews)</span>
                         </div>--><br>
                         
-                        <label> 가 격 :  </label>  
-                       <!-- 김소연 수정 03.03 -->
+
+                        <label> 가 격 :  </label>                      
+                        <!-- 김소연 수정 03.03 -->
+                        <!--  <div class="product__details__price"><fmt:formatNumber type="currency" value="${productVO.price2}"/></div>-->
                         <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>
+                        
+
                         <br>
                         <label> 수 량 :  </label>  
                         <div class="product__details__quantity">
@@ -150,6 +159,19 @@
 				          <input type="button" value="장바구니에 담기"   class="btn btn-outline-success"    onclick="go_cart()">&nbsp;&nbsp;&nbsp;&nbsp;
 				          <input type="button" value="즉시 구매"       class="btn btn-outline-success"    onclick="go_order()"> 
 				        </div>
+                        <!--<ul>
+                            <li><b>Availability</b> <span>In Stock</span></li>
+                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                            <li><b>Weight</b> <span>0.5 kg</span></li>
+                            <li><b>Share on</b>
+                                <div class="share">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </li>
+                        </ul>-->
                     </div>
                       </fieldset>
                     </form>
@@ -231,6 +253,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/mypage.js"></script>
 <%@ include file="footer.jsp" %>  
 </body>
 </html>

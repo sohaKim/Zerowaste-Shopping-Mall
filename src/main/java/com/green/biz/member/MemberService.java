@@ -29,4 +29,8 @@ public interface MemberService {
 	
 	//회원 목록 조회
 	public List<MemberVO> listMember(String name);
+	
+	// 3/9 회원정보 수정 추가(수련)
+	void updateMember(MemberVO vo); 
+	void deleteMember(MemberVO vo);
 }

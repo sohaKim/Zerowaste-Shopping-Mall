@@ -106,10 +106,10 @@
                 <div class="col-lg-1">
                     <div class="header__cart">
                         <ul>
-                           
                             <li><a href="shoping-cart"><i class="fa fa-shopping-bag"></i></a></li>
                         </ul>
-                        <!--<div class="header__cart__price">item: <span>$150.00</span></div>-->
+                        <div class="header__cart__price"><b>장바구니</b></div>
+
                     </div>
                 </div>
             </div>
