@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>  
+<jsp:include page="popup.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -26,13 +28,14 @@
 	<title>SaveEarth : 메인 페이지</title>
 </head>
 <body>
+	
  <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
     <!-- Hero Section Begin -->
-    <section class="hero">
+   <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -41,7 +44,6 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-
                         <ul>
                             <li><a href="all">All | 전체</a></li>
                             <li><a href='category?kind=1&order="name"'>LIVING | 리빙</a></li>
@@ -49,8 +51,6 @@
                             <li><a href='category?kind=3&order="name"'>KITCHEN | 주방</a></li>
                             <li><a href='category?kind=4&order="name"'>KIT | 키트</a></li>
                             <li><a href='category?kind=5&order="name"'>ETC | 기타</a></li>
-                            
-
                         </ul>
                     </div>
                 </div>
@@ -61,6 +61,9 @@
                             <form action="#" style="display: block; margin-top: 0em;" method="post">
                                 <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
+
+                                    <!-- <span class="arrow_carrot-down"></span>-->
+
                                 </div>
                                 <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
                                 <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
@@ -83,7 +86,7 @@
         </div>
     </section>
     <!-- Hero Section End -->
-
+    
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container">
@@ -157,7 +160,7 @@
 							          <div class="latest-product__item__pic">
 							            <img src="product_images/${productVO.image}" />
 							          </div>
-							          <div class="latest-product__item__text">
+							          <div class="latest-product__item__text" >
 							            <h6> ${productVO.name}</h6>    
 							            <span><fmt:formatNumber type="currency" value="${productVO.price2}"/></span>
 							          </div>
@@ -170,8 +173,9 @@
         </div>
     </section>
     <!-- Latest Product Section End -->
-
-
+    
+    
+   
 
  
 
@@ -184,7 +188,9 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-
+    <script language="Javascript" type="text/javascript">
+   
+    
 <%@ include file="footer.jsp" %>  
 
 </body>

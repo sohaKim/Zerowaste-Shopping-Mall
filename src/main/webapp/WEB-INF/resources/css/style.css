@@ -434,6 +434,7 @@ ol {
 	display: inline-block;
 	margin-right: 50px;
 	position: relative;
+	
 }
 
 .header__menu ul li .header__menu__dropdown {
@@ -460,13 +461,15 @@ ol {
 
 .header__menu ul li .header__menu__dropdown li:hover>a {
 	color: #7fad39;
+	
 }
-
+/*드롭메뉴 폰트사이즈수정 0311예진*/
 .header__menu ul li .header__menu__dropdown li a {
 	text-transform: capitalize;
 	color: #ffffff;
 	font-weight: 400;
 	padding: 5px 15px;
+	font-size:15px;
 }
 
 .header__menu ul li.active a {
@@ -486,9 +489,9 @@ ol {
 .header__menu ul li:last-child {
 	margin-right: 0;
 }
-
+/*0311headerfontsize수정 예진*/
 .header__menu ul li a {
-	font-size: 14px;
+	font-size: 20px;
 	color: #252525;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -1169,6 +1172,10 @@ ol {
 	color: #1c1c1c;
 	line-height: 39px;
 	display: block;
+}
+
+.sidebar__item ul li a:hover {
+	color: #7fad39;
 }
 
 .sidebar__item .latest-product__text {
@@ -2452,6 +2459,11 @@ ol {
 .blog__sidebar__item {
 	margin-bottom: 50px;
 }
+/*0310예진*/
+.cart__sidebar__item {
+	margin-bottom: 30px;
+}
+
 
 .blog__sidebar__item h4 {
 	color: #1c1c1c;
@@ -2747,15 +2759,15 @@ noticeList.jsp css부분
 	padding-top: 70px;
 	padding-bottom: 0;
 }
-
+/*0307 예진 footer 아래 떨어진부분 가깝게 수정*/
 .footer__about {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
-
+/*0307 예진 footer 폰트크기,행간간격수정*/
 .footer__about ul li {
-	font-size: 8px;
+	font-size: 15px;
 	color: #1c1c1c;
-	line-height: 15px;
+	line-height: 25px;
 	list-style: none;
 }
 
@@ -2856,9 +2868,9 @@ noticeList.jsp css부분
 
 .footer__copyright {
 	border-top: 1px solid #ebebeb;
-	padding: 15px 0;
+	padding: 5px 0;
 	overflow: hidden;
-	margin-top: 20px;
+	margin-top: 5px;
 }
 
 .footer__copyright__text {
@@ -3041,8 +3053,9 @@ noticeList.jsp css부분
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.header__menu ul li {
-		margin-right: 45px;
+		margin-right: 50px;
 	}
+	
 	.hero__search__form {
 		width: 490px;
 	}
@@ -3051,6 +3064,10 @@ noticeList.jsp css부분
 	}
 	.hero__categories ul {
 		padding-left: 20px;
+	}
+	/*alldepartments예진수정0307*/
+	.hero__categories ul li a:hover {
+	color: #7fad39;
 	}
 	.latest-product__slider.owl-carousel .owl-nav {
 		right: 0;

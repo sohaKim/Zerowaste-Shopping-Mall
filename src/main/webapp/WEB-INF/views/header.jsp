@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- 0308예진 상품리뷰추가 -->
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +76,7 @@
                         <a href="index"><img src="img/logo.jpg" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <nav class="header__menu">
                         <ul>
                             <li><a href="index">HOME</a></li>
@@ -101,13 +103,13 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-1">
                     <div class="header__cart">
                         <ul>
-                           
                             <li><a href="shoping-cart"><i class="fa fa-shopping-bag"></i></a></li>
                         </ul>
                         <div class="header__cart__price"><b>장바구니</b></div>
+
                     </div>
                 </div>
             </div>
@@ -115,6 +117,7 @@
                 <i class="fa fa-bars"></i>
             </div>
         </div>
+
         <!-- JS -->
         <script src="member/member.js"></script>
         <script src="mypage/mypage.js"></script>

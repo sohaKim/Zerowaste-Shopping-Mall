@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SaveEarth:회원가입</title>
+    <title>SaveEarth::회원가입</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="member/fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -28,49 +28,49 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h3 class="form-title">회원가입</h3>
                         <form method="post" class="join" id="join" name="formm" action="join">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name"/>
+                                <input type="text" name="name" id="name" placeholder="이름을 입력헤주세요"/>
                             </div>
                             <div class="form-group">
                                 <label for="id"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="id" id="id" value="${id}" placeholder="Your ID" size="15"/>
+                                <input type="text" name="id" id="id" value="${id}" placeholder="ID를 입력해주세요" size="15"/>
                         		<input type="hidden"    name="reid" id="reid" value="${reid}">
         			    		<a href="id_check_form" style="float:right; color:#7fad39; font-weight: bold;" onclick = "window.open(this.href,'_blank','width=400,height=200'); return false;">중복체크</a>
                             </div>
                         
                             <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pwd" id="pwd" placeholder="Password"/>
+                                <input type="password" name="pwd" id="pwd" placeholder="비밀번호를 입력해주세요"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="pwdCheck" id="pwdCheck" placeholder="Repeat your password"/>
+                                <input type="password" name="pwdCheck" id="pwdCheck" placeholder="비밀번호를 한번 더 입력해주세요"/>
                             </div>
                              <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                                <input type="email" name="email" id="email" placeholder="예: saveearth@email.com"/>
                             </div>
                             
                             <!--주소입력창 -->
                             <div class="form-group">
                                 <label for="address"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="zonecode" id="zonecode" placeholder="Your zipcode" readonly/>
+                                <input type="text" name="addr1" id="roadaddr" placeholder="주소를 입력해주세요" readonly/>
+                            </div>
+                            <div class="form-group">
+                                <label for="address"><i class="zmdi zmdi-home"></i></label>
+                                <input type="text" name="addr2" id="detailaddr" placeholder="상세주소를 입력해주세요"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="address"><i class="zmdi zmdi-home"></i></label>
+                                <input type="text" name="zonecode" id="zonecode" placeholder="우편번호를 입력해주세요" readonly/>
                             </div>
                             
                             <div class="form-group">
-                                <label for="address"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="addr1" id="roadaddr" placeholder="Your address" readonly/>
-                            </div>
-                            <div class="form-group">
-                                <label for="address"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="addr2" id="detailaddr" placeholder="Your detailaddress"/>
-                            </div>
-                            <div class="form-group">
                                 <label for="phone"><i class="zmdi zmdi-phone"></i></label>
-                                <input type="text" name="phone" id="phone" placeholder="PhoneNumber"/>
+                                <input type="text" name="phone" id="phone" placeholder="핸드폰번호를 입력해주세요"/>
                             </div>
                             <div class="form-group">
                             	

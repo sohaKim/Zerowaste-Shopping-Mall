@@ -30,8 +30,8 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    
-<!-- 검색기능 자바스크립트 추가 03.10 -->
+
+  <!-- 검색기능 자바스크립트 추가 03.10 -->
 <script type="text/javascript">
 
  function go_search_product(name) {
@@ -40,14 +40,11 @@
 		document.frm.submit();
   }  
 </script>
-
-
-
 </head>
 <body>
-<!-- Hero Section Begin -->
-<form name="frm" method="post">
-    <section class="hero hero-normal">  
+  <form name="frm" method="post">
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -57,18 +54,19 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">All | 전체</a></li>
-                            <li><a href="category?kind=1">LIVING | 거실</a></li>
-                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
-                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
-                            <li><a href="category?kind=4">KIT | 키트</a></li>
-                            <li><a href="category?kind=5">ETC | 기타</a></li>
+                            <li><a href="all">All | 전체</a></li>
+                            <li><a href="category?kind=1&order='name'" >LIVING | 리빙</a></li>
+                            <li><a href="category?kind=2&order='name'" >BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3&order='name'" >KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4&order='name'" >KIT | 키트</a></li>
+                            <li><a href="category?kind=5&order='name'" >ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
-                
-                
                 <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                  <div class="col-lg-9">
                     <div class="hero__search">
                     	<!-- 메인 홈화면의 상품검색 기능 시작 -->
                         <div class="hero__search__form" id="hero__search_form">
@@ -92,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </section>
@@ -121,11 +119,10 @@
     <section class="product spad">
         <div class="container">
             <div class="row">
-            
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>전체 카테고리</h4>
+                            <h4>Categories | 카테고리</h4>
                             <ul>
                                 <li><a href="all">All | 전체</a></li>
                             	<li><a href="category?kind=1&order='name'" onclick="save_category(1)">LIVING | 리빙</a></li>
@@ -136,7 +133,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>                
+                </div>
+                
                 
                 <div class="col-lg-9 col-md-7">
                     <div class="filter__item">
@@ -241,7 +239,7 @@
                 </div>
             </div>
     </section>
-    </form>
+    </form>   
     <!-- Product Section End -->
 
    
@@ -254,8 +252,8 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-      
 <%@ include file="page_area.jsp"%>
 <%@ include file="footer.jsp" %>  
 </body>
 </html>
+
