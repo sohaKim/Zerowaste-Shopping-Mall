@@ -45,11 +45,11 @@
                         </div>
                         <ul>
                             <li><a href="all">All | 전체</a></li>
-                            <li><a href="category?kind=1">LIVING | 리빙</a></li>
-                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
-                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
-                            <li><a href="category?kind=4">KIT | 키트</a></li>
-                            <li><a href="category?kind=5">ETC | 기타</a></li>
+                            <li><a href="category?kind=1&order='name'" >LIVING | 리빙</a></li>
+                            <li><a href="category?kind=2&order='name'" >BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3&order='name'" >KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4&order='name'" >KIT | 키트</a></li>
+                            <li><a href="category?kind=5&order='name'" >ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>전체 카테고리</h4>
+                            <h4>Categories | 카테고리</h4>
                             <ul>
                                 <li><a href="all">All | 전체</a></li>
                             	<li><a href="category?kind=1&order='name'" onclick="save_category(1)">LIVING | 리빙</a></li>

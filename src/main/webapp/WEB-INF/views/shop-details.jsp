@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
+    
+
 </head>
 <body>
     <!-- Hero Section Begin -->
@@ -36,14 +38,13 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-
                         <ul>
                             <li><a href="all">All | 전체</a></li>
-                            <li><a href="category?kind=1">LIVING | 리빙</a></li>
-                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
-                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
-                            <li><a href="category?kind=4">KIT | 키트</a></li>
-                            <li><a href="category?kind=5">ETC | 기타</a></li>
+                            <li><a href="category?kind=1&order='name'" >LIVING | 리빙</a></li>
+                            <li><a href="category?kind=2&order='name'" >BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3&order='name'" >KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4&order='name'" >KIT | 키트</a></li>
+                            <li><a href="category?kind=5&order='name'" >ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
@@ -53,7 +54,7 @@
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <!--  <span class="arrow_carrot-down"></span>-->
+                                    <span class="arrow_carrot-down"></span>
                                 </div>
                                 <input type="text" placeholder="제품명, 키워드를 검색해주세요.">
                                 <button type="submit" class="site-btn">SEARCH | 검색</button>
@@ -74,6 +75,7 @@
         </div>
     </section>
     <!-- Hero Section End -->
+
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
@@ -119,13 +121,19 @@
                   <form  method="post" name="formm" id="theform">  
                   <fieldset>
                     <div class="product__details__text">
-                        <h3>${productVO.name}</h3>                       
-						<br>
+                        <h3>${productVO.name}</h3>
+                        <!--<div class="product__details__rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <span>(18 reviews)</span>
+                        </div>--><br>
                         
-                        <label> 가 격 :  </label>   
-                                           
-                        <!-- 김소연 수정 03.03 -->
-                        <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>                      
+                        <label> 가 격 :  </label>  
+                       <!-- 김소연 수정 03.03 -->
+                        <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>
                         <br>
                         <label> 수 량 :  </label>  
                         <div class="product__details__quantity">
@@ -151,35 +159,59 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Description</a>
+                                    aria-selected="true">상세정보</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                    aria-selected="false">Information</a>
+                                    aria-selected="false">배송 및 환불/교환/AS 정보</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
+                                    aria-selected="false">리뷰</a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <div style="white-space:pre;"><c:out value="${productVO.content}" /></div>
+                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>제품 정보</h4><br>
+                                    <div style="white-space:pre; line-height:30px;"><c:out value="${productVO.content}" /></div>
                                     
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>설명설명</p>
+                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>배송 정보</h4><br>
+                                    <img src="img/paper.jpg" style="display: block; margin: 0 auto;"><br><br>
+                                    <ul style="list-style-type:none; line-height:30px;">
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 모든 택배는 종지재질로 발송됩니다.(종이상자,종이완충재,종이테이프)</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 수령하신 택배박스는 운송장을 제거하신 후 종이로 분리 배출해주세요.</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 테이프는 반질한 느낌이 나지만 PE코팅이 없는 친환경 종이 박스 테이프입니다. 택배상자와 함께 종이로 분리 배출해주세요.</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 종이 완충재와 택배상자는 다시 사용할만큼 깨끗하다면 재사용하시는 것도 권장드립니다.</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> PLASTIC FREE DELIVERY에 관해 더 궁금한 사항이 있으시면 고객센터(1688-1234)를 통해 문의 해주세요. 친절히 안내 드리겠습니다.</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 결제 완료일로부터 주말 및 공휴일 제외 2~5일 안에 배송됩니다.</li>     
+									</ul><br>                             
+                                    <hr style="background-color:#7fad39; height:10px;"><br>
+                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>교환/환불/AS 정보</h4><br><br>
+                                    <ul style="list-style-type:none;line-height:30px;">
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 모든 상품 배송 완료일로부터 7일 이내 처리 가능합니다.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 부분 배송 시 주문 건에 마지막 상품까지 수령하신 뒤 반품 접수해 주세요.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 교환/반품의 경우 상품별로 1회 처리 가능한 점 참고해주세요.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 고객 부주의로 상품이 훼손된 경우 교환 및 반품이 어렵습니다. </li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 상품은 받아보신 상태와 최대한 동일한 상태로 보내주셔야 처리 가능합니다.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 단순 변심 등 고객님의 사유로 인한 교환 및 반품 시 배송비가 부과됩니다.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 간혹의 경우 교환 상품이 공급처 사정에 의해 품절될 수 있으며, 이경우 유선 안내드리고 있습니다.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 교환/반품 처리는 상품 도착 후 3-5일(주말,공휴일제외) 정도 소요되는 점 참고 부탁드립니다.</li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>설명설명설명</p>
+                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>상품 리뷰</h4><br><br>
+                                    <ul style="list-style-type:none; line-height:30px;"">
+                                    	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 상품에 대한 리뷰를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 삭제조치 될 수 있습니다.</li>
+                                    	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 SAVE EARTH 내 Q&A(1:1)게시판에 문의를 남겨주세요.</li>
+                                    </ul>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -189,7 +221,6 @@
         </div>
     </section>
     <!-- Product Details Section End -->
-
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

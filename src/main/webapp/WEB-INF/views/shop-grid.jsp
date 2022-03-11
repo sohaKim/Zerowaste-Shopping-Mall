@@ -107,7 +107,7 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>전체 카테고리</h4>
+                            <h4>Categories | 카테고리</h4>
                             <ul>
                                 <li><a href="all">All | 전체</a></li>
                             	<li><a href="category?kind=1&order='name'" onclick="save_category(1)">LIVING | 리빙</a></li>
