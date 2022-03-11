@@ -125,25 +125,41 @@ public class ProductDAO {
 	}
 	
 	
-	// 상품 추가
-
+	// ▶ Admin 상품 추가
 	public void insertProduct(ProductVO vo) {
 		
 		mybatis.insert("mappings.product-mapping.insertProduct",vo);
 	}
 	
 
-	// 상품 정보 수정
-
+	// ▶ Admin 상품 정보 수정
 	public void updateProduct(ProductVO vo) {
 		
 		mybatis.update("mappings.product-mapping.updateProduct",vo);
 	}
 
 	// ▶ Admin 관리자 페이지 작성시 추가 부분2
-
 	public List<SalesQuantity>getProductSales(){
 		
 		return mybatis.selectList("mappings.product-mapping.getProductSales");
 	}
+	
+	// ▶메인화면의 검색창 키워드 검색기능 --product의 모든카테고리 중 검색
+	//  김소연 03.10 추가
+	public List<ProductVO> searchProductList(Criteria criteria, String name) {
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("criteria", criteria);
+		map.put("name", name);
+		
+		return mybatis.selectList("mappings.product-mapping.searchProductList",map);
+	}
+	
+	// ▶ 전체 게시글 총 개수를 pseq로 받는 count
+	//  김소연 03.10 추가
+	public int countSearchProduct(ProductVO vo) {
+		
+		return mybatis.selectOne("mappings.product-mapping.countSearchProduct", vo);
+		
+	}
+	
 }

@@ -27,11 +27,4 @@ public class FaqController {
 		return "faq/faqList"; // jsp
 	}
 }	
-//	
-//	// 화면 전달용 기본 클래스
-//	@GetMapping(value="/faq_list")
-//	public String qnaList() {
-//		
-//		return "faq/faqList"; // jsp
-//	}
-//}	
+	
