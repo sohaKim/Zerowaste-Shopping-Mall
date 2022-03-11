@@ -98,4 +98,20 @@ public class ProductServiceImpl implements ProductService {
 		return pDao.getProductSales();
 	}
 
+	// ▶메인화면의 검색창 키워드 검색기능 --product의 모든카테고리 중 검색
+	//  김소연 03.10 추가
+	@Override
+	public List<ProductVO> searchProductList(Criteria criteria, String name) {
+		
+		return pDao.searchProductList(criteria, name);
+	}
+
+	// ▶ 전체 게시글 총 개수를 pseq로 받는 count
+	//  김소연 03.10 추가
+	@Override
+	public int countSearchProduct(ProductVO vo) {
+		
+		return pDao.countSearchProduct(vo);
+	}
+
 }

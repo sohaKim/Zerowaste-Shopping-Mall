@@ -226,14 +226,15 @@
 
 /*-------------------
   header.jsp의 검색창 search기능
-  03.04 김소연 추가
+  03.10 김소연 추가
 --------------------- */
 
-function go_search_product(content) {
+function go_search_product(name) {
 	
-	document.frm.action = "product_search_list";  
+	document.frm.action = "go_search_product";  
 	document.frm.submit();
-  }
+} 
+
 
 
 function filter(filter_str) {
