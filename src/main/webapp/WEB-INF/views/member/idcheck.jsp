@@ -17,12 +17,21 @@ body{
 }
 h1 {
   font-family: "Times New Roman", Times, serif;
-  font-size: 45px;
+  font-size: 30px;
   color: #CCC;
   font-weight: normal;
 }
+p {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  color: #CCC;
+  font-weight: normal;
+}
+div{
+color: #CCC;
+}
 input[type=button], input[type=submit] {
-  float: right;
+  /*float: right;*/
 }
 </style>
 <script type="text/javascript">
@@ -38,9 +47,9 @@ function idok(){
   <h1>ID 중복확인</h1>
   <form method=post name=formm id="theform" style="margin-right:0 "
   		action="id_check_form" >
-    User ID <input type=text name="id" value="${id}"> 
-            <input type=submit value="검색" class="submit"><br>     
-    <div style="margin-top: 10px">   
+    <p>User ID <input type=text name="id" value="${id}"> 
+            <input type=submit value="검색" class="submit"></p><br>     
+    <div style="margin-top: 0px">   
       <c:if test="${message == 1}">
         <script type="text/javascript">
           opener.document.formm.id.value="";

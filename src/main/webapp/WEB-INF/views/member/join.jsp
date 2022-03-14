@@ -75,8 +75,8 @@
                             <div class="form-group">
                             	
                             	<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span>
-                                </span>I agree all statements in  <a href="contract" class="term-service" onclick = "window.open(this.href,'_blank','width=750,height=550'); return false;">Terms of service</a></label>
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>
+                                                        저는 이용약관에  <a href="contract" class="term-service" onclick = "window.open(this.href,'_blank','width=750,height=550'); return false;">전체동의</a> 합니다.</label>
                             </div>
                             <div class="form-group form-button">
                                 <input type="button" class="btn btn-outline-success" value="회원가입" onclick="go_save()">
@@ -109,7 +109,6 @@
     		}).open();
     	});
     }
-    //
 	</script>
 <%@ include file="../footer.jsp" %>
 
