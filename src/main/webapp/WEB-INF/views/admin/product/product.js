@@ -2,9 +2,9 @@
  * 
  */
 
-// 상품 이름으로 조회
+// 상품 이름으로 검색
 function go_search() {
-	$("#prod_form").attr("action", "admin_product_list").submit();
+	$("#prod_form").attr("action", "admin_productSearch").submit();
 }
 
  
@@ -74,6 +74,12 @@ function go_mod(pseq) {
 	$("#detail_form").attr("action", "admin_product_update_form?pseq=" + pseq).submit();
 }
 
+//상품 삭제
+function go_deleteProduct(pseq) {
+	if(confirm("상품을 삭제하시겠습니까?")) {
+		$("#detail_form").attr("action", "admin_product_delete").submit();
+	}
+
 // 상품 정보 수정
 function go_mod_save(pseq) {
 	var $price1 = $("#price1");
@@ -133,9 +139,5 @@ function go_list() {
 	$("#detail_form").attr("action", "admin_product_list").submit();	
 }
 
-// 상품 삭제
-function go_deleteProduct(pseq) {
-	if(confirm("상품을 삭제하시겠습니까?")) {
-		$("#detail_form").attr("action", "admin_product_delete").submit();
-	}
+
 }

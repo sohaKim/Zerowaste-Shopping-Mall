@@ -77,10 +77,17 @@ div .input-group {
 						<img src="product_images/${productVO.image }" width="200pt">
 						<!-- <input type="file" class="form-control" name="product_image" id="product_image" readonly> -->
 					</div>
+					
+					
+					<div class="input-group mb-3">
+						<label class="input-group-text" for="product_image" style="width: 75px; margin-right: 2px; padding-left: 20px;">배송<br>안내</label>
+						<input type="text" class="form-control" name="prod_Notice" id="prod_Notice" value="${productVO.prodNotice}"  readonly>
+					</div>
+					
 
 					<div class="input-group">
 						<span class="input-group-text text-wrap" style="width: 75px; margin-right: 2px; padding-left: 20px;">상세<br>정보</span>
-						<textarea class="form-control" name="content" id="content" aria-label="상세 정보"  style="height: 400px;" >
+						<textarea class="form-control" name="content" id="content" aria-label="상세 정보"  style="height: 400px; background-color: transparent;"readonly>
 <c:out value="${productVO.content }" /></textarea>
 					</div>
 

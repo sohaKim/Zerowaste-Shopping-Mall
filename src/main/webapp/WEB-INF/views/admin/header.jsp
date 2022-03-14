@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Save Earth Admin</title>
 <script type="text/javascript" src="admin/js/jquery-3.6.0.min.js"></script>
 
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -27,7 +27,7 @@
 					<a href="admin_sales_record_form">  판매실적 </a>
 				</div>
 			
-			<div class="col-2" style="margin: 10px 0; text-align:right; padding-right: 20px;"><a href="admin_logout" >로그아웃</a></div>
+			<div class="col-2" style="margin: 10px 0; text-align:right; padding-right: 50px;"><a href="admin_logout" >로그아웃</a></div>
 		</div>
 	</div>
 

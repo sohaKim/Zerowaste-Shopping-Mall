@@ -42,19 +42,6 @@ public class ProductServiceImpl implements ProductService {
 		return pDao.adminGetProductListByKind(vo);
 	}
 	
-//	 카테고리 페이징 일단 보류 (3/4 수련)
-//	@Override
-//	public List<ProductVO> categoryWithPaging(Criteria criteria, String name, String kind) {
-//	
-//		return pDao.categoryWithPaging(criteria, name, kind);
-//	}
-//	
-//	@Override
-//	public int countCategoryProductList(String kind) {
-//		return pDao.countCategoryProductList( kind);
-//	}
-	
-
 	@Override
 	public int countProductList(String name) {
 		

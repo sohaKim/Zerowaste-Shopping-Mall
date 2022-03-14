@@ -4,7 +4,6 @@
 <script type="text/javascript">
   function go_search(content)
   {
-     //document.frm.action="admin_qna_list?key="+content;
      document.frm.action="admin_qna_list";
      document.frm.submit();
   }

@@ -57,22 +57,6 @@ public class PageMaker {
 		return uriComp.toString();
 	}
 	
-	
-	 //카테고리 페이징....... 일단 보류 (3/4 수련)
-	 // 카테고리의 kind 값을 가져와서 저장해주면 될거같은데 그걸 어떻게 하는지 모르겠다 
-//	public String makeKindQuery(int page, String kind) {
-//		System.out.printf("kind=%s, pageNum=%d, rowsPerPage=%d", kind, page, criteria.getRowsPerPage());
-//		UriComponents uriComp = UriComponentsBuilder.newInstance().
-//				queryParam("kind", kind).queryParam("pageNum", page).queryParam("rowsPerPage", criteria.getRowsPerPage()).build();
-//		
-//		return uriComp.toString();
-//	}
-	
-	
-	
-	
-	
-
 	// 멤버변수, Getters, Setters 생성
 	public Criteria getCriteria() {
 		return criteria;

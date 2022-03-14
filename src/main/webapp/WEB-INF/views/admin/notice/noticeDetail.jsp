@@ -16,30 +16,28 @@ div .input-group {
 <div class="container">
 	<div class="row justify-content-md-center">
 		<div class="col-8">
-			<h3>공지 등록</h3>
+			<h3>공지 상세보기</h3>
 			<div class="border border-2" style="padding: 10px;">
 				<form class="form-floating" name="notice_detail" id="notice_detail" method="post" enctype="multipart/form-data">
 
-					<div class="input-group d-flex justify-content-between">
-						<div class="d-inline-flex">
-							<span class="input-group-text" style="margin-right: 2px; width:75px; padding-left: 20px;">제목</span>
-							<input type="text" class="input-sm" size="25" placeholder="제목" id="subject" name="subject" value="${noticeVO.subject }" disabled>
-						</div>
-						<div class="d-inline-flex">
-							<span class="input-group-text" style="margin-right: 2px;">카테고리</span> 
-							<input type="text" class="input-sm" id="kind" name="kind" value="${kind }" disabled>
-						</div>
+					<div class="input-group">
+						<span class="input-group-text" style="margin-right: 2px; width:75px; padding-left: 20px;">제목</span>
+						<input type="text" class="form-control" placeholder="제목" id="subject" name="subject" value="${noticeVO.subject }" disabled>
 					</div>
 
-					<div class="input-group mb-3">
+					<div class="input-group">
 						<label class="input-group-text" for="notice_image" style="margin-right: 2px;">이미지</label> 
 						<img src="notice_images/${noticeVO.notimg }" width="200pt">
-						<!-- <input type="file" class="form-control" name="notice_image" id="notice_image"> -->
+							<!-- <input type="file" class="form-control" name="notice_image" id="notice_image"> -->
+					</div>
+					<div class="input-group">
+						<span class="input-group-text" style="width: 75px; margin-right: 2px; padding-left:4px;">카테고리</span> 
+						<input type="text" class="input-sm" id="kind" name="kind" value="${kind }" disabled>
 					</div>
 
 					<div class="input-group">
 						<span class="input-group-text text-wrap" style="width: 75px; margin-right: 2px; padding-left: 20px;">내용</span>
-						<textarea class="form-control" name="content" id="content" aria-label="상세 정보" style="height: 120px;">
+						<textarea class="form-control" name="content" id="content" aria-label="상세 정보" style="height: 400px; background-color:transparent;" readonly>
 <c:out value="${noticeVO.content }" /></textarea>
 					</div>
 

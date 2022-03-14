@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <script type="text/javascript">
-//상품 정보 수정
+// 공지 수정
 function go_mod_save(nseq) {
-		 // 주의: 이미지 파일을 전송하므로 encType 설정되어야 함.
 		 $("#notice_update").attr("encoding", "multipart/form-data");
 		 $("#notice_update").attr("action", "admin_notice_update?nseq=" +nseq).submit();
 	 }
-
 </script>
 
 <style>
@@ -19,36 +17,18 @@ div .input-group {
 <div class="container">
 	<div class="row justify-content-md-center">
 		<div class="col-8">
-			<h3>공지 등록</h3>
+			<h3>공지 수정</h3>
 			<div class="border border-2" style="padding: 10px;">
 				<form class="form-floating" name="notice_update" id="notice_update" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="nseq" value="${noticeVO.nseq}">
 					<input type="hidden" name="code"> 
 					<input type="hidden" name="nonmakeImg" value="${noticeVO.notimg}">
-					<div class="input-group d-flex justify-content-between">
-						<div class="d-inline-flex">
-							<span class="input-group-text" style="margin-right: 2px; width:75px; padding-left: 20px;">제목</span>
-							<input type="text" class="input-sm" size="25" placeholder="제목" id="subject" name="subject" value="${noticeVO.subject }" >
-						</div>
-						<div class="d-inline-flex">
-							<span class="input-group-text" style="margin-right: 2px;">카테고리</span> 
-							<select name="nkind" id="nkind">
-								<ul class="dropdown-menu">
-									<c:forEach items="${kindList}" var="nkind" varStatus="status">
-										<c:choose>
-											<c:when test="${noticeVO.nkind==status.count}">
-												<option value="${status.count}" selected="selected">${nkind}</option>
-											</c:when>
-											<c:otherwise>
-												<option value="${status.count}">${nkind}</option>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-								</ul>
-							</select>
-						</div>
+					
+					<div class="input-group">
+						<span class="input-group-text" style="margin-right: 2px; width:75px; padding-left: 20px;">제목</span>
+						<input type="text" class="form-control" placeholder="제목" id="subject" name="subject" value="${noticeVO.subject }" >
 					</div>
-
+					
 					<div class="input-group mb-3">
 						<label class="input-group-text" for="notice_image" style="margin-right: 2px;">이미지</label>
 						<div> 
@@ -56,10 +36,28 @@ div .input-group {
 							<input type="file" class="form-control" name="notice_image" id="notice_image" >
 						</div>
 					</div>
+					
+					<div class="input-group">
+						<span class="input-group-text" style="width: 75px; margin-right: 2px; padding-left:4px;">카테고리</span> 
+						<select name="nkind" id="nkind">
+							<ul class="dropdown-menu">
+								<c:forEach items="${kindList}" var="nkind" varStatus="status">
+									<c:choose>
+										<c:when test="${noticeVO.nkind==status.count}">
+											<option value="${status.count}" selected="selected">${nkind}</option>
+										</c:when>
+										<c:otherwise>
+											<option value="${status.count}">${nkind}</option>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</ul>
+						</select>
+					</div>
 
 					<div class="input-group">
 						<span class="input-group-text text-wrap" style="width: 75px; margin-right: 2px; padding-left: 20px;">내용</span>
-						<textarea class="form-control" name="content" id="content" aria-label="상세 정보" style="height: 120px;">
+						<textarea class="form-control" name="content" id="content" aria-label="상세 정보" style="height: 400px;">
 <c:out value="${noticeVO.content }" /></textarea>
 					</div>
 

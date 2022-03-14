@@ -46,8 +46,8 @@
 		// 파이차트그리기 옵션 지정
 		var piechart_options = {
 			title : '상품별 판매 실적',
-			width : 350,
-			height : 350
+			width : 400,
+			height : 400
 		};
 
 		// 파이차트 종류와 옵션을 설정
@@ -58,8 +58,8 @@
 		// 바차트 추가
 		var barchart_options = {
 			title : '상품별 판매 실적',
-			width : 350,
-			height : 350
+			width : 400,
+			height : 400
 		};
 
 		var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));

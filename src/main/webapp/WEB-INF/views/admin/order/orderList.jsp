@@ -72,7 +72,7 @@ function go_order_save() {
 								</c:when>
 								<c:otherwise>
 									<td><span style="font-color: red">${orderVO.odseq}</span></td>
-									<td><input type="checkbox" checked="checked"	disabled="disabled">처리완료</td>
+									<td><input type="checkbox" checked="checked"	disabled="disabled"> 처리완료</td>
 								</c:otherwise>
 							</c:choose>
 							<td>${orderVO.mname }</td>

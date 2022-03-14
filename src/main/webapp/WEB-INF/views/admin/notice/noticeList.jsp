@@ -74,7 +74,7 @@ function go_wrt() {
 		<!--  페이징 부분 -->
 
 		<nav aria-label="Page navigation example">
-			<ul class="pagination justify-content-center">
+			<ul class="pagination justify-content-center" style="width: 1140px; margin-right: auto; margin-left: auto;">
 
 				<c:if test="${pageMaker.prev}">
 					<li class="page-item"><a class="page-link" href="admin_notice_list${pageMaker.makeQuery(pageMaker.startPage-1)}">이전</a></li>

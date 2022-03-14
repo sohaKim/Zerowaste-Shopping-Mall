@@ -29,42 +29,30 @@ public class ProductDAO {
 		return mybatis.selectList("mappings.product-mapping.getBestProductList");
 	}
 	
+	// 상품 상세보기
 	public ProductVO getProduct(ProductVO vo) {
 		
 		return mybatis.selectOne("mappings.product-mapping.getProduct", vo);
 	}
-		
+
+	// 어드민 상품 카테고리별 조회
 	public List<ProductVO> adminGetProductListByKind(ProductVO vo){
 		
 		return mybatis.selectList("mappings.product-mapping.adminGetProductListByKind",vo);
 	}
-// 카테고리 + 페이징 일단 보류 (수련 3/4)	
-//	public List<ProductVO> categoryWithPaging(Criteria criteria, String name, String kind) {
-//		HashMap<String,Object> map = new HashMap<>();
-//		map.put("criteria", criteria);
-//		map.put("name", name);
-//		map.put("kind", kind);
-//		
-//		return mybatis.selectList("mappings.product-mapping.categoryWithPaging", map);
-//	}
-//	
-//	public int countCategoryProductList(String kind) {
-//		
-//		return mybatis.selectOne("mappings.product-mapping.countCategoryProductList", kind);
-//	}
 	
-	//��ü ��ǰ�� ���� ����
+	// 상품 개수 조회
 	public int countProductList(String name) {
 		
 		return mybatis.selectOne("mappings.product-mapping.countProductList",name);
 	}
 	
-	//��ǰ ��� ��ȸ
+	// 상품 리스트, 검색어 조회
 	public List<ProductVO> listProduct(String name){
 		
 		return mybatis.selectList("mappings.product-mapping.listProduct",name);
 	}
-	//�������� ��ǰ��� ��ȸ
+	// 페이징 있는 상품 리스트
 	public List<ProductVO> getListWithPaging(Criteria criteria,String name) {
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("criteria", criteria);
@@ -91,7 +79,7 @@ public class ProductDAO {
 		mybatis.delete("mappings.product-mapping.deleteProduct", pseq);
 	}
 	
-	//��ǰ�� �Ǹ� ���� ��ȸ
+	// 상품 판매량 조회
 	public List<SalesQuantity>getProductSales(){
 		
 		return mybatis.selectList("mappings.product-mapping.getProductSales");

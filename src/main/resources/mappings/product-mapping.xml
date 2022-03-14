@@ -26,27 +26,8 @@
 		WHERE kind=#{kind}
 		ORDER BY name
 	</select> 
-<!--	
-카테고리 + 페이징 기능.. .일단 보류
-	<select id="categoryWithPaging" parameterType="hashMap" resultType="product">
-	<![CDATA[
-	SELECT pseq,regdate,name,price1,price2,useyn,bestyn
-		FROM (SELECT row_number() over(ORDER BY pseq DESC)rn,pseq,regdate,name,price1,price2,useyn,bestyn
-    		FROM product
-    	  WHERE name LIKE '%'||#{name}||'%' AND kind=#{kind})
-	WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage} 
-		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
-	]]>
-	</select>
--->
-	<!-- 카테고리별 조회한 총 상품의 갯수-->
-<!-- 	<select id="countCategoryProductList" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM product
-		WHERE kind=#{kind}
-	</select>
--->	
 	
-		<!-- 조회한 총 상품의 갯수-->
+	<!-- 조회한 총 상품의 갯수-->
 	<select id="countProductList" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM product
 		WHERE name LIKE '%'||#{name}||'%'
@@ -75,17 +56,18 @@
 	
 	<!-- 상품 추가 -->
 	<insert id="insertProduct" >
-		INSERT INTO product(pseq,kind,name,price1,price2,price3,content,image)
-		VALUES(product_seq.NEXTVAL,#{kind},#{name},#{price1},#{price2},#{price3},#{content},#{image})
+		INSERT INTO product(pseq,kind,name,price1,price2,price3,content,image, prodNotice)
+		VALUES(product_seq.NEXTVAL,#{kind},#{name},#{price1},#{price2},#{price3},#{content},#{image}, #{prodNotice})
 	</insert>
 	
 	<!-- 상품 수정 -->
 	<update id="updateProduct">
 		UPDATE product 
 			SET kind=#{kind},useyn=#{useyn},name=#{name},price1=#{price1},price2=#{price2},
-				price3=#{price3},content=#{content},image=#{image},bestyn=#{bestyn} 
+				price3=#{price3},content=#{content},image=#{image},bestyn=#{bestyn}, prodNotice=#{prodNotice}
 		 WHERE pseq=#{pseq}
 	</update>
+	
 	<!-- 상품 삭제 -->
 	<delete id="deleteProduct" parameterType="int">
 		DELETE FROM product WHERE pseq=#{pseq}

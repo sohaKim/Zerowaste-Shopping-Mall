@@ -5,6 +5,7 @@
 div .input-group {
 	margin-bottom: 10px;
 }
+
 </style>
 
 <div class="container">
@@ -51,12 +52,17 @@ div .input-group {
 
 					<div class="input-group mb-3">
 						<label class="input-group-text" for="product_image" style="margin-right: 2px;">이미지</label> 
-						<input type="file" class="form-control" name="product_image" id="product_image">
+						<input multiple ="multiple" type="file" class="form-control" name="product_image" id="product_image">
 					</div>
-
+					
+					<div class="input-group mb-3">
+						<label class="input-group-text" for="prodNotice" style="margin-right: 2px;">배송안내</label> 
+						<input multiple ="multiple" type="file" class="form-control" name="prod_Notice" id="prod_Notice">
+					</div>
+					
 					<div class="input-group">
 						<span class="input-group-text text-wrap" style="width: 75px; margin-right: 2px; padding-left: 20px;">상세<br>정보</span>
-						<textarea class="form-control" name="content" id="content" aria-label="상세 정보" style="height: 120px;"></textarea>
+						<textarea class="form-control" name="content" id="content" aria-label="상세 정보" style="height: 400px;"></textarea>
 					</div>
 
 					<div class="d-flex justify-content-center" style="margin-bottom: 0;">
