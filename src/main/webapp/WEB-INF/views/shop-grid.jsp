@@ -33,72 +33,6 @@
 
 </head>
 <body>
-  <!-- Page Preloder -->
-<!--    <div id="preloder">
-        <div class="loader"></div>
-    </div>
--->
-    <!-- Humberger Begin -->
-<!--    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="shop-details">Shop Details</a></li>
-                        <li><a href="shoping-cart">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
-            </ul>
-        </div>
-    </div>-->
-    <!-- Humberger End -->
-
-    
-
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -109,35 +43,37 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
+
                         <ul>
-                            <!--<li><a href="#">All</a></li>  -->
-                            <li><a href="category?kind=1">LIVING</a></li>
-                            <li><a href="category?kind=2">KITCHEN</a></li>
-                            <li><a href="category?kind=3">BATHROOM</a></li>
-                            <li><a href="category?kind=4">KIT</a></li>
-                            <li><a href="category?kind=5">ETC</a></li>
+                            <li><a href="all">All | 전체</a></li>
+                            <li><a href="category?kind=1&order='name'">LIVING | 리빙</a></li>
+                            <li><a href="category?kind=2&order='name'">BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3&order='name'">KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4&order='name'">KIT | 키트</a></li>
+                            <li><a href="category?kind=5&order='name'">ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
+                		<!-- 메인 홈화면의 상품검색 기능 버튼연결 -->
+                        <div class="hero__search__form" id="hero__search_form">
+                            <form action="#" style="display: block; margin-top: 0em;" method="post">
+                                <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
-                                    <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
+                                <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
                             </form>
                         </div>
+                        <!-- 메인 홈화면의 상품검색 기능 버튼연결 --> 
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+82 1688.1234</h5>
-                                <span>평일 오전9시-오후6시 </span>
+                                <h5>+82-1688-1234</h5>
+                                <span>평일 오전9시 - 오후6시 </span>
                             </div>
                         </div>
                     </div>
@@ -172,295 +108,30 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>Department</h4>
+                            <h4>Categories | 카테고리</h4>
                             <ul>
-                                <li><a href="#">All</a></li>
-                            	<li><a href="category?kind=1">LIVING</a></li>
-                            	<li><a href="category?kind=2">BATHROOM</a></li>
-                            	<li><a href="category?kind=3">KITCHEN</a></li>
-                            	<li><a href="category?kind=4">KIT</a></li>
-                            	<li><a href="category?kind=5">ETC</a></li>
+                                <li><a href="all">All | 전체</a></li>
+                            	<li><a href="category?kind=1&order='name'" onclick="save_category(1)">LIVING | 리빙</a></li>
+                            	<li><a href="category?kind=2&order='name'" onclick="save_category(2)">BATHROOM | 욕실</a></li>
+                            	<li><a href="category?kind=3&order='name'" onclick="save_category(3)">KITCHEN | 주방</a></li>
+                            	<li><a href="category?kind=4&order='name'" onclick="save_category(4)">KIT | 키트</a></li>
+                            	<li><a href="category?kind=5&order='name'" onclick="save_category(5)">ETC | 기타</a></li>
                             </ul>
                         </div>
-                        <div class="sidebar__item">
-                            <h4>Price</h4>
-                            <div class="price-range-wrap">
-                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                    data-min="10" data-max="540">
-                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                </div>
-                                <div class="range-slider">
-                                    <div class="price-input">
-                                        <input type="text" id="minamount">
-                                        <input type="text" id="maxamount">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--<div class="sidebar__item sidebar__item__color--option">
-                            <h4>Colors</h4>
-                            <div class="sidebar__item__color sidebar__item__color--white">
-                                <label for="white">
-                                    White
-                                    <input type="radio" id="white">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--gray">
-                                <label for="gray">
-                                    Gray
-                                    <input type="radio" id="gray">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--red">
-                                <label for="red">
-                                    Red
-                                    <input type="radio" id="red">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--black">
-                                <label for="black">
-                                    Black
-                                    <input type="radio" id="black">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--blue">
-                                <label for="blue">
-                                    Blue
-                                    <input type="radio" id="blue">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__color sidebar__item__color--green">
-                                <label for="green">
-                                    Green
-                                    <input type="radio" id="green">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="sidebar__item">
-                            <h4>Popular Size</h4>
-                            <div class="sidebar__item__size">
-                                <label for="large">
-                                    Large
-                                    <input type="radio" id="large">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__size">
-                                <label for="medium">
-                                    Medium
-                                    <input type="radio" id="medium">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__size">
-                                <label for="small">
-                                    Small
-                                    <input type="radio" id="small">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__size">
-                                <label for="tiny">
-                                    Tiny
-                                    <input type="radio" id="tiny">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="sidebar__item">
-                            <div class="latest-product__text">
-                                <h4>Latest Products</h4>
-                                <div class="latest-product__slider owl-carousel">
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-1.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-2.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-3.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-1.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-2.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-3.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
                     </div>
                 </div>
                 
                 
                 <div class="col-lg-9 col-md-7">
-                    <!--<div class="product__discount">
-                        <div class="section-title product__discount__title">
-                            <h2>Sale Off</h2>
-                        </div>
-                        <div class="row">
-                            <div class="product__discount__slider owl-carousel">
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-1.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-2.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Vegetables</span>
-                                            <h5><a href="#">Vegetables’package</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-3.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Mixed Fruitss</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-4.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-5.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-6.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
                     <div class="filter__item">
                         <div class="row">
-                            <div class="col-lg-4 col-md-5">
+                            <!--<div class="col-lg-4 col-md-5">
                                 <div class="filter__sort">
                                     <span>Sort By</span>
                                     <select>
-                                    	<option value="0">추천순</option>
-                                        <option value="1">낮은 가격순</option>
-                                        <option value="2">높은 가격순</option>
+                                    	<option value="#">이름순</option>
+                                        <option value="low">낮은 가격순</option>
+                                        <option value="high">높은 가격순</option>
                                     </select>
                                 </div>
                             </div>
@@ -469,30 +140,36 @@
                                     <h6><span>16</span> Products found</h6>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-3">
+                            <input type="hidden" id="category" value="${category}">-->
+                            <!--<div class="col-lg-4 col-md-3">
                                 <div class="filter__option">
                                     <span class="icon_grid-2x2"></span>
                                     <span class="icon_ul"></span>
                                 </div>
+                            </div>-->
+                            <div class="col-lg-4 col-md-5">
+                                <div class="filter__sort"></div>
+                            </div>
+                           <div class="col-lg-4 col-md-4"></div> 
+                            <div class="col-lg-4 col-md-3">
+                                <div class="filter__option">
+                                    <form action="#" id="filter_form" name="filter_form">
+                                    <input type="hidden" id="category" name="category" value="${category}">
+                                    <input type="hidden" id="order" name="order">
+                                    <ul ><!-- onclick쪽 shop-grid에 맞게 수정 필요 -->
+		                                <li><a href="#" onclick="#">이름순</a></li>
+		                                <li>|</li>
+		                            	<li><a href="#" onclick="#">낮은 가격순</a></li>
+		                            	<li>|</li>
+		                            	<li><a href="#" onclick="#">높은 가격순</a></li>
+		                            </ul>
+		                            </form>
+                                </div>
                             </div>
                         </div>
                     </div> 
-                	 <!--<article>
-					    <h2> Item</h2>     
-					    <c:forEach items="${productKindList}"  var="productVO">
-					      <div id="item">
-					        <a href="product_detail?pseq=${productVO.pseq}"> 
-					          <img src="product_images/${productVO.image}" width="120px" height="110px" />
-					          <h3>${productVO.name} </h3>        
-					          <p>${productVO.price2} </p>
-					        </a>  
-					      </div>
-					    </c:forEach>    
-					    <div class="clear"></div>
-					  </article>  -->
-					  
 					
-					  <!-- 예진 상품나열 기본틀 -->
+					  <!-- 예진 상품나열 기본틀 0225완성 -->
 					  <!--<div class="col-lg-9 col-md-7">-->
 					  <div class="row">
 					  <% for (int i=0; i<listProduct.size(); i=i+3) { %>
@@ -549,330 +226,6 @@
 					 <% } %>
 					<%} %>
 					</div>
-					
-					
-					
-					<!-- 
-					     <div class="col-lg-4">
-					     	<div class="product__discount">
-					  		
-					  		<c:forEach items="${productKindList}"  var="productVO">
-					  		<a href="product_detail?pseq=${productVO.pseq}"> 
-					  			<div class="product__discount __item">
-					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
-					  				<div class="product__discount__item__text">
-					  					<h5><a href="#">${productVO.name}</a></h5>
-					  					
-					  					<div class="product__item__price">${productVO.price2 }원</div>
-					  				</div>
-					  			</div>
-					  			</a>
-					  			</c:forEach> 
-					  		
-					  		</div>
-					  	</div> -->
-					  						 
-					 
-					 
-					 
-					 
-					 
-					 
-					 <!-- 예진 4x4x4부트스트랩 나열  똑같은것만 한줄에 3개씩나옴-->
-					 <!--<div class="container-fluid">
-					   <div class="row">
-					     <div class="col-sm-4"><div class="product__discount">
-					  		
-					  		<c:forEach items="${productKindList}"  var="productVO">
-					  		<a href="product_detail?pseq=${productVO.pseq}"> 
-					  			<div class="product__discount __item">
-					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
-					  				<div class="product__discount__item__text">
-					  					<h5><a href="#">${productVO.name}</a></h5>
-					  					
-					  					<div class="product__item__price">${productVO.price2 }원</div>
-					  				</div>
-					  			</div>
-					  			</a>
-					  			</c:forEach> 
-					  		
-					  	</div>
-					  	</div>
-					     <div class="col-sm-4"><div class="product__discount">
-					  		
-					  		<c:forEach items="${productKindList}"  var="productVO">
-					  		<a href="product_detail?pseq=${productVO.pseq}"> 
-					  			<div class="product__discount __item">
-					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
-					  				<div class="product__discount__item__text">
-					  					<h5><a href="#">${productVO.name}</a></h5>
-					  					
-					  					<div class="product__item__price">${productVO.price2 }원</div>
-					  				</div>
-					  			</div>
-					  			</a>
-					  			</c:forEach> 
-					  		
-					  	</div>
-					  	</div>
-					     <div class="col-sm-4"><div class="product__discount">
-					  		
-					  		<c:forEach items="${productKindList}"  var="productVO">
-					  		<a href="product_detail?pseq=${productVO.pseq}"> 
-					  			<div class="product__discount __item">
-					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
-					  				<div class="product__discount__item__text">
-					  					<h5><a href="#">${productVO.name}</a></h5>
-					  					
-					  					<div class="product__item__price">${productVO.price2 }원</div>
-					  				</div>
-					  			</div>
-					  			</a>
-					  			</c:forEach> 
-					  		
-					  	</div>
-					  	</div>
-					   </div>
-					 </div>-->
-					 
-					 <!--데스크탑에서 col-lg-4로하는것 but 한줄에 같은 아이템으로 3번씩나옴
-					 <div class="container-fluid">
-					   <div class="row">
-					     <div class="col-lg-4"><div class="product__discount">
-					  		
-					  		<c:forEach items="${productKindList}"  var="productVO">
-					  		<a href="product_detail?pseq=${productVO.pseq}"> 
-					  			<div class="product__discount __item">
-					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
-					  				<div class="product__discount__item__text">
-					  					<h5><a href="#">${productVO.name}</a></h5>
-					  					
-					  					<div class="product__item__price">${productVO.price2 }원</div>
-					  				</div>
-					  			</div>
-					  			</a>
-					  			</c:forEach> 
-					  		
-					  	</div>
-					  	</div>
-					     <div class="col-lg-4"><div class="product__discount">
-					  		<c:forEach items="${productKindList}"  var="productVO">
-					  		<a href="product_detail?pseq=${productVO.pseq}"> 
-					  			<div class="product__discount __item">
-					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
-					  				<div class="product__discount__item__text">
-					  					<h5><a href="#">${productVO.name}</a></h5>
-					  					
-					  					<div class="product__item__price">${productVO.price2 }원</div>
-					  				</div>
-					  			</div>
-					  			</a>
-					  			</c:forEach> 
-					  	
-					  		
-					  	</div>
-					  	</div>
-					     <div class="col-lg-4"><div class="product__discount">
-					  		<c:forEach items="${productKindList}"  var="productVO">
-					  		<a href="product_detail?pseq=${productVO.pseq}"> 
-					  			<div class="product__discount __item">
-					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/${productVO.image}" "></div>
-					  				<div class="product__discount__item__text">
-					  					<h5><a href="#">${productVO.name}</a></h5>
-					  					
-					  					<div class="product__item__price">${productVO.price2 }원</div>
-					  				</div>
-					  			</div>
-					  			</a>
-					  			</c:forEach> 
-					  	
-					  		
-					  	</div>
-					  	</div>
-					   </div>
-					 </div>-->
-					 
-					 
-					  
-                    <!--<div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="shop-details"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="shop-details">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-9.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-10.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-11.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-12.jpg">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
-                                </div>
-                            </div>
-                        </div>-->
-                    </div>
-                    <div class="product__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -889,6 +242,12 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <!--<script>
+    function save_category(cat) {
+    	$("#category").val(cat);	
+    }
+    </script>-->
+    
 <%@ include file="footer.jsp" %>  
 </body>
 </html>

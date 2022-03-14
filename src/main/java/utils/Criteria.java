@@ -13,8 +13,8 @@ public class Criteria {
 	
 	// 생성자
 	public Criteria() { 
-		// 기본값: 페이지번호 1, 페이지당 항목수 10
-		this(1, 10);
+		// 기본값: 페이지번호 1, 페이지당 항목수 12
+		this(1, 12);
 	}
 	
 	public Criteria(int pageNum, int rowsPerPage) {

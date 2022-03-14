@@ -25,10 +25,69 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
     <!-- 드롭다운 / 테이블 부트스트랩 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
- 
-    
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.4/tailwind.min.css">
+	
+<style>
+  @font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 300;
+    src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
+  }
+
+  html>body {
+    font-family: 'LotteMartDream', sans-serif;
+  }
+  
+.faq-box {
+  border:2px solid black;
+  background-color:#fff;
+  color:inherit;
+  padding:10px;
+}
+
+.faq-box__question {
+  cursor:pointer;
+}
+
+.faq-box__question::after {
+  content:"▼";
+  float:right;
+}
+
+.faq-box > ul > li {
+  padding:10px;
+}
+
+.faq-box > ul > li.hover > .faq-box__question::after {
+  content:"▲";
+}
+
+.faq-box__answer {
+  display:none;
+  /*background-color:rgba(0,0,0,0.3);*/
+  background-color:rgba(235, 249, 213, .5);
+  border-radius:10px;
+  padding:10px;
+}  
+
+</style>
+
 </head>
 <body>
  <!-- Hero Section Begin -->
@@ -41,35 +100,36 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                        <ul>
-                            <li><a href="#">All</a></li>
-                            <li><a href="category?kind=1">LIVING</a></li>
-                            <li><a href="category?kind=2">KITCHEN</a></li>
-                            <li><a href="category?kind=3">BATHROOM</a></li>
-                            <li><a href="category?kind=4">KIT</a></li>
-                            <li><a href="category?kind=5">ETC</a></li>
+                       <ul>
+                            <li><a href="#">All | 전체</a></li>
+                            <li><a href="category?kind=1">LIVING | 거실</a></li>
+                            <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3">KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4">KIT | 키트</a></li>
+                            <li><a href="category?kind=5">ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
+                	<!-- 메인 홈화면의 상품검색 기능 버튼연결 -->
+                        <div class="hero__search__form" id="hero__search_form">
+                            <form action="#" style="display: block; margin-top: 0em;" method="post">
+                                <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
-                                    <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
+                                <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
                             </form>
                         </div>
+                        <!-- 메인 홈화면의 상품검색 기능 버튼연결 -->  
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+82 1688.1234</h5>
-                                <span>평일 오전9시-오후6시 </span>
+                                <h5>+82-1688-1234</h5>
+                                <span>평일 오전9시 - 오후6시 </span>
                             </div>
                         </div>
                     </div>
@@ -152,89 +212,46 @@
     <br><br><br>
     <!-- Map End -->
     
-      <!-- FAQ시작 / 부트스트랩 -->
-      <!-- C태그 작성, 데이터 삽입후 아래 세개 삭제 -->
-      <!-- 빨간색 강조글씨 <code>.accordion-body</code>-->
-      <!--  
-      <form name="formm" id="faq_form" method="post">
-      <c:forEach items="${faqList}" var="faqVO">       
-      <div class="col-lg-9" style="margin:auto;">
-	    <div class="accordion" id="accordionPanelsStayOpenExample">
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-	      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-	        <img src="faq/faq-icon.png">[$'{faqVO.fseq}']&nbsp;&nbsp;|&nbsp;&nbsp;<strong>${faqVO.subject}</strong>
-	      </button>
-	    </h2>
-	    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-	      <div class="accordion-body">
-	        <p>${faqVO.indate}</p>
-	        <strong>${faqVO.subject}</strong><br>
-	        <p>${faqVO.content}</p> <br>감사합니다.
-	      </div>
-	    </div>
-	  </div>
-	    </div>
-	  </div>
-	  </c:forEach>
-	  	<br><br><br>
-	  	-->
-	  <!-- C태그 종료 -->
+<form name="formm" id="faq_form" method="post">
+            
+<!-- 부트스트랩 시작 -->    
+<section class="section section-faq">
+  <div class="container mx-auto">
+    <h1>*FAQ 리스트</h1><br><br>
+    <div class="faq-box">
+      <ul>
+      <c:forEach items="${faqList}" var="faqVO"> 
+        <li>
+          <div class="faq-box__question"><span>Q. ${faqVO.subject}</span></div>
+          <div class="faq-box__answer">
+            <div>
+            <fmt:formatDate value="${faqVO.indate}" type="date"/><br><br>
+            <strong>${faqVO.content1}</strong>
+              </div>
+            <div style="white-space:pre-line;">
+            ${faqVO.content2}<br>
+			감사합니다.
+            </div>
+          </div>
+        </li>
+       </c:forEach> 
+      </ul>
+    </div>
+  </div>
+</section>
 
-      <!-- FAQ시작 / 부트스트랩 -->
-      <div class="col-lg-9" style="margin:auto;">
-	    <div class="accordion" id="accordionPanelsStayOpenExample">
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-	      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-	        <img src="faq/faq-icon.png">[Q1]&nbsp;&nbsp;|&nbsp;&nbsp;<strong>제목제목 제목제목 제목제목  제목제목 </strong>
-	      </button>
-	    </h2>
-	    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-	      <div class="accordion-body">
-	        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-	      </div>
-	    </div>
-	  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-	        Accordion Item #2
-	      </button>
-	    </h2>
-	    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-	      <div class="accordion-body">
-	        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-	      </div>
-	    </div>
-	  </div>
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-	      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-	        Accordion Item #3
-	      </button>
-	    </h2>	   
-	    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-	      <div class="accordion-body">
-	        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	</div>
-	<br><br><br>
- 	<!-- FAQ끝 -->   
-        
+
+<br><br><br>   
+    
     <!-- 버튼 -->
     <div class="row">                   
         <div class="col-lg-12 text-center">                      
-             <button type="button" class="site-btn" onclick="location.href='qna_write_form'">글 쓰기</button>
+             <button type="button" class="site-btn" onclick="location.href='qna_write_form'">문의글 남기기</button>
               <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
         </div>
-       </div>
-       
-    <br><br><br>    
-    <!--  </form>-->
+       </div>     
+    <br><br><br>   
+    </form>
 
     
 	<!-- Ogani Js Plugins -->
@@ -246,10 +263,35 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    	
+	<!-- 제이쿼리 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+<script type="text/javascript">
+function FaqBox__init() {
+	  $('.faq-box > ul > li').click(function() {
+	    let $this = $(this);
+	    
+	    $this.siblings('.hover').find(' > .faq-box__answer').stop().slideUp(300); 
+	    $this.siblings('.hover').removeClass('hover');
+	    
+	    if ( $this.hasClass('hover') ) {
+	      $this.find(' > .faq-box__answer').stop().slideUp(300); 
+	      $this.removeClass('hover');
+	    }
+	    else {
+	      $this.find(' > .faq-box__answer').stop().slideDown(300); 
+	      $this.addClass('hover');
+	    }
+	  });
+	  
+	  $('.faq-box__answer').click(function() {
+	    return false;
+	  });
+	}
 
-	<!-- 드롭다운 / 테이블 부트스트랩 -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	FaqBox__init();
+</script>
 
 
 <%@ include file="../footer.jsp" %>

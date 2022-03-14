@@ -143,6 +143,7 @@ public class AdminController {
 		}
 	}
 
+
 	// 어드민에서 카테고리별 상품보기
 	@GetMapping(value = "/admin_product_category")
 	public String productKindList(ProductVO vo, Model model) {
@@ -151,6 +152,7 @@ public class AdminController {
 
 		return "admin/product/productKind";
 	}
+
 
 	// 상품 등록 페이지 표시
 	@PostMapping(value = "/admin_product_write_form")

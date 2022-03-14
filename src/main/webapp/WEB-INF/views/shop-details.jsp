@@ -24,75 +24,9 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     
-    
-
 </head>
 <body>
-<!-- Page Preloder -->
-<!--  <div id="preloder">
-        <div class="loader"></div>
-    </div>-->    
 
-    <!-- Humberger Begin -->
-<!--    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="index">Home</a></li>
-                <li><a href="shop-grid">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="shop-details">Shop Details</a></li>
-                        <li><a href="shopinig-cart">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
-            </ul>
-        </div>
-    </div>-->
-    <!-- Humberger End -->
-
-    
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
@@ -104,27 +38,31 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">All</a></li>
-                            <li><a href="category?kind=1">LIVING</a></li>
-                            <li><a href="category?kind=2">KITCHEN</a></li>
-                            <li><a href="category?kind=3">BATHROOM</a></li>
-                            <li><a href="category?kind=4">KIT</a></li>
-                            <li><a href="category?kind=5">ETC</a></li>
+                            <li><a href="all">All | 전체</a></li>
+                            <li><a href="category?kind=1&order='name'" >LIVING | 리빙</a></li>
+                            <li><a href="category?kind=2&order='name'" >BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3&order='name'" >KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4&order='name'" >KIT | 키트</a></li>
+                            <li><a href="category?kind=5&order='name'" >ETC | 기타</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
+                 	<!-- 메인 홈화면의 상품검색 기능 버튼연결 -->
+                        <div class="hero__search__form" id="hero__search_form">
+                            <form action="#" style="display: block; margin-top: 0em;" method="post">
+                                <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
+
                                     <span class="arrow_carrot-down"></span>
+
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
+                                <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
                             </form>
                         </div>
+                        <!-- 메인 홈화면의 상품검색 기능 버튼연결 --> 
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
@@ -151,7 +89,7 @@
                         <h2>${productVO.name}</h2>
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
-                            <a href="shop-grid">Shop</a>
+                            <a href="#">Shop</a>
                             <span>${productVO.name}</span>
                         </div>
                     </div>
@@ -170,7 +108,7 @@
                         <div class="product__details__pic__item">
                             <img src="product_images/${productVO.image}">
                         </div>
-                        <div class="product__details__pic__slider owl-carousel">
+                        <!--<div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
                                 src="img/product/details/thumb-1.jpg" alt="">
                             <img data-imgbigurl="img/product/details/product-details-3.jpg"
@@ -179,14 +117,16 @@
                                 src="img/product/details/thumb-3.jpg" alt="">
                             <img data-imgbigurl="img/product/details/product-details-4.jpg"
                                 src="img/product/details/thumb-4.jpg" alt="">
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                   <form  method="post" name="formm" id="theform">  
                   <fieldset>
                     <div class="product__details__text">
+
                         <h3>${productVO.name}</h3>
+
                         <!--<div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -196,8 +136,13 @@
                             <span>(18 reviews)</span>
                         </div>--><br>
                         
-                        <label> 가 격 :  </label>  
-                        <div class="product__details__price"><fmt:formatNumber type="currency" value="${productVO.price2}"/></div>
+
+                        <label> 가 격 :  </label>                      
+                        <!-- 김소연 수정 03.03 -->
+                        <!--  <div class="product__details__price"><fmt:formatNumber type="currency" value="${productVO.price2}"/></div>-->
+                        <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>
+                        
+
                         <br>
                         <label> 수 량 :  </label>  
                         <div class="product__details__quantity">
@@ -236,35 +181,59 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Description</a>
+                                    aria-selected="true">상세정보</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                    aria-selected="false">Information</a>
+                                    aria-selected="false">배송 및 환불/교환/AS 정보</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
+                                    aria-selected="false">리뷰</a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <div style="white-space:pre;"><c:out value="${productVO.content}" /></div>
+                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>제품 정보</h4><br>
+                                    <div style="white-space:pre; line-height:30px;"><c:out value="${productVO.content}" /></div>
                                     
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>설명설명</p>
+                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>배송 정보</h4><br>
+                                    <img src="img/paper.jpg" style="display: block; margin: 0 auto;"><br><br>
+                                    <ul style="list-style-type:none; line-height:30px;">
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 모든 택배는 종지재질로 발송됩니다.(종이상자,종이완충재,종이테이프)</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 수령하신 택배박스는 운송장을 제거하신 후 종이로 분리 배출해주세요.</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 테이프는 반질한 느낌이 나지만 PE코팅이 없는 친환경 종이 박스 테이프입니다. 택배상자와 함께 종이로 분리 배출해주세요.</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 종이 완충재와 택배상자는 다시 사용할만큼 깨끗하다면 재사용하시는 것도 권장드립니다.</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> PLASTIC FREE DELIVERY에 관해 더 궁금한 사항이 있으시면 고객센터(1688-1234)를 통해 문의 해주세요. 친절히 안내 드리겠습니다.</li>
+										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 결제 완료일로부터 주말 및 공휴일 제외 2~5일 안에 배송됩니다.</li>     
+									</ul><br>                             
+                                    <hr style="background-color:#7fad39; height:10px;"><br>
+                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>교환/환불/AS 정보</h4><br><br>
+                                    <ul style="list-style-type:none;line-height:30px;">
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 모든 상품 배송 완료일로부터 7일 이내 처리 가능합니다.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 부분 배송 시 주문 건에 마지막 상품까지 수령하신 뒤 반품 접수해 주세요.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 교환/반품의 경우 상품별로 1회 처리 가능한 점 참고해주세요.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 고객 부주의로 상품이 훼손된 경우 교환 및 반품이 어렵습니다. </li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 상품은 받아보신 상태와 최대한 동일한 상태로 보내주셔야 처리 가능합니다.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 단순 변심 등 고객님의 사유로 인한 교환 및 반품 시 배송비가 부과됩니다.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 간혹의 경우 교환 상품이 공급처 사정에 의해 품절될 수 있으며, 이경우 유선 안내드리고 있습니다.</li>
+	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 교환/반품 처리는 상품 도착 후 3-5일(주말,공휴일제외) 정도 소요되는 점 참고 부탁드립니다.</li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>설명설명설명</p>
+                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>상품 리뷰</h4><br><br>
+                                    <ul style="list-style-type:none; line-height:30px;"">
+                                    	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 상품에 대한 리뷰를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 삭제조치 될 수 있습니다.</li>
+                                    	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 SAVE EARTH 내 Q&A(1:1)게시판에 문의를 남겨주세요.</li>
+                                    </ul>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -275,84 +244,6 @@
     </section>
     <!-- Product Details Section End -->
 
-    <!-- Related Product Section Begin -->
-    <!--<section class="related-product">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title related__product__title">
-                        <h2>Related Product</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
-    <!-- Related Product Section End -->
-
-
-
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -362,6 +253,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/mypage.js"></script>
 <%@ include file="footer.jsp" %>  
 </body>
 </html>

@@ -10,7 +10,7 @@ import com.green.biz.dao.NoticeDAO;
 import com.green.biz.dto.NoticeVO;
 import com.green.biz.notice.NoticeService;
 
-import utils.Criteria;
+import utils.notice.Criteria;
 
 @Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
@@ -69,7 +69,23 @@ public class NoticeServiceImpl implements NoticeService {
 		
 	}
 
-	// 페이징
+
+	// ▶▶ Criteria 작성 후 추가 (1) -- 03.02	
+	@Override
+	public int countNoticeList(NoticeVO vo) {
+
+		return noticeDao.countNoticeList(vo);
+	}
+
+	
+	// ▶▶ Criteria 작성 후 추가 (2) -- 03.02	
+	@Override
+	public List<NoticeVO> getNoticeWithPaging(Criteria criteria, String content) {
+
+		return noticeDao.getNoticeWithPaging(criteria, content);
+	}
+  
+  	// 페이징
 	@Override
 	public int countNoticeList(String subject) {
 		return noticeDao.countNoticeList(subject);
@@ -81,5 +97,5 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.getNoticeListWithPaging(criteria, subject);
 	}
 
-	
+
 }

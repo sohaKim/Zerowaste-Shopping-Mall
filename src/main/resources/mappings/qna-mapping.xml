@@ -16,6 +16,13 @@
 		INSERT INTO qna(qseq, qkind, subject, content, id)
 		VALUES(qna_seq.NEXTVAL, #{qkind}, #{subject}, #{content}, #{id})
 	</insert>
+	
+	<!-- Qna update수정,  답변이 없을경우만 수정  조건,   02.26 김소연 추가 -->
+	<update id="updateQnabyQseq">
+		UPDATE qna
+		 SET qkind=#{qkind}, subject=#{subject}, content=#{content}
+		WHERE qseq=#{qseq}
+	</update>
 
 	<!--▶▶ Admin관리자 페이지 작성시 추가 부분 -->
 	<!-- 관리자가 조건없이 모든 Q&A를 최신순으로 조회  -->
@@ -24,17 +31,19 @@
 		WHERE content LIKE '%'||#{content}||'%'
 		ORDER BY indate DESC
 	</select>
-	
-	<!-- Q&A 수정 -->
+
+	  
+	<!--▶▶ Admin관리자 페이지 Q&A 답변여부 수정 -->
 	<update id="updateQna">
 		UPDATE qna
 		 SET reply=#{reply}, rep='2'
 		WHERE qseq=#{qseq}
-	</update>
-	
+	</update>	
+
+	<!--▶▶ Admin관리자 페이지 작성시 추가 부분 -->
 	<!--  QnA 상태별 보기 -->
 	<select id="selectQnaRepList" resultType="qna">
 		SELECT * FROM qna WHERE rep=#{rep} ORDER BY indate DESC
 	</select>
-</mapper>
 
+</mapper>

@@ -222,3 +222,28 @@
     });
 
 })(jQuery);
+
+
+/*-------------------
+  header.jsp의 검색창 search기능
+  03.10 김소연 추가
+--------------------- */
+
+function go_search_product(name) {
+	
+	document.frm.action = "go_search_product";  
+	document.frm.submit();
+} 
+
+
+
+function filter(filter_str) {
+	var theForm = document.filter_form;
+	var $order = $("#order");
+	console.log("filter=" + filter_str)
+	$order.val(filter_str);
+	
+	theForm.action = "filter";
+	theForm.submit();
+}
+

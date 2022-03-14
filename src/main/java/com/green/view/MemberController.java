@@ -135,8 +135,45 @@ public class MemberController {
 		
 		return "member/login";
 	}
+
 	
+	   
+	// 3/9 마이페이지 수정 추가(수련)
+	@GetMapping(value="/update_member_form")
+	public String updateMemberForm(Model model, HttpSession session) {
+			
+		model.addAttribute("title","개인정보 수정");
+		
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		if (loginUser == null) {
+			return "member/login";
+		} else {
+			return "mypage/updateMember";		
+		}
+		
+	}
+		
+	@PostMapping(value="/update_member")
+	public String updateMember(@RequestParam(value="zonecode")String zonecode,
+				@RequestParam(value="addr1")String addr1,
+				@RequestParam(value="addr2")String addr2,	
+				MemberVO vo, Model model) {
+		vo.setZonecode(zonecode);
+		vo.setRoadaddr(addr1);
+		vo.setDetailaddr(addr2);
+		memberService.updateMember(vo);
+		
+		model.addAttribute("loginUser", vo);
+		
+		return "redirect:mypage";
+}
 	
+	@PostMapping(value="/deleteMember")
+	public String deleteMember(MemberVO vo, SessionStatus status) {
+	
+		status.setComplete();
+		return "index";
+	}
 	
 	/*
 	 * 우편번호, 주소 찾기 화면 출력

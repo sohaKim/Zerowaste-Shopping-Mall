@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.green.biz.dto.NoticeVO;
 
-import utils.Criteria;
+import utils.notice.Criteria;
+
 
 
 @Repository
@@ -52,24 +53,36 @@ public class NoticeDAO {
 		mybatis.insert("mappings.notice-mapping.insertNotice", vo);
 	}
 	
-	public void updateNotice(NoticeVO vo) {
+	// ▶▶ Criteria 작성 후 추가 (1) -- 03.02	
+	// int nseq(공지번호) 총 개수 ncnt를  NoticeVO타입으로 매개변수로 받음	 
+	public int countNoticeList(NoticeVO vo) {
+		
+	return mybatis.selectOne("mappings.notice-mapping.countNoticeList", vo);
+	
+}
+	
+	// ▶▶ Criteria 작성 후 추가 (2) -- 03.02
+	public List<NoticeVO> getNoticeWithPaging(Criteria criteria, String content) {
+		HashMap<String, Object>map = new HashMap<>();
+		map.put("criteria", criteria);
+		map.put("content", content);
+		
+		return mybatis.selectList("mappings.notice-mapping.listWithPagingNotice", map);
+	}
+  
+  public void updateNotice(NoticeVO vo) {
 		
 		mybatis.update("mappings.notice-mapping.updateNotice", vo);
 	}
 	
-	public int countNoticeList(String subject) {
-		
-		return mybatis.selectOne("mappings.notice-mapping.countNoticeList", subject);
-	}
-	
-	// 공지 목록 페이징
-	public List<NoticeVO> getNoticeListWithPaging(Criteria criteria,String subject) {
+  
+	// 어드민 공지 목록 페이징
+	public List<NoticeVO> adminGetNoticeListWithPaging(Criteria criteria,String subject) {
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("criteria", criteria);
 		map.put("subject", subject);
 		
-		return mybatis.selectList("mappings.notice-mapping.noticeListWithPaging", map);
-	}
+		return mybatis.selectList("mappings.notice-mapping.adminNoticeListWithPaging", map);
 	
 }
 

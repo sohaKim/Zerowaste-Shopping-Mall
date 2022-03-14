@@ -15,18 +15,22 @@
 	</select>
 	
 	<!-- Notice리스트에서 키값 조건(내용)으로 검색하기 (검색창을 통한)  02.25추가-->
+	  
 	<select id="searchNotice" resultType="notice">
 		SELECT * FROM notice
 		WHERE content like '%'||#{content}||'%'
 		ORDER BY indate DESC	
 	</select>	
 				
-		
+	  	
 	<!-- Notice카테고리별로 클릭시 리스트 보여주기 02.25 -->	
+
 	<select id="getNoticeByCategory" resultType="notice">
 		SELECT * FROM notice WHERE nkind=#{nkind}
 		ORDER BY indate DESC
 	</select>
+
+
 	
 	<!-- Noitce리스트/디테일jsp에서 게시판 조회수(count) 기능 구현 02.25 -->
 	<update id="noticeCount" parameterType="int">
@@ -65,5 +69,27 @@
 	]]>
 	</select>
 
+
+	
+	<!--  ▶▶ Criteria 작성 후 추가(1) 03.02-->
+	<!-- 공지사항의 총 개수 조회-->
+	<select id="countNoticeList" parameterType="int" resultType="int">
+		SELECT count(*) as ncnt
+		FROM notice
+	</select>		
+	
+	
+	<!--  ▶▶ Criteria 작성 후 추가(2) 03.02-->	
+	<select id="listWithPagingNotice" parameterType="hashMap" resultType="notice">
+	<![CDATA[
+		SELECT nseq, nkind, subject, notimg, indate, count
+		FROM (SELECT row_number() over(ORDER BY indate DESC) rn, nseq, nkind, 
+			  subject, notimg, indate, count
+			  FROM notice
+			  WHERE content like '%'||#{content}||'%')
+	    WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage} 
+	  AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+	]]>	  
+	</select>
 </mapper>
 

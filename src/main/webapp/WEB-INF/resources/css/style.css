@@ -394,19 +394,28 @@ ol {
 	padding: 5px 10px;
 }
 
-.header__top__right__auth {
+/*0228세션위치 예진*/
+.header__top__right__auth ul {
+	position: relative;
 	display: inline-block;
+	text-align: right;
+}
+
+.header__top__right__auth ul li{
+	list-style: none;
+	font-size: 14px;
+	float:right;
+	color: #101517;
+	margin-left: 5px;
+	font-weight: bold;
 }
 
 .header__top__right__auth a {
-	display: block;
-	font-size: 14px;
-	color: #1c1c1c;
+	color: #101517;
+	margin-left: 5px;
+	font-weight: bold;
 }
 
-.header__top__right__auth a i {
-	margin-right: 6px;
-}
 
 .header__logo {
 	padding: 15px 0;
@@ -425,6 +434,7 @@ ol {
 	display: inline-block;
 	margin-right: 50px;
 	position: relative;
+	
 }
 
 .header__menu ul li .header__menu__dropdown {
@@ -451,13 +461,15 @@ ol {
 
 .header__menu ul li .header__menu__dropdown li:hover>a {
 	color: #7fad39;
+	
 }
-
+/*드롭메뉴 폰트사이즈수정 0311예진*/
 .header__menu ul li .header__menu__dropdown li a {
 	text-transform: capitalize;
 	color: #ffffff;
 	font-weight: 400;
 	padding: 5px 15px;
+	font-size:15px;
 }
 
 .header__menu ul li.active a {
@@ -477,9 +489,9 @@ ol {
 .header__menu ul li:last-child {
 	margin-right: 0;
 }
-
+/*0311headerfontsize수정 예진*/
 .header__menu ul li a {
-	font-size: 14px;
+	font-size: 20px;
 	color: #252525;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -638,6 +650,63 @@ ol {
 	overflow: hidden;
 	margin-bottom: 30px;
 }
+
+/* 
+김소연 03.10 추가 시작------------------------------
+메인 검색창의 css
+지우지말것 
+*/
+<style>
+#hero__search_form {
+	width: 490px;
+	height: 50px;
+    border: 1px solid #ebebeb;
+    position: relative;
+    float: left;
+}
+
+#hero__search__categories {
+	width: 30%;
+    float: left;
+    font-size: 16px;
+    color: #1c1c1c;
+    font-weight: 700;
+    padding-left: 18px;
+    padding-top: 11px;
+    position: relative;
+}
+
+#hero__search__categories:after{
+
+	position: absolute;
+	right: 0;
+	top: 14px;
+	height: 20px;
+	width: 1px;
+	background: #000000;
+	opacity: 0.1;
+	content: "";
+}
+
+
+#key::placehorder {
+	color: #b2b2b2;
+}
+
+#searchbtn{
+	position: absolute;
+	right: 0;
+	top: -1px;
+	height: 50px;
+}
+
+
+/* 
+김소연 03.10 추가 끝------------------------------
+메인 검색창의 css
+지우지말것 
+*/
+
 
 .hero__search__form {
 	width: 610px;
@@ -1105,6 +1174,10 @@ ol {
 	display: block;
 }
 
+.sidebar__item ul li a:hover {
+	color: #7fad39;
+}
+
 .sidebar__item .latest-product__text {
 	position: relative;
 }
@@ -1253,10 +1326,10 @@ ol {
 /*---------------------
   Shop Grid
 -----------------------*/
-
+/*0305페이징부분 간격 padding조정 예진*/
 .product {
-	padding-top: 80px;
-	padding-bottom: 80px;
+	padding-top: 50px;
+	padding-bottom: 0px;
 }
 
 .product__discount {
@@ -1436,6 +1509,11 @@ ol {
 	color: #6f6f6f;
 	display: inline-block;
 }
+/*0303예진 정렬순*/
+.filter__sort ul {
+	list-style: none;
+	float:right;
+}
 
 .filter__sort .nice-select {
 	background-color: #fff;
@@ -1518,6 +1596,19 @@ ol {
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
 }
+
+.filter__option ul li{
+	list-style: none; 
+	float:left; 
+	color:#7fad39;
+	margin-left:5px;
+}
+.filter__option ul li a{
+
+	color:#7fad39;
+}
+
+
 
 .filter__option span:last-child {
 	margin: 0;
@@ -2368,6 +2459,11 @@ ol {
 .blog__sidebar__item {
 	margin-bottom: 50px;
 }
+/*0310예진*/
+.cart__sidebar__item {
+	margin-bottom: 30px;
+}
+
 
 .blog__sidebar__item h4 {
 	color: #1c1c1c;
@@ -2663,15 +2759,15 @@ noticeList.jsp css부분
 	padding-top: 70px;
 	padding-bottom: 0;
 }
-
+/*0307 예진 footer 아래 떨어진부분 가깝게 수정*/
 .footer__about {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
-
+/*0307 예진 footer 폰트크기,행간간격수정*/
 .footer__about ul li {
-	font-size: 8px;
+	font-size: 15px;
 	color: #1c1c1c;
-	line-height: 15px;
+	line-height: 25px;
 	list-style: none;
 }
 
@@ -2772,9 +2868,9 @@ noticeList.jsp css부분
 
 .footer__copyright {
 	border-top: 1px solid #ebebeb;
-	padding: 15px 0;
+	padding: 5px 0;
 	overflow: hidden;
-	margin-top: 20px;
+	margin-top: 5px;
 }
 
 .footer__copyright__text {
@@ -2957,8 +3053,9 @@ noticeList.jsp css부분
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.header__menu ul li {
-		margin-right: 45px;
+		margin-right: 50px;
 	}
+	
 	.hero__search__form {
 		width: 490px;
 	}
@@ -2967,6 +3064,10 @@ noticeList.jsp css부분
 	}
 	.hero__categories ul {
 		padding-left: 20px;
+	}
+	/*alldepartments예진수정0307*/
+	.hero__categories ul li a:hover {
+	color: #7fad39;
 	}
 	.latest-product__slider.owl-carousel .owl-nav {
 		right: 0;
@@ -3510,4 +3611,7 @@ noticeList.jsp css부분
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
+	
+      
+ 
 }
