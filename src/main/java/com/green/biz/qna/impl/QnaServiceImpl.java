@@ -41,7 +41,7 @@ public class QnaServiceImpl implements QnaService {
 	// ▶▶ Admin관리자 페이지 작성시 추가 부분 
 	@Override
 	public List<QnaVO> listAllQna(String content) {
-		return qnaDao.listAllQna();
+		return qnaDao.listAllQna(content);
 	}
 
 	@Override

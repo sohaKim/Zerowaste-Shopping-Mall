@@ -10,6 +10,7 @@ import com.green.biz.dto.NoticeVO;
 import utils.notice.Criteria;
 
 
+
 @Repository
 public class NoticeDAO {
 
@@ -68,6 +69,20 @@ public class NoticeDAO {
 		
 		return mybatis.selectList("mappings.notice-mapping.listWithPagingNotice", map);
 	}
+  
+  public void updateNotice(NoticeVO vo) {
+		
+		mybatis.update("mappings.notice-mapping.updateNotice", vo);
+	}
+	
+  
+	// 어드민 공지 목록 페이징
+	public List<NoticeVO> adminGetNoticeListWithPaging(Criteria criteria,String subject) {
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("criteria", criteria);
+		map.put("subject", subject);
+		
+		return mybatis.selectList("mappings.notice-mapping.adminNoticeListWithPaging", map);
 	
 }
 

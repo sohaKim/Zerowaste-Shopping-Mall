@@ -5,6 +5,7 @@ import com.green.biz.dto.NoticeVO;
 
 import utils.notice.Criteria;
 
+
 public interface NoticeService{
 
 	// 조건없이 모든 Notice조회
@@ -35,8 +36,12 @@ public interface NoticeService{
 	// Notice내용 삽입
 	public void insertNotice(NoticeVO vo);
 	
+	public void updateNotice(NoticeVO vo);
 	
+	public int countNoticeList(String subject);
 	
+	public List<NoticeVO> getNoticeListWithPaging(Criteria criteria, String subject);
+
 
 }
 

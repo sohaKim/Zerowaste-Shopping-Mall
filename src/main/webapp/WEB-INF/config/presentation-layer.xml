@@ -17,11 +17,14 @@
 	<mvc:resources location="/WEB-INF/resources/sass/" mapping="/sass/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/product_images/" mapping="/product_images/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/resources/notice_images/" mapping="/notice_images/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/member/" mapping="/member/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/mypage/" mapping="/mypage/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/product/" mapping="/product/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/views/admin/" mapping="/admin/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/views/notice/" mapping="/notice/**"></mvc:resources>
+	
 	
 	<!-- 리소스 김소연추가 02/19 -->
 	<mvc:resources location="/WEB-INF/views/aboutus/" mapping="/aboutus/**"></mvc:resources>

@@ -25,9 +25,7 @@
 						<th scope="col">아이디</th>
 						<th scope="col">이름</th>
 						<th scope="col">이메일</th>
-						<th scope="col">구매 이력</th>
 						<th scope="col">가입일</th>
-						<th scope="col">탈퇴여부</th>
 					</tr>
 					</thead>
 						<c:forEach items="${memberList }" var="memberVO">
@@ -35,14 +33,7 @@
 								<td>${memberVO.id}</td>
 								<td>${memberVO.name }</td>
 								<td>${memberVO.email }</td>
-								<td>0회</td> <!--  TODO: 구현해야됨 -->
 								<td><fmt:formatDate value="${memberVO.regdate }" /></td>
-								<td>
-									<c:choose>	
-										<c:when test='${memberVO.useyn=="n"}'>탈퇴</c:when>
-										<c:otherwise>-</c:otherwise>
-									</c:choose>
-								</td>
 							</tr>
 						</c:forEach>
 					</table>

@@ -66,19 +66,19 @@
 					<c:forEach items="${OrderByResult}" var="orderVO">
 						<tr>
 							<c:choose>
-								<c:when test='${orderVO.result == "1" }'>
+								<c:when test='${orderVO.result =="1"}'>
 									<td><span style="font-color: blue">${orderVO.odseq}</span></td>
-									<td><input type="checkbox" name="result"> 미처리</td>
+									<td><input type="checkbox" name="result" value="${orderVO.odseq}"> 미처리</td>
 								</c:when>
 								<c:otherwise>
 									<td><span style="font-color: red">${orderVO.odseq}</span></td>
-									<td><input type="checkbox" checked="checked"	disabled="disabled">처리완료</td>
+									<td><input type="checkbox" checked="checked"	disabled="disabled"> 처리완료</td>
 								</c:otherwise>
 							</c:choose>
 							<td>${orderVO.mname }</td>
 							<td>${orderVO.pname }</td>
 							<td>${orderVO.quantity }</td>
-							<td><fmt:formatDate value="${orderVO.indate }" /></td>
+							<td><fmt:formatDate value="${orderVO.indate}" /></td>
 						</tr>
 					</c:forEach>
 				</table>

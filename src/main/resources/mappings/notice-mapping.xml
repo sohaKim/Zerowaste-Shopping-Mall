@@ -45,6 +45,29 @@
 		INSERT INTO notice(nseq, nkind, subject, content, notimg)
 		VALUES(notice_seq.NEXTVAL, #{nkind}, #{subject}, #{content}, #{notimg})
 	</insert>
+	
+	<!--  공지 수정 -->
+	<update id="updateNotice">
+		UPDATE notice SET nkind=#{nkind}, subject=#{subject}, content=#{content}, notimg=#{notimg}
+		WHERE nseq=#{nseq}
+	</update>
+	
+	<!-- 조회한 총 공지 개수-->
+	<select id="countNoticeList" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM notice
+		WHERE subject LIKE '%'||#{subject}||'%'
+	</select>
+	
+	<select id="noticeListWithPaging" parameterType="hashMap" resultType="notice">
+	<![CDATA[
+	SELECT nseq, indate, subject, content, nkind, notimg
+		FROM (SELECT row_number() over(ORDER BY nseq DESC)rn, nseq, indate, subject, content, nkind, notimg
+    		FROM notice
+    	  WHERE subject LIKE '%'||#{subject}||'%')
+	WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage} 
+		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+	]]>
+	</select>
 
 
 	

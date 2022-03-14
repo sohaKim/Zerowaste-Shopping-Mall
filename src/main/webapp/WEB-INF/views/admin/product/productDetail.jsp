@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<script type="text/javascript" src="admin/product/product.js"></script>
+
 <style>
 div .input-group {
 	margin-bottom: 10px;
@@ -75,16 +77,24 @@ div .input-group {
 						<img src="product_images/${productVO.image }" width="200pt">
 						<!-- <input type="file" class="form-control" name="product_image" id="product_image" readonly> -->
 					</div>
+					
+					
+					<div class="input-group mb-3">
+						<label class="input-group-text" for="product_image" style="width: 75px; margin-right: 2px; padding-left: 20px;">배송<br>안내</label>
+						<input type="text" class="form-control" name="prod_Notice" id="prod_Notice" value="${productVO.prodNotice}"  readonly>
+					</div>
+					
 
 					<div class="input-group">
 						<span class="input-group-text text-wrap" style="width: 75px; margin-right: 2px; padding-left: 20px;">상세<br>정보</span>
-						<textarea class="form-control" name="content" id="content" aria-label="상세 정보"  style="height: 400px;" >
+						<textarea class="form-control" name="content" id="content" aria-label="상세 정보"  style="height: 400px; background-color: transparent;"readonly>
 <c:out value="${productVO.content }" /></textarea>
 					</div>
 
 					<div class="d-flex justify-content-center" style="margin-bottom: 0;">
 						<input class="btn btn-primary" type="button" value="수정" style="margin-right: 15px;" onClick="go_mod('${productVO.pseq}')">
-						<button type="button" name="delete" class="btn btn-danger" style="margin-right: 15px;">상품 삭제</button>
+						<!-- <a href="admin_product_delete?pseq=${productVO.pseq}"><button type="button" class="btn btn-danger">상품 삭제</button></a>-->
+						<a href="admin_product_delete?pseq=${productVO.pseq}"><button type="button" class="btn btn-danger" style="margin-right: 15px;" onClick="go_deleteProduct('${productVO.pseq}')">상품 삭제</button></a>
 						<a href="admin_product_list"><button type="button" class="btn btn-outline-secondary">목록</button></a>		
 					</div>
 				</form>

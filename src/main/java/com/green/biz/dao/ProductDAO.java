@@ -29,6 +29,7 @@ public class ProductDAO {
 		return mybatis.selectList("mappings.product-mapping.getBestProductList");
 	}
 	
+	// 상품 상세보기
 	public ProductVO getProduct(ProductVO vo) {
 		
 		return mybatis.selectOne("mappings.product-mapping.getProduct", vo);
@@ -62,7 +63,6 @@ public class ProductDAO {
 
 	
 	// 전체 상품의 갯수 조회
-
 	public int countProductList(String name) {
 		
 		return mybatis.selectOne("mappings.product-mapping.countProductList",name);
@@ -73,6 +73,8 @@ public class ProductDAO {
 		return mybatis.selectOne("mappings.product-mapping.countProductListAll");
 	}
 	
+
+
 	//0303all낮은가격순카테고리조회
 	public int countProductListAllLow(String category, String order) {
 		Map<String, String> map = new HashMap<String, String>();
@@ -82,14 +84,10 @@ public class ProductDAO {
 		return mybatis.selectOne("mappings.product-mapping.countProductListAllLow", map);
 	}	
 
-	// 상품 목록 조회
-
 	public List<ProductVO> listProduct(String name){
 		
 		return mybatis.selectList("mappings.product-mapping.listProduct",name);
 	}
-
-	// 페이지별 상품 목록 조회
 
 	public List<ProductVO> getListWithPaging(Criteria criteria,String name) {
 		HashMap<String,Object> map = new HashMap<>();
@@ -98,7 +96,8 @@ public class ProductDAO {
 		
 		return mybatis.selectList("mappings.product-mapping.listWithPaging",map);
 	}
-	
+
+
 
 	// 0303all페이지별 상품 목록 조회
 	public List<ProductVO> getListWithPagingAll(Criteria criteria) {
@@ -125,24 +124,10 @@ public class ProductDAO {
 	}
 	
 	
-	// ▶ Admin 상품 추가
-	public void insertProduct(ProductVO vo) {
-		
-		mybatis.insert("mappings.product-mapping.insertProduct",vo);
-	}
+
+	
 	
 
-	// ▶ Admin 상품 정보 수정
-	public void updateProduct(ProductVO vo) {
-		
-		mybatis.update("mappings.product-mapping.updateProduct",vo);
-	}
-
-	// ▶ Admin 관리자 페이지 작성시 추가 부분2
-	public List<SalesQuantity>getProductSales(){
-		
-		return mybatis.selectList("mappings.product-mapping.getProductSales");
-	}
 	
 	// ▶메인화면의 검색창 키워드 검색기능 --product의 모든카테고리 중 검색
 	//  김소연 03.10 추가
@@ -160,6 +145,38 @@ public class ProductDAO {
 		
 		return mybatis.selectOne("mappings.product-mapping.countSearchProduct", vo);
 		
+	}
+  
+  
+  // 어드민
+	// 어드민 상품 카테고리별 조회
+	public List<ProductVO> adminGetProductListByKind(ProductVO vo){
+		
+		return mybatis.selectList("mappings.product-mapping.adminGetProductListByKind",vo);
+	}
+  
+  // 상품 입력
+  public void insertProduct(ProductVO vo) {
+		
+		mybatis.insert("mappings.product-mapping.insertProduct",vo);
+	}
+  
+  // ▶ Admin 상품 정보 수정
+	public void updateProduct(ProductVO vo) {
+		
+		mybatis.update("mappings.product-mapping.updateProduct",vo);
+	}
+  
+  // 상품 삭제
+	public void deleteProduct(int pseq) {
+		
+		mybatis.delete("mappings.product-mapping.deleteProduct", pseq);
+	}
+  
+  // 
+	public List<SalesQuantity>getProductSales(){
+		
+		return mybatis.selectList("mappings.product-mapping.getProductSales");
 	}
 	
 }

@@ -14,6 +14,7 @@ public interface ProductService {
 	List<ProductVO> getBestProductList();
 	
 	ProductVO getProduct(ProductVO vo);
+
 	//0304category이름순배열
 	List<ProductVO> getProductListByKind(ProductVO vo, String order);
 	
@@ -25,9 +26,14 @@ public interface ProductService {
 	
 	public List<ProductVO> listProduct(String name);
 	
+	// 상품 입력
 	public void insertProduct(ProductVO vo);
 	
+	// 상품 수정 
 	public void updateProduct(ProductVO vo);
+	
+	// 3/10 상품 삭제 기능 추가 (수련)
+	public void deleteProduct(int pseq);
 	
 	public List<ProductVO> getListWithPaging(Criteria criteria,String name);
 	
@@ -47,4 +53,7 @@ public interface ProductService {
 	// ▶ 전체 게시글 총 개수를 pseq로 받는 count
 	//  김소연 03.10 추가
 	public int countSearchProduct(ProductVO vo);
+  
+  // 어드민에서 상품 카테고리별 불러오기 
+	List<ProductVO> adminGetProductListByKind(ProductVO vo);
 }

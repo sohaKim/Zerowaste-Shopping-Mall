@@ -52,7 +52,7 @@ th, td {
 							<c:forEach items="${productList }" var="productVO">
 								<tr>
 									<td>${productVO.pseq}</td>
-									<td style="text-align: left;"><a href="admin_product_detail${pageMaker.makeQuery(pageMaker.criteria.pageNum)}&pseq=${productVO.pseq}">${productVO.name }</a></td>
+ 									<td style="text-align: left;"><a href="admin_product_detail?pseq=${productVO.pseq }">${productVO.name }</a></td>
 									<td><fmt:formatNumber value="${productVO.price1 }" /></td>
 									<td><fmt:formatNumber value="${productVO.price2 }" /></td>
 									<td><fmt:formatDate value="${productVO.regdate }" /></td>
@@ -66,35 +66,11 @@ th, td {
 										</c:choose>
 								</tr>
 							</c:forEach>
-							<!--  페이징.. -->
-							<!-- <tr>
-							<td>${paging}</td>
-							</tr> -->
-							<!--  페이징 끝 -->
 						</c:otherwise>
 					</c:choose>
 				</table>
 			</form>
 		</div>
-		<!--  페이징 부분 -->
-		<nav aria-label="Page navigation example">
-			<ul class="pagination justify-content-center" style="width: 1140px; margin-right: auto; margin-left: auto;">
-
-				<c:if test="${pageMaker.prev}">
-					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(pageMaker.startPage-1)}">이전</a></li>
-				</c:if>
-
-				<!-- [1][2][3]... 표시 부분 -->
-				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(index)}">${index}</a></li>
-				</c:forEach>
-
-				<c:if test="${pageMaker.next}">
-					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(pageMaker.endPage+1)}">다음</a></li>
-				</c:if>
-			</ul>
-		</nav>
-		<!--  페이징 끝 -->
 	</div>
 
 </div>

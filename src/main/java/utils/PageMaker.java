@@ -57,13 +57,6 @@ public class PageMaker {
 		return uriComp.toString();
 	}
 	
-	
-	
-	
-	
-	
-	
-
 	// 멤버변수, Getters, Setters 생성
 	public Criteria getCriteria() {
 		return criteria;

@@ -21,4 +21,5 @@ public class ProductVO {
 	private String useyn;
 	private String bestyn;
 	private Timestamp regdate;
+	private String prodNotice;
 }

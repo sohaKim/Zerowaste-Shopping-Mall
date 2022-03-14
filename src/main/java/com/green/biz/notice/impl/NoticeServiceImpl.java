@@ -57,6 +57,11 @@ public class NoticeServiceImpl implements NoticeService {
 	public void insertNotice(NoticeVO vo) {
 		noticeDao.insertNotice(vo);
 	}
+	
+	@Override
+	public void updateNotice(NoticeVO vo) {
+		noticeDao.updateNotice(vo);
+	}
 
 	@Override
 	public void noticeCount(NoticeVO vo) {
@@ -64,18 +69,32 @@ public class NoticeServiceImpl implements NoticeService {
 		
 	}
 
+
 	// ▶▶ Criteria 작성 후 추가 (1) -- 03.02	
 	@Override
 	public int countNoticeList(NoticeVO vo) {
 
 		return noticeDao.countNoticeList(vo);
 	}
+
 	
 	// ▶▶ Criteria 작성 후 추가 (2) -- 03.02	
 	@Override
 	public List<NoticeVO> getNoticeWithPaging(Criteria criteria, String content) {
 
 		return noticeDao.getNoticeWithPaging(criteria, content);
+	}
+  
+  	// 페이징
+	@Override
+	public int countNoticeList(String subject) {
+		return noticeDao.countNoticeList(subject);
+	}
+
+	@Override
+	public List<NoticeVO> getNoticeListWithPaging(Criteria criteria, String subject) {
+		
+		return noticeDao.getNoticeListWithPaging(criteria, subject);
 	}
 
 

@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		return pDao.getProductListByKind(vo, order);
 	}
-
+	
 	@Override
 	public int countProductList(String name) {
 		
@@ -98,6 +98,7 @@ public class ProductServiceImpl implements ProductService {
 		return pDao.getProductSales();
 	}
 
+
 	// ▶메인화면의 검색창 키워드 검색기능 --product의 모든카테고리 중 검색
 	//  김소연 03.10 추가
 	@Override
@@ -113,5 +114,19 @@ public class ProductServiceImpl implements ProductService {
 		
 		return pDao.countSearchProduct(vo);
 	}
+
+  // 어드민 카테고
+  @Override
+  public List<ProductVO> adminGetProductListByKind(ProductVO vo) {
+		
+		return pDao.adminGetProductListByKind(vo);
+  
+  // 어드민 상품삭제 
+  @Override
+	public void deleteProduct(int pseq) {
+
+		pDao.deleteProduct(pseq);
+	}
+
 
 }
