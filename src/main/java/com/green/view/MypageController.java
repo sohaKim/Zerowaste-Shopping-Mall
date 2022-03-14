@@ -324,15 +324,25 @@ public class MypageController {
 		   order.setOseq(oseq);
 		   order.setResult("1");
 		   List<OrderVO> orderList = orderService.listOrderById(order);
-		   
+	   
+	   //0314예진 배송비포함
 	   //(3) 주문 총액 계산
 		   int totalAmount = 0;
-		   for(OrderVO vo : orderList) {
-			   totalAmount +=(vo.getQuantity() * vo.getPrice2());
+  		   int ordertotal = 0;
+		   
+  		   for(OrderVO vo : orderList) {
+  			 totalAmount +=(vo.getQuantity() * vo.getPrice2());
 		   }
+  		// 장바구니 전체 금액에 따라 배송비 구분
+  	    // 배송비(30,000원 이상 무료, 미만 3,000원		
+  		   int fee = totalAmount >= 30000 ? 0 : 3000;
+  		   ordertotal = fee + totalAmount;
+  		   
 	   //(4) 내장 객체에 결과 저장
 		   model.addAttribute("orderList",orderList);
-		   model.addAttribute("totalPrice",totalAmount);
+		   model.addAttribute("fee", fee);
+  		   model.addAttribute("ordertotal", ordertotal);
+  		   model.addAttribute("totalPrice",totalAmount);
 	   
 	   //(5)화면 호출
 	   return "mypage/orderList";
@@ -381,17 +391,27 @@ public class MypageController {
 		   }
 		   //주문번호별 총액 계산
 		   int amount = 0;
+		   int ordertotal=0;
+		   
 		   for(int i  = 0; i<listByOseq.size();i++) {
 			   amount += listByOseq.get(i).getQuantity()
 					   *listByOseq.get(i).getPrice2();
 		   }
-		   order.setPrice2(amount);
+		   
+		   
+		   int fee = amount >= 30000 ? 0 : 3000;
+  		   ordertotal = fee + amount;
+  		   
+  		   order.setPrice2(ordertotal);
+		   
+		   
 		   
 		   //요약정보를 List변수에 추가
 		   orderList.add(order);
 	   }
 	   model.addAttribute("title","진행중인 주문 내역");
 	   model.addAttribute("orderList",orderList);
+	   
 	   }
 	   return "mypage/mypage";
    }
@@ -420,12 +440,22 @@ public class MypageController {
 	   
 	   //주문 합계 금액 계산
 	   int amount = 0;
+	   int ordertotal=0;
+	   
+	   
 	   for(int i = 0;i<orderList.size();i++) {
 		   amount +=(orderList.get(i).getQuantity()
 				   *orderList.get(i).getPrice2());
 	   }
+	   //0314배송비포함가격수정예진
+	   int fee = amount>=30000?0:3000;
+	   
+	   ordertotal=fee+amount;
+	   
 	   model.addAttribute("title","My Page(주문 상세 정보)");
 	   model.addAttribute("orderDetail",orderDetail);
+	   model.addAttribute("ordertotal",ordertotal);
+	   model.addAttribute("fee",fee);
 	   model.addAttribute("totalPrice",amount);
 	   model.addAttribute("orderList",orderList);
 	   
@@ -470,11 +500,17 @@ public class MypageController {
 				 summary.setPname(orders.get(0).getPname());
 			 }
 			 int amount = 0;
+			 int ordertotal=0;
+			 
 			 for (OrderVO order : orders) {
 				 amount += (order.getQuantity() * order.getPrice2());
 			 }
-			 summary.setPrice2(amount);
 			 
+			 
+			 int fee = amount >= 30000 ? 0 : 3000;
+	   		 ordertotal = fee + amount;
+	   		 
+	   		summary.setPrice2(ordertotal);
 			 orderList.add(summary);
 		   }
 		   

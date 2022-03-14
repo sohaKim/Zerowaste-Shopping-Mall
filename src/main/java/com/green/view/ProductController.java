@@ -31,7 +31,8 @@ public class ProductController {
 	@GetMapping(value="/product_detail")
 	public String productDetailAction(ProductVO vo, Model model) {
 		
-		//��ǰ �� ��ȸ
+		// 제품 상세조회
+		// ▶shop-details.jsp 처리
 		ProductVO product = productService.getProduct(vo);
 		
 		model.addAttribute("productVO", product);

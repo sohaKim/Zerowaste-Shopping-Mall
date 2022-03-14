@@ -123,6 +123,7 @@ public class MemberController {
 	/*
 	 * 회원가입 처리
 	 */
+	/*다음카카오 api를 통한 주소 입력 */
 	@PostMapping(value="/join")
 	public String joinAction(@RequestParam(value="zonecode")String zonecode,
 							 @RequestParam(value="addr1")String addr1,
@@ -135,6 +136,11 @@ public class MemberController {
 		
 		return "member/login";
 	}
+//	//0314 아이디찾기예진
+//	@RequestMapping(value = "/find_id_form")
+//	public String find_id_form() throws Exception{
+//		return "member/find_id_form";
+//	}
 
 	
 	   
@@ -175,25 +181,4 @@ public class MemberController {
 		return "index";
 	}
 	
-	/*
-	 * 우편번호, 주소 찾기 화면 출력
-	 */
-//	@GetMapping(value="/find_zip_num")
-//	public String findZipNumView() {
-//		
-//		return "member/findZipNum";
-//	}
-	
-//	/*
-//	 * 동이름으로 주소 찾기
-//	 */
-//	@PostMapping(value="find_zip_num")
-//	public String findZipNumAction(AddressVO vo,Model model) {
-//		
-//		List<AddressVO> addrList = memberService.selectAddressByDong(vo.getDong());
-//		
-//		model.addAttribute("addressList",addrList);
-//		
-//		return "member/findZipNum";
-//	}
 }

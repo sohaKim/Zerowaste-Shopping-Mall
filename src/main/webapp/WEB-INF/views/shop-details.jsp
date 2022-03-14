@@ -108,41 +108,15 @@
                         <div class="product__details__pic__item">
                             <img src="product_images/${productVO.image}">
                         </div>
-                        <!--<div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
-                                src="img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
-                                src="img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
-                                src="img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
-                                src="img/product/details/thumb-4.jpg" alt="">
-                        </div>-->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                   <form  method="post" name="formm" id="theform">  
                   <fieldset>
                     <div class="product__details__text">
-
                         <h3>${productVO.name}</h3>
-
-                        <!--<div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
-                        </div>--><br>
-                        
-
                         <label> 가 격 :  </label>                      
-                        <!-- 김소연 수정 03.03 -->
-                        <!--  <div class="product__details__price"><fmt:formatNumber type="currency" value="${productVO.price2}"/></div>-->
                         <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>
-                        
-
                         <br>
                         <label> 수 량 :  </label>  
                         <div class="product__details__quantity">
@@ -173,9 +147,10 @@
                             </li>
                         </ul>-->
                     </div>
-                      </fieldset>
-                    </form>
-                </div>
+                   </fieldset>
+                  </form>
+                 </div>
+                
                 <div class="col-lg-12">
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
@@ -202,7 +177,10 @@
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>배송 정보</h4><br>
+                                <form  method="post" name="formm" id="theform">  
+                                <fieldset>
+                                <img src="product_images/${productVO.prodNotice}"alt="prodNotice"></fieldset></form>
+                                    <!--<h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>배송 정보</h4><br>
                                     <img src="img/paper.jpg" style="display: block; margin: 0 auto;"><br><br>
                                     <ul style="list-style-type:none; line-height:30px;">
 	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 모든 택배는 종지재질로 발송됩니다.(종이상자,종이완충재,종이테이프)</li>
@@ -223,9 +201,10 @@
 	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 단순 변심 등 고객님의 사유로 인한 교환 및 반품 시 배송비가 부과됩니다.</li>
 	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 간혹의 경우 교환 상품이 공급처 사정에 의해 품절될 수 있으며, 이경우 유선 안내드리고 있습니다.</li>
 	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 교환/반품 처리는 상품 도착 후 3-5일(주말,공휴일제외) 정도 소요되는 점 참고 부탁드립니다.</li>
-                                    </ul>
+                                    </ul>-->
                                 </div>
                             </div>
+                            
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="product__details__tab__desc">
                                     <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>상품 리뷰</h4><br><br>

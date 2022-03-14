@@ -24,7 +24,7 @@
        </c:forEach>
        <tr>
          <th colspan="2"> 총 액 </th>
-         <th colspan="2"> <fmt:formatNumber value="${totalPrice}" type="currency"/><br>     </th> 
+         <th colspan="2"> <fmt:formatNumber value="${ordertotal}" type="currency"/><br>     </th> 
          <th> 주문 처리가 완료되었습니다. </th>                
        </tr> 
       </table>   
