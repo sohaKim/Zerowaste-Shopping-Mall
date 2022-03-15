@@ -43,8 +43,7 @@
 		SELECT * FROM orders
 		WHERE oseq=#{oseq}	
 	</select>
-	
-	
+
 	<!-- 마이페이지 -->
 	<!-- 주문내역 조회 -->
 	<select id="listOrderById" resultType="order">

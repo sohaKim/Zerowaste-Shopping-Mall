@@ -208,6 +208,39 @@ public class MypageController {
             return "checkout"; // jsp
          }
       } 
+
+      /*
+       * 03/15 추가
+       * 제품상세 페이지(shop-details)에서 바로결제 버튼
+       * 버튼 클릭시 장바구니 항목이 비워지며 해당 상품만 담김 
+       */
+      @RequestMapping(value="/order_direct") // mypage.js의 "order_direct"
+      // productDetail.jsp의 quantity, pseq --command객체 CartVO 로 받음
+      public String order_direct(CartVO vo, Model model, HttpSession session) {
+         
+         // (1) 세션에 저장된 사용자 정보를 읽어 온다.
+         //       MemberController의 loginAction -- loginUser
+         MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+            
+         // (2) 로그인이 안되어 있으면 로그인, 
+         //          로그인이 되어 있으면, 장바구니에 항목 저장   
+         if (loginUser == null) {
+            return "member/login";
+            
+         } else {
+            vo.setId(loginUser.getId()); 
+            
+            	// 장바구니에 담긴 기존상품 삭제
+     	    	cartService.emptyCartBeforeOrder(vo); 
+     	    	cartService.insertCart(vo);
+     	       }           
+          
+     	    // (3) 장바구니 목록 조회하여 화면 표시
+     	    return "redirect:shoping-cart"; 
+            
+      }
+
+     
             
       /*
        * 주문하기 화면(checkout.jsp)의 주문 처리

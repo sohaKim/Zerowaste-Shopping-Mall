@@ -131,7 +131,7 @@
                         <br><br>
                         <div id="buttons">
 				          <input type="button" value="장바구니에 담기"   class="btn btn-outline-success"    onclick="go_cart()">&nbsp;&nbsp;&nbsp;&nbsp;
-				          <input type="button" value="즉시 구매"       class="btn btn-outline-success"    onclick="go_order()"> 
+				          <input type="button" value="즉시 구매"       class="btn btn-outline-success"    onclick="go_order_direct()"> 
 				        </div>
                     </div>
                    </fieldset>

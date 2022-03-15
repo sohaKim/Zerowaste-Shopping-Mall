@@ -68,50 +68,47 @@ function go_cart_change() {
 }
 
 
-
-//function go_cart_change() {
-//	var $quantity = $("#quantity");
-//	var $price = $("#price");
-//	var $pseqPrice = $("#pseqPrice");
-//
-//	if($quantity.val()==""){
-//		alert("수량을 입력해 주세요!");
-//		
-//	}else if($quantity.val()==0){
-//		alert("수량은 1개 이상 입력해 주세요!");	
-//		
-//	}else if($quantity.val() > 100){
-//		alert("수량이 너무 큽니다!");
-//		
-//	}else{
-//		$pseqPrice.value = $quantity*$price
-//		
-//		$("#theform").attr("action","cart_quantity_change").submit();
-//	}
-//}
-
-//function go_cart_change() {
-//	var price = document.formm.price.value; // pseq항목의 1개 가격 sell_price,
-//	var quantity = document.formm.quantity.value; // 수량  amount,
-//	var pseqPrice = document.formm.pseqPrice.value; // 합계 sum, price x quantity = pseqPrice
-//	
-//	
-//	hm = document.formm.quantity;
-//	pseqPrice = document.formm.pseqPrice;
-//	
-//	if (hm.value < 0) {
-//		hm.value = 0;
-//	}
-//	pseqPrice.value = parseInt(hm.value) * price;
-//		
-//		document.formm.action = "cart_quantity_change"
-//	}
-
-
-
 /*
 *장바구니에 저장된 상품 내역을 주문처리 요청
 */
 function go_order_insert(){
 	$("#theform").attr("action","order_insert").submit();
 }
+
+/*
+ *장바구니에 저장된 상품 내역을 주문처리 요청
+ */
+
+function go_order_process(){
+	$("#theform").attr("action","order_process").submit();
+}
+
+/*
+ *checkout.jsp에서 현금결제 버튼 클릭시 실행
+ */
+function order_invoice() {
+	
+	var date = new Date();			
+	date.setDate(date.getDate()+3);
+	
+	var year = date.getFullYear();
+    var month = ("0" + (1 + date.getMonth())).slice(-2);
+    var day = ("0" + date.getDate()).slice(-2);
+	
+	alert (
+		' 주문이 완료되었습니다.\n 입금 기한은 ' + year + "-" + month
+			+ "-" + day +' 까지 입니다.'	
+	)
+	
+	// 결제완료시 order_import 컨트롤러로 전달해서
+	// 들어온 값(buyer,카드정보 등을 mapping을 통하여insert해주기)
+	$("#formm").attr("action","order_invoice").submit();
+}
+
+/*
+ * shop-details.jsp에서 바로 order주문하기 기능 
+ */
+function go_order_direct() {
+	$("#theform").attr("action","order_direct").submit();
+}
+
