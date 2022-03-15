@@ -226,6 +226,10 @@
                     </div>
                 </div>
             </div>
+            <!-- 0315예진 상위페이지로 이동 -->
+            <a style="position:fixed; bottom:15px; right:15px; width:40px; height:40px; z-index:1; opacity:0.8;" href="#">
+			<img src="img/arrow.png" title="위로가기"/>
+			</a>
     </section>
     <!-- Product Section End -->
 

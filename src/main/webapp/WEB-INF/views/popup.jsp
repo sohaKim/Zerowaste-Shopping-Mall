@@ -63,7 +63,7 @@ font-size:16px; font-weight:600; width: 40px; height : 30px;color:black; float: 
 	        <h4 class="title">SaveEarth 공지사항</h4>
 	        <div class="cont">
 	            <p>
-					<a href="http://localhost:8080/mall/notice_view?pageNum=1&rowsPerPage=10&nseq=12"><img src="img/blog/notice06.JPG" width=400 height=300 usemap="#popup" alt="event page"></a>
+					<a href="http://localhost:8080/mall/notice_view?pageNum=1&rowsPerPage=10&nseq=12#noticediv"><img src="img/blog/notice06.JPG" width=400 height=300 usemap="#popup" alt="event page"></a>
 	            </p>
 	        </div>
 	          <form name="pop_form">

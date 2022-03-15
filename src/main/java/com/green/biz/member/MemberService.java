@@ -33,4 +33,6 @@ public interface MemberService {
 	// 3/9 회원정보 수정 추가(수련)
 	void updateMember(MemberVO vo); 
 	void deleteMember(MemberVO vo);
+	
+	String findPwd(String id, String phone);
 }
