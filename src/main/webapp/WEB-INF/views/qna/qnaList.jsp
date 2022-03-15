@@ -165,25 +165,20 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- 부트스트랩 테이블 -->
-            <form name="formm" id="qna_form" method="post"> <!-- action없어도되나 ?-->
+            <form name="formm" id="qna_form" method="post"> 
               <table class="table table-hover">  
 				  <thead class="table-light">
 				    <tr>
 				      <th scope="col">게시글 번호</th>
-				      <!--<th scope="col">카테고리</th>  -->
 				      <th scope="col">제목</th>
 				      <th scope="col">답변여부</th>
 				      <th scope="col">등록일자</th>
 				    </tr>
-				  </thead>  	  
-				    
+				  </thead>  	  				    
   				  <tbody>	
 				    <c:forEach items="${qnaList}" var="qnaVO">
 				    <tr>
 				        <td>${qnaVO.qseq}</td>
-						<!--<td>${qkind}</td>--> 
 				        <td><a href="qna_view?qseq=${qnaVO.qseq}">${qnaVO.subject}</a></td>
 				        <td>
 				        	<c:choose>
@@ -196,8 +191,7 @@
 				    </c:forEach>	
 				  </tbody>				 	 
 				</table>
-				<br><br><br>
-        
+				<br><br><br>        
                 <!-- 버튼 -->
                 <div class="row">                   
                     <div class="col-lg-12 text-center">                      

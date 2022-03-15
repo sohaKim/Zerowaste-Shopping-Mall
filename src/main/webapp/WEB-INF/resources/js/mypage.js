@@ -44,7 +44,7 @@ function go_cart_delete(){
 		document.formm.submit();
 	}
 }
-/* 김소연 추가 02.28
+/* 
  * 장바구니 항목별 수량 ---금액 변경
  * Quantity X Price  change
  * shoping-cart.jsp의 form id ="theform"
@@ -77,8 +77,6 @@ function go_order_process(){
 
 /*
  *checkout.jsp에서 현금결제 버튼 클릭시 실행
- *쇼핑몰 대표계좌정보 + 입금기한(결제일로부터 3일이내) alert로 팝업창 노출
- * MypageController의 (/order_cash)로 주문삽입 전달
  */
 function order_invoice() {
 	
@@ -90,7 +88,8 @@ function order_invoice() {
     var day = ("0" + date.getDate()).slice(-2);
 	
 	alert (
-		' 주문이 완료되었습니다.\n 입금 기한은 ' + year + "-" + month + "-" + day +' 까지 입니다.'	
+		' 주문이 완료되었습니다.\n 입금 기한은 ' + year + "-" + month
+			+ "-" + day +' 까지 입니다.'	
 	)
 	
 	// 결제완료시 order_import 컨트롤러로 전달해서

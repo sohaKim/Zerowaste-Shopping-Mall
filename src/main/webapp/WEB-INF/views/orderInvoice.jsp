@@ -240,8 +240,7 @@
 								<strong>${orderVO.oseq}</strong>
 							</div>
 						</div>		
-					</div>
-					
+					</div>					
 					<div class="payment-details">										
 						<div class="row">
 						<c:forEach var="orderVO" items="${orderDetail}">
@@ -258,24 +257,17 @@
 									${orderVO.detailaddr}<br>
 									${orderVO.zonecode}<br>
 									<br>
-									<a href="#">
-										${orderVO.email}<br>
-									</a>
+									<a href="#">${orderVO.email}<br></a>
 								</p>								
-							</div>
-							
+							</div>							
 							<div class="col-sm-6 text-right">
-								<span>Payment by | 결제 정보</span><br>
+								<span>Payment by | 결제지 정보</span><br>
 								<strong>
-									연동 성공시 추후 paymethod 추가하기
+									Save Earth
 								</strong>
 								<p>
-									서울특별시 강남구 강남대로 428<br>
-									만이빌딩 5, 10층(역삼동)<br>
-									Save Earth<br> 
-									<a href="#">
-										saveearth@email.com<br>
-									</a>
+									서울특별시 강남구 강남대로 428<br> 만이빌딩 5, 10층(역삼동)<br>
+									<a href="#">saveearth@email.com<br></a>
 								</p>
 							</div>
 						</c:forEach>	
@@ -327,16 +319,15 @@
 								<!-- <i class="fa fa-print"></i> -->
 								마이페이지
 							</a>
-						</div>
-						
+						</div>						
 					</div>					
 				</div>
 			</div>			
 		</div>
-	</div>
-		
+	</div>		
 </div>                 
 </form>
+
  <script src="js/jquery-3.3.1.min.js"></script>
  <script src="js/bootstrap.min.js"></script>
  <script src="js/main.js"></script>

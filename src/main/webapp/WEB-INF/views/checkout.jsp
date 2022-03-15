@@ -100,29 +100,22 @@
                 <div class="col-lg-12">
                     <h6><span class="icon_tag_alt"></span> 30,000원 이상 주문시 무료배송 | <a href="shoping-cart">장바구니</a> 돌아가기</h6>
                 </div>
-            </div>
-            
+            </div>           
             <div class="checkout__form">
                 <h4>Billing Details | 결제 진행하기</h4>  
                 <form id="formm" name="formm" method="post">
 				<div class="row">
-				
-						
-	                <!-- 상품 리스트  김소연 추가  시작03.07 -->
 	                <div class="container">                   
 	                    <div class="shoping__cart__table"> 
 		                    <table>
 		                       <thead>
 		                    	<tr>
 		                        	<th class="shoping__product">Products | 상품</th>
-		                        	<th>Price | 금액</th>
-		                        	<th>Quantity | 수량</th>
-		                        	<th>Total |총금액</th>                      			
+		                        	<th>Price | 금액</th> <th>Quantity | 수량</th> <th>Total |총금액</th>	                      			
 		                        </tr>
 		                       </thead>
 		                       <tbody> 		                       
-								<c:forEach var="cartVO" items="${map.cartList}" varStatus="i">
-								
+								<c:forEach var="cartVO" items="${map.cartList}" varStatus="i">	
 								<tr>
 	                                <td class="shoping__cart__item">
 	                                    <img name="image" style="width:100px; height:100px" src="product_images/${cartVO.image}" alt="image">
@@ -146,7 +139,7 @@
 		                       </table>
 		                    </div>  
 	                     </div>
-	                     <!-- 상품 리스트  김소연 추가 끝 03.07 -->
+	                     <!-- 상품 리스트 끝 -->
 	                     
 	                     <!-- 주문자 정보 시작 -->
 						 <div class="col-lg-8 col-md-6">
@@ -180,13 +173,8 @@
                             </div>
                             <hr style="border: solid 1px grey;"><br> 
                             <div class="checkout__input__checkbox">
-                            	<h5><b>☎&nbsp;배송지 정보 </b></h5><br>
-                                <label for="acc"> 	 
-                                   	 Ohter address | 다른 주소 사용
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <p>회원 정보외 다른 주소로 배송을 받기 원하실경우 체크 부탁드릡니다.</p><br>
+                            	<h5><b>☎&nbsp;배송지 정보 </b></h5><br>	 
+                                   * Ohter address | 다른 주소 사용을 원하실 경우 <b>[도로명 주소]</b>를 클릭하여 주소 수정 바랍니다.<br><br>
                             </div>
                             <div class="row">
 	                            <div class="col-lg-3">
@@ -226,29 +214,7 @@
 	                                </ul>
                                 </c:forEach>
                                 <div class="checkout__order__subtotal" id="fee" name="fee">Subtotal | 배송비 <span><fmt:formatNumber value="${map.fee}" type="currency"/></span></div>
-                                <div class="checkout__order__total" id="allsum" name="allsum">Total | 전체금액 <span><fmt:formatNumber value="${map.allSum}" type="currency"/></span></div>
-                               
-                                <!-- 결제방식>현금, 무통장 입금 -->
-                                <!--  
-                                <div class="checkout__input__checkbox">                                                                  
-                                    <label for="acc-or">
-                                       1. Account Transfer | 계좌 입금
-                                       <input type="checkbox" id="acc-or">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <p>무통장 입금을 원하실경우 체크해주세요.</p>
-                                </div>
-                                
-                                <div class="checkout__input__checkbox">
-                                    <label for="payment">
-                                        2. Credit Card | 카드결제
-                                        <input type="checkbox" id="payment">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <p>카드결제 진행을 원하실경우 체크해주세요.</p>
-                                </div>
-                                -->
-								
+                                <div class="checkout__order__total" id="allsum" name="allsum">Total | 전체금액 <span><fmt:formatNumber value="${map.allSum}" type="currency"/></span></div>                              
                                 <button type="button" class="site-btn" onclick="order_invoice()">Transfer | 현금</button>
                                 <button type="button" class="site-btn" id="iamport">Credit Card | 카드</button>
                             </div>                                                     
@@ -277,23 +243,22 @@
     
     <script>
     window.onload = function(){
-    	document.getElementById("roadaddr").addEventListener("click",function(){//주소입력칸을 클릭하면
-    		//카카오 지도 발생
+    	document.getElementById("roadaddr").addEventListener("click",function(){//주소입력칸을 클릭
+    		//카카오 지도
     		new daum.Postcode({
     			oncomplete: function(data) {//선택시 입력값 세팅
-    				document.getElementById("zonecode").value=data.zonecode;//우편주소넣기
-    				document.getElementById("roadaddr").value=data.address;//주소넣기
-    				document.querySelector("input[name=detailaddr]").focus();//상세입력 포커싱
+    				document.getElementById("zonecode").value=data.zonecode;//우편번호
+    				document.getElementById("roadaddr").value=data.address;//도로명주소
+    				document.querySelector("input[name=detailaddr]").focus();//상세주소
     				}
     		}).open();
     	});
     }
 	</script> 
 	
+
 	<script>
-	/* checkout.jsp의 카드결제 진행
-	 *  아임포트 구현
-	 **/
+	// checkout.jsp의 카드결제 진행, 아임포트 구현
 	$("#iamport").click(function() {
 		//가맹점 식별코드
 		IMP.init('imp35505158');
@@ -317,24 +282,12 @@
 			msg += '상점 거래ID : ' + rsp.merchant_uid;
 			msg += '결제 금액 : ' + rsp.paid_amount;
 			msg += '카드 승인번호 : ' + rsp.apply_num;
-			
-
-			
+					
 			} else {
 			var msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : ' + rsp.error_msg;
 			}
 			alert(msg);			
-		
-			// 결제 종료(성공/취소)시 이동할 페이지--현재는 홈페이지
-			// 마이페이지 연동완료시 mypage로 수정예정
-			//window.location.href='http://localhost:8181/biz/orderInvoice';
-			
-			
-			// 결제완료시 order_import 컨트롤러로 전달해서
-			// 들어온 값(buyer,카드정보 등을 mapping을 통하여insert해주기)
-			
-			
 			
 			$("#formm").attr("action","order_invoice").submit();
 		});

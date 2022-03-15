@@ -18,13 +18,10 @@ public class NoitceController {
 	@Autowired
 	NoticeService noticeService;
 	
-	/* header.jsp에서 notice_list로 받기
+	/* 
 	 * Notice공지사항 전제목록 보기(notice-홈 화면)
 	 * noticeList.jsp의 name="key" --> 검색 값
 	 * defaultValue="" key값 미입력시 null로 전체 목록 가져오도록 설정
-	 * 
-	 * 
-	 * Criteria 설정(All카테고리에만 적용--6개씩 글 묶음)----03.02 수정
 	 */	
 	@RequestMapping(value="/notice_list")
 	public String noticeList(@RequestParam(value="key", defaultValue="")String content,
@@ -42,8 +39,8 @@ public class NoitceController {
 		System.out.println("[noticeList] pageMaker=" + pageMaker);
 
 		model.addAttribute("noticeList", noticeList); // noticeList.jsp의 ${noticeList}
-		model.addAttribute("noticeListSize", noticeList.size()); // noticeList.jsp의 ${noticeList}의 size
-		model.addAttribute("pageMaker", pageMaker); //noticeList.jsp의 ${pageMaker}
+		model.addAttribute("noticeListSize", noticeList.size()); 
+		model.addAttribute("pageMaker", pageMaker); 
 		
 	    return "notice/noticeList"; // jsp
 	}	
@@ -66,16 +63,13 @@ public class NoitceController {
 /*
  * Notice Details(view) 게시글 상세보기 
  * noticeList.jsp의 notice_view?nseq=
- * nseq를 NoticeVO 객체로 받음
  */
-
 @RequestMapping(value="/notice_view")
 public String noticeView(NoticeVO vo, Model model) {
 		
 		String[] nkindList = {"", "일반공지", "배송", "이벤트", "기타"};	 // nkind
 		
-		NoticeVO notice = noticeService.getNotice(vo); 
-																
+		NoticeVO notice = noticeService.getNotice(vo); 																
 		model.addAttribute("noticeVO", notice); // noticeDetails.jsp ${noticeVO}
 		
 		// 공지사항 카테고리 설정

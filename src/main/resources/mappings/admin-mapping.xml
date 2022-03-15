@@ -3,7 +3,7 @@
 <mapper namespace="mappings.admin-mapping">
 
 	<select id="workerCheck" resultType="String">
-		SELECT pwd FROM worker WHERE	id=#{id}
+		SELECT pwd FROM worker WHERE id=#{id}
 	</select>
 
 	<select id="getEmployee" resultType="worker">

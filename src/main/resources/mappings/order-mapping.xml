@@ -6,42 +6,39 @@
 	<!-- 주문번호 Oseq 생성--> 
 	<select id="selectMaxOseq" resultType="int">
 		SELECT NVL2(MAX(oseq), MAX(oseq)+1,1) FROM orders
-	</select>
-	
+	</select>	
 	
 	<!-- 새로운 주문 생성, oseq 결제 완료처리-->   
 	<insert id="insertOrder">
-		INSERT INTO orders(oseq,id, mname, email, zonecode, roadaddr, detailaddr, phone, shiprequest) 
-		VALUES(#{oseq},#{id}, #{mname}, #{email}, #{zonecode}, #{roadaddr}, #{detailaddr}, #{phone},  #{shiprequest})
+		INSERT INTO orders(oseq,id, mname, email, zonecode, roadaddr, 
+		detailaddr, phone, shiprequest) 
+		VALUES(#{oseq},#{id}, #{mname}, #{email}, #{zonecode}, 
+		#{roadaddr}, #{detailaddr}, #{phone},  #{shiprequest})
 	</insert>
 
-
-	<!--▶  장바구니에서 결제하기 버튼 클릭시,  주문진행 페이지(checkout.jsp)에 oseq외  회원, 상품정보 가져오기-->
-	<!--▶  김소연 신규추가 03.07 -->
+	<!-- 장바구니에서 결제하기 버튼 클릭시,
+	         주문진행 페이지(checkout.jsp)에 oseq외  회원,	상품정보 가져오기-->
 	<select id="OrderProcess" resultType="order">
 		SELECT * FROM order_process_view
 		WHERE id=#{id}	
-	</select>
+	</select>	
 	
-
-	
-	<!--▶  주문진행 페이지(checkout.jsp)에서 입력된 정보를 주문 (order_detail) 테이블에 저장하기-->
-	<!--▶  김소연 총금액, mname 등 추가삽입 때문에 수정 진행중 03.10 -->  
+	<!--  주문진행 페이지(checkout.jsp)에서 입력된 정보를 
+		주문 (order_detail) 테이블에 저장하기-->
 	<insert id="insertOrderDetail">
 		INSERT INTO order_detail(odseq, oseq, pseq, pname, quantity, price2)
-		VALUES (order_detail_seq.NEXTVAL, #{oseq}, #{pseq}, #{pname}, #{quantity}, #{price2})
+		VALUES (order_detail_seq.NEXTVAL, #{oseq}, #{pseq}, #{pname}, 
+		#{quantity}, #{price2})
 	</insert>
 
 	  	
-	<!--▶  주문테이블에 삽입 완료 후 인보이스 호출, 상품목록 부분-->
-	<!--▶  김소연 신규추가 03.08 -->  
+	<!--  주문테이블에 삽입 완료 후 인보이스 호출, 상품목록 부분-->
 	<select id="orderDetailInvoice" resultType="order">
 		SELECT * FROM order_detail
 		WHERE oseq=#{oseq}		
 	</select>
 	
-	<!--▶  주문테이블에 삽입 완료 후 인보이스 호출, 개인정보 부분-->
-	<!-- ▶  김소연 신규추가 03.08  -->
+	<!--  주문테이블에 삽입 완료 후 인보이스 호출, 개인정보 부분-->
 	<select id="deliverInfo" resultType="order">
 		SELECT * FROM orders
 		WHERE oseq=#{oseq}	

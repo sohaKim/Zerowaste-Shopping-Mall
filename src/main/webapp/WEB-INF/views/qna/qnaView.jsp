@@ -88,7 +88,6 @@
                         <h2>Q&A 게시판</h2>
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
-                            <!--  <span>문의하기</span>--> <!-- 없앴음 -->
                         </div>
                     </div>
                 </div>
@@ -190,8 +189,7 @@
                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>문의내용: </label></div>
                                  <div class="col-10 col-md-9" style="white-space:pre;"><textarea name="content" id="content" rows="10" class="form-control">${qnaVO.content}</textarea></div>
-                           </div>
-                           
+                           </div>                           
                                                       
                            <div class="row form-group">
                                 <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Reply |<br>답변여부: </label></div>
@@ -201,8 +199,7 @@
 							            <c:when test="${qnaVO.rep==2}"><img src="img/qna/check-icon.png"> yes</c:when>
 						            </c:choose>	
 						         </div>   
-                           </div>
-                           
+                           </div>                           
                            	    <c:if test="${qnaVO.rep==2}">
 			                        <div class="row form-group">
 			                             <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Reply Content |<br>답변내용: </label></div>
@@ -217,9 +214,8 @@
               <!-- 버튼 -->
               <div class="row">                   
                     <div class="col-lg-12 text-center">
-                    	<!-- <button type="button" class="site-btn" onclick="location.href='qna_update_form'">수정 하기</button> -->
                     	<button type="button" class="site-btn" onClick="go_mod('${qnaVO.qseq}')">수정 하기</button>
-                        <button type="button" class="site-btn" onclick="location.href='qna_list'">목록 이동</button> <!-- type="submit"에서 수정함 -->
+                        <button type="button" class="site-btn" onclick="location.href='qna_list'">목록 이동</button>
                         <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
                     </div>
                 </div>
