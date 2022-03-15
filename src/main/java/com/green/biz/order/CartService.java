@@ -24,6 +24,9 @@ public interface CartService {
 
 	// 장바구니에 동일한 상품 레코드 확인
 	public int countCart(int pseq, String id);
+	
+	// 03.15 추가 ----장바구니에 담긴 항목이 1개라도 있을경우 삭제 ----
+	public void emptyCartBeforeOrder(CartVO vo);
 
 	// 장바구니 수량 변경
 	public void updatePseqCart(CartVO vo);

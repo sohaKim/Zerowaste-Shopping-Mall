@@ -61,6 +61,15 @@ public class CartServiceImpl implements CartService {
 		return cartDao.countCart(pseq, id);
 	}
 
+	
+
+	// 03.15 추가 ----장바구니에 담긴 항목이 1개라도 있을경우 삭제 ----
+	@Override
+	public void emptyCartBeforeOrder(CartVO vo) {
+		cartDao.emptyCartBeforeOrder(vo);
+		
+	}
+		
 	// 장바구니 동일한 상품 레코드 확인 
 	// 장바구니 수량 변경
 	@Override
@@ -87,5 +96,6 @@ public class CartServiceImpl implements CartService {
 		cartDao.updateCart(cseq);
 		
 	}
+
 
 }

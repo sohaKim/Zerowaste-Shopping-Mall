@@ -30,6 +30,12 @@ public class CartDAO  {
 		return mybatis.selectOne("mappings.cart-mapping.countCart", map);
 	}
 	
+	// 03.15 추가 ----장바구니에 담긴 항목이 1개라도 있을경우 삭제 ----
+	public void emptyCartBeforeOrder(CartVO vo) {
+		
+		mybatis.delete("mappings.cart-mapping.emptyCartAfterOrder", vo);
+	}
+	
 	// 장바구니 동일한 상품 레코드 확인 
 	// 장바구니 수량 변경
 	public void updatePseqCart(CartVO vo) {

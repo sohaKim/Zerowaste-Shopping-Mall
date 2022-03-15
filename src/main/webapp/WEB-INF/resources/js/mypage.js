@@ -68,6 +68,13 @@ function go_cart_change() {
 }
 
 /*
+*장바구니에 저장된 상품 내역을 주문처리 요청
+*/
+function go_order_insert(){
+	$("#theform").attr("action","order_insert").submit();
+}
+
+/*
  *장바구니에 저장된 상품 내역을 주문처리 요청
  */
 
@@ -98,6 +105,27 @@ function order_invoice() {
 }
 
 
+/*
+ * shop-details.jsp에서 바로 order주문하기 기능 
+ */
+function go_order_direct() {
+	
+	/*
+	 * quantity 입력필드에 값이 있는지 확인
+	 * 값이 없으면 alert출력
+	 * 값이 있으면: url
+	 */
+	if($("#quantity").val()==""){
+		alert("수량을 입력해 주세요!");
+		$("#quantity").focus();
+	}else if($("#quantity").val() > 1000){
+		alert("수량이 너무 큽니다!");
+		$("#quantity").focus();
+	}else{
+		
+		$("#theform").attr("action","order_direct").submit();
+	}
+}
 
 
 

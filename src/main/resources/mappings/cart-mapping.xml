@@ -15,6 +15,14 @@
 		WHERE id = #{id}
 		AND pseq = #{pseq}
 	</select>
+	
+	
+	<!-- 03.15 추가 장바구니에 담긴 항목이 1개라도 있을경우 삭제 수행-->
+	<delete id="emptyCartbeforeOrder">
+		DELETE FROM cart
+		WHERE id = #{id}
+		AND quantity > 0
+	</delete>
 	 
 	<!-- 장바구니에 동일한 상품pseq가 존재할경우 수정 update -->	 
 	<update id="updatePseqCart">
