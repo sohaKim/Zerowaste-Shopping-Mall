@@ -3,7 +3,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.green.biz.dto.ProductVO" %>
 <%@ include file="header.jsp" %>  
-
 <%
 	List<ProductVO> listProduct = (List<ProductVO>)(request.getAttribute("allproductKindList"));
 	System.out.println("List Size="+listProduct.size());
@@ -30,8 +29,8 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
-  <!-- 검색기능 자바스크립트 추가 03.10 -->
+    
+<!-- 검색기능 자바스크립트 추가 03.10 -->
 <script type="text/javascript">
 
  function go_search_product(name) {
@@ -40,11 +39,17 @@
 		document.frm.submit();
   }  
 </script>
+<style>
+	input::placeholder {
+	  font-style: italic;
+	   font-weight: bold;
+}
+</style>
 </head>
 <body>
-  <form name="frm" method="post">
-    <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
+<!-- Hero Section Begin -->
+<form name="frm" method="post">
+    <section class="hero hero-normal">  
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -62,11 +67,8 @@
                             <li><a href="category?kind=5&order='name'" >ETC | 기타</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>       
                 <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                  <div class="col-lg-9">
                     <div class="hero__search">
                     	<!-- 메인 홈화면의 상품검색 기능 시작 -->
                         <div class="hero__search__form" id="hero__search_form">
@@ -74,7 +76,7 @@
                                 <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
                                 </div>
-                                <input type="text" id="key" name="key" placeholder="상품명을 검색해주세요." style="border : none; width: 70%;
+                                <input type="text" id="key" name="key" placeholder=" 상품명을 검색해주세요. " style="border : none; width: 70%;
                                 	height: 48px; font-size: 16px; color: #b2b2b2; padding-left: 20px;">
                                 <button type="submit" class="site-btn" id="searchbtn" onclick="go_search_product(this.key)">SEARCH | 검색</button>
                             </form>
@@ -90,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </section>
@@ -119,6 +121,7 @@
     <section class="product spad">
         <div class="container">
             <div class="row">
+            
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
@@ -133,9 +136,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                
-                
+                </div>                                
                 <div class="col-lg-9 col-md-7">
                     <div class="filter__item">
                         <div class="row">
@@ -146,14 +147,10 @@
                                     	<option value="all">등록순</option>
                                         <option value="low">낮은 가격순</option>
                                         <option value="high">높은 가격순</option>
-                                    </select>-->
-                                    
+                                    </select>-->                                 
                                  </div>
                             </div>
                            <div class="col-lg-4 col-md-4">
-                                <!--<div class="filter__found">
-                                    <h6><span>16</span> Products found</h6>
-                                </div>-->
                             </div> 
                             <div class="col-lg-4 col-md-3">
                                 <div class="filter__option">
@@ -173,8 +170,7 @@
                                 </div>
                             </div>
                         </div> 
-                    </div> 
-					
+                    </div> 					
 					  <!-- 예진 상품나열 기본틀 -->
 					  <!--<div class="col-lg-9 col-md-7">-->
 					  <div class="row">
@@ -190,11 +186,9 @@
 					  					<div class="product__item__price"><%= listProduct.get(i).getPrice2() %>원</div>
 					  				</div>
 					  			</div>
-					  			</a>
-					  	
+					  			</a>					  	
 					  	</div>
-					 </div>
-					 
+					 </div>					 
 					 <% if (i+1 <listProduct.size() ) { %>
 					 <div class="col-lg-4">
 					  	<div class="product__discount">
@@ -207,12 +201,10 @@
 					  					<div class="product__item__price"><%= listProduct.get(i+1).getPrice2() %>원</div>
 					  				</div>
 					  			</div>
-					  			</a>
-					  	
+					  			</a>					  	
 					  	</div>
 					 </div>
-					 <% }%>
-					 
+					 <% }%>					 
 					 <% if (i+2 <listProduct.size() ) { %>
 					 <div class="col-lg-4">
 					  	<div class="product__discount">
@@ -225,8 +217,7 @@
 					  					<div class="product__item__price"><%= listProduct.get(i+2).getPrice2() %>원</div>
 					  				</div>
 					  			</div>
-					  			</a>
-					  	
+					  			</a>					  	
 					  	</div>
 					 </div>
 					 <% } %>
@@ -243,7 +234,7 @@
                 </div>
             </div>
     </section>
-    </form>   
+    </form>
     <!-- Product Section End -->
 
    
@@ -256,8 +247,8 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+      
 <%@ include file="page_area.jsp"%>
 <%@ include file="footer.jsp" %>  
 </body>
 </html>
-
