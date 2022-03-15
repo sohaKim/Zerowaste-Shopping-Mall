@@ -29,9 +29,10 @@
 
 		        <div class="col-8">
 		          <div class="order_details_iner">
-		            <h3>My Page | ${title}</h3><hr>
+		            <h3>My Page | ${title}</h3>
+		            <hr style="background-color:#000000; height:2px;">
 		            <form name="formm" method="post">
-		            <table class="table table-bordered border-dark text-center" id="cartList">
+		            <table class="table table-bordered border-dark text-center" id="cartList" >
 		              <thead>
 		                <tr class="table" bgcolor="#7fad39">
 		                  <th scope="col">주문일자</th>

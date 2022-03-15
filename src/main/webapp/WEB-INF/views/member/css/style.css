@@ -291,10 +291,23 @@ figure {
 
 #signin {
   margin-top: 16px; }
-
-.signup-image-link {
+/*0315예진 로그인색변화*/
+.signup-image-link{
+  font-weight: bold;
+  color: gray;
   font-size: 14px;
-  color: #222;
+  display: block;
+  text-align: center; }
+.signup-image-link:hover{
+  font-weight: bold;
+  color: #7fad39;
+  font-size: 14px;
+  display: block;
+  text-align: center; }
+.signup-image-link:active{
+  font-weight: bold;
+  color: green;
+  font-size: 14px;
   display: block;
   text-align: center; }
 

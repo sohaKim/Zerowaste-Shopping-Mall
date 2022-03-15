@@ -45,6 +45,10 @@
                         <div class="form-group form-button">
                         	<a href="join_form" class="signup-image-link"><input type="submit"  class="btn btn-outline-success" value="회원가입"></a>
                         </div>
+                        <div class="form-group form-button">
+                        	<a href="findPwForm" class="signup-image-link"><input type="button"  class="btn btn-outline-success" value="비밀번호 찾기"></a>
+                        </div>
+                        
                         <!--<div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">

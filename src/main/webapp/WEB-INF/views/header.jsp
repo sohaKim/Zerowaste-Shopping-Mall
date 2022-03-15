@@ -80,8 +80,9 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="index">HOME</a></li>
-                            <li class="active"><a href="all">Shop</a>
+                            <li class="active"><a href="#">Shop</a>
                             	<ul class="header__menu__dropdown">  
+                            		<li><a href="all">All | 전체</a></li>
 	                            	<li><a href='category?kind=1&order="name"'>LIVING |리빙</a></li>
 		                            <li><a href='category?kind=2&order="name"'>BATHROOM | 욕실</a></li>
 		                            <li><a href='category?kind=3&order="name"'>KITCHEN | 주방</a></li>

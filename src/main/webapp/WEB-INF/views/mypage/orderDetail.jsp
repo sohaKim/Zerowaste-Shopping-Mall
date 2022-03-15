@@ -28,15 +28,17 @@
 <body>   
     <div class="col-8">
 		          <div class="order_details_iner">
-		            <h3>${title}</h3><hr>
+		            <h3 style="padding:10px;">${title}</h3>
+		            <h6 style="float:right;">배송 또는 상품에 문제가 있나요?<a href="qna_write_form#qna_form" style="color:#7fad39; font-weight:800;"> 1:1문의하기>></a></h6><br>
+		            <hr style="background-color:#000000; height:2px;">
 		            <form name="formm" method="post">
-		            <h3>주문자 정보</h3><br>
 		            <table class="table table-border text-center" id="cartList">
 		              <thead>
 		                <tr class="table" bgcolor="#7fad39">
 		                  <th scope="col">주문일자</th>
 		                  <th scope="col">주문번호</th>
 		                  <th scope="col">주문자</th>
+		                  <th scope="col">배송비</th>
 		                  <th scope="col">주문 총액</th>
 		                </tr>
 		              </thead>
@@ -46,6 +48,7 @@
 		                  <td><fmt:formatDate value="${orderVO.indate}" type="date"/></td>
 		                  <td>${orderVO.oseq}</td>
 		                  <td> ${orderDetail.mname}</td>
+		                  <td><fmt:formatNumber type="currency" value="${fee}" /> </td>
 		                  <td><fmt:formatNumber type="currency" value="${ordertotal}" /> </td>
 		                </tr>
 		              </tbody>

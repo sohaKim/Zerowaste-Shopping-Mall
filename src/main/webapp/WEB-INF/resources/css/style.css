@@ -1596,12 +1596,13 @@ ol {
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
 }
-
+/*0315예진 이름순가격순수정*/
 .filter__option ul li{
 	list-style: none; 
 	float:left; 
 	color:#7fad39;
 	margin-left:5px;
+	font-weight:700;
 }
 .filter__option ul li a{
 

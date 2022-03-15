@@ -452,7 +452,7 @@ public class MypageController {
 	   
 	   ordertotal=fee+amount;
 	   
-	   model.addAttribute("title","My Page(주문 상세 정보)");
+	   model.addAttribute("title","My Page(주문 내역 상세)");
 	   model.addAttribute("orderDetail",orderDetail);
 	   model.addAttribute("ordertotal",ordertotal);
 	   model.addAttribute("fee",fee);

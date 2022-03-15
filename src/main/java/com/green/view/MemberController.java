@@ -65,6 +65,25 @@ public class MemberController {
 		
 		return "member/login";
 	}
+	//0315예진 비밀번호찾기
+	@PostMapping(value="/findPw")
+	public String findPwView(@RequestParam(value="id") String id,
+							 @RequestParam(value="phone") String phone,
+							 Model model) {
+		
+		String pwd = memberService.findPwd(id, phone);
+		
+		model.addAttribute("pwd", pwd);
+		
+		return "member/findPwResult";
+	}
+	
+	// 비밀번호 찾기 화면 출력
+	@GetMapping(value="/findPwForm")
+	public String findPwResultView() {
+		return "member/findPw";
+	}
+	
 	
 	@GetMapping(value="/contract")
 	public String contractView() {

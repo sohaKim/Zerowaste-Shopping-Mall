@@ -102,9 +102,9 @@
                             <h4>MyPAGE | 마이페이지</h4>
                             <ul>
                                 <li><a href="shoping-cart">장바구니(cart)내역</a></li>
-                         <li><a href="mypage">진행중인 주문내역</a></li>
-                         <li><a href="order_all">총 주문내역</a></li>
-                         <li><a href="update_member_form">개인정보 수정</a></li>
+                         		<li><a href="mypage">진행중인 주문내역</a></li>
+                         		<li><a href="order_all">총 주문내역</a></li>
+                         		<li><a href="update_member_form">개인정보 수정</a></li>
                             </ul>
                         </div>
                      </div>

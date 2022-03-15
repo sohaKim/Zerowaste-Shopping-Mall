@@ -1,6 +1,8 @@
 package com.green.biz.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,11 +66,6 @@ public class MemberDAO {
 		mybatis.insert("mappings.member-mapping.insertMember",vo);
 	}
 	
-//	//똥이름으로  주소 찾기
-//	public List<AddressVO> selectRoadaddrByDong(String dong){
-//		return mybatis.selectList("mappings.member-mapping.selectAddressByDong",dong);
-//	}
-	
 	//회원 목록 조회
 	public List<MemberVO> listMember(String name){
 		
@@ -81,5 +78,15 @@ public class MemberDAO {
 	}
 	public void deleteMember(MemberVO vo) {
 		mybatis.delete("mappings.member-mapping.deleteMember", vo);
+	}
+	
+	// 비밀번호 찾기
+	public String findPwd(String id, String phone) {
+		Map<String, String> map = new HashMap<>();
+		
+		map.put("id", id);
+		map.put("phone", phone);
+		
+		return mybatis.selectOne("mappings.member-mapping.findPwd", map);
 	}
 }

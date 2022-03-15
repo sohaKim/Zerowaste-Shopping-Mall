@@ -31,47 +31,47 @@
                         <h3 class="form-title">회원가입</h3>
                         <form method="post" class="join" id="join" name="formm" action="join">
                             <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="이름을 입력헤주세요"/>
+                                <label for="name"></label><span><i class="zmdi zmdi-account-o"></i>&nbsp;이름</span>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="이름을 입력헤주세요"/>
                             </div>
                             <div class="form-group">
-                                <label for="id"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="id" id="id" value="${id}" placeholder="ID를 입력해주세요" size="15"/>
+                                <label for="id"></label><span><i class="zmdi zmdi-account material-icons-name"></i>&nbsp;아이디</span>
+                                <input type="text" class="form-control" name="id" id="id" value="${id}" placeholder="ID를 입력해주세요" size="15"/>
                         		<input type="hidden"    name="reid" id="reid" value="${reid}">
         			    		<a href="id_check_form" style="float:right; color:#7fad39; font-weight: bold;" onclick = "window.open(this.href,'_blank','width=400,height=200'); return false;">중복체크</a>
                             </div>
-                        
                             <div class="form-group">
-                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pwd" id="pwd" placeholder="비밀번호를 입력해주세요"/>
+                                <label for="password"></label><span><i class="zmdi zmdi-lock"></i>&nbsp;비밀번호</span>
+                                <input type="password" class="form-control"name="pwd" id="pwd" placeholder="비밀번호를 입력해주세요"/>
                             </div>
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="pwdCheck" id="pwdCheck" placeholder="비밀번호를 한번 더 입력해주세요"/>
+                                <label for="re-pass"></label><span><i class="zmdi zmdi-lock-outline"></i>&nbsp;비밀번호 확인</span>
+                                <input type="password" class="form-control"name="pwdCheck" id="pwdCheck" placeholder="비밀번호를 한번 더 입력해주세요"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"></label><span><i class="zmdi zmdi-phone"></i>&nbsp;휴대폰</span>
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="핸드폰번호를 입력해주세요"/>
                             </div>
                              <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="예: saveearth@email.com"/>
+                                <label for="email"></label><span><i class="zmdi zmdi-email"></i>&nbsp;이메일</span>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="예: saveearth@email.com"/>
                             </div>
                             
                             <!--주소입력창 -->
                             <div class="form-group">
-                                <label for="address"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="addr1" id="roadaddr" placeholder="주소를 입력해주세요" readonly/>
+                                <label for="address"></label><span><i class="zmdi zmdi-home"></i>&nbsp;주소</span>
+                                <input type="text" class="form-control" name="addr1" id="roadaddr" placeholder="주소를 입력해주세요" readonly/>
                             </div>
                             <div class="form-group">
-                                <label for="address"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="addr2" id="detailaddr" placeholder="상세주소를 입력해주세요"/>
+                                <label for="address"></label><span><i class="zmdi zmdi-home"></i>&nbsp;상세주소</span>
+                                <input type="text" class="form-control" name="addr2" id="detailaddr" placeholder="상세주소를 입력해주세요"/>
                             </div>
                             <div class="form-group">
-                                <label for="address"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="zonecode" id="zonecode" placeholder="우편번호를 입력해주세요" readonly/>
+                                <label for="address"></label><span><i class="zmdi zmdi-home"></i>&nbsp;우편번호</span>
+                                <input type="text" class="form-control" name="zonecode" id="zonecode" placeholder="우편번호를 입력해주세요" readonly/>
                             </div>
                             
-                            <div class="form-group">
-                                <label for="phone"><i class="zmdi zmdi-phone"></i></label>
-                                <input type="text" name="phone" id="phone" placeholder="핸드폰번호를 입력해주세요"/>
-                            </div>
+                            
                             <div class="form-group">
                             	
                             	<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
@@ -85,7 +85,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="member/images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="login_form" class="signup-image-link">I am already member</a>
+                        	<a href="login_form" class="signup-image-link">이미 회원이신가요?로그인</a>
                     </div>
                 </div>
             </div>
