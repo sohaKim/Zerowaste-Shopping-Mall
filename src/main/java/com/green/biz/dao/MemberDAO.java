@@ -80,6 +80,6 @@ public class MemberDAO {
 		mybatis.update("mappings.member-mapping.updateMember", vo);
 	}
 	public void deleteMember(MemberVO vo) {
-		mybatis.update("mappings.member-mapping.deleteMember", vo);
+		mybatis.delete("mappings.member-mapping.deleteMember", vo);
 	}
 }

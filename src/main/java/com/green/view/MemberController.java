@@ -176,8 +176,11 @@ public class MemberController {
 	
 	@PostMapping(value="/deleteMember")
 	public String deleteMember(MemberVO vo, SessionStatus status) {
-	
+		
+		memberService.deleteMember(vo);
+		
 		status.setComplete();
+		
 		return "index";
 	}
 	

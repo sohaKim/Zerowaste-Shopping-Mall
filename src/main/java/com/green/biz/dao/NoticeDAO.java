@@ -62,7 +62,7 @@ public class NoticeDAO {
 }
 	
 	// ▶▶ Criteria 작성 후 추가 (2) -- 03.02
-	public List<NoticeVO> getNoticeWithPaging(Criteria criteria, String content) {
+	public List<NoticeVO> getNoticeWithPaging(utils.notice.Criteria criteria, String content) {
 		HashMap<String, Object>map = new HashMap<>();
 		map.put("criteria", criteria);
 		map.put("content", content);
@@ -75,14 +75,18 @@ public class NoticeDAO {
 		mybatis.update("mappings.notice-mapping.updateNotice", vo);
 	}
 	
+  	public int adminCountNoticeList(String subject) {
+		
+		return mybatis.selectOne("mappings.notice-mapping.adminCountNoticeList", subject);
+	}
   
 	// 어드민 공지 목록 페이징
-	public List<NoticeVO> adminGetNoticeListWithPaging(Criteria criteria,String subject) {
+	public List<NoticeVO> adminNoticeListWithPaging(utils.Criteria criteria, String subject) {
 		HashMap<String,Object> map = new HashMap<>();
 		map.put("criteria", criteria);
 		map.put("subject", subject);
 		
 		return mybatis.selectList("mappings.notice-mapping.adminNoticeListWithPaging", map);
-	
+	}
 }
 

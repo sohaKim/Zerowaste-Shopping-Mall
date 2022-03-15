@@ -80,22 +80,21 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	// ▶▶ Criteria 작성 후 추가 (2) -- 03.02	
 	@Override
-	public List<NoticeVO> getNoticeWithPaging(Criteria criteria, String content) {
+	public List<NoticeVO> getNoticeWithPaging(utils.notice.Criteria criteria, String content) {
 
 		return noticeDao.getNoticeWithPaging(criteria, content);
 	}
-  
-  	// 페이징
+	
 	@Override
-	public int countNoticeList(String subject) {
-		return noticeDao.countNoticeList(subject);
-	}
-
-	@Override
-	public List<NoticeVO> getNoticeListWithPaging(Criteria criteria, String subject) {
+	public List<NoticeVO> adminNoticeListWithPaging(utils.Criteria criteria, String subject) {
 		
-		return noticeDao.getNoticeListWithPaging(criteria, subject);
+		return noticeDao.adminNoticeListWithPaging(criteria, subject);
 	}
 
+	@Override
+	public int adminCountNoticeList(String subject) {
+		return noticeDao.adminCountNoticeList(subject);
+	}
+  
 
 }

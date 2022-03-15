@@ -52,11 +52,6 @@
 		WHERE nseq=#{nseq}
 	</update>
 	
-	<!-- 조회한 총 공지 개수-->
-	<select id="countNoticeList" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM notice
-		WHERE subject LIKE '%'||#{subject}||'%'
-	</select>
 	
 	<select id="noticeListWithPaging" parameterType="hashMap" resultType="notice">
 	<![CDATA[
@@ -91,5 +86,21 @@
 	  AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
 	]]>	  
 	</select>
+	
+	<!--  어드민 -->
+	<select resultType="int" id="adminCountNoticeList" parameterType="String">
+		SELECT COUNT(*) FROM notice WHERE subject LIKE '%'||#{subject}||'%' 
+	</select>
+
+	<select resultType="notice" id="adminNoticeListWithPaging" parameterType="hashMap">
+	<![CDATA[
+	SELECT nseq, indate, subject, content, nkind, notimg
+		FROM (SELECT row_number() over(ORDER BY nseq DESC)rn, nseq, indate, subject, content, nkind, notimg
+    		FROM notice
+    	  WHERE subject LIKE '%'||#{subject}||'%')
+	WHERE rn <= #{criteria.pageNum} * #{criteria.rowsPerPage} 
+		AND rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage}
+	]]>
+</select>
 </mapper>
 

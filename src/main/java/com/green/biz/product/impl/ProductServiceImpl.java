@@ -120,6 +120,7 @@ public class ProductServiceImpl implements ProductService {
   public List<ProductVO> adminGetProductListByKind(ProductVO vo) {
 		
 		return pDao.adminGetProductListByKind(vo);
+  }
   
   // 어드민 상품삭제 
   @Override

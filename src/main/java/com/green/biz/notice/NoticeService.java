@@ -1,9 +1,11 @@
 package com.green.biz.notice;
 
 import java.util.List;
+
 import com.green.biz.dto.NoticeVO;
 
 import utils.notice.Criteria;
+
 
 
 public interface NoticeService{
@@ -37,10 +39,9 @@ public interface NoticeService{
 	public void insertNotice(NoticeVO vo);
 	
 	public void updateNotice(NoticeVO vo);
-	
-	public int countNoticeList(String subject);
-	
-	public List<NoticeVO> getNoticeListWithPaging(Criteria criteria, String subject);
+		
+	public int adminCountNoticeList(String subject);
+	public List<NoticeVO> adminNoticeListWithPaging(utils.Criteria criteria, String subject);
 
 
 }

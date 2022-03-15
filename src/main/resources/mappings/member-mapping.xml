@@ -24,9 +24,9 @@
    			WHERE id=#{id}
    </update>
    <!-- 회원 탈퇴  -->
-   <update id="deleteMember">
-		UPDATE member SET useyn='2' WHERE id=#{id}
-   </update>
+   <delete id="deleteMember">
+		DELETE FROM member WHERE id=#{id}
+   </delete>
    
    <!-- 우편주소로 주소찾기 --><!-- 
    <select id="selectAddressByDong" resultType="member">

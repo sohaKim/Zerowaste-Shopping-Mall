@@ -28,7 +28,7 @@ public class NoitceController {
 	 */	
 	@RequestMapping(value="/notice_list")
 	public String noticeList(@RequestParam(value="key", defaultValue="")String content,
-			Criteria criteria, Model model, NoticeVO vo) {   
+			utils.notice.Criteria criteria, Model model, NoticeVO vo) {   
 	      
 		List<NoticeVO> noticeList = noticeService.getNoticeWithPaging(criteria, content); // 화면에 입력된 key(검색키워드)값
 		

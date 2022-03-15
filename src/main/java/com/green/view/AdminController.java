@@ -436,7 +436,7 @@ public class AdminController {
 	 */
 
 	@RequestMapping(value = "/admin_notice_list")
-	public String adminNoticeList(@RequestParam(value = "key", defaultValue = "") String subject, Criteria criteria, HttpSession session,
+	public String adminNoticeList(@RequestParam(value = "key", defaultValue = "") String subject, utils.Criteria criteria, HttpSession session,
 			Model model) {
 		// 관리자 로그인 확인.
 		WorkerVO adminUser = (WorkerVO) session.getAttribute("adminUser");
@@ -445,12 +445,12 @@ public class AdminController {
 			return "admin/main";
 		} else {
 			// 공지 목록조회
-			List<NoticeVO> noticeList = noticeService.getNoticeListWithPaging(criteria, subject);
+			List<NoticeVO> noticeList = noticeService.adminNoticeListWithPaging(criteria, subject);
 
 			// 화면에 표시할 페이지 버튼 정보 설정.
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCriteria(criteria); // 현재 페이지와 페이지당 항목 수 설정.
-			int totalCount = noticeService.countNoticeList(subject);
+			int totalCount = noticeService.adminCountNoticeList(subject);
 			pageMaker.setTotalCount(totalCount); // 전체 공지 목록 개수 설정 및 페이지 정보 초기화
 			System.out.println("[adminNoticeList] pageMaker = " + pageMaker);
 
