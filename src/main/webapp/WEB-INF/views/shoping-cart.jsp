@@ -197,13 +197,8 @@
 	                            <thead>
 	                                <tr>
 	                                    <th class="shoping__product">Products<br>상품</th>
-	                                    <th>Price<br>금액</th>
-	                                    <th>Quantity<br>수량</th>
-	                                   	<th></th>  
-	                                    <th>Total<br>총 금액</th>
-	                                    <th>Delete<br>삭제</th>
-	                                    <th></th>
-	                                </tr>
+	                                    <th>Price<br>금액</th> <th>Quantity<br>수량</th> <th></th> <th>Total<br>총 금액</th> <th>Delete<br>삭제</th> <th></th>
+									</tr>
 	                            </thead>                             
 	                             <tbody>
 	                             <c:forEach var="cartVO" items="${map.cartList}" varStatus="i">                           
@@ -215,8 +210,7 @@
 	                                        <h5>${cartVO.pname}</h5>                                        	
 	                                    </td>
 	                                    <td class="shoping__cart__price" id="price">
-	                                    	 <input id="price" type="hidden" name="price" value="${cartVO.price2}">	                                        
-	                                         <!--<fmt:formatNumber value="${cartVO.price2}" type="currency"/>-->
+	                                    	 <input id="price" type="hidden" name="price" value="${cartVO.price2}">	                                        	                                        
 	                                         <fmt:formatNumber value="${cartVO.price2}" pattern="###,###,###"/>                                        
 	                                    </td>
 	                                    <td class="shoping__cart__quantity">
@@ -226,20 +220,14 @@
 			                                         <input type="hidden" name="pseq" value="${cartVO.pseq}">
 		                                         </div>
 	                                        </div>
-	                                    </td>
-	                                     
-	                                      
+	                                    </td>  
 	                                    <td class= "shoping__cart__quantity">
 	                                    	<div class="quantity_modify_btn">
 		                                    	<input type="hidden" name="count" value="${map.count}">
 		 										<button type="submit" id="btnUpdate" class="site-btn" onclick="go_cart_change()">수정</button> 
 		 									</div>		
-	                                    </td>
-	                                     
-	                                    
+	                                    </td>                      
 	                                    <td class="shoping__cart__total" id="pseqPrice">	                                      
-		                                     <!--  <span><fmt:formatNumber  value="${cartVO.price2*cartVO.quantity}" type="currency"/></span> -->
-		                                    <!-- <input id="output" type="text" onchange="NumFormat(this)" readonly="only"> --> 
 		                                    <fmt:formatNumber pattern="###,###,###" value="${cartVO.money}"/> 
 		                                </td>
 	                                    <td class="shoping__cart__item__close">	                                       
@@ -262,17 +250,6 @@
                     
                 </div>
                 <div class="col-lg-6">
-                	<!--
-                    <div class="shoping__continue">       
-                        <div class="shoping__discount">
-                            <h5>Discount Codes</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">APPLY COUPON</button>
-                            </form>
-                        </div>                   
-                    </div>
-                    -->
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">

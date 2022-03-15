@@ -5,8 +5,6 @@
 /*
  * qna 상세보기 페이지에서  수정버튼 클릭시 수정페이지로 이동
  * qnaView.jsp의 onClick = "go_mod('${qnaVO.pseq}')"
- * qnaView.jsp의 form id = "qna_form"
- * QnaController의  @PostMapping(value="/qna_update_form")
  */
 function go_mod(qseq) {
 			$("#qna_form").attr("action", "qna_update_form?qseq=" + qseq).submit();	
@@ -27,13 +25,3 @@ function go_qna_save(qseq) {
 		
 	}
 }
-//
-///*
-// * qna 수정 취소
-// * qnaUpdate.jsp의 onclick="go_qna()"
-// * qnaUpdate.jsp의 form id ="qna_update_form"
-// */	
-//function go_qna(){
-//	$("#qna_update_form").attr("action", "qna_list").submit();
-//	
-//}

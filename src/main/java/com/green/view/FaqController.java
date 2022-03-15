@@ -15,9 +15,7 @@ public class FaqController {
 	@Autowired
 	FaqService faqService;
 	
-	/*
-	 * 모든 faq리스트 조회
-	 */
+	// 모든 faq리스트 조회
 	@GetMapping(value="/faq_list")
 	public String qnaList(Model model, FaqVO vo) {
 		

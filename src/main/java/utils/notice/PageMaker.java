@@ -16,7 +16,7 @@ public class PageMaker {
 	
 	
 	// 전체 게시글 수 저장 및 멤버 변수 초기화 수행 
-	public void setTotalCount(int totalCount) { //TODO: 이거 public 인지 확인 
+	public void setTotalCount(int totalCount) { 
 		this.totalCount = totalCount;
 		
 		// 각 멤버 변수 초기화 호출 
@@ -26,7 +26,7 @@ public class PageMaker {
 	// 멤버 변수 초기화
 	public void fieldInit() {
 		// 1) 표시할 끝페이지번호 계산
-		endPage = (int)(Math.ceil(criteria.getPageNum() / (double)cntPageNum) * cntPageNum);			// double로 만들어 소수점 표시 -> ceil 로 올림 -> 다시 int로 변환 -_- 
+		endPage = (int)(Math.ceil(criteria.getPageNum() / (double)cntPageNum) * cntPageNum);
 		
 		// 2) 시작 페이지번호 계산
 		startPage = endPage - cntPageNum +1;
@@ -46,23 +46,15 @@ public class PageMaker {
 		next = endPage * criteria.getRowsPerPage() < totalCount ? true : false;
 	}
 	
-	
-	
 	// 화면에서 페이지 번호를 클릭하면 페이지 번호와 페이지당 항목 수를 이용하여 url의 QueryString 을 만들어주는 메소드..
 	// 출력예: ~~~?pageNum=3&rowsPerPage=10 
 	public String makeQuery(int page) {
 		// 얘는 일케 쓰면 걍 자동으로 만들어주는듯 
-		UriComponents uriComp = UriComponentsBuilder.newInstance().queryParam("pageNum", page).queryParam("rowsPerPage", criteria.getRowsPerPage()).build();
+		UriComponents uriComp = UriComponentsBuilder.newInstance().queryParam("pageNum", page)
+				.queryParam("rowsPerPage", criteria.getRowsPerPage()).build();
 		
 		return uriComp.toString();
 	}
-	
-	
-	
-	
-	
-	
-	
 
 	// 멤버변수, Getters, Setters 생성
 	public Criteria getCriteria() {

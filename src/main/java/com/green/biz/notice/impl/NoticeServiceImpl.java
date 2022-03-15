@@ -43,7 +43,7 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDao.getNoticeByCategory(vo);
 	}
 
-	// ==> getNotice에 Override구현 (+)게시판 조회수  02.25 추가 
+	// ==> getNotice에 Override구현 (+)게시판 조회수   
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public NoticeVO getNotice(NoticeVO vo) {

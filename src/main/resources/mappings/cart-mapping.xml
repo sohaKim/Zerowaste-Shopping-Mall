@@ -56,7 +56,6 @@
 	</delete>
 
 	<!-- 주문완료시 장바구니 데이터 비우기, 삭제 -->
-	<!--  03.09 김소연 추가 -->
 	<delete id="emptyCartAfterOrder">
 		DELETE FROM cart
 		WHERE id=#{id}

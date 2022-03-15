@@ -31,13 +31,7 @@ public class QnaController {
 		if(loginUser == null) {
 			return "member/login"; // jsp
 		} else { 
-			
-			/*
-			String[] qkindList = {"", "상품", "배송", "환불", "기타"}; // 카테고리 배열
-			int index = Integer.parseInt(vo.getQkind());
-			model.addAttribute("kind", qkindList[index]);
-			*/
-			
+				
 			List<QnaVO> qnaList = qnaService.listQna(loginUser.getId()); // id로 qna목록 가져오기
 			model.addAttribute("qnaList", qnaList); // qnaList.jsp의 ${qnaList}
 			
@@ -105,8 +99,7 @@ public class QnaController {
 
 		String[] qkindList = {"", "상품", "배송", "환불", "기타"}; // 카테고리 배열
 
-		QnaVO qna = qnaService.getQna(vo);
-		
+		QnaVO qna = qnaService.getQna(vo);		
 		model.addAttribute("qnaVO", qna);
 			
 		// 카테고리
@@ -117,10 +110,7 @@ public class QnaController {
 	   }
 	}
 	/*
-	 * qna 수정화면 폼 출력
-	 * 화면에서 클릭한 qseq를 vo로 가져와서 조회
-	 * qnaView.jsp에서 버튼 틀릭시 qna udpate으로 전달
-	 * qna_update_form
+	 * qna_update_form 가져오기
 	 */
 	@PostMapping(value="/qna_update_form")
 	public String qnaUpdateform(QnaVO vo, Model model, HttpSession session) {
@@ -131,25 +121,18 @@ public class QnaController {
 			
 			} else {
 				vo.setId(loginUser.getId());
-									
-				// if (vo.getContent()==null) { // 답변이 달려있지 않을경우
-				
-				String[] qkindList = {"상품문의", "배송문의", "환불문의", "기타문의"}; // 카테고리 배열		
-				
+													
+				String[] qkindList = {"상품문의", "배송문의", "환불문의", "기타문의"}; // 카테고리 배열						
 				QnaVO qna = qnaService.getQna(vo); // qseq로 qna가져오기
 				
 				model.addAttribute("qnaVO", qna);
 				model.addAttribute("qkindList", qkindList); // 카테고리 저장	 
-
 					
-				return "qna/qnaUpdate"; // 수정으로 전달, qnaUpdate.jsp
-					
+				return "qna/qnaUpdate"; // 수정으로 전달, qnaUpdate.jsp					
 		}		
-	}
-	
+	}	
 	/*
 	 * qna 수정화면에서 내용 update진행
-	 * qna_update 수행
 	 */
 	@PostMapping(value="/qna_update")
 	public String updateQnabyQseq(QnaVO vo, Model model, HttpSession session) {
@@ -161,12 +144,6 @@ public class QnaController {
 			} else {
 				vo.setId(loginUser.getId());
 			
-				/*
-				if(Integer.parseInt(vo.getRep()) == 2) {
-					return "qna/qna_list";
-				} else {
-				*/	
-
 					qnaService.updateQnabyQseq(vo);
 					
 					return "redirect:qna_list"; //jsp	

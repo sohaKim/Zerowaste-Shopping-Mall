@@ -12,12 +12,12 @@
 		WHERE qseq=#{qseq}
 	</select>
 
-	<insert id="insertQna"> <!-- 21쇼핑몰에서 qkind추가  -->
+	<insert id="insertQna"> 
 		INSERT INTO qna(qseq, qkind, subject, content, id)
 		VALUES(qna_seq.NEXTVAL, #{qkind}, #{subject}, #{content}, #{id})
 	</insert>
 	
-	<!-- Qna update수정,  답변이 없을경우만 수정  조건,   02.26 김소연 추가 -->
+	<!-- Qna update수정,  답변이 없을경우만 수정  조건-->
 	<update id="updateQnabyQseq">
 		UPDATE qna
 		 SET qkind=#{qkind}, subject=#{subject}, content=#{content}

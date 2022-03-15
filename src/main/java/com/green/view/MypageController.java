@@ -35,8 +35,7 @@ public class MypageController {
    /*
     * 장바구니 담기 요청 처리
     * 동일 상품이 있을경우 항목 추가가 아닌, 개수추가 +1 
-    */
-   
+    */  
  @RequestMapping(value="/cart_insert") // mypage.js의 "cart_insert"
  // productDetail.jsp의 quantity, pseq --command객체 CartVO 로 받음
  public String insertCart(CartVO vo, Model model, HttpSession session) {
@@ -73,9 +72,8 @@ public class MypageController {
 
  /*
   * 장바구니 목록 처리  
-  * 수량 X 금액 = 총 금액 계산까지~~~ 
-  *  +)배송비 포함, 30,000원이상 무료배송, 미만시 얼마 추가
-  * shoping-cart.jsp 
+  * 수량 X 금액 = 총 금액 계산까지
+  *  +)배송비 포함, 30,000원이상 무료배송, 미만시 3,000원 추가
   */
  
  @RequestMapping(value="shoping-cart")
@@ -118,10 +116,8 @@ public class MypageController {
  
  
       /*
-       * 장바구니 항목의 품목 수량 변경
-       * id로 받기
+       * 장바구니 항목의 품목 수량 변경 
        */
-      // shoping-cart.jsp의 quantity
       @RequestMapping(value="/cart_quantity_change") 
       
       public String updateQuantityOfCart(@RequestParam int[] quantity, 
@@ -166,16 +162,10 @@ public class MypageController {
    	   }
    	   return "redirect:shoping-cart";
       }
-
-   ///////////////////////////////// 김소연 반영완료
       
  /*
-  * 수정진행중---03.07 김소연
-  * 장바구니 내역(shoping-cart.jsp)의 주문 js버튼클릭 처리
-  * 장바구니에 담긴 상품을 '결제 진행하기' 화면으로 이동 //
-  * 주문하기 화면 처리
-  */            
-      
+  * 장바구니에 담긴 상품을 '결제 진행하기' 화면으로 이동 
+  */                  
       @RequestMapping(value="order_process")
       public String orderInsert(CartVO vo, HttpSession session, Model model) {
          
@@ -197,8 +187,6 @@ public class MypageController {
         	
         	model.addAttribute("memberVO", loginUser);
         	 
-
-             // -->변동
              Map<String, Object> map = new HashMap<String, Object>(); 
              List<CartVO> cartList = cartService.listCart(loginUser.getId()); // 장바구니 정보 
              int sumMoney = cartService.sumMoney(loginUser.getId()); // 장바구니 전체 금액 호출
@@ -207,31 +195,23 @@ public class MypageController {
              // 배송비(30,000원 이상 무료, 미만 3,000원     
              int fee = sumMoney >= 30000 ? 0 : 3000;
              
-             map.put("cartList", cartList); // 장바구니 정보를 map에 저장
+             map.put("cartList", cartList);      // 장바구니 정보를 map에 저장
              map.put("count", cartList.size());  // 장바구니 상품의 유무
              map.put("sumMoney", sumMoney); 	// 장바구니 전체 금액
-             map.put("fee", fee);	   // 배송비
+             map.put("fee", fee);	   			// 배송비
              map.put("allSum", sumMoney+fee);   // 주문 상품 전체 금액
-
              
              // 장바구니 목록과 위의 계산 내용을 내장객체에 저장
              model.addAttribute("map", map);      // map 변수 저장
              model.addAttribute("cartList", cartList);   // checkout.jsp의 ${cartList}
-             
-
-            
+        
             return "checkout"; // jsp
          }
       } 
             
       /*
        * 주문하기 화면(checkout.jsp)의 주문 처리
-       * 장바구니에 담긴 상품을 '결제 진행하기' 화면으로 이동
        * 결제 완료시 orders & order_detail 테이블에 데이터 삽입 및 장바구니 비워짐
-       * --현금 / --카드(아임포트) 데이터 삽입 성공완료
-       * 
-       * +)주문완료시 장바구니 cart테이블 비우기 진행
-       * ++) // map으로 받은 sumMoney, fee, allSum 넘기기
        */
       @PostMapping(value="/order_invoice")
       public String orderInsert(OrderVO vo,HttpSession session, Model model , CartVO cart,
@@ -249,8 +229,7 @@ public class MypageController {
    		   // 주소정보 추가 03.09
    			vo.setZonecode(zonecode);
    			vo.setRoadaddr(addr1);
-   			vo.setDetailaddr(addr2);		
-   			
+   			vo.setDetailaddr(addr2);		 			
    		   
    		   int oseq = orderService.insertOrder(vo);
    		   
@@ -258,8 +237,7 @@ public class MypageController {
    		   
    			// 주문완료시 cart장바구니 테이블 삭제진행
    			// 파라메터에 cartVO 추가			
-   			cartService.emptyCartAfterOrder(vo.getId()); 
-   		   
+   			cartService.emptyCartAfterOrder(vo.getId());    		   
    		   
    		   return "redirect:order_detail_invoice"; // jsp의 value값으로 이동
    	   }

@@ -47,7 +47,7 @@
                         </div>
                         <ul>
                             <li><a href="#">All | 전체</a></li>
-                            <li><a href="category?kind=1">LIVING | 거실</a></li>
+                            <li><a href="category?kind=1">LIVING | 리빙</a></li>
                             <li><a href="category?kind=2">BATHROOM | 욕실</a></li>
                             <li><a href="category?kind=3">KITCHEN | 주방</a></li>
                             <li><a href="category?kind=4">KIT | 키트</a></li>
@@ -174,9 +174,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- 공지사사항용 이미지 삽입(크기 조정필요) width: 370px, height: 266px -->
+                </div>                
                 <!-- 성공시 상세보기 화면 noticeDetails.jsp 이동가능  -->            
                 <div class="col-lg-8 col-md-7">
                    	<div class="row">
@@ -197,8 +195,8 @@
 	                                        <li><i class="fa fa-calendar-o"></i>작성일: <fmt:formatDate value= "${noticeVO.indate}" type="date"/></li>
 	                                        <li><i class="fa fa-comment-o"></i>조회수: ${noticeVO.count}</li>
 	                                    </ul>
-	                                    <!--  <h5><img src="img/blog/tools_icon.png"><a href="notice_view?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h5>-->
-	                                    <h5><img src="img/blog/tools_icon.png"><a href="notice_view${pageMaker.makeQuery(pageMaker.criteria.pageNum)}&nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h5>
+	                                    <h5><img src="img/blog/tools_icon.png"><a href="notice_view${pageMaker.makeQuery(pageMaker.criteria.pageNum)}
+	                                    														&nseq=${noticeVO.nseq}">${noticeVO.subject}</a></h5>
 	                                    
 	                                    <p>${noticeVO.content}</p>
 	                                    <a href="notice_view?nseq=${noticeVO.nseq}" class="blog__btn">Details|상세보기 <span class="arrow_right"></span></a>
@@ -209,10 +207,10 @@
 						  </c:otherwise>
                           </c:choose> 
 	                      </div>
-	                          <div class="col-lg-6">
+	                          <div class="col-lg-12">
 	                             <div class="product__pagination blog__pagination">
 	                             	<hr>
-	                             	<div class="col-lg-6" style="text-align: center;">
+	                             	<div class="col-lg-12" style="text-align: center;">
 	                             		${paging}
 	                             	 </div>
 		                         </div>

@@ -234,7 +234,6 @@
                 <!-- 버튼 -->
                 <div class="row" style="align:center;">                   
                     <div class="col-lg-12 text-center" style="align:center;">
-                    	<!--  <button type="submit" class="site-btn">수정 등록</button>-->
                         <button type="button" class="site-btn" onClick="go_qna_save('${qnaVO.qseq}')">수정 등록</button> 
                         <button type="button" class="site-btn" onclick="location.href='qna_list'">목록으로</button>
                    </div> 

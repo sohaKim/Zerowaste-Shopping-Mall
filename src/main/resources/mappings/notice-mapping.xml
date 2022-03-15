@@ -23,8 +23,7 @@
 	</select>	
 				
 	  	
-	<!-- Notice카테고리별로 클릭시 리스트 보여주기 02.25 -->	
-
+	<!-- Notice카테고리별로 클릭시 리스트  -->	
 	<select id="getNoticeByCategory" resultType="notice">
 		SELECT * FROM notice WHERE nkind=#{nkind}
 		ORDER BY indate DESC
@@ -32,7 +31,7 @@
 
 
 	
-	<!-- Noitce리스트/디테일jsp에서 게시판 조회수(count) 기능 구현 02.25 -->
+	<!-- Noitce리스트/디테일jsp에서 게시판 조회수(count) 기능 구현  -->
 	<update id="noticeCount" parameterType="int">
 		UPDATE notice SET
 		count = count+1
@@ -40,7 +39,7 @@
 	</update>
 	
 
-	<!-- ▶▶Admin 관리자 기능에 추가해야되나? 혹시몰라 mapping만 작성 -->
+	<!-- ▶▶Admin 관리자 기능 -->
 	<insert id="insertNotice">
 		INSERT INTO notice(nseq, nkind, subject, content, notimg)
 		VALUES(notice_seq.NEXTVAL, #{nkind}, #{subject}, #{content}, #{notimg})
@@ -66,7 +65,7 @@
 
 
 	
-	<!--  ▶▶ Criteria 작성 후 추가(1) 03.02-->
+	<!-- Criteria 작성 후 추가 -->
 	<!-- 공지사항의 총 개수 조회-->
 	<select id="countNoticeList" parameterType="int" resultType="int">
 		SELECT count(*) as ncnt
@@ -74,7 +73,7 @@
 	</select>		
 	
 	
-	<!--  ▶▶ Criteria 작성 후 추가(2) 03.02-->	
+	<!-- Notice 목록 가져오기 , 페이징 -->	
 	<select id="listWithPagingNotice" parameterType="hashMap" resultType="notice">
 	<![CDATA[
 		SELECT nseq, nkind, subject, notimg, indate, count
