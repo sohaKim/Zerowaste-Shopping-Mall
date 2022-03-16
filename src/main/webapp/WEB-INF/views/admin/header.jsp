@@ -27,7 +27,10 @@
 					<a href="admin_sales_record_form">  판매실적 </a>
 				</div>
 			
-			<div class="col-2" style="margin: 10px 0; text-align:right; padding-right: 50px;"><a href="admin_logout" >로그아웃</a></div>
+			<div class="col-4" style="margin: 10px 0; text-align:right; padding-right: 50px;">
+				<a href="index">메인 페이지로</a> &nbsp; |
+				<a href="admin_logout" >로그아웃</a>
+			</div>
 		</div>
 	</div>
 
