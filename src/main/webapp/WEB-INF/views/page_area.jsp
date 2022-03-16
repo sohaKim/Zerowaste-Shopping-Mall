@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div>
-	<ul class="pagination pagination-lg justify-content-center" >
+	<ul class="pagination pagination-md justify-content-center" >
 	
 		<c:if test="${pageMaker.prev}">
 			<li class="page-item">

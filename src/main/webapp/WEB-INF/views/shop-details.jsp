@@ -13,7 +13,10 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+	
+	<!-- Font Icon -->
+    <link rel="stylesheet" href="member/fonts/material-icon/css/material-design-iconic-font.min.css">
+    
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
@@ -113,8 +116,12 @@
                 <div class="col-lg-6 col-md-6">
                   <form  method="post" name="formm" id="theform">  
                   <fieldset>
+	                
                     <div class="product__details__text">
-                        <h3>${productVO.name}</h3>
+                        <h3 style= "display:inline;">${productVO.name}</h3>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#" onclick="clip(); return false;"><img src="img/share.JPG"></a><br><br>
+		                <!--<a href="#" onclick="clip(); return false;" style="color:black;"><i class="zmdi zmdi-share zmdi-hc-2x"></i></a><br><br>-->
+		                
                         <label> 가 격 :  </label>                      
                         <div class="product__details__price"><fmt:formatNumber value="${productVO.price2}" pattern="###,###,###"/></div>
                         <br>
@@ -211,6 +218,20 @@
     <!-- Product Details Section End -->
 
     <!-- Js Plugins -->
+    <script type="text/javascript">
+	function clip(){
+	
+		var url = '';
+		var textarea = document.createElement("textarea");
+		document.body.appendChild(textarea);
+		url = window.document.location.href;
+		textarea.value = url;
+		textarea.select();
+		document.execCommand("copy");
+		document.body.removeChild(textarea);
+		alert("URL이 복사되었습니다.")
+	}
+	</script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>

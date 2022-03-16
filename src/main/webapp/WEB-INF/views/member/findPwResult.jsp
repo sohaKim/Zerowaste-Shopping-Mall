@@ -18,7 +18,9 @@
 <!-- Main css -->
 <link rel="stylesheet" href="member/css/style.css">
 <body>
-<div style="padding:100px 0;">
+<div class="row" style="padding:100px 0;">
+	<div class="col-lg-4"></div>
+	<div class="col-lg-4">
 	<form name="idsearch" method="post">
 		<c:choose>
 			<c:when test="${not empty pwd}">
@@ -46,6 +48,8 @@
 			</c:otherwise>
 		</c:choose>
 	</form>
+	</div>
+	<div class="col-lg-4"></div>
 </div>
 	<!-- JS -->
 	<script src="member/vendor/jquery/jquery.min.js"></script>

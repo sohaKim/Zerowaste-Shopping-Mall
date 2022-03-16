@@ -37,7 +37,7 @@
                         <div class="header__top__left">
                             <ul>
                                 <li><i class="fa fa-envelope"></i> saveearth@email.com</li>
-                                <li>오후2시까지 주문할시에 당일출고</li>
+                                <li>오후2시까지 주문시 당일출고</li>
                             </ul>
                         </div>
                     </div>
@@ -107,9 +107,9 @@
                 <div class="col-lg-1">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="shoping-cart"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="shoping-cart"><i class="fa fa-shopping-bag "></i></a></li>
                         </ul>
-                        <div class="header__cart__price"><b>장바구니</b></div>
+                        
 
                     </div>
                 </div>
