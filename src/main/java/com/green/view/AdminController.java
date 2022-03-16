@@ -144,13 +144,41 @@ public class AdminController {
 	}
 
 
-	// 어드민에서 카테고리별 상품보기
-	@GetMapping(value = "/admin_product_category")
-	public String productKindList(ProductVO vo, Model model) {
-		List<ProductVO> listProduct = productService.adminGetProductListByKind(vo);
-		model.addAttribute("adminProductKindList", listProduct);
-
-		return "admin/product/productKind";
+	// 어드민에서 카테고리별 상품보기: 페이징 없는거
+//	@GetMapping(value = "/admin_product_category")
+//	public String productKindList(ProductVO vo, Model model) {
+//		List<ProductVO> listProduct = productService.adminGetProductListByKind(vo);
+//		model.addAttribute("adminProductKindList", listProduct);
+//
+//		return "admin/product/productKind";
+//	}
+	
+//		// 카테고리 페이징
+	@GetMapping(value="/admin_product_category")
+	public String productKindList(@RequestParam(value="key", defaultValue="") String name, 
+			Criteria criteria, HttpSession session, Model model, ProductVO vo) {
+		WorkerVO adminUser = (WorkerVO)session.getAttribute("adminUser");
+		
+		if (adminUser == null) {
+			return "admin/main";
+		} else {
+			List<ProductVO> listProduct = productService.categoryWithPaging(criteria, name, vo.getKind());
+			
+			// 화면에 표시할 페이지 버튼 정보 설정.
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCriteria(criteria);						// 현재 페이지와 페이지당 항목 수 설정.
+			int totalCount = productService.countCategoryProductList(vo.getKind());
+			pageMaker.setTotalCount(totalCount);				// 전체 상품목록 개수 설정 및 페이지 정보 초기화
+			System.out.println("[adminProductKindList] pageMaker = " + pageMaker);
+			
+			model.addAttribute("adminProductKindList", listProduct);
+			model.addAttribute("kind", vo.getKind());
+			
+			model.addAttribute("productListSize", listProduct.size());
+			model.addAttribute("pageMaker", pageMaker);
+			
+			return "admin/product/productKind";
+		}
 	}
 
 
@@ -482,7 +510,8 @@ public class AdminController {
 
 	// 공지 등록 처리
 	@PostMapping(value = "/admin_notice_write")
-	public String adminNoticeWrite(@RequestParam(value = "notice_image") MultipartFile uploadFile, NoticeVO vo, HttpSession session) {
+	public String adminNoticeWrite(@RequestParam(value = "notice_image") MultipartFile uploadFile, 
+			NoticeVO vo, HttpSession session) {
 		WorkerVO adminUser = (WorkerVO) session.getAttribute("adminUser");
 
 		if (adminUser == null) {
@@ -508,7 +537,6 @@ public class AdminController {
 				}
 			}
 		}
-
 		noticeService.insertNotice(vo);
 
 		return "redirect:admin_notice_list";
