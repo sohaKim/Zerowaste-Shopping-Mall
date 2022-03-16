@@ -34,28 +34,30 @@
     	margin: 0 5px;
     }
     #commentList {
-    	background-color: rgba(254, 206, 229, 0.3);
+    	background-color: rgba(235, 249, 213, .5);
     	border-radius: 3px;
     }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="col-lg-8">
 <div class="container">
     <form id="commentForm" name="commentForm" method="post">
     <br><br>
         <div>
             <div>
-                <span><h3>상품 리뷰</h3></span> <span id="cCnt"></span>
+                <!-- <span><h3>상품 리뷰</h3></span> --> <span id="cCnt"></span>
             </div>
+			<!--<br>-->
             <div id="reply">
                 <table id="rep_input" style="width: 650px">                    
                     <tr>
-                        <td style="width:80%;">
+                        <td style="width:70%;">
                             <textarea  rows="3" cols="75" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
                         </td>
-                        <td style="width:10%;">
-                            <a href='#' onClick="save_comment('${productVO.pseq }')" class="btn">등록</a>
+                        <td style="width:20%;"> 
+                            <a href='#' onClick="save_comment('${productVO.pseq }')" class="btn" style="background-color:#7fad39; color:white;">등록</a>
                         </td>
                     </tr>
                 </table>
@@ -63,6 +65,7 @@
         </div>
         <input type="hidden" id="pseq" name="pseq" value="${productVO.pseq }" />        
     </form>
+
 </div>
 <div class="container">
     <form id="commentListForm" name="commentListForm" method="post">
@@ -90,7 +93,9 @@
 			</c:if>	
 		</ul>
 	</div>
+ </div>
 </div>
+
 <script>
 /*
  * 초기 로딩시 상품평 목록 불러오기
@@ -179,7 +184,7 @@ function showHtml(pageMaker, commentList, totalCount) {
 			//console.log(item.content);
 			
 			html += "<div>";
-	        html += "<div id=\"comment_item\"> <strong>작성자: " + item.writer+"</strong>"
+	        html += "<div id=\"comment_item\"> <strong>작성자: " + item.writer+"</strong>&nbsp;&nbsp;&nbsp;"
 	        html += "<span id=\"write_date\">" + displayTime(item.regDate) + "</span><br>"
 	        
 	        html += item.content+"<br></div>"
@@ -211,7 +216,7 @@ function showHtml(pageMaker, commentList, totalCount) {
 		html += "</div>";
 	}
 	
-	$("#cCnt").html("댓글 "+"<span style='color:#00f;'>"+totalCount+"</span>");	// 상품평의 갯수 출력
+	$("#cCnt").html("댓글"+"<span style='color:#7fad39;'>"+totalCount+"</span><br>");	// 상품평의 갯수 출력
 	$("#commentList").html(html);
 	$("#pagination").html(p_html);	// 페이지 부분 출력
 }
