@@ -27,7 +27,7 @@ import utils.Criteria;
 import utils.PageMaker;
 
 
-// ��� Data�� �����ϴ� ��Ʈ�ѷ�
+//결과 Data를 전송하는 콘트롤러
 @RequestMapping("/comments/")
 @RestController
 public class CommentController {
@@ -39,7 +39,7 @@ public class CommentController {
 	@ResponseBody
 	public String saveComment(ProductCommentVO commentVO, HttpSession session) {
 		
-		System.out.println("��ǰ�� ��� ��û ����>>>>>");
+		System.out.println("상품평 등록 요청 수신>>>>>");
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser"); 
 		if (loginUser == null) {
 			
@@ -57,72 +57,72 @@ public class CommentController {
 	}
 	
 
-	@GetMapping(value="/list")
-	public List<ProductCommentVO> getCommentList(ProductCommentVO commentVo) {
-		
-		int pseq = commentVo.getPseq();
-		System.out.println("��ǰ��ȣ="+pseq);
-		
-		List<ProductCommentVO> commentList = productService.getCommentList(pseq);
-		
-		return commentList;
-	}
+//	@GetMapping(value="/list")
+//	public List<ProductCommentVO> getCommentList(ProductCommentVO commentVo) {
+//		
+//		int pseq = commentVo.getPseq();
+//		System.out.println("��ǰ��ȣ="+pseq);
+//		
+//		List<ProductCommentVO> commentList = productService.getCommentList(pseq);
+//		
+//		return commentList;
+//	}
 
 	
 	/*
-	 * ��ǰ�� ����� ������ ���� ��ȸ��û ó��
+	 * 상품평 목록을 페이지 별로 조회요청 처리
 	 */
-//	@GetMapping(value="/pages/{pseq}/{page}",
-//				produces = {MediaType.APPLICATION_XML_VALUE,
-//						    MediaType.APPLICATION_JSON_UTF8_VALUE})
-//	public ResponseEntity<Map<String, Object>> getList(
-//			@PathVariable("page") int page,
-//			@PathVariable("pseq") int pseq) {
-//		Map<String, Object> commentInfo = new HashMap<String, Object>();
-//		Criteria cri = new Criteria(page, 10);
-//
-//		
-//		List<ProductCommentVO> commentList = productService.getCommentListWithPaging(cri, pseq);
-//		
-//		PageMaker pageMaker = new PageMaker();
-//		pageMaker.setCri(cri);
-//		// Ư�� ��ǰ�� ���� �� ��ǰ�� ������ ���Ѵ�.
-//		int totalComment = productService.countCommentList(pseq);
-//		
-//		pageMaker.setTotalCount(totalComment);
-//		
-//		commentInfo.put("total", totalComment);
-//		commentInfo.put("comments", commentList);
-//		commentInfo.put("pageinfo", pageMaker);
-//		
-//		return new ResponseEntity<>(commentInfo, HttpStatus.OK);
-//	}
-//	
-//	
-//	@GetMapping(value="/list")
-//	public Map<String, Object> CommentPagingList(@RequestParam(value="pseq") int pseq,
-//									Criteria criteria, Model model,
-//									HttpSession session) {
-//		System.out.println("Criteria=" + criteria);
-//		System.out.println("��ǰ��ȣ="+pseq);
-//		Map<String, Object> commentInfo = new HashMap<String, Object>();
-//		
-//		List<ProductCommentVO> commentList = productService.getCommentListWithPaging(criteria, pseq);
-//		
-//		PageMaker pageMaker = new PageMaker();
-//		pageMaker.setCri(criteria);
-//		// Ư�� ��ǰ�� ���� �� ��ǰ�� ������ ���Ѵ�.
-//		int totalComment = productService.countCommentList(pseq);
-//		
-//		pageMaker.setTotalCount(totalComment);
-//		System.out.println("��ǰ�� ����¡ ����="+pageMaker);
-//		
-//		commentInfo.put("total", totalComment);
-//		commentInfo.put("comments", commentList);
-//		commentInfo.put("pageinfo", pageMaker);
-//		
-//		return commentInfo;
-//	}
+	@GetMapping(value="/pages/{pseq}/{page}",
+				produces = {MediaType.APPLICATION_XML_VALUE,
+						MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Map<String, Object>> getList(
+			@PathVariable("page") int page,
+			@PathVariable("pseq") int pseq) {
+		Map<String, Object> commentInfo = new HashMap<String, Object>();
+		Criteria cri = new Criteria(page, 10);
+
+		
+		List<ProductCommentVO> commentList = productService.getCommentListWithPaging(cri, pseq);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCriteria(cri);
+		// 특정 상품에 대한 총 상품평 갯수를 구한다.
+		int totalComment = productService.countCommentList(pseq);
+		
+		pageMaker.setTotalCount(totalComment);
+		
+		commentInfo.put("total", totalComment);
+		commentInfo.put("comments", commentList);
+		commentInfo.put("pageinfo", pageMaker);
+		
+		return new ResponseEntity<>(commentInfo, HttpStatus.OK);
+	}
+	
+	
+	@GetMapping(value="/list")
+	public Map<String, Object> CommentPagingList(@RequestParam(value="pseq") int pseq,
+									Criteria criteria, Model model,
+									HttpSession session) {
+		System.out.println("Criteria=" + criteria);
+		System.out.println("��ǰ��ȣ="+pseq);
+		Map<String, Object> commentInfo = new HashMap<String, Object>();
+		
+		List<ProductCommentVO> commentList = productService.getCommentListWithPaging(criteria, pseq);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCriteria(criteria);
+		// 특정 상품에 대한 총 상품평 갯수를 구한다.
+		int totalComment = productService.countCommentList(pseq);
+		
+		pageMaker.setTotalCount(totalComment);
+		System.out.println("��ǰ�� ����¡ ����="+pageMaker);
+		
+		commentInfo.put("total", totalComment);
+		commentInfo.put("comments", commentList);
+		commentInfo.put("pageinfo", pageMaker);
+		
+		return commentInfo;
+	}
 }
 
 
