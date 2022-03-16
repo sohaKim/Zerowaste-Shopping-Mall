@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
   
  <body>
-
 		        <div class="col-8">
 		          <div class="order_details_iner">
 		            <h3>My Page | ${title}</h3>
@@ -34,7 +33,7 @@
 		            <form name="formm" method="post">
 		            <table class="table table-bordered border-dark text-center" id="cartList" >
 		              <thead>
-		                <tr class="table" bgcolor="#7fad39">
+		                <tr class="table" bgcolor="#7fad39" style="color:#FFFFFF; font-weight:800">
 		                  <th scope="col">주문일자</th>
 		                  <th scope="col">주문번호</th>
 		                  <th scope="col" colspan="2">상품명</th>

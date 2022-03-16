@@ -2754,10 +2754,10 @@ noticeList.jsp css부분
 /*---------------------
   Footer
 -----------------------*/
-
+/*0316예진 footer패딩 수정*/
 .footer {
-	background: #F3F6FA;
-	padding-top: 70px;
+	background: #FFFFFF;
+	padding-top: 30px;
 	padding-bottom: 0;
 }
 /*0307 예진 footer 아래 떨어진부분 가깝게 수정*/

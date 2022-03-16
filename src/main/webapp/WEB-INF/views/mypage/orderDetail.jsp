@@ -34,7 +34,7 @@
 		            <form name="formm" method="post">
 		            <table class="table table-border text-center" id="cartList">
 		              <thead>
-		                <tr class="table" bgcolor="#7fad39">
+		                <tr class="table" bgcolor="#7fad39" style="color:#FFFFFF; font-weight:800">
 		                  <th scope="col">주문일자</th>
 		                  <th scope="col">주문번호</th>
 		                  <th scope="col">주문자</th>
@@ -45,7 +45,7 @@
 		              
 		              <tbody>
 		                <tr>
-		                  <td><fmt:formatDate value="${orderVO.indate}" type="date"/></td>
+		                  <td><fmt:formatDate value="${orderDetail.indate}" type="date"/></td>
 		                  <td>${orderVO.oseq}</td>
 		                  <td> ${orderDetail.mname}</td>
 		                  <td><fmt:formatNumber type="currency" value="${fee}" /> </td>
@@ -57,7 +57,7 @@
 		            <table class="table table-border" id="cartList">
 		              <c:forEach items="${orderList}"  var="orderVO">
 		              <thead>
-		                <tr class="table" bgcolor="#7fad39">
+		                <tr class="table" bgcolor="#7fad39" style="color:#FFFFFF; font-weight:800">
        						<th colspan="3" style="vertical-align : left;">상품별주문번호 | ${orderVO.odseq}</th>    
      					</tr>
 		              </thead>

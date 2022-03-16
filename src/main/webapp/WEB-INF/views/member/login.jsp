@@ -11,6 +11,7 @@
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="member/fonts/material-icon/css/material-design-iconic-font.min.css">
+    
 
     <!-- Main css -->
     <link rel="stylesheet" href="member/css/style.css">
@@ -38,6 +39,7 @@
                                 <label for="pwd"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="pwd" id="pwd" placeholder="비밀번호를 입력해주세요"/>
                             </div>
+                            <a href="findPwForm" class="signup-image-link" style="text-align:right;"><strong>비밀번호 찾기</strong></a><br>
                             <div class="form-group form-button">
                                 <input type="submit"  class="btn btn-success" value="로그인">
                             </div>
@@ -45,10 +47,9 @@
                         <div class="form-group form-button">
                         	<a href="join_form" class="signup-image-link"><input type="submit"  class="btn btn-outline-success" value="회원가입"></a>
                         </div>
-                        <div class="form-group form-button">
-                        	<a href="findPwForm" class="signup-image-link"><input type="button"  class="btn btn-outline-success" value="비밀번호 찾기"></a>
-                        </div>
                         
+                        	
+                                                
                         <!--<div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">
