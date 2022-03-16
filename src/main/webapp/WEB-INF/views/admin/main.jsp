@@ -45,11 +45,9 @@
 							size="10" value="admin"></td>
 					</tr>
 					<tr align="center">
-						<td colspan="2"><input class="btn btn-primary" type="submit"
-							value="관리자 로그인" onclick="return worker_check()" style="margin: 10px;"><br>
-							<br>
-							<h4 style="color: red">${message}</h4></td>
-					</tr>
+						<td colspan="2">
+							<input class="btn btn-primary" type="submit"	value="관리자 로그인" onclick="return worker_check()" style="margin: 10px;"><a href="index" class="btn btn-outline-success">메인 페이지로</a>
+							<h4 style="color: red">${message}</h4></td></tr>
 				</table>
 			</form>
 		</div>

@@ -66,5 +66,8 @@ public interface ProductService {
 	
   
   // 어드민에서 상품 카테고리별 불러오기 
-	List<ProductVO> adminGetProductListByKind(ProductVO vo);
+//	List<ProductVO> adminGetProductListByKind(ProductVO vo);
+//	 카테고리 페이징, 일단 보류 (3/4 수련)
+	public List<ProductVO> categoryWithPaging(Criteria criteria, String name, String kind);
+	public int countCategoryProductList(String kind);
 }

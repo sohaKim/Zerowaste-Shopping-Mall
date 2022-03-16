@@ -172,7 +172,7 @@
 					  			<div class="product__discount __item">
 					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/<%= listProduct.get(i).getImage() %>"></div>
 					  				<div class="product__discount__item__text">
-					  					<h5><a href="#"><%= listProduct.get(i).getName() %></a></h5>
+					  					<h5><%= listProduct.get(i).getName() %></h5>
 					  					<!--<h5>${productVO.image}</h5>상품이름형식보기-->
 					  					<div class="product__item__price"><%= listProduct.get(i).getPrice2() %>원</div>
 					  				</div>
@@ -187,7 +187,7 @@
 					  			<div class="product__discount __item">
 					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/<%= listProduct.get(i+1).getImage() %>"></div>
 					  				<div class="product__discount__item__text">
-					  					<h5><a href="#"><%= listProduct.get(i+1).getName() %></a></h5>
+					  					<h5><%= listProduct.get(i+1).getName() %></h5>
 					  					<!--<h5>${productVO.image}</h5>상품이름형식보기-->
 					  					<div class="product__item__price"><%= listProduct.get(i+1).getPrice2() %>원</div>
 					  				</div>
@@ -203,7 +203,7 @@
 					  			<div class="product__discount __item">
 					  				<div class="product__discount__item__pic set-bg" data-setbg="product_images/<%= listProduct.get(i+2).getImage() %>"></div>
 					  				<div class="product__discount__item__text">
-					  					<h5><a href="#"><%= listProduct.get(i+2).getName() %></a></h5>
+					  					<h5><%= listProduct.get(i+2).getName() %></h5>
 					  					<!--<h5>${productVO.image}</h5>상품이름형식보기-->
 					  					<div class="product__item__price"><%= listProduct.get(i+2).getPrice2() %>원</div>
 					  				</div>

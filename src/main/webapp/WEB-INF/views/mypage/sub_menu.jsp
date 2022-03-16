@@ -75,7 +75,7 @@
     <!-- Hero Section End -->
  
      <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg" style="background-image: url('img/breadcrumb.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -95,7 +95,7 @@
     <!-- Blog Section Begin -->   
    <!--<form name="formm" method="post">   -->
     <!--<section class="blog spad">  -->
-        <div class="container">
+        <div class="container" style="padding-top:100px;">
             <div class="row">
                 <div class="col-3">
                     <div class="blog__sidebar">

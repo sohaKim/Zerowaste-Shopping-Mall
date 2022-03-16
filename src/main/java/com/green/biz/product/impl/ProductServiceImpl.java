@@ -148,11 +148,22 @@ public class ProductServiceImpl implements ProductService {
 	
 	
   // 어드민 카테고
-  @Override
-  public List<ProductVO> adminGetProductListByKind(ProductVO vo) {
-		
-		return pDao.adminGetProductListByKind(vo);
-  }
+//  @Override
+//  public List<ProductVO> adminGetProductListByKind(ProductVO vo) {
+//		
+//		return pDao.adminGetProductListByKind(vo);
+//  }
+//	 카테고리 페이징 일단 보류 (3/4 수련)
+	@Override
+	public List<ProductVO> categoryWithPaging(Criteria criteria, String name, String kind) {
+	
+		return pDao.categoryWithPaging(criteria, name, kind);
+	}
+	
+	@Override
+	public int countCategoryProductList(String kind) {
+		return pDao.countCategoryProductList( kind);
+	}
   
   // 어드민 상품삭제 
   @Override

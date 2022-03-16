@@ -18,8 +18,8 @@
 
 <body>
 	<div class="row" style="padding:50px 0;">
-	<div class="col-lg-3"></div>
-	<div class="col-lg-6">
+	<div class="col-lg-4"></div>
+	<div class="col-lg-4">
 	<form name="pwfindscreen" method = "post">
 			<div class = "search-title">
 				<h3>비밀번호 찾기</h3><br><br>
@@ -38,12 +38,12 @@
 			<br>
 			</section>
 			<div class ="btnSearch">
-				<input type="button" class="btn btn-outline-success" name="enter" value="비밀번호 찾기"  onclick="pw_search()"><br><br>
-				<input type="button" class="btn btn-outline-success" name="cancel" value="취소" onclick="history.back()">
+				<input type="button" class="btn btn-success" name="enter" value="비밀번호 찾기"  onclick="pw_search()"><br><br>
+				<input type="button" class="btn btn-success" name="cancel" value="취소" onclick="history.back()">
  			</div>
  	</form>
  	</div>
- 	<div class="col-lg-3"></div>
+ 	<div class="col-lg-4"></div>
  	</div>
 
       <!-- JS -->
