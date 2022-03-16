@@ -11,7 +11,7 @@
     <!-- link rel="stylesheet" href="css/bootstrap.min.css"> -->
     <style>
     hr {
-    	margin: 0px;;
+    	margin: 0px;
     }
     #cCnt {
     	border-radius: 3px;
@@ -50,10 +50,10 @@
     <br><br>
         <div>
             <div style="margin-bottom: 15px;">
-                <!-- <span><h3>상품 리뷰</h3></span> --> <span id="cCnt"></span>
+                <!-- <span><h3>상품 리뷰</h3></span> --> <span id="cCnt" style="backgorund-color:#7fad39;"></span>
             </div>
 			<!--<br>-->
-            <div id="reply" style="margin-bottom: 3px;">
+            <div id="reply"style="width: 700px; margin-bottom:3px;">
                 <table id="rep_input" style="width: 650px">                    
                     <tr>
                         <td style="width:70%;">

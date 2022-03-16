@@ -172,28 +172,6 @@
                                 <form  method="post" name="formm" id="theform">  
                                 <fieldset>
                                 <img src="product_images/${productVO.prodNotice}"alt="prodNotice"></fieldset></form>
-                                    <!--<h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>배송 정보</h4><br>
-                                    <img src="img/paper.jpg" style="display: block; margin: 0 auto;"><br><br>
-                                    <ul style="list-style-type:none; line-height:30px;">
-	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 모든 택배는 종지재질로 발송됩니다.(종이상자,종이완충재,종이테이프)</li>
-										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 수령하신 택배박스는 운송장을 제거하신 후 종이로 분리 배출해주세요.</li>
-										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 테이프는 반질한 느낌이 나지만 PE코팅이 없는 친환경 종이 박스 테이프입니다. 택배상자와 함께 종이로 분리 배출해주세요.</li>
-										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 종이 완충재와 택배상자는 다시 사용할만큼 깨끗하다면 재사용하시는 것도 권장드립니다.</li>
-										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> PLASTIC FREE DELIVERY에 관해 더 궁금한 사항이 있으시면 고객센터(1688-1234)를 통해 문의 해주세요. 친절히 안내 드리겠습니다.</li>
-										<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 결제 완료일로부터 주말 및 공휴일 제외 2~5일 안에 배송됩니다.</li>     
-									</ul><br>                             
-                                    <hr style="background-color:#7fad39; height:10px;"><br>
-                                    <h4 style="color:#7fad39;"><i class="fa fa-check-square" aria-hidden="true"></i>교환/환불/AS 정보</h4><br><br>
-                                    <ul style="list-style-type:none;line-height:30px;">
-	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 모든 상품 배송 완료일로부터 7일 이내 처리 가능합니다.</li>
-	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 부분 배송 시 주문 건에 마지막 상품까지 수령하신 뒤 반품 접수해 주세요.</li>
-	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 교환/반품의 경우 상품별로 1회 처리 가능한 점 참고해주세요.</li>
-	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 고객 부주의로 상품이 훼손된 경우 교환 및 반품이 어렵습니다. </li>
-	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 상품은 받아보신 상태와 최대한 동일한 상태로 보내주셔야 처리 가능합니다.</li>
-	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 단순 변심 등 고객님의 사유로 인한 교환 및 반품 시 배송비가 부과됩니다.</li>
-	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 간혹의 경우 교환 상품이 공급처 사정에 의해 품절될 수 있으며, 이경우 유선 안내드리고 있습니다.</li>
-	                                    <li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 교환/반품 처리는 상품 도착 후 3-5일(주말,공휴일제외) 정도 소요되는 점 참고 부탁드립니다.</li>
-                                    </ul>-->
                                 </div>
                             </div>
                             
@@ -203,7 +181,6 @@
                                     <ul style="list-style-type:none; line-height:30px;"">
                                     	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 상품에 대한 리뷰를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 삭제조치 될 수 있습니다.</li>
                                     	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 SAVE EARTH 내 Q&A(1:1)게시판에 문의를 남겨주세요.</li>
-                                    	 
                                     </ul>
                                    <%@ include file="comment.jsp" %> 
                                 </div>
