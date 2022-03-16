@@ -52,20 +52,18 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                 	<!-- 메인 홈화면의 상품검색 기능 버튼연결 -->
+                    	<!-- 메인 홈화면의 상품검색 기능 시작 -->
                         <div class="hero__search__form" id="hero__search_form">
-                            <form action="#" style="display: block; margin-top: 0em;" method="post">
+                            <form name="frm" style="display: block; margin-top: 0em;">
                                 <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
-
-                                    <span class="arrow_carrot-down"></span>
-
                                 </div>
-                                <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
-                                <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
+                                <input type="text" id="key" name="key" placeholder=" 상품명을 검색해주세요. " style="border : none; width: 70%;
+                                	height: 48px; font-size: 16px; color: #b2b2b2; padding-left: 20px;">
+                                <button type="submit" class="site-btn" id="searchbtn" onclick="go_search_product(this.key)">SEARCH | 검색</button>
                             </form>
                         </div>
-                        <!-- 메인 홈화면의 상품검색 기능 버튼연결 --> 
+                        <!-- 메인 홈화면의 상품검색 기능 끝 --> 
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
@@ -205,8 +203,9 @@
                                     <ul style="list-style-type:none; line-height:30px;"">
                                     	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 상품에 대한 리뷰를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 삭제조치 될 수 있습니다.</li>
                                     	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 SAVE EARTH 내 Q&A(1:1)게시판에 문의를 남겨주세요.</li>
+                                    	 
                                     </ul>
-                                    
+                                   <%@ include file="comment.jsp" %> 
                                 </div>
                             </div>
                         </div>

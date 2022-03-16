@@ -112,17 +112,18 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                	<!-- 메인 홈화면의 상품검색 기능 버튼연결 -->
+                    	<!-- 메인 홈화면의 상품검색 기능 시작 -->
                         <div class="hero__search__form" id="hero__search_form">
-                            <form action="#" style="display: block; margin-top: 0em;" method="post">
+                            <form name="frm" style="display: block; margin-top: 0em;">
                                 <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
                                 </div>
-                                <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
-                                <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
+                                <input type="text" id="key" name="key" placeholder=" 상품명을 검색해주세요. " style="border : none; width: 70%;
+                                	height: 48px; font-size: 16px; color: #b2b2b2; padding-left: 20px;">
+                                <button type="submit" class="site-btn" id="searchbtn" onclick="go_search_product(this.key)">SEARCH | 검색</button>
                             </form>
                         </div>
-                        <!-- 메인 홈화면의 상품검색 기능 버튼연결 -->  
+                        <!-- 메인 홈화면의 상품검색 기능 끝 -->  
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
@@ -131,19 +132,20 @@
                                 <h5>+82-1688-1234</h5>
                                 <span>평일 오전9시 - 오후6시 </span>
                             </div>
-                        </div>
+                        </div>                       
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+        <br><br><br>
+    </section>    
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-12 text-center">           
                     <div class="breadcrumb__text">
                         <h2>FAQ | 자주묻는 질문</h2>
                         <div class="breadcrumb__option">
@@ -155,7 +157,48 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
+    
+<form name="formm" id="faq_form" method="post">
+            
+<!-- 부트스트랩 시작 -->    
+<section class="section section-faq">
+  <div class="container mx-auto">
+    <h1>*FAQ 리스트</h1><br><br>
+    <div class="faq-box">
+      <ul>
+      <c:forEach items="${faqList}" var="faqVO"> 
+        <li>
+          <div class="faq-box__question"><span>Q. ${faqVO.subject}</span></div>
+          <div class="faq-box__answer">
+            <div>
+            <fmt:formatDate value="${faqVO.indate}" type="date"/><br><br>
+            <strong>${faqVO.content1}</strong>
+              </div>
+            <div style="white-space:pre-line;">
+            ${faqVO.content2}<br>
+			감사합니다.
+            </div>
+          </div>
+        </li>
+       </c:forEach> 
+      </ul>
+    </div>
+  </div>
+</section>
 
+
+<br><br><br>   
+    
+    <!-- 버튼 -->
+    <div class="row">                   
+        <div class="col-lg-12 text-center">                      
+             <button type="button" class="site-btn" onclick="location.href='qna_write_form'">문의글 남기기</button>
+              <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
+        </div>
+       </div>     
+    <br><br><br>   
+    </form>
+    
     <!-- Contact Section Begin -->
     <section class="contact spad">
         <div class="container">
@@ -210,50 +253,8 @@
         </div>
     </div>
     <br><br><br>
-    <!-- Map End -->
-    
-<form name="formm" id="faq_form" method="post">
-            
-<!-- 부트스트랩 시작 -->    
-<section class="section section-faq">
-  <div class="container mx-auto">
-    <h1>*FAQ 리스트</h1><br><br>
-    <div class="faq-box">
-      <ul>
-      <c:forEach items="${faqList}" var="faqVO"> 
-        <li>
-          <div class="faq-box__question"><span>Q. ${faqVO.subject}</span></div>
-          <div class="faq-box__answer">
-            <div>
-            <fmt:formatDate value="${faqVO.indate}" type="date"/><br><br>
-            <strong>${faqVO.content1}</strong>
-              </div>
-            <div style="white-space:pre-line;">
-            ${faqVO.content2}<br>
-			감사합니다.
-            </div>
-          </div>
-        </li>
-       </c:forEach> 
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-<br><br><br>   
-    
-    <!-- 버튼 -->
-    <div class="row">                   
-        <div class="col-lg-12 text-center">                      
-             <button type="button" class="site-btn" onclick="location.href='qna_write_form'">문의글 남기기</button>
-              <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
-        </div>
-       </div>     
-    <br><br><br>   
-    </form>
-
-    
+    <!-- Map End -->    
+       
 	<!-- Ogani Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

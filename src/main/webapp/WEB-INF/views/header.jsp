@@ -107,9 +107,9 @@
                 <div class="col-lg-1">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="shoping-cart"><i class="fa fa-shopping-bag "></i></a></li>
+                           <!-- <li><a href="shoping-cart"><i class="fa fa-shopping-bag fa-3x"></i></a></li> --> 
+                           <li><a href="shoping-cart"><img src="img/shopping-icon.png"></a></li>
                         </ul>
-                        
 
                     </div>
                 </div>
