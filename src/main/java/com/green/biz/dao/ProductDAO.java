@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.green.biz.dto.ProductCommentVO;
 import com.green.biz.dto.ProductVO;
 import com.green.biz.dto.SalesQuantity;
 
@@ -123,31 +124,59 @@ public class ProductDAO {
 		}
 	}
 	
-	
-
-	
-	
-
-	
 	// ▶메인화면의 검색창 키워드 검색기능 --product의 모든카테고리 중 검색
-	//  김소연 03.10 추가
-	public List<ProductVO> searchProductList(Criteria criteria, String name) {
-		HashMap<String,Object> map = new HashMap<>();
-		map.put("criteria", criteria);
-		map.put("name", name);
+	//  김소연 03.15 추가
+	public List<ProductVO> searchProductList(String name) {
 		
-		return mybatis.selectList("mappings.product-mapping.searchProductList",map);
+		return mybatis.selectList("mappings.product-mapping.searchProductList", name);
+	}	
+	/*
+	 * 상품평 관련 메소드
+	 */
+	// 03.16커멘트 기능 추가
+	public List<ProductCommentVO> getCommentList(int pseq) {
+		System.out.println("==> Mybatis로 getCommentList() 기능 처리");
+		
+		return mybatis.selectList("CommentDAO.getCommentList", pseq);
 	}
 	
-	// ▶ 전체 게시글 총 개수를 pseq로 받는 count
-	//  김소연 03.10 추가
-	public int countSearchProduct(ProductVO vo) {
+	// 페이지별 상품평 조회
+	public List<ProductCommentVO> getCommentListWithPaging(Criteria criteria, int pseq) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		
-		return mybatis.selectOne("mappings.product-mapping.countSearchProduct", vo);
+		System.out.println("==> Mybatis로 getCommentListWithPaging() 기능 처리");
 		
+		map.put("criteria", criteria);
+		map.put("pseq", pseq);
+		
+		return mybatis.selectList("CommentDAO.getCommentListWithPaging", map);
 	}
   
-  
+	
+	public int countCommentList(int pseq) {
+		System.out.println("==> Mybatis로 countCommentList() 기능 처리");
+		
+		return mybatis.selectOne("CommentDAO.countCommentList", pseq);
+	}
+	
+	public int saveComment(ProductCommentVO commentVO) {
+		System.out.println("==> Mybatis로 saveComment() 기능 처리");
+		
+		return mybatis.insert("CommentDAO.saveComment", commentVO);
+	}
+	
+	public int updateComment(ProductCommentVO commentVO) {
+		System.out.println("==> Mybatis로 updateComment() 기능 처리");
+		
+		return mybatis.update("CommentDAO.updateComment", commentVO);
+	}
+	
+	public int deleteComment(int commentSeq) {
+		System.out.println("==> Mybatis로 deleteComment() 기능 처리");
+		
+		return mybatis.delete("CommentDAO.deleteComment", commentSeq);
+	}
+	
   // 어드민
 	// 어드민 상품 카테고리별 조회
 	public List<ProductVO> adminGetProductListByKind(ProductVO vo){

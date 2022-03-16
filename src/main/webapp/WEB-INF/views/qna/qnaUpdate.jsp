@@ -62,17 +62,18 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                	<!-- 메인 홈화면의 상품검색 기능 버튼연결 -->
+                    	<!-- 메인 홈화면의 상품검색 기능 시작 -->
                         <div class="hero__search__form" id="hero__search_form">
-                            <form action="#" style="display: block; margin-top: 0em;" method="post">
+                            <form name="frm" style="display: block; margin-top: 0em;">
                                 <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
                                 </div>
-                                <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
-                                <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
+                                <input type="text" id="key" name="key" placeholder=" 상품명을 검색해주세요. " style="border : none; width: 70%;
+                                	height: 48px; font-size: 16px; color: #b2b2b2; padding-left: 20px;">
+                                <button type="submit" class="site-btn" id="searchbtn" onclick="go_search_product(this.key)">SEARCH | 검색</button>
                             </form>
                         </div>
-                        <!-- 메인 홈화면의 상품검색 기능 버튼연결 --> 
+                        <!-- 메인 홈화면의 상품검색 기능 끝 -->
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
@@ -98,7 +99,6 @@
                         <h2>Q&A 게시판</h2>
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
-                            <!--  <span>문의하기</span>--> <!-- 없앴음 -->
                         </div>
                     </div>
                 </div>
@@ -106,6 +106,97 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
+    
+    <!-- Contact Form Begin -->
+    <!-- ▶ Q&A작성 폼 불러오기 -->      
+    <div class="contact-form spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact__form__title">
+                        <h2> 1:1 문의 게시판</h2>
+                        <h5> 고객님의 질문에 대해서 운영자가 1:1 답변을 드립니다.</h5>
+                        <hr><br><br>
+                        <h4> ** 내용을 수정하시고 [수정등록] 버튼을 눌러주세요. **</h4>
+                    </div>
+                </div>
+            </div>
+					<!-- 본문 form시작 -->
+					<form method="post" name="formm" class="form-horizontal" id="qna_update_form" enctype="multipart/form-data">   
+            		<div class="col-lg-6">
+                        <div class="card" style="width:1100px; margin: auto;">
+                            <div class="card-header">
+                                <strong><img src="img/qna/note_icon.png">1:1 수정하기</strong>&nbsp;&nbsp;&nbsp;&nbsp;----- 수정사항을 남겨주세요 -----
+                            </div>              
+                            <div class="card-body card-block">       
+                                   <!-- 카테고리 선택 -->
+                                  <div class="row form-group">                                 
+                                   		<input type="hidden" name="qseq" value="${qnaVO.qseq}">
+                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Category | <br>카테고리: </label></div>
+                                        <div class="col-12 col-md-9">
+										    <select name="qkind" class="form-control" id="qkind"> 
+												<c:forEach items="${qkindList}" var="qkind" varStatus="status">
+												    <c:choose>
+												   		<c:when test="${qnaVO.qkind==status.count}">  
+												   			<option class="selectCategory" value="${status.count}" selected="selected">${qkind}</option>	 												  	   			
+											  	   		</c:when>
+											  	   		<c:otherwise>
+											  	   			<option class="selectCategory" value="${status.count}">${qkind}</option>
+											  	   		</c:otherwise>
+											  	   	</c:choose>	
+											   	 </c:forEach>
+										   	 </select> 	
+                                        </div>
+                                    </div>                                  
+                                    <div class="row form-group">
+		                               <div class="col col-md-3"><label for="text-input" class=" form-control-label">Title |<br>제목: </label></div>
+		                               <div class="col-12 col-md-9"><input type="text" id="subject" value="${qnaVO.subject}" name="subject" class="form-control"></div>
+		                           </div>
+		                           
+		                           <div class="row form-group">
+		                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>문의내용: </label></div>
+		                                 <div class="col-10 col-md-9" style="white-space:pre;"><textarea  name="content" id="content" rows="10" class="form-control">${qnaVO.content}</textarea></div>
+		                           </div>
+		                           
+		                           <!-- 파일업로드 추가 03.16 -->
+			                       <div class="row form-group">
+										<div class="col col-md-3"><label for="qna_image" class=" form-control-label">File |<br>첨부파일:${qnaVO.image} </label></div>
+										<div class="col-5 col-md-5">
+											<input multiple ="multiple" type="file" class="form-control" name="qna_image" id="qna_image"/>
+										</div>	
+								  </div>
+		                              
+		                            <div class="row form-group">
+		                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Reply |<br>답변여부: </label></div>
+										<div class="col-10 col-md-9" id="rep">	
+											<c:choose>
+									        	<c:when test="${qnaVO.rep==1}"><img src="img/qna/check-icon.png">no</c:when>
+									            <c:when test="${qnaVO.rep==2}"><img src="img/qna/check-icon.png">yes</c:when>
+								            </c:choose>	
+								         </div>   
+                           			</div>   
+                 
+		                           <c:if test="${qnaVO.rep==2}">
+				                       <div class="row form-group">
+				                             <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Reply Content |<br>답변내용: </label></div>
+				                             <div class="col-5 col-md-9" style="white-space:pre;"><textarea placeholder="답변이 남겨진 글은 수정 불가합니다." name="reply" id="reply" rows="10" class="form-control">${qnaVO.reply}</textarea></div>	
+				                       </div>
+		                          </c:if>		                           
+                              </div>		
+                          </div>
+					 </div>
+                    <br><br><br>                 
+                <!-- 버튼 -->
+                <div class="row" style="align:center;">                   
+                    <div class="col-lg-12 text-center" style="align:center;">
+                        <button type="button" class="site-btn" onClick="go_qna_save('${qnaVO.qseq}')">수정 등록</button> 
+                        <button type="button" class="site-btn" onclick="location.href='qna_list'">목록으로</button>
+                   </div> 
+               </div> 
+            </form>	   	
+          </div>
+      </div> 
+    <!-- Contact Form End -->
 
     <!-- Contact Section Begin -->
     <section class="contact spad">
@@ -161,91 +252,7 @@
         </div>
     </div>
     <!-- Map End -->
-
-    <!-- Contact Form Begin -->
-    <!-- ▶ Q&A작성 폼 불러오기 -->      
-    <div class="contact-form spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2> 1:1 문의 게시판</h2>
-                        <h5> 고객님의 질문에 대해서 운영자가 1:1 답변을 드립니다.</h5>
-                    </div>
-                </div>
-            </div>
-					<!-- 본문 form시작 -->
-					<form method="post" name="formm" class="form-horizontal" id="qna_update_form">   <!-- action이게맞나? -->
-            		<div class="col-lg-6">
-                        <div class="card" style="width:1100px; margin: auto;">
-                            <div class="card-header">
-                                <strong><img src="img/qna/note_icon.png">1:1 수정하기</strong>  ----수정사항을 남겨주세요 -----
-                            </div>              
-                            <div class="card-body card-block">       
-                                   <!-- 카테고리 선택 -->
-                                  <div class="row form-group">                                 
-                                   		<input type="hidden" name="qseq" value="${qnaVO.qseq}">
-                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Category | <br>카테고리: </label></div>
-                                        <div class="col-12 col-md-9">
-										    <select name="qkind" class="form-control" id="qkind"> 
-												<c:forEach items="${qkindList}" var="qkind" varStatus="status">
-												    <c:choose>
-												   		<c:when test="${qnaVO.qkind==status.count}">  
-												   			<option class="selectCategory" value="${status.count}" selected="selected">${qkind}</option>	 												  	   			
-											  	   		</c:when>
-											  	   		<c:otherwise>
-											  	   			<option class="selectCategory" value="${status.count}">${qkind}</option>
-											  	   		</c:otherwise>
-											  	   	</c:choose>	
-											   	 </c:forEach>
-										   	 </select> 	
-                                        </div>
-                                    </div>                                  
-                                    <div class="row form-group">
-		                               <div class="col col-md-3"><label for="text-input" class=" form-control-label">Title |<br>제목: </label></div>
-		                               <div class="col-12 col-md-9"><input type="text" id="subject" value="${qnaVO.subject}" name="subject" class="form-control"></div>
-		                           </div>
-		                           
-		                           <div class="row form-group">
-		                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Content |<br>문의내용: </label></div>
-		                                 <div class="col-10 col-md-9" style="white-space:pre;"><textarea  name="content" id="content" rows="10" class="form-control">${qnaVO.content}</textarea></div>
-		                           </div>
-		                              
-		                            <div class="row form-group">
-		                                <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Reply |<br>답변여부: </label></div>
-										<div class="col-10 col-md-9" id="rep">	
-											<c:choose>
-									        	<c:when test="${qnaVO.rep==1}"><img src="img/qna/check-icon.png">no</c:when>
-									            <c:when test="${qnaVO.rep==2}"><img src="img/qna/check-icon.png">yes</c:when>
-								            </c:choose>	
-								         </div>   
-                           			</div>   
-                 
-		                           <c:if test="${qnaVO.rep==2}">
-				                       <div class="row form-group">
-				                             <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Reply Content |<br>답변내용: </label></div>
-				                             <div class="col-5 col-md-9" style="white-space:pre;"><textarea placeholder="답변이 남겨진 글은 수정 불가합니다." name="reply" id="reply" rows="10" class="form-control">${qnaVO.reply}</textarea></div>	
-				                       </div>
-		                          </c:if>		                           
-                              </div>		
-                          </div>
-					 </div>
-                    <br><br><br>                 
-                <!-- 버튼 -->
-                <div class="row" style="align:center;">                   
-                    <div class="col-lg-12 text-center" style="align:center;">
-                        <button type="button" class="site-btn" onClick="go_qna_save('${qnaVO.qseq}')">수정 등록</button> 
-                        <button type="button" class="site-btn" onclick="location.href='qna_list'">목록으로</button>
-                   </div> 
-               </div> 
-            </form>	   	
-          </div>
-      </div>
-      
-
-   
-    <!-- Contact Form End -->
-    
+     
 	<!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -53,17 +53,18 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                	<!-- 메인 홈화면의 상품검색 기능 버튼연결 -->
+                    	<!-- 메인 홈화면의 상품검색 기능 시작 -->
                         <div class="hero__search__form" id="hero__search_form">
-                            <form action="#" style="display: block; margin-top: 0em;" method="post">
+                            <form name="frm" style="display: block; margin-top: 0em;">
                                 <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
                                 </div>
-                                <input type="text" placeholder="상품 검색은 상품 메인화면에서 가능합니다." style="border : none;">
-                                <button type="button" class="site-btn" onclick="location.href='go_search_product'">이동</button>
+                                <input type="text" id="key" name="key" placeholder=" 상품명을 검색해주세요. " style="border : none; width: 70%;
+                                	height: 48px; font-size: 16px; color: #b2b2b2; padding-left: 20px;">
+                                <button type="submit" class="site-btn" id="searchbtn" onclick="go_search_product(this.key)">SEARCH | 검색</button>
                             </form>
                         </div>
-                        <!-- 메인 홈화면의 상품검색 기능 버튼연결 --> 
+                        <!-- 메인 홈화면의 상품검색 기능 끝 --> 
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
@@ -89,7 +90,6 @@
                         <h2>Q&A 게시판</h2>
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
-                            <!--  <span>문의하기</span>--> <!-- 없앴음 -->
                         </div>
                     </div>
                 </div>
@@ -97,6 +97,58 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
+    
+    <!-- Contact Form Begin -->
+    <!-- Q&A 작성된 목록  불러오기 -->
+    <div class="contact-form spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="contact__form__title">
+                        <h2> 1:1 문의 게시판</h2>
+                        <h5> 고객님의 질문에 대해서 운영자가 1:1 답변을 드립니다.</h5>
+                    </div>
+                </div>
+            </div>
+            <form name="formm" id="qna_form" method="post"> 
+              <table class="table table-hover">  
+				  <thead class="table-light">
+				    <tr>
+				      <th scope="col">게시글 번호</th>
+				      <th scope="col">제목</th>
+				      <th scope="col">답변여부</th>
+				      <th scope="col">등록일자</th>
+				    </tr>
+				  </thead>  	  				    
+  				  <tbody>	
+				    <c:forEach items="${qnaList}" var="qnaVO">
+				    <tr>
+				        <td>${qnaVO.qseq}</td>
+				        <td><a href="qna_view?qseq=${qnaVO.qseq}">${qnaVO.subject}</a></td>
+				        <td>
+				        	<c:choose>
+					        	<c:when test="${qnaVO.rep==1}">no</c:when>
+					            <c:when test="${qnaVO.rep==2}">yes</c:when>
+				            </c:choose>
+				        </td>      
+				        <td><fmt:formatDate value="${qnaVO.indate}" type="date"/></td>
+				    </tr>
+				    </c:forEach>	
+				  </tbody>				 	 
+				</table>
+				<br><br><br>        
+                <!-- 버튼 -->
+                <div class="row">                   
+                    <div class="col-lg-12 text-center">                      
+                      	<button type="button" class="site-btn" onclick="location.href='qna_write_form'">글 쓰기</button>
+                        <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+   
+    <!-- Contact Form End -->
 
     <!-- Contact Section Begin -->
     <section class="contact spad">
@@ -152,59 +204,7 @@
         </div>
     </div>
     <!-- Map End -->
-
-    <!-- Contact Form Begin -->
-    <!-- ▶ Q&A 작성된 목록  불러오기 -->
-    <div class="contact-form spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2> 1:1 문의 게시판</h2>
-                        <h5> 고객님의 질문에 대해서 운영자가 1:1 답변을 드립니다.</h5>
-                    </div>
-                </div>
-            </div>
-            <form name="formm" id="qna_form" method="post"> 
-              <table class="table table-hover">  
-				  <thead class="table-light">
-				    <tr>
-				      <th scope="col">게시글 번호</th>
-				      <th scope="col">제목</th>
-				      <th scope="col">답변여부</th>
-				      <th scope="col">등록일자</th>
-				    </tr>
-				  </thead>  	  				    
-  				  <tbody>	
-				    <c:forEach items="${qnaList}" var="qnaVO">
-				    <tr>
-				        <td>${qnaVO.qseq}</td>
-				        <td><a href="qna_view?qseq=${qnaVO.qseq}">${qnaVO.subject}</a></td>
-				        <td>
-				        	<c:choose>
-					        	<c:when test="${qnaVO.rep==1}">no</c:when>
-					            <c:when test="${qnaVO.rep==2}">yes</c:when>
-				            </c:choose>
-				        </td>      
-				        <td><fmt:formatDate value="${qnaVO.indate}" type="date"/></td>
-				    </tr>
-				    </c:forEach>	
-				  </tbody>				 	 
-				</table>
-				<br><br><br>        
-                <!-- 버튼 -->
-                <div class="row">                   
-                    <div class="col-lg-12 text-center">                      
-                      	<button type="button" class="site-btn" onclick="location.href='qna_write_form'">글 쓰기</button>
-                        <button type="button" class="site-btn" onclick="location.href='index'">쇼핑하기</button>
-                    </div>
-                </div> 
-            </form>
-        </div>
-    </div>
-   
-    <!-- Contact Form End -->
-    
+  
 	<!-- Ogani Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

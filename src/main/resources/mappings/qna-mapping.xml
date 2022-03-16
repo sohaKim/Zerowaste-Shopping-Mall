@@ -13,14 +13,14 @@
 	</select>
 
 	<insert id="insertQna"> 
-		INSERT INTO qna(qseq, qkind, subject, content, id)
-		VALUES(qna_seq.NEXTVAL, #{qkind}, #{subject}, #{content}, #{id})
+		INSERT INTO qna(qseq, qkind, subject, content, id, image)
+		VALUES(qna_seq.NEXTVAL, #{qkind}, #{subject}, #{content}, #{id}, #{image})
 	</insert>
 	
 	<!-- Qna update수정,  답변이 없을경우만 수정  조건-->
 	<update id="updateQnabyQseq">
 		UPDATE qna
-		 SET qkind=#{qkind}, subject=#{subject}, content=#{content}
+		 SET qkind=#{qkind}, subject=#{subject}, content=#{content}, image=#{image}
 		WHERE qseq=#{qseq}
 	</update>
 

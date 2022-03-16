@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<nav aria-label="Page navigation example">
+
 	<div>
-		<ul class="pagination pagination-lg justify-content-center">
+		<ul class="pagination pagination-md justify-content-center">
 		
 			<c:if test="${pageMaker.prev}">
 				<li class="page-item">
@@ -14,7 +14,7 @@
 					
 			<!-- [1][2][3]... 표시 부분 -->
 			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-				<a href="notice_list${pageMaker.makeQuery(index)}">[${index}]</a>
+				<a class="page-link" style="color:#7fad39;" href="notice_list${pageMaker.makeQuery(index)}">[${index}]</a>
 			</c:forEach>
 			
 			<c:if test="${pageMaker.next}">
@@ -24,7 +24,7 @@
 			</c:if>					
 		</ul>
 	</div>
-</nav>
+
 
 
 

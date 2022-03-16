@@ -1,5 +1,7 @@
 package com.green.view;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.green.biz.dto.MemberVO;
 import com.green.biz.dto.QnaVO;
@@ -62,9 +66,30 @@ public class QnaController {
 
 	/*
 	 * Q&A 폼-> 작성완료 (버튼:글등록 클릭시 // 내용저장 및 Q&A리스트로 이동)
+	 * ++)03.16 file첨부 수정 진행
 	 */
+//	@PostMapping(value="/qna_write")
+//	public String qnaWrite(QnaVO vo, HttpSession session) {
+//		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+//		
+//		if (loginUser == null) {
+//			return "member/login"; // jsp
+//		
+//		// 사용자id 정보를 QnaVO 객체에 저장	
+//		// qnaService 객체에서 insertQna(qnaVO, id)를 호출하여 게시글을 저장
+//		} else {
+//			vo.setId(loginUser.getId());
+//				
+//			qnaService.insertQna(vo);
+//			
+//			return "redirect:qna_list"; // 게시글 목록화면(/qna_list) 이동
+//		}
+//	}
+	
 	@PostMapping(value="/qna_write")
-	public String qnaWrite(QnaVO vo, HttpSession session) {
+	public String qnaWrite(@RequestParam(value = "qna_image") MultipartFile uploadFile,
+							QnaVO vo, HttpSession session) {
+		
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		
 		if (loginUser == null) {
@@ -74,12 +99,34 @@ public class QnaController {
 		// qnaService 객체에서 insertQna(qnaVO, id)를 호출하여 게시글을 저장
 		} else {
 			vo.setId(loginUser.getId());
+			
+			// 이미지파일
+			String fileName="";
+			if(!uploadFile.isEmpty()) { // 이미지 파일이 있는 경우.
+				fileName = uploadFile.getOriginalFilename();
+				
+			// vo객체에 이미지 파일 저장.
+			vo.setImage(fileName);
+			
+			// 이미지 파일의 실제 저장경로 구하기.
+			String image_path = session.getServletContext().getRealPath("WEB-INF/resources/qna_images/");
+			System.out.println("이미지 경로: " + image_path); 
+			
+				try {
+					// 이미지 파일을 위의 경로로 이동시킨다.
+					File dest = new File(image_path + fileName);
+					uploadFile.transferTo(dest);
+					
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+					}
+			}	
 				
 			qnaService.insertQna(vo);
 			
 			return "redirect:qna_list"; // 게시글 목록화면(/qna_list) 이동
 		}
-	}
+	}	
 
 
 	/*
@@ -134,8 +181,25 @@ public class QnaController {
 	/*
 	 * qna 수정화면에서 내용 update진행
 	 */
+//	@PostMapping(value="/qna_update")
+//	public String updateQnabyQseq(QnaVO vo, Model model, HttpSession session) {
+//		
+//		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+//		if (loginUser == null) {
+//			return "member/login"; // jsp	
+//			
+//			} else {
+//				vo.setId(loginUser.getId());
+//			
+//					qnaService.updateQnabyQseq(vo);
+//					
+//					return "redirect:qna_list"; //jsp	
+//				}
+//		}	
+	
 	@PostMapping(value="/qna_update")
-	public String updateQnabyQseq(QnaVO vo, Model model, HttpSession session) {
+	public String updateQnabyQseq(@RequestParam(value = "qna_image") MultipartFile uploadFile,
+								   QnaVO vo, Model model, HttpSession session) {
 		
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		if (loginUser == null) {
@@ -143,6 +207,28 @@ public class QnaController {
 			
 			} else {
 				vo.setId(loginUser.getId());
+				
+				// 이미지파일
+				String fileName="";
+				if(!uploadFile.isEmpty()) { // 이미지 파일이 있는 경우.
+					fileName = uploadFile.getOriginalFilename();
+					
+				// vo객체에 이미지 파일 저장.
+				vo.setImage(fileName);
+				
+				// 이미지 파일의 실제 저장경로 구하기.
+				String image_path = session.getServletContext().getRealPath("WEB-INF/resources/qna_images/");
+				System.out.println("이미지 경로: " + image_path); 
+				
+					try {
+						// 이미지 파일을 위의 경로로 이동시킨다.
+						File dest = new File(image_path + fileName);
+						uploadFile.transferTo(dest);
+						
+						} catch (IllegalStateException | IOException e) {
+							e.printStackTrace();
+						}
+				}	
 			
 					qnaService.updateQnabyQseq(vo);
 					

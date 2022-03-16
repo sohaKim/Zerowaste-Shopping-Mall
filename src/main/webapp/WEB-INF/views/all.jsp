@@ -29,16 +29,8 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    
-<!-- 검색기능 자바스크립트 추가 03.10 -->
-<script type="text/javascript">
+     
 
- function go_search_product(name) {
-		
-		document.frm.action = "go_search_product";  
-		document.frm.submit();
-  }  
-</script>
 <style>
 	input::placeholder {
 	  font-style: italic;
@@ -48,7 +40,6 @@
 </head>
 <body>
 <!-- Hero Section Begin -->
-<form name="frm" method="post">
     <section class="hero hero-normal">  
         <div class="container">
             <div class="row">
@@ -72,7 +63,7 @@
                     <div class="hero__search">
                     	<!-- 메인 홈화면의 상품검색 기능 시작 -->
                         <div class="hero__search__form" id="hero__search_form">
-                            <form action="#" style="display: block; margin-top: 0em;">
+                            <form name="frm" style="display: block; margin-top: 0em;">
                                 <div class="hero__search__categories" id="hero__search__categories">
                                     All Categories
                                 </div>
@@ -234,7 +225,6 @@
                 </div>
             </div>
     </section>
-    </form>
     <!-- Product Section End -->
 
    

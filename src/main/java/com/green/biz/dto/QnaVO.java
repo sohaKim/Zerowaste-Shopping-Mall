@@ -18,4 +18,6 @@ public class QnaVO {
 	private String id;		// 작성자 아이디(member테이블)
 	private String rep;		// 답변여부 1:답변X, 2:답변O
 	private Timestamp indate;	// 등록일자(작성일자)
+	
+	private String image;   // 파일첨부 이미지
 }

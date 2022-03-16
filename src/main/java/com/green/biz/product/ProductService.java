@@ -2,6 +2,7 @@ package com.green.biz.product;
 
 import java.util.List;
 
+import com.green.biz.dto.ProductCommentVO;
 import com.green.biz.dto.ProductVO;
 import com.green.biz.dto.SalesQuantity;
 
@@ -43,16 +44,26 @@ public interface ProductService {
 	//0303all낮은가격순페이징0304all카테고리가격순이름순나열
 	public List<ProductVO> getListWithPagingAllFilter(Criteria criteria, String category, String order);
 	
+	// 03.16 comment 추가	
+	public List<ProductCommentVO> getCommentList(int pseq);
+	
+	public int saveComment(ProductCommentVO commentVO);
+	
+	public int updateComment(ProductCommentVO commentVO);
+	
+	public int deleteComment(int commentSeq);
+	
+	public List<ProductCommentVO> getCommentListWithPaging(Criteria cri, int pseq);
+	
+	public int countCommentList(int pseq);
+	
 	// ▶ Admin 관리자 페이지 작성시 추가 부분2
 	public List<SalesQuantity>getProductSales();
+
 	
-	// ▶메인화면의 검색창 키워드 검색기능 --product의 모든카테고리 중 검색
-	//  김소연 03.10 추가
-	public List<ProductVO> searchProductList(Criteria criteria, String name);
+	// ▶메인화면의 검색창 키워드 검색기능 --product의 모든카테고리 중 검색 ----03.15 김소연수정
+	public List<ProductVO> searchProductList(String name);
 	
-	// ▶ 전체 게시글 총 개수를 pseq로 받는 count
-	//  김소연 03.10 추가
-	public int countSearchProduct(ProductVO vo);
   
   // 어드민에서 상품 카테고리별 불러오기 
 	List<ProductVO> adminGetProductListByKind(ProductVO vo);

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CommentDAO">
+
+	<select id="getCommentList" parameterType="int" resultType="comment">
+		SELECT *
+		  FROM product_comment
+		 WHERE pseq = #{pseq}
+		 ORDER BY regdate DESC 
+	</select>
+	
+	<!-- 상품평 페이별 조회 -->
+	<!-- idx_prod_comment 인덱스 사용 -->
+	<select id="getCommentListWithPaging" parameterType="hashMap" resultType="comment">
+		<![CDATA[
+		SELECT comment_seq, pseq, content, writer, regdate, modifydate
+		  FROM (
+		  		SELECT rownum rn, comment_seq, pseq, content, writer, regdate, modifydate
+		  		  FROM product_comment
+		  		 WHERE pseq = #{pseq}
+		  		   AND rownum <= #{criteria.pageNum} * #{criteria.rowsPerPage}  
+		  	   )
+		 WHERE rn > (#{criteria.pageNum}-1) * #{criteria.rowsPerPage} 	   
+		]]>
+	</select>
+	
+	<!-- 상품평 레코드 수 조회 -->
+	<select id="countCommentList" parameterType="int" resultType="int">
+		SELECT COUNT(comment_seq)
+		  FROM product_comment
+		 WHERE pseq = #{pseq} 
+	</select>
+
+	<insert id="saveComment" parameterType="comment">
+		INSERT INTO product_comment(comment_seq, pseq, content, writer)
+		 VALUES(prod_comment_seq.nextval, #{pseq}, #{content}, #{writer})
+	</insert>
+	
+	<update id="updateComment" parameterType="comment">
+		UPDATE product_comment SET content=#{content}, modifydate=#{modifydate}
+		 WHERE comment_seq = #{comment_seq} 
+	</update>
+	
+	<delete id="deleteComment" parameterType="int">
+		DELETE FROM product_comment
+		 WHERE comment_seq = #{comment_seq} 
+	</delete>
+</mapper>
+
+
+
+
+
+
