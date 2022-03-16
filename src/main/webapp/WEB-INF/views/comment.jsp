@@ -10,6 +10,9 @@
 <head>
     <!-- link rel="stylesheet" href="css/bootstrap.min.css"> -->
     <style>
+    hr {
+    	margin: 0px;;
+    }
     #cCnt {
     	border-radius: 3px;
     	border: 1px solid #000;
@@ -46,11 +49,11 @@
     <form id="commentForm" name="commentForm" method="post">
     <br><br>
         <div>
-            <div>
+            <div style="margin-bottom: 15px;">
                 <!-- <span><h3>상품 리뷰</h3></span> --> <span id="cCnt"></span>
             </div>
 			<!--<br>-->
-            <div id="reply">
+            <div id="reply" style="margin-bottom: 3px;">
                 <table id="rep_input" style="width: 650px">                    
                     <tr>
                         <td style="width:70%;">
@@ -69,17 +72,17 @@
 </div>
 <div class="container">
     <form id="commentListForm" name="commentListForm" method="post">
-        <div id="commentList">
+        <div id="commentList" style="padding-top: 3px; padding-bottom: 0px;">
         </div>
     </form>
 	<!-- 페이지 처리 영역 -->
-    <div>
+     <div>
 		<ul id="pagination">
 			<c:if test="${pageMaker.prev}">
 			<li class="paginate_button previous">
 				<a href="comments/list${pageMaker.makeQuery(pageMaker.startPage-1)}">[이전]</a>
 			</li>
-			</c:if>
+			</c:if> 
 				
 		<!-- [1][2][3]... 표시 부분 -->
 		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
@@ -187,7 +190,7 @@ function showHtml(pageMaker, commentList, totalCount) {
 	        html += "<div id=\"comment_item\"> <strong>작성자: " + item.writer+"</strong>&nbsp;&nbsp;&nbsp;"
 	        html += "<span id=\"write_date\">" + displayTime(item.regDate) + "</span><br>"
 	        
-	        html += item.content+"<br></div>"
+	        html += item.content+"<br></div><hr>";
 	        html += "</div>";
 		});
 		
@@ -216,7 +219,7 @@ function showHtml(pageMaker, commentList, totalCount) {
 		html += "</div>";
 	}
 	
-	$("#cCnt").html("댓글"+"<span style='color:#7fad39;'>"+totalCount+"</span><br>");	// 상품평의 갯수 출력
+	$("#cCnt").html("댓글"+"<span style='color:#7fad39;'> "+totalCount+"</span><br>");	// 상품평의 갯수 출력
 	$("#commentList").html(html);
 	$("#pagination").html(p_html);	// 페이지 부분 출력
 }
