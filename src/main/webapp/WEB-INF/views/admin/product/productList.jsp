@@ -26,14 +26,14 @@ th, td {
 			<h3 style="margin: 10px;">상품 리스트</h3>
 			<form name="frm" id="prod_form" method="post">
 				<div class="input-group" style="margin-bottom: 10px;">
-					<input type="text" class="input-lg" placeholder="상품명 입력" id="key" name="key"> 
-					<input class="btn btn-outline-primary btn-sm" type="button" name="btn_search" value="검색" onClick="go_search()">
-					<input class="btn btn-primary" type="button" value="상품 등록" name="btn_write" onClick="go_wrt()" style="margin-left: 420px;">
+					<input type="text" class="input-lg" placeholder="상품명 입력" id="key" name="key"> <input class="btn btn-outline-primary btn-sm" type="button"
+						name="btn_search" value="검색" onClick="go_search()"
+					> <input class="btn btn-primary" type="button" value="상품 등록" name="btn_write" onClick="go_wrt()" style="margin-left: 420px;">
 				</div>
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th scope="col" >번호</th>
+							<th scope="col">번호</th>
 							<th scope="col" style="width: 350px;">상품명</th>
 							<th scope="col">원가</th>
 							<th scope="col">판매가</th>
@@ -86,7 +86,14 @@ th, td {
 
 				<!-- [1][2][3]... 표시 부분 -->
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-					<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(index)}">${index}</a></li>
+					<c:choose>
+						<c:when test="${pageMaker.criteria.pageNum==index}">
+							<li class="page-item active"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(index)}">${index}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link" href="admin_product_list${pageMaker.makeQuery(index)}">${index}</a></li>
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
 
 				<c:if test="${pageMaker.next}">

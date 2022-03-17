@@ -37,7 +37,7 @@ public class ProductController {
 		
 		model.addAttribute("productVO", product);
 		
-		return "shop-details";
+		return "product/shop-details";
 	}
 	
 
@@ -51,7 +51,7 @@ public class ProductController {
 	      }
 	      model.addAttribute("productList", listProduct);
 			
-	      return "shop-grid";
+	      return "product/shop-grid";
 	   }
 
 	//샵카테고리페이지구현0225 shopgrid이름순나열시도0304
@@ -70,7 +70,7 @@ public class ProductController {
 		request.setAttribute("productKindList", categoryProduct);
 		model.addAttribute("category", vo.getKind());
 		
-		return "shop-grid";
+		return "product/shop-grid";
 	}
 	
 
@@ -99,7 +99,7 @@ public class ProductController {
 			model.addAttribute("category", "0");
 			model.addAttribute("productListSize", prodList.size()); //  productList.jsp의 ${productListSize}
 			model.addAttribute("pageMaker", pageMaker); // page_area.jsp의 ${pageMaker}
-			return "all"; // jsp
+			return "product/all"; // jsp
 		
 	}
 
@@ -129,7 +129,7 @@ public class ProductController {
 			model.addAttribute("allproductKindList", prodList); // productList.jsp의 ${productList}
 			model.addAttribute("productListSize", prodList.size()); //  productList.jsp의 ${productListSize}
 			model.addAttribute("pageMaker", pageMaker); // page_area.jsp의 ${pageMaker}
-			return "all"; // jsp
+			return "product/all"; // jsp
 		
 	}
 
@@ -151,7 +151,7 @@ public class ProductController {
 			model.addAttribute("category", "0");
 			model.addAttribute("productListSize", prodList.size()); 
 			
-			return "allSearch"; // jsp
+			return "product/allSearch"; // jsp
 		
 	}
 }
