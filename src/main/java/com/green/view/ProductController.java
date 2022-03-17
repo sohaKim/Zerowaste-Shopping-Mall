@@ -107,7 +107,7 @@ public class ProductController {
 	//0304all카테고리 이름순가격순나열
 	@RequestMapping(value="/filter")
 	public String productKindActionLow( // productList.jsp의 상품명 name=key
-			@RequestParam(value="key", defaultValue="") String name,
+			//@RequestParam(value="key", defaultValue="") String name,
 			@RequestParam(value="category", defaultValue="") String category,
 			@RequestParam(value="order") String order,
 			Criteria criteria,

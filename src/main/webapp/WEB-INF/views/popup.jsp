@@ -49,7 +49,16 @@ height : 30px;line-height:30px;border:black solid 1px; text-align : center;text-
 	line-height:30px
 }
 .layerPopup #close {
-font-size:16px; font-weight:600; width: 40px; height : 30px;color:black; float: right; line-height:30px; text-align : center;text-decoration:underline;
+	font-size:16px; 
+	font-weight:600; 
+	width: 40px; 
+	height : 30px;
+	float: right; 
+	line-height:30px; 
+	text-align : center;
+}
+.layerPopup #close a{
+	color:red;
 }
 .layerPopup a{
 	text-decoration : none;
@@ -63,13 +72,13 @@ font-size:16px; font-weight:600; width: 40px; height : 30px;color:black; float: 
 	        <h4 class="title">SaveEarth 공지사항</h4>
 	        <div class="cont">
 	            <p>
-					<a href="http://localhost:8080/mall/notice_view?pageNum=1&rowsPerPage=10&nseq=12#noticediv"><img src="img/blog/notice06.JPG" width=400 height=300 usemap="#popup" alt="event page"></a>
+					<a href="notice_view?pageNum=1&rowsPerPage=6&nseq=7#noticediv"><img src="img/blog/notice06.JPG" width=400 height=300 usemap="#popup" alt="event page"></a>
 	            </p>
 	        </div>
 	          <form name="pop_form">
 	        <div id="check" ><input type="checkbox" name="chkbox" value="checkbox" id='chkbox' >
 	        <label for="chkbox">&nbsp&nbsp오늘 하루동안 보지 않기</label></div>
-			<div id="close" ><a href="javascript:closePop();">닫기</a></div>    
+			<div id="close" ><a href="javascript:closePop();" >닫기</a></div>    
 			</form>
 		</div>
 	</div>
