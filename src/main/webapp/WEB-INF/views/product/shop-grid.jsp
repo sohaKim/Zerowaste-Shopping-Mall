@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.green.biz.dto.ProductVO" %>
-<%@ include file="header.jsp" %>  
+<%@ include file="../header.jsp" %>  
+
 <%
-	List<ProductVO> listProduct = (List<ProductVO>)(request.getAttribute("allproductKindList"));
+	List<ProductVO> listProduct = (List<ProductVO>)(request.getAttribute("productKindList"));
 	System.out.println("List Size="+listProduct.size());
 %>  
 <!DOCTYPE html>
@@ -29,18 +30,11 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-     
 
-<style>
-	input::placeholder {
-	  font-style: italic;
-	   font-weight: bold;
-}
-</style>
 </head>
 <body>
-<!-- Hero Section Begin -->
-    <section class="hero hero-normal">  
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -49,16 +43,17 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
+
                         <ul>
                             <li><a href="all">All | 전체</a></li>
-                            <li><a href="category?kind=1&order='name'" >LIVING | 리빙</a></li>
-                            <li><a href="category?kind=2&order='name'" >BATHROOM | 욕실</a></li>
-                            <li><a href="category?kind=3&order='name'" >KITCHEN | 주방</a></li>
-                            <li><a href="category?kind=4&order='name'" >KIT | 키트</a></li>
-                            <li><a href="category?kind=5&order='name'" >ETC | 기타</a></li>
+                            <li><a href="category?kind=1&order='name'">LIVING | 리빙</a></li>
+                            <li><a href="category?kind=2&order='name'">BATHROOM | 욕실</a></li>
+                            <li><a href="category?kind=3&order='name'">KITCHEN | 주방</a></li>
+                            <li><a href="category?kind=4&order='name'">KIT | 키트</a></li>
+                            <li><a href="category?kind=5&order='name'">ETC | 기타</a></li>
                         </ul>
                     </div>
-                </div>       
+                </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
                     	<!-- 메인 홈화면의 상품검색 기능 시작 -->
@@ -72,7 +67,7 @@
                                 <button type="submit" class="site-btn" id="searchbtn" onclick="go_search_product(this.key)">SEARCH | 검색</button>
                             </form>
                         </div>
-                        <!-- 메인 홈화면의 상품검색 기능 끝 --> 
+                        <!-- 메인 홈화면의 상품검색 기능 끝 -->
                         <div class="hero__search__phone">
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
@@ -83,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </section>
@@ -99,7 +94,6 @@
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
                             <span>Shop</span>
-                            <span>  - All</span>
                         </div>
                     </div>
                 </div>
@@ -112,7 +106,6 @@
     <section class="product spad">
         <div class="container">
             <div class="row">
-            
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
@@ -127,42 +120,57 @@
                             </ul>
                         </div>
                     </div>
-                </div>                                
+                </div>
+                
+                
                 <div class="col-lg-9 col-md-7">
                     <div class="filter__item">
                         <div class="row">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="filter__sort">  
-                                    <!--<span>Sort By</span>
+                            <!--<div class="col-lg-4 col-md-5">
+                                <div class="filter__sort">
+                                    <span>Sort By</span>
                                     <select>
-                                    	<option value="all">등록순</option>
+                                    	<option value="#">이름순</option>
                                         <option value="low">낮은 가격순</option>
                                         <option value="high">높은 가격순</option>
-                                    </select>-->                                 
-                                 </div>
+                                    </select>
+                                </div>
                             </div>
-                           <div class="col-lg-4 col-md-4">
-                            </div> 
+                            <div class="col-lg-4 col-md-4">
+                                <div class="filter__found">
+                                    <h6><span>16</span> Products found</h6>
+                                </div>
+                            </div>
+                            <input type="hidden" id="category" value="${category}">-->
+                            <!--<div class="col-lg-4 col-md-3">
+                                <div class="filter__option">
+                                    <span class="icon_grid-2x2"></span>
+                                    <span class="icon_ul"></span>
+                                </div>
+                            </div>-->
+                            <div class="col-lg-4 col-md-5">
+                                <div class="filter__sort"></div>
+                            </div>
+                           <div class="col-lg-4 col-md-4"></div> 
                             <div class="col-lg-4 col-md-3">
                                 <div class="filter__option">
-                                    <!--<span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>-->
                                     <form action="#" id="filter_form" name="filter_form">
                                     <input type="hidden" id="category" name="category" value="${category}">
                                     <input type="hidden" id="order" name="order">
-                                    <ul >
-		                                <li><a href="#" onclick="filter('name')">이름순</a></li>
+                                    <!--<ul >
+		                                <li><a href="#" onclick="#">이름순</a></li>
 		                                <li>|</li>
-		                            	<li><a href="#" onclick="filter('low')">낮은 가격순</a></li>
+		                            	<li><a href="#" onclick="#">낮은 가격순</a></li>
 		                            	<li>|</li>
-		                            	<li><a href="#" onclick="filter('high')">높은 가격순</a></li>
-		                            </ul>
+		                            	<li><a href="#" onclick="#">높은 가격순</a></li>
+		                            </ul>-->
 		                            </form>
                                 </div>
                             </div>
-                        </div> 
-                    </div> 					
-					  <!-- 예진 상품나열 기본틀 -->
+                        </div>
+                    </div> 
+					
+					  <!-- 예진 상품나열 기본틀 0225완성 -->
 					  <!--<div class="col-lg-9 col-md-7">-->
 					  <div class="row">
 					  <% for (int i=0; i<listProduct.size(); i=i+3) { %>
@@ -177,9 +185,10 @@
 					  					<div class="product__item__price"><%= listProduct.get(i).getPrice2() %>원</div>
 					  				</div>
 					  			</div>
-					  			</a>					  	
+					  			</a>
 					  	</div>
-					 </div>					 
+					 </div>
+					 
 					 <% if (i+1 <listProduct.size() ) { %>
 					 <div class="col-lg-4">
 					  	<div class="product__discount">
@@ -192,10 +201,11 @@
 					  					<div class="product__item__price"><%= listProduct.get(i+1).getPrice2() %>원</div>
 					  				</div>
 					  			</div>
-					  			</a>					  	
+					  			</a>
 					  	</div>
 					 </div>
-					 <% }%>					 
+					 <% }%>
+					 
 					 <% if (i+2 <listProduct.size() ) { %>
 					 <div class="col-lg-4">
 					  	<div class="product__discount">
@@ -208,22 +218,19 @@
 					  					<div class="product__item__price"><%= listProduct.get(i+2).getPrice2() %>원</div>
 					  				</div>
 					  			</div>
-					  			</a>					  	
+					  			</a>
 					  	</div>
 					 </div>
 					 <% } %>
 					<%} %>
 					</div>
-					<div class="product__pagination">
-	                        ${paging} 
-                    </div>
-                    <!-- 0315예진 상위페이지로 이동 -->
-					<a style="position:fixed; bottom:15px; right:15px; width:40px; height:40px; z-index:1; opacity:0.8;" href="#">
-					<img src="img/arrow.png" title="위로가기"/>
-					</a>
                     </div>
                 </div>
             </div>
+            <!-- 0315예진 상위페이지로 이동 -->
+            <a style="position:fixed; bottom:15px; right:15px; width:40px; height:40px; z-index:1; opacity:0.8;" href="#">
+			<img src="img/arrow.png" title="위로가기"/>
+			</a>
     </section>
     <!-- Product Section End -->
 
@@ -237,8 +244,12 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-      
-<%@ include file="page_area.jsp"%>
-<%@ include file="footer.jsp" %>  
+    <!--<script>
+    function save_category(cat) {
+    	$("#category").val(cat);	
+    }
+    </script>-->
+    
+<%@ include file="../footer.jsp" %>  
 </body>
 </html>

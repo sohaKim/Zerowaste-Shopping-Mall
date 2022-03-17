@@ -14,9 +14,19 @@
 					
 			<!-- [1][2][3]... 표시 부분 -->
 			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-				<a class="page-link" style="color:#7fad39;" href="notice_list${pageMaker.makeQuery(index)}">[${index}]</a>
-			</c:forEach>
-			
+				<c:choose>
+					<c:when test="${pageMaker.criteria.pageNum==index}" >
+						<li class="page-item active" >					
+							<a class="page-link" style="color:#FFFFFF; background-color:green;" href="notice_list${pageMaker.makeQuery(index)}">[${index}]</a>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item">
+							<a class="page-link" style="color:#7fad39;" href="notice_list${pageMaker.makeQuery(index)}">${index}</a>
+						</li>					
+					</c:otherwise>
+				</c:choose>			
+			</c:forEach>			
 			<c:if test="${pageMaker.next}">
 				<li class="page-item">
 					<a class="page-link" style="color: #7fad39;" href="notice_list${pageMaker.makeQuery(pageMaker.endPage+1)}">[다음]</a>

@@ -110,7 +110,7 @@ public class MypageController {
        model.addAttribute("cartList", cartList);   // shopping-cart.jsp의 $ {cartList}
        
        
-       return "shoping-cart"; // jsp
+       return "cart/shoping-cart"; // jsp
     }
  } 
  
@@ -205,7 +205,7 @@ public class MypageController {
              model.addAttribute("map", map);      // map 변수 저장
              model.addAttribute("cartList", cartList);   // checkout.jsp의 ${cartList}
         
-            return "checkout"; // jsp
+            return "cart/checkout"; // jsp
          }
       } 
 
@@ -312,7 +312,7 @@ public class MypageController {
    			model.addAttribute("orderDetail", orderDetail);
    			
    			
-   			return "orderInvoice";// jsp이동
+   			return "cart/orderInvoice";// jsp이동
    		}
       }      
 
