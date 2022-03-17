@@ -37,12 +37,11 @@
 			</c:when>
 			<c:otherwise>
 				<div class="container">
-					<div class="found-fail">
+					<div class="found-fail" style="color:#7fad39; font-size:35px; line-height: 100px; text-align:center;">
 						<h4>등록된 정보가 없습니다</h4>
 					</div>
-					<div class="found-login">
-						<input type="button" id="btnback" value="다시 찾기"
-							onClick="history.back()" />
+					<div class="found-login" style=" font-size:35px; line-height: 100px; ">
+						<input type="button" id="btnback" class="btn btn-success" value="다시 찾기" onClick="history.back()" />
 					</div>
 				</div>
 			</c:otherwise>
