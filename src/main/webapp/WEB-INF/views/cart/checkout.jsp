@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %> 
+<%@ include file="../header.jsp" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -147,7 +147,7 @@
                             <div class="row">                            	
                                 <div class="col-lg-6">
                                     <div class="checkout__input"> 
-                                    	<h5><b>☎&nbsp;수령인 정보</b></h5><br>                                  	
+                                    	<h5><b><img src="img/cart/box-icon.png"/>수령인 정보</b></h5><br>                                  	
                                         <p>Name | 성함<span>*</span></p>
                                         <input type="text" name="mname" id="mname" value="${memberVO.name}">
                                     </div>
@@ -174,32 +174,30 @@
                             </div>
                             <hr style="border: solid 1px grey;"><br> 
                             <div class="checkout__input__checkbox">
-                            	<h5><b>☎&nbsp;배송지 정보 </b></h5><br>	 
+                            	<h5><b><img src="img/cart/box-icon.png"/>배송지 정보 </b></h5><br>	 
                                    * Ohter address | 다른 주소 사용을 원하실 경우 <b>[도로명 주소]</b>를 클릭하여 주소 수정 바랍니다.<br><br>
-                            </div>
-                            <div class="row">
-	                            <div class="col-lg-3">
-		                            <div class="checkout__input">		                            			                            	
-		                                <p>Postcode | 우편번호<span>*</span></p>
-		                                <input type="text" value="${memberVO.zonecode}" name="zonecode" id="zonecode">
-		                            </div>
-		                       </div>
-		                    </div>        
+                            </div>                                
                             <div class="checkout__input">
                                 <p>Road Name Address | 도로명 주소<span>*</span></p>
                                 <input type="text" value="${memberVO.roadaddr}" name="addr1" id="roadaddr">
                             </div>
                             <div class="checkout__input">
                                 <p>Detail Address | 나머지 주소<span>*</span></p>
-                                <input type="text" value="${memberVO.detailaddr}" name="addr2" id="detailaddr">                                
-                            <hr style="border: solid 1px grey;">
-                            </div>                           
-                                                            
-	                        <div class="checkout__input">
-	                                <p>Order notes | 배송관련 요청사항<span>*</span></p>
-	                                <input type="text" name="shiprequest" id="shiprequest" 
-	                                    placeholder="ex)부재시 현관앞에 두고 가주세요.">
-	                                <fmt:formatDate value="${cartVO.indate}" type="date"/>   
+                                <input type="text" value="${memberVO.detailaddr}" name="addr2" id="detailaddr">                                                            
+                            </div>   
+                            <div class="row">
+	                            <div class="col-lg-3">
+		                            <div class="checkout__input">		                            			                            	
+		                                <p>Postcode | 우편번호<span>*</span></p>
+		                                <input type="text" value="${memberVO.zonecode}" name="zonecode" id="zonecode">		                                
+		                            </div>		                            
+		                       </div>	                       
+		                    </div>                                                                                       
+	                        <div class="checkout__input">	                        	
+	                            <p>Order notes | 배송관련 요청사항<span>*</span></p>
+	                            <input type="text" name="shiprequest" id="shiprequest" 
+	                                 placeholder="ex)부재시 현관앞에 두고 가주세요.">
+	                            <fmt:formatDate value="${cartVO.indate}" type="date"/>   
 	                        </div>
 	                    </div>
                         
@@ -283,18 +281,21 @@
 			msg += '상점 거래ID : ' + rsp.merchant_uid;
 			msg += '결제 금액 : ' + rsp.paid_amount;
 			msg += '카드 승인번호 : ' + rsp.apply_num;
-					
-			} else {
-			var msg = '결제에 실패하였습니다.';
-			msg += '에러내용 : ' + rsp.error_msg;
-			}
+				
 			alert(msg);			
 			
 			$("#formm").attr("action","order_invoice").submit();
+			} else {
+			var msg = '결제에 실패하였습니다.';
+			msg += '에러내용 : ' + rsp.error_msg;
+			
+			alert(msg);	
+			location.href='javascript:history.go(-2);';
+			}
 		});
 	});	
 	</script>  
-    <%@ include file="footer.jsp" %>
+    <%@ include file="../footer.jsp" %>
      
 </body>
 </html>

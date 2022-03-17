@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>  
+<%@ include file="../header.jsp" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -182,7 +182,38 @@
                                     	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 상품에 대한 리뷰를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이 삭제조치 될 수 있습니다.</li>
                                     	<li><i class="fa fa-arrow-circle-right" aria-hidden="true" style="color:#7fad39;"></i> 배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 SAVE EARTH 내 Q&A(1:1)게시판에 문의를 남겨주세요.</li>
                                     </ul>
-                                   <%@ include file="comment.jsp" %> 
+                                   	<div>
+                                   		<%@ include file="comment.jsp" %>
+                                   		<br><br>
+										<ul class="pagination pagination-md justify-content-center">										
+											<c:if test="${pageMaker.prev}">
+												<li class="page-item">
+													<a class="page-link" href="comment${pageMaker.makeQuery(pageMaker.startPage-1)}">[이전]</a>
+												</li>
+											</c:if>
+													
+											<!-- [1][2][3]... 표시 부분 -->
+											<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
+												<c:choose>
+													<c:when test="${pageMaker.criteria.pageNum==index}" >
+														<li class="page-item active" >					
+															<a class="page-link" style="color:#FFFFFF; background-color:green;" href="comment${pageMaker.makeQuery(index)}">[${index}]</a>
+														</li>
+													</c:when>
+													<c:otherwise>
+														<li class="page-item">
+															<a class="page-link" style="color:#7fad39;" href="comment${pageMaker.makeQuery(index)}">${index}</a>
+														</li>					
+													</c:otherwise>
+												</c:choose>			
+											</c:forEach>			
+											<c:if test="${pageMaker.next}">
+												<li class="page-item">
+													<a class="page-link" style="color: #7fad39;" href="comment${pageMaker.makeQuery(pageMaker.endPage+1)}">[다음]</a>
+												</li>
+											</c:if>					
+										</ul>
+									</div>
                                 </div>
                             </div>
                         </div>
@@ -217,6 +248,6 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/mypage.js"></script>
-<%@ include file="footer.jsp" %>  
+<%@ include file="../footer.jsp" %>  
 </body>
 </html>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.green.biz.dto.ProductVO" %>
-<%@ include file="header.jsp" %>  
+<%@ include file="../header.jsp" %>  
 <%
 	List<ProductVO> listProduct = (List<ProductVO>)(request.getAttribute("allproductKindList"));
 	System.out.println("List Size="+listProduct.size());
@@ -230,6 +230,6 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
       
-<%@ include file="footer.jsp" %>  
+<%@ include file="../footer.jsp" %>  
 </body>
 </html>
