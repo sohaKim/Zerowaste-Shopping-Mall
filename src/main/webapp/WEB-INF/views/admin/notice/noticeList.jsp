@@ -81,9 +81,15 @@ function go_wrt() {
 				</c:if>
 
 				<!-- [1][2][3]... 표시 부분 -->
-
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
+				<c:choose>
+						<c:when test="${pageMaker.criteria.pageNum==index}">
+					<li class="page-item active"><a class="page-link" href="admin_notice_list${pageMaker.makeQuery(index)}">${index}</a></li>
+					</c:when>
+					<c:otherwise>
 					<li class="page-item"><a class="page-link" href="admin_notice_list${pageMaker.makeQuery(index)}">${index}</a></li>
+					</c:otherwise>
+					</c:choose>
 				</c:forEach>
 
 				<c:if test="${pageMaker.next}">
