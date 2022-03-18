@@ -29,7 +29,8 @@
     <footer class="footer spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+            	<div class="col-lg-4"></div>
+                <div class="col-lg-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
                             <a href="index"><img src="img/logo.png" alt=""></a>
@@ -44,6 +45,7 @@
                         </ul>
                     </div>
                 </div>
+                <div class="col-lg-2"></div>
                 <!--<div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
                     <div class="footer__widget">
                         <h6>Useful Links</h6>
@@ -83,7 +85,8 @@
                 </div>-->
             </div>
             <div class="row">
-                <div class="col-lg-12">
+            	<div class="col-lg-4"></div>
+                <div class="col-lg-8">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                           Copyright ©2020 All Rights Reserved.
