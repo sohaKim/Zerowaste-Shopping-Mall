@@ -5,14 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>About us페이지</title>
 
     <!-- Google Font -->
@@ -37,7 +29,7 @@
     <link rel="stylesheet" href="aboutus/css/style.css">
     <link rel="stylesheet" href="aboutus/css/responsive.css">
     <link rel="stylesheet" href="aboutus/css/custom.css">
-    
+   
 </head>
 <body>
 <!-- Hero Section Begin -->
@@ -109,7 +101,6 @@
     <!-- Breadcrumb Section End -->
     
     <!--▶▶  About us 다른 템플릿 시작 -->
-    <!-- Start About Page  -->
     <div class="about-box-main">
         <div class="container">
             <div class="row">
@@ -207,7 +198,6 @@
     </div>
     <!-- End About Page -->
 
-    
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

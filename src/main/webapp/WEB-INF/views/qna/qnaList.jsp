@@ -90,6 +90,7 @@
                         <h2>Q&A 게시판</h2>
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
+                            <span>Q&A</span>
                         </div>
                     </div>
                 </div>

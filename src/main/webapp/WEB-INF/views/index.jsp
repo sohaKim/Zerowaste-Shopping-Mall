@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
 	<title>SaveEarth : 메인 페이지</title>
+	
 </head>
 <body>
 	

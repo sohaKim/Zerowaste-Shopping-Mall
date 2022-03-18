@@ -113,8 +113,8 @@ div .input-group {
 					</div>
 
 					<div class="d-flex justify-content-center" style="margin-bottom: 0;">
-						<input class="btn btn-primary" type="button" value="수정" onClick="go_mod_save('${productVO.pseq}')" style="margin-right: 15px;">
-						<input class="btn btn-outline-secondary" type="button" value="목록" onClick="go_mov()">
+						<input class="btn btn-primary" type="button" value="수정" onClick="go_prod_mod_save('${productVO.pseq}')" style="margin-right: 15px;">
+						<input class="btn btn-outline-secondary" type="button" value="목록" onClick="go_update_list()">
 					</div>
 				</form>
 			</div>
