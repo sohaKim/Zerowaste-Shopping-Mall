@@ -10,10 +10,8 @@
 	
 	<!-- 새로운 주문 생성, oseq 결제 완료처리-->   
 	<insert id="insertOrder">
-		INSERT INTO orders(oseq,id, mname, email, zonecode, roadaddr, 
-		detailaddr, phone, shiprequest) 
-		VALUES(#{oseq},#{id}, #{mname}, #{email}, #{zonecode}, 
-		#{roadaddr}, #{detailaddr}, #{phone},  #{shiprequest})
+		INSERT INTO orders(oseq,id, mname, email, zonecode, roadaddr, detailaddr, phone, shiprequest) 
+		VALUES(#{oseq},#{id}, #{mname}, #{email}, #{zonecode}, #{roadaddr}, #{detailaddr}, #{phone},  #{shiprequest})
 	</insert>
 
 	<!-- 장바구니에서 결제하기 버튼 클릭시,
@@ -27,8 +25,7 @@
 		주문 (order_detail) 테이블에 저장하기-->
 	<insert id="insertOrderDetail">
 		INSERT INTO order_detail(odseq, oseq, pseq, pname, quantity, price2)
-		VALUES (order_detail_seq.NEXTVAL, #{oseq}, #{pseq}, #{pname}, 
-		#{quantity}, #{price2})
+		VALUES (order_detail_seq.NEXTVAL, #{oseq}, #{pseq}, #{pname}, #{quantity}, #{price2})
 	</insert>
 
 	  	

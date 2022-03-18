@@ -29,31 +29,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.4/tailwind.min.css">
 	
 <style>
-  @font-face {
-    font-family: 'LotteMartDream';
-    font-style: normal;
-    font-weight: 400;
-    src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
-  }
 
-  @font-face {
-    font-family: 'LotteMartDream';
-    font-style: normal;
-    font-weight: 700;
-    src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff') format('woff');
-  }
-
-  @font-face {
-    font-family: 'LotteMartDream';
-    font-style: normal;
-    font-weight: 300;
-    src: url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2') format('woff2'), url('https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff') format('woff');
-  }
-
-  html>body {
-    font-family: 'LotteMartDream', sans-serif;
-  }
-  
 .faq-box {
   border:2px solid black;
   background-color:#fff;
@@ -80,7 +56,6 @@
 
 .faq-box__answer {
   display:none;
-  /*background-color:rgba(0,0,0,0.3);*/
   background-color:rgba(235, 249, 213, .5);
   border-radius:10px;
   padding:10px;
@@ -149,7 +124,8 @@
                     <div class="breadcrumb__text">
                         <h2>FAQ | 자주묻는 질문</h2>
                         <div class="breadcrumb__option">
-                            <a href="index">Home</a>                           
+                            <a href="index">Home</a>
+                            <span>FAQ</span>                           
                         </div>
                     </div>
                 </div>
@@ -158,37 +134,44 @@
     </section>
     <!-- Breadcrumb Section End -->
     
-<form name="formm" id="faq_form" method="post">
-            
+<form name="formm" id="faq_form" method="post">            
 <!-- 부트스트랩 시작 -->    
 <section class="section section-faq">
-  <div class="container mx-auto">
-    <h1>*FAQ 리스트</h1><br><br>
-    <div class="faq-box">
-      <ul>
-      <c:forEach items="${faqList}" var="faqVO"> 
-        <li>
-          <div class="faq-box__question"><span>Q. ${faqVO.subject}</span></div>
-          <div class="faq-box__answer">
-            <div>
-            <fmt:formatDate value="${faqVO.indate}" type="date"/><br><br>
-            <strong>${faqVO.content1}</strong>
-              </div>
-            <div style="white-space:pre-line;">
-            ${faqVO.content2}<br>
-			감사합니다.
-            </div>
-          </div>
-        </li>
-       </c:forEach> 
-      </ul>
-    </div>
+  <div class="container mx-auto">  
+      <div class="contact-form spad">
+        <div class="container">
+		     <div class="row">
+		         <div class="col-lg-12">
+		              <div class="contact__form__title">
+		                  <h2> FAQ 게시판</h2>
+		                     <h5> 자주 묻는 질문을 버튼을 눌러 확인해 주세요.</h5>
+		               </div>
+		         </div>
+		     </div>
+		    <div class="faq-box">
+		      <ul>
+		      <c:forEach items="${faqList}" var="faqVO"> 
+		        <li>
+		          <div class="faq-box__question"><span>Q. ${faqVO.subject}</span></div>
+		          <div class="faq-box__answer">
+		            <div>
+		            <fmt:formatDate value="${faqVO.indate}" type="date"/><br><br>
+		            <strong>${faqVO.content1}</strong>
+		              </div>
+		            <div style="white-space:pre-line;">
+		            ${faqVO.content2}<br>
+					감사합니다.
+		            </div>
+		          </div>
+		        </li>
+		       </c:forEach> 
+		      </ul>
+		    </div>
+  		</div>
+  	</div>
   </div>
 </section>
-
-
-<br><br><br>   
-    
+<br><br><br>       
     <!-- 버튼 -->
     <div class="row">                   
         <div class="col-lg-12 text-center">                      
@@ -293,8 +276,6 @@ function FaqBox__init() {
 
 	FaqBox__init();
 </script>
-
-
 <%@ include file="../footer.jsp" %>
 </body>
 </html>
