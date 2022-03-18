@@ -78,7 +78,7 @@ public class ProductController {
 	//0304all카테고리 페이징
 	@RequestMapping(value="/all")
 	public String productKindAction( // productList.jsp의 상품명 name=key
-			@RequestParam(value="key", defaultValue="") String name,
+			//@RequestParam(value="key", defaultValue="") String name,
 			 Criteria criteria,
 			 HttpSession session, Model model){
 		

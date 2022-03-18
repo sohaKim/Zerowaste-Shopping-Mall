@@ -26,7 +26,7 @@
 			</div>
 			<section class = "form-search">
 			<div class="form-group">
-				<i class="zmdi zmdi-account-o"></i><span> 이름</span>
+				<i class="zmdi zmdi-account"></i><span> 아이디</span>
 				<input type="text" name="id" class="form-control" placeholder = "아이디를 입력해주세요">
 				<br>
 			</div>

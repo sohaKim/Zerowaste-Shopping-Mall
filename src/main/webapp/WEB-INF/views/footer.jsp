@@ -29,7 +29,8 @@
     <footer class="footer spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+            	<div class="col-lg-4"></div>
+                <div class="col-lg-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
                             <a href="index"><img src="img/logo.png" alt=""></a>
@@ -45,9 +46,14 @@
                     </div>
                 </div>
 
+                <div class="col-lg-2"></div>
+                
+
+
             </div>
             <div class="row">
-                <div class="col-lg-12">
+            	<div class="col-lg-4"></div>
+                <div class="col-lg-8">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p>
                           Copyright ©2021 All Rights Reserved.                           
