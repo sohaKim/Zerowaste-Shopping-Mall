@@ -238,8 +238,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     
-<!--<%@ include file="../page_area.jsp"%>-->
-<%@ include file="../page_area_kind.jsp"%>
+<%@ include file="../page_area.jsp"%>
 <%@ include file="../footer.jsp" %>  
 </body>
 </html>
