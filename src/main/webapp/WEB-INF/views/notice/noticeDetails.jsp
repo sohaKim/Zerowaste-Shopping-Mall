@@ -106,7 +106,7 @@
 							<div class="blog__sidebar__item">
                             <h4>Categories | 카테고리</h4>
                             <ul>
-                                <li><a href="#">All</a></li>
+                                <li><a href="notice_list">All</a></li>
                                 <li><a href="notice_category?nkind=1">Notice | 일반 공지</a></li>
                                 <li><a href="notice_category?nkind=2">Shipping | 배송</a></li>
                                 <li><a href="notice_category?nkind=3">Events | 이벤트</a></li>

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title> 주문완료 내역 </title>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <style>
 .receipt-content .logo a:hover {

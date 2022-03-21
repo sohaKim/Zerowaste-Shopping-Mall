@@ -4,14 +4,12 @@
 
 
 	<div>
-		<ul class="pagination pagination-md justify-content-center">
-		
+		<ul class="pagination pagination-md justify-content-center">		
 			<c:if test="${pageMaker.prev}">
 				<li class="page-item">
 					<a class="page-link" href="notice_list${pageMaker.makeQuery(pageMaker.startPage-1)}">[이전]</a>
 				</li>
-			</c:if>
-					
+			</c:if>					
 			<!-- [1][2][3]... 표시 부분 -->
 			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
 				<c:choose>

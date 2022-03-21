@@ -239,6 +239,7 @@
     <script src="js/main.js"></script>
     
 
+
 <%@ include file="../page_area_kind.jsp"%>
 <%@ include file="../footer.jsp" %>  
 </body>

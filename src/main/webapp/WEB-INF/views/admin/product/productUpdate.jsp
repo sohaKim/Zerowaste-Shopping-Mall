@@ -14,7 +14,6 @@ div .input-group {
 			<div class="border border-2" style="padding: 10px;">
 				<form class="form-floating" name="frm" id="update_form" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="pseq" value="${productVO.pseq}">
-					<!-- <input type="hidden" name="code"> -->
 					<!--  기존 이미지 저장. 이미지 업데이트 안했을 때 사용  -->
 					<input type="hidden" name="nonmakeImg" value="${productVO.image}">
 					<input type="hidden" name="nonmakeProdNotice" value="${productVO.prodNotice}">
@@ -46,17 +45,17 @@ div .input-group {
 					<div class="input-group d-flex justify-content-between">
 						<div class="d-inline-flex">
 							<span class="input-group-text" style="margin-right: 2px;">원가[A]</span> 
-							<input type="text" class="input-sm" placeholder="원가" id="price1" name="price1" size="10" onKeyUp='NumFormat(this)' value="${productVO.price1}">
+							<input type="text" class="input-sm" placeholder="원가" id="price1" name="price1" size="10" value="${productVO.price1}">
 						</div>
 
 						<div class="d-inline-flex">
 							<span class="input-group-text" style="margin-right: 2px;">판매가[B]</span> 
-							<input type="text" class="input-sm" placeholder="판매가" id="price2" name="price2" size="10" onBlur="go_ab()" onKeyUp='NumFormat(this)' value="${productVO.price2}">
+							<input type="text" class="input-sm" placeholder="판매가" id="price2" name="price2" size="10" onBlur="go_ab()"  value="${productVO.price2}">
 						</div>
 						
 						<div class="d-inline-flex">
 							<span class="input-group-text" style="margin-right: 2px; width: 90px; padding-left: 30px;">B-A</span> 
-							<input type="text" class="input-sm" placeholder="B-A" id="price3" name="price3" size="10" readonly onKeyUp='NumFormat(this)'>
+							<input type="text" class="input-sm" placeholder="B-A" id="price3" name="price3" size="10" readonly>
 						</div>
 					</div>
 					
@@ -113,8 +112,8 @@ div .input-group {
 					</div>
 
 					<div class="d-flex justify-content-center" style="margin-bottom: 0;">
-						<input class="btn btn-primary" type="button" value="수정" onClick="go_mod_save('${productVO.pseq}')" style="margin-right: 15px;">
-						<input class="btn btn-outline-secondary" type="button" value="목록" onClick="go_mov()">
+						<input class="btn btn-primary" type="button" value="수정" onClick="go_prod_mod_save('${productVO.pseq}')" style="margin-right: 15px;">
+						<input class="btn btn-outline-secondary" type="button" value="목록" onClick="go_update_list()">
 					</div>
 				</form>
 			</div>

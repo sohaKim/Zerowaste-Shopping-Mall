@@ -2,9 +2,10 @@
     IMPORT FONTS
 -------------------------------------------------------------------*/
 
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800');
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700');
-
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 /*
 
@@ -29,13 +30,14 @@
 @import url(nice-select.css);
 @import url(baguetteBox.min.css);
 
+
 /*------------------------------------------------------------------
     SKELETON
 -------------------------------------------------------------------*/
  body {
      color: #666666;
      font-size: 15px;
-     font-family: 'Dosis', sans-serif;
+     font-family: 'Dosis', 'Gowun Dodum', sans-serif;
      line-height: 1.80857;
 }
  a {
@@ -2597,24 +2599,3 @@
 	padding: 12px 25px;
 	border: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

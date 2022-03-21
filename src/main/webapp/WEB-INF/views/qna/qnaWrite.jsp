@@ -99,6 +99,7 @@
                         <h2>Q&A 게시판</h2>
                         <div class="breadcrumb__option">
                             <a href="index">Home</a>
+                            <span>Q&A</span>
                         </div>
                     </div>
                 </div>
@@ -127,7 +128,6 @@
                                 <strong><img src="img/qna/note_icon.png">1:1 문의하기</strong> 남기기
                             </div>              
                             <div class="card-body card-block">       
-                                   <!-- 카테고리 선택 -->
                                    <div class="row form-group">
                                         <div class="col col-md-3"><label for="select" class=" form-control-label">Category | <br>카테고리: </label></div>
                                         <div class="col-5 col-md-5">
@@ -148,8 +148,6 @@
                                         <div class="col-12 col-md-9"><textarea name="content" id="content" rows="10" 
                                         placeholder="※ 문의 내용을 남겨주세요." class="form-control"></textarea></div>
                                     </div>
-                                    
-                                    <!-- 파일업로드 추가 03.16 -->
 			                       <div class="row form-group">
 										<div class="col col-md-3"><label for="qna_image" class=" form-control-label">File |<br>파일첨부: </label></div>
 										<div class="col-5 col-md-5">
@@ -158,9 +156,7 @@
 								  </div>
                               </div>		
                           </div>
-					 </div>
-                    <br><br><br>                 
-                <!-- 버튼 -->
+					 </div><br><br><br>                 
                 <div class="row" style="align:center;">                   
                     <div class="col-lg-12 text-center" style="align:center;">
                         <button type="submit" class="site-btn" id="qna_form">글 등록</button>
