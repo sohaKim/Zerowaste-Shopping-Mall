@@ -149,7 +149,7 @@
                                     <span class="icon_ul"></span>-->
                                     <form action="#" id="filter_form" name="filter_form">
                                     <input type="hidden" id="category" name="category" value="${category}">
-                                    <input type="hidden" id="order" name="order">
+                                    <input type="hidden" id="order" name="order" value="${order}">
                                     <ul >
 		                                <li><a href="#" onclick="filter('name')">이름순</a></li>
 		                                <li>|</li>
@@ -238,7 +238,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     
-<!--<%@ include file="../page_area.jsp"%>-->
+
 <%@ include file="../page_area_kind.jsp"%>
 <%@ include file="../footer.jsp" %>  
 </body>

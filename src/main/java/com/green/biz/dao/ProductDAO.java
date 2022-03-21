@@ -116,10 +116,13 @@ public class ProductDAO {
 		map.put("order", order);
 		
 		if (order.equals("high")) {
+			System.out.println("filter: high");
 			return mybatis.selectList("mappings.product-mapping.listWithPagingFilterHigh",map);
 		} else if (order.equals("low")) {
+			System.out.println("filter: low");
 			return mybatis.selectList("mappings.product-mapping.listWithPagingFilterLow",map);
 		} else {
+			System.out.println("filter: name");
 			return mybatis.selectList("mappings.product-mapping.listWithPagingFilterName",map);
 		}
 	}
