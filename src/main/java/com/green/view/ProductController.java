@@ -80,8 +80,11 @@ public class ProductController {
 	public String productKindAction( // productList.jsp의 상품명 name=key
 			//@RequestParam(value="key", defaultValue="") String name,
 			 Criteria criteria,
+			 @RequestParam(value="order", defaultValue="name") String order,
 			 HttpSession session, Model model){
 		
+			System.out.println("ProductController: criteria="+criteria);
+			System.out.println("\t\torder=" + order);
 		
 			// 상품 목록 조회
 			List<ProductVO> prodList = productService.getListWithPagingAll(criteria);
@@ -129,6 +132,7 @@ public class ProductController {
 			model.addAttribute("allproductKindList", prodList); // productList.jsp의 ${productList}
 			model.addAttribute("productListSize", prodList.size()); //  productList.jsp의 ${productListSize}
 			model.addAttribute("pageMaker", pageMaker); // page_area.jsp의 ${pageMaker}
+			model.addAttribute("order", order);
 			return "product/all"; // jsp
 		
 	}
