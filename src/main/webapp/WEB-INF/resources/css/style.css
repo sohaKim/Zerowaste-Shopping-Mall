@@ -1362,6 +1362,13 @@ ol {
 	position: relative;
 	overflow: hidden;
 }
+/*0321 이미지 호버기능 예진*/
+.product__discount__item__pic.set-bg:hover{
+    width:270px;
+    transform:scale(1.11);
+    transition: transform.5s;
+    
+}
 
 .product__discount__item__pic .product__discount__percent {
 	height: 45px;
